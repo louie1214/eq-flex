@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EqFlex.App/EqFlex.App.csproj" />
+    <Project Path="src/EqFlex.Core/EqFlex.Core.csproj" />
+    <Project Path="src/EqFlex.Infrastructure/EqFlex.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EqFlex.Tests/EqFlex.Tests.csproj" />
+  </Folder>
+</Solution>

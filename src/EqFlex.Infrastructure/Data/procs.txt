@@ -1,0 +1,6302 @@
+# Bane
+Abolish Destruction
+Abrogate Destruction
+Annihilate Destruction
+Annihilate Destruction II
+Annihilate Destruction III
+Annihilate Destruction IV
+Annihilate Havoc
+Annihilate Resistances
+Annihilate Resistances II
+Annihilate Resistances III
+Annihilate Weakness
+Banish Destruction
+Dismantle Destruction
+Eradicate Destruction
+Exterminate Destruction
+Extirpate Destruction
+Expunge Destruction
+Obliterate Destruction
+Repudiate Destruction
+Unmend Destruction
+
+# Bard Arcane Aria
+Arcane Aria Effect XII Azia
+Arcane Aria Effect XII Beza
+Arcane Aria Effect XII Caza
+Arcane Aria Strike XII Azia
+Arcane Aria Strike XII Beza
+Arcane Aria Strike XII Caza
+Arcane Address Effect
+Arcane Address Effect II
+Arcane Address Effect III
+Arcane Address Strike
+Arcane Address Strike II
+Arcane Address Strike III
+Arcane Anthem Effect
+Arcane Anthem Effect II
+Arcane Anthem Effect III
+Arcane Aria Effect
+Arcane Arietta Effect II
+Arcane Arietta Effect III
+Arcane Arietta Effect
+Arcane Ballad Effect
+Arcane Ballad Effect II
+Arcane Ballad Effect III
+Arcane Ballad Strike
+Arcane Ballad Strike II
+Arcane Ballad Strike III
+Arcane Blade Strike
+Arcane Blade Strike II
+Arcane Blade Strike III
+Arcane Choral Strike
+Arcane Choral Strike II
+Arcane Choral Strike III
+Arcane Chorus Effect
+Arcane Chorus Effect II
+Arcane Chorus Effect III
+Arcane Harmony Effect
+Arcane Harmony Effect II
+Arcane Harmony Effect III
+Arcane Harmony Strike
+Arcane Harmony Strike II
+Arcane Harmony Strike III
+Arcane Hymn Effect
+Arcane Hymn Effect II
+Arcane Hymn Effect III
+Arcane Hymn Strike
+Arcane Hymn Strike II
+Arcane Hymn Strike III
+Arcane Melody Effect
+Arcane Melody Effect II
+Arcane Melody Effect III
+Arcane Melody Strike
+Arcane Melody Strike II
+Arcane Melody Strike III
+Arcane Rhythm Effect
+Arcane Rhythm Effect II
+Arcane Rhythm Effect III
+Arcane Rhythm Strike
+Arcane Rhythm Strike II
+Arcane Rhythm Strike III
+Arcane Symphony Effect
+Arcane Symphony Effect II
+Arcane Symphony Effect III
+Arcane Symphony Strike
+Arcane Symphony Strike II
+Arcane Symphony Strike III
+
+# Bard Autarchian
+Rumbling Barrier Stun XI Azia
+Rumbling Barrier Stun XI Beza
+Rumbling Barrier Stun XI Caza
+Autarchian Shrilling
+Autarchian Shrilling II
+Autarchian Shrilling III
+Echoing Stun
+Echoing Stun II
+Echoing Stun III
+Resonating Stun
+Resonating Stun II
+Resonating Stun III
+Reverberating Stun
+Reverberating Stun II
+Reverberating Stun III
+Rumblestun
+Rumblestun II
+Rumblestun III
+Thunderstun
+Thunderstun II
+Thunderstun III
+Tonitruous Stun
+Tonitruous Stun II
+Tonitruous Stun III
+Vibrato Stun
+Vibrato Stun II
+Vibrato Stun III
+
+# Bard Dance of Blades
+Bladewhirl I
+Bladewhirl II
+Bladewhirl III
+Bladewhirl IV
+Bladewhirl V
+Bladewhirl VI
+Bladewhirl VII
+Bladewhirl VIII
+Bladewhirl IX
+Bladewhirl X
+Bladewhirl XI
+Bladewhirl XII
+Bladewhirl XIII
+Bladewhirl XIV
+Bladewhirl XV
+Bladewhirl XVI
+Bladewhirl XVII
+Bladewhirl XVIII
+Bladewhirl XIX
+Bladewhirl XX
+Bladewhirl XXI
+Bladewhirl XXII
+Bladewhirl XXIII
+Bladewhirl XXIV
+Bladewhirl XXV
+Bladewhirl XXVI
+Bladewhirl XXVII
+Bladewhirl XXVIII
+
+# Bard Katta's Song of Sword Dancing
+Blade Dance
+
+# Bard Synergy
+Troubadour's Synergy Effect I
+Troubadour's Synergy Effect II
+Troubadour's Synergy Effect III
+Troubadour's Synergy Effect IV
+Troubadour's Synergy Effect V
+Troubadour's Synergy Effect VI
+Troubadour's Synergy Effect VII
+Troubadour's Synergy Effect VIII
+Troubadour's Synergy Effect VIX
+Troubadour's Synergy Effect IX
+Troubadour's Synergy Effect X
+Troubadour's Synergy Effect XI
+Troubadour's Synergy Effect XII
+Troubadour's Synergy Effect XIII
+
+# Bard Song of the Storm
+Song of the Storm Strike
+Storm Blade Strike
+
+# Bard Spite
+Fjilnauk's Spite
+Fjilnauk's Spite II
+Fjilnauk's Spite III
+Hykast's Spite
+Hykast's Spite II
+Hykast's Spite III
+Kaficus' Spite
+Kaficus' Spite II
+Kaficus' Spite III
+Lyrin's Spite
+Lyrin's Spite II
+Lyrin's Spite III
+Matriarch's Spite
+Matriarch's Spite II
+Matriarch's Spite III
+Omorden's Spite
+Omorden's Spite II
+Omorden's Spite III
+Tatalros' Spite
+Tatalros' Spite II
+Tatalros' Spite III
+Travenro's Spite
+Travenro's Spite II
+Travenro's Spite III
+Von Deek's Spite
+Von Deek's Spite II
+Von Deek's Spite III
+
+# Bard Suffering Strike
+Sorrowful Strike IX Azia
+Sorrowful Strike IX Beza
+Sorrowful Strike IX Caza
+Fjilnauk's Strike
+Fjilnauk's Strike II
+Fjilnauk's Strike III
+Hykast's Strike
+Hykast's Strike II
+Hykast's Strike III
+Kaficus' Strike
+Kaficus' Strike II
+Kaficus' Strike III
+Kanghammer's Strike
+Kanghammer's Strike II
+Kanghammer's Strike III
+Noira's Strike
+Noira's Strike II
+Noira's Strike III
+Omorden's Strike
+Omorden's Strike II
+Omorden's Strike III
+Shojralen's Strike
+Shojralen's Strike II
+Shojralen's Strike III
+Travenro's Strike
+Travenro's Strike II
+Travenro's Strike III
+
+# Bard Sympathetic Psalm
+Sympathetic Mana
+Sympathetic Mana II
+Sympathetic Mana III
+
+# Beastlord BP
+Unleashed Fury
+
+# Beastlord Bite of the Asp
+Bite of the Asp I
+Bite of the Asp II
+Bite of the Asp III
+Bite of the Asp IV
+Bite of the Asp V
+Bite of the Asp VI
+Bite of the Asp VII
+Bite of the Asp VIII
+Bite of the Asp IX
+Bite of the Asp X
+Bite of the Asp XI
+Bite of the Asp XII
+Bite of the Asp XIII
+Bite of the Asp XIV
+Bite of the Asp XV
+Bite of the Asp XVI
+Bite of the Asp XVII
+Bite of the Asp XVIII
+Bite of the Asp XIX
+Bite of the Asp XX
+Bite of the Asp XXI
+Bite of the Asp XXII
+Bite of the Asp XXIII
+Bite of the Asp XXIV
+Bite of the Asp XXV
+Bite of the Asp XXVI
+Bite of the Asp XXVII
+Bite of the Asp XXVIII
+Bite of the Asp XXIX
+Bite of the Asp XXX
+Bite of the Asp XXXI
+Bite of the Asp XXXII
+Bite of the Asp XXXIII
+Bite of the Asp XXXIV
+Bite of the Asp XXXV
+Bite of the Asp XXXVI
+Bite of the Asp XXXVII
+Bite of the Asp XXXVIII
+Bite of the Asp XXXIX
+Bite of the Asp XL
+Bite of the Asp XLI
+Bite of the Asp XLII
+Bite of the Asp XLIII
+
+# Beastlord Bestial Bloodrage
+Bestial Bloodrage Recourse
+Bloodrage Exhaustion
+Bloodrage Resurgence
+
+# Beastlord Blood Frenzy
+Blood Frenzy I
+Blood Frenzy II
+Blood Frenzy III
+Blood Frenzy IV
+Blood Frenzy V
+Blood Frenzy VI
+Blood Frenzy VII
+Blood Frenzy VIII
+Blood Frenzy IX
+Blood Frenzy X
+Blood Frenzy XI
+Blood Frenzy XII
+Blood Frenzy XIII
+Blood Frenzy XIV
+Blood Frenzy XV
+Blood Frenzy XVI
+Blood Frenzy XVII
+Blood Frenzy XVIII
+
+# Beastlord Epic
+Wild Spirit Strike
+
+# Beastlord Forecasted Aid
+Forecasted Aid
+Forecasted Aid II
+Forecasted Aid III
+Forecasted Aid Azia IV
+Forecasted Aid Beza IV
+Forecasted Aid Caza IV
+Foreseen Aid Azia IV
+Foreseen Aid Beza IV
+Foreseen Aid Caza IV
+Forecasted Aid V Azia
+Forecasted Aid V Beza
+Forecasted Aid V Caza
+Forecasted Aid VI Azia
+Forecasted Aid VI Beza
+Forecasted Aid VI Caza
+Forecasted Aid VII Azia
+Forecasted Aid VII Beza
+Forecasted Aid VII Caza
+Forecasted Aid VIII Azia
+Forecasted Aid VIII Beza
+Forecasted Aid VIII Caza
+Forecasted Aid IV Azia
+Forecasted Aid IV Beza
+Forecasted Aid IV Caza
+
+# Beastlord Gelid Claw
+Gelid Claw I
+Gelid Claw II
+Gelid Claw III
+Gelid Claw IV
+Gelid Claw V
+Gelid Claw VI
+Gelid Claw VII
+Gelid Claw VIII
+Gelid Claw IX
+Gelid Claw X
+Gelid Claw XI
+Gelid Claw XII
+Gelid Claw XIII
+Gelid Claw XIV
+Gelid Claw XV
+Gelid Claw XVI
+Gelid Claw XVII
+Gelid Claw XVIII
+Gelid Claw XIX
+Gelid Claw XX
+Gelid Claw XXI
+Gelid Claw XXII
+Gelid Claw XXIII
+Gelid Claw XXIV
+Gelid Claw XXV
+Gelid Claw XXVI
+Gelid Claw XXVII
+Gelid Claw XXVIII
+Gelid Claw XXIX
+Gelid Claw XXX
+
+# Beastlord Gorilla Smash
+Gorilla Smash I
+Gorilla Smash II
+Gorilla Smash III
+Gorilla Smash IV
+Gorilla Smash V
+Gorilla Smash VI
+Gorilla Smash VII
+Gorilla Smash VIII
+Gorilla Smash IX
+Gorilla Smash X
+Gorilla Smash XI
+Gorilla Smash XII
+Gorilla Smash XIII
+Gorilla Smash XIV
+Gorilla Smash XV
+Gorilla Smash XVI
+Gorilla Smash XVII
+Gorilla Smash XVIII
+Gorilla Smash XIX
+Gorilla Smash XX
+Gorilla Smash XXI
+Gorilla Smash XXII
+Gorilla Smash XXIII
+Gorilla Smash XXIV
+Gorilla Smash XXV
+Gorilla Smash XXVI
+Gorilla Smash XXVII
+Gorilla Smash XXVIII
+Gorilla Smash XXIX
+Gorilla Smash XXX
+Gorilla Smash XXXI
+Gorilla Smash XXXII
+Gorilla Smash XXXIII
+Gorilla Smash XXXIV
+Gorilla Smash XXXV
+Gorilla Smash XXXVI
+Gorilla Smash XXXVII
+Gorilla Smash XXXVIII
+Gorilla Smash XXXIX
+Gorilla Smash XL
+
+# Beastlord Feral Swipe
+Feral Swipe I
+Feral Swipe II
+Feral Swipe III
+Feral Swipe IV
+Feral Swipe V
+Feral Swipe VI
+Feral Swipe VII
+Feral Swipe VIII
+Feral Swipe IX
+Feral Swipe X
+Feral Swipe XI
+Feral Swipe XII
+Feral Swipe XIII
+Feral Swipe XIV
+Feral Swipe XV
+Feral Swipe XVI
+Feral Swipe XVII
+Feral Swipe XVIII
+Feral Swipe XIX
+Feral Swipe XX
+Feral Swipe XXI
+Feral Swipe XXII
+Feral Swipe XXIII
+Feral Swipe XXIV
+Feral Swipe XXV
+Feral Swipe XXVI
+Feral Swipe XXVII
+
+# Beastlord Jaws Strike
+Deadlock Jaws Strike
+Deadlock Jaws Strike II
+Deadlock Jaws Strike III
+Fellgrip Jaws Strike
+Fellgrip Jaws Strike Rk. II
+Fellgrip Jaws Strike Rk. III
+Lockfang Jaws Strike
+Lockfang Jaws Strike Rk. II
+Lockfang Jaws Strike Rk. III
+Steeltrap Jaws Strike
+Steeltrap Jaws Strike Rk. II
+Steeltrap Jaws Strike Rk. III
+
+# Beastlord Raven's Claw
+Raven's Claw I
+Raven's Claw II
+Raven's Claw III
+Raven's Claw IV
+Raven's Claw V
+Raven's Claw VI
+Raven's Claw VII
+Raven's Claw VIII
+Raven's Claw IX
+Raven's Claw X
+Raven's Claw XI
+Raven's Claw XII
+Raven's Claw XIII
+Raven's Claw XIV
+Raven's Claw XV
+Raven's Claw XVI
+Raven's Claw XVII
+Raven's Claw XVIII
+Raven's Claw XIX
+Raven's Claw XX
+Raven's Claw XXI
+Raven's Claw XXII
+Raven's Claw XXIII
+Raven's Claw XXIV
+Raven's Claw XXV
+Raven's Claw XXVI
+Raven's Claw XXVII
+Raven's Claw XXVIII
+Raven's Claw XXIX
+Raven's Claw XXX
+Raven's Claw XXXI
+Raven's Claw XXXII
+Raven's Claw XXXIII
+Raven's Claw XXXIV
+Raven's Claw XXXV
+Raven's Claw XXXVI
+Raven's Claw XXXVII
+Raven's Claw XXXVIII
+Raven's Claw XXXIX
+
+
+# Beastlord Pet Proc
+Bolstering Heal
+Bolstering Heal II
+Bolstering Heal III
+Companion's Savage Strike I
+Companion's Savage Strike II
+Companion's Savage Strike III
+Companion's Savage Strike IV
+Convivial Heal
+Convivial Heal II
+Convivial Heal III
+Debilitating Strike
+Debilitating Strike II
+Debilitating Strike III
+Depleting Bite
+Depleting Bite II
+Depleting Bite III
+Depleting Bite Recourse
+Depleting Bite Recourse II
+Depleting Bite Recourse III
+Dire Strike
+Dire Strike II
+Dire Strike III
+Empowering Heal
+Empowering Heal II
+Empowering Heal III
+Exhausting Bite
+Exhausting Bite II
+Exhausting Bite III
+Exhausting Bite Recourse
+Exhausting Bite Recourse II
+Exhausting Bite Recourse III
+Fatiguing Bite
+Fatiguing Bite II
+Fatiguing Bite III
+Fatiguing Bite IV
+Fatiguing Bite V
+Fatiguing Bite VI
+Fatiguing Bite Recourse
+Fatiguing Bite Recourse II
+Fatiguing Bite Recourse III
+Fatiguing Bite Recourse IV
+Fatiguing Bite Recourse V
+Fatiguing Bite Recourse VI
+Fatiguing Bite VI Azia
+Fatiguing Bite VI Beza
+Fatiguing Bite VI Caza
+Fatiguing Bite Recourse VI Azia
+Fatiguing Bite Recourse VI Beza
+Fatiguing Bite Recourse VI Caza
+Friendly Pet Heal
+Friendly Pet Heal II
+Friendly Pet Heal III
+Hobble of Spirits Snare I
+Hobble of Spirits Snare II
+Hobble of Spirits Snare III
+Hobble of Spirits Snare IV
+Hobble of Spirits Snare V
+Hobble of Spirits Snare VI
+Invigorating Heal
+Invigorating Heal II
+Invigorating Heal III
+Mending Heal
+Mending Heal II
+Mending Heal III
+Prism Skin
+Protective Heal
+Protective Heal II
+Protective Heal III
+Sapping Bite
+Sapping Bite II
+Sapping Bite III
+Spirit of Bale Strike
+Spirit of Bale Strike II
+Spirit of Bale Strike III
+Spirit of Beramos Strike
+Spirit of Beramos Strike II
+Spirit of Beramos Strike III
+Spirit of Blizzard Strike
+Spirit of Flame Strike
+Spirit of Inferno Strike
+Spirit of Irionu Strike
+Spirit of Jeswin Strike
+Spirit of Jeswin Strike Rk. II
+Spirit of Jeswin Strike Rk. III
+Spirit of Kron Strike
+Spirit of Kron Strike II
+Spirit of Kron Strike III
+Spirit of Lairn Strike
+Spirit of Lairn Strike Rk. II
+Spirit of Lairn Strike Rk. III
+Spirit of Lightning Strike
+Spirit of Mandrikai Strike
+Spirit of Mandrikai Strike II
+Spirit of Mandrikai Strike III
+Spirit of Nak Strike
+Spirit of Nak Strike II
+Spirit of Nak Strike III
+Spirit of Oroshar Strike
+Spirit of Rellic Strike
+Spirit of Scorpion Strike
+Spirit of Shoru Strike
+Spirit of Shoru Strike II
+Spirit of Shoru Strike III
+Spirit of Siver Strike
+Spirit of Siver Strike II
+Spirit of Siver Strike III
+Spirit of Snow Strike
+Spirit of Storm Strike
+Spirit of Vaxztn Strike
+Spirit of Vaxztn Strike Rk. II
+Spirit of Vaxztn Strike Rk. III
+Spirit of Vermin Strike
+Spirit of Visoracius Strike
+Spirit of Visoracius Strike II
+Spirit of Visoracius Strike III
+Spirit of Wind Strike
+Sympathetic Heal
+Sympathetic Heal II
+Sympathetic Heal III
+Wearying Bite
+Wearying Bite II
+Wearying Bite III
+Wearying Bite Recourse
+Wearying Bite Recourse II
+Wearying Bite Recourse III
+Withering Strike
+Withering Strike II
+Withering Strike III
+
+# Beastlord Swarm
+Bark at the Moon Call XII
+Bark at the Moon Call
+Bark at the Moon Call Rk. II
+Bark at the Moon Call Rk. III
+Bay at the Moon Call
+Baying at the Moon
+Bellow at the Moon Call
+Cry at the Moon Call
+Crying at the Moon
+Howl at the Moon Call
+Howl at the Moon Call Rk. II
+Howl at the Moon Call Rk. III
+Howling at the Moon
+Roar at the Moon Call
+Roaring at the Moon
+Scream at the Moon Call
+Scream at the Moon Call II
+Scream at the Moon Call III
+Screaming at the Moon
+Shriek at the Moon Call
+Shout at the Moon Call
+Shout at the Moon Call II
+Shout at the Moon Call III
+Shouting at the Moon
+Yell at the Moon Call
+Yelling at the Moon
+Yowl at the Moon Call
+Yowl at the Moon Call Rk. II
+Yowl at the Moon Call Rk. III
+Yowling at the Moon
+
+# Beastlord Vindication
+Al`ele's Vindication Effect
+Al`ele's Vindication Effect II
+Al`ele's Vindication Effect III
+Al`ele's Vindictiveness
+Al`ele's Vindictiveness II
+Al`ele's Vindictiveness III
+Ikatiar's Vindication Effect I
+Ikatiar's Vindication Effect II
+Ikatiar's Vindication Effect III
+Ikatiar's Vindictiveness
+Ikatiar's Vindictiveness II
+Ikatiar's Vindictiveness III
+Kejaan's Vindication Effect
+Kejaan's Vindication Effect II
+Kejaan's Vindication Effect III
+Venon's Vindication Effect
+Venon's Vindication Effect II
+Venon's Vindication Effect III
+Venon's Vindictiveness
+Venon's Vindictiveness II
+Venon's Vindictiveness III
+
+# Berserker Alliance
+Demolisher's Bladestrike
+Demolisher's Bladestrike II
+Demolisher's Bladestrike III
+Mangler's Bladestrike
+Mangler's Bladestrike II
+Mangler's Bladestrike III
+Vindicator's Bladestrike III Azia
+Vindicator's Bladestrike III Beza
+Vindicator's Bladestrike III Caza
+Conqueror's Bladestrike IV Azia
+Conqueror's Bladestrike IV Beza
+Conqueror's Bladestrike IV Caza
+Eviscerator's Bladestrike V Azia
+Eviscerator's Bladestrike V Beza
+Eviscerator's Bladestrike V Caza
+
+# Berserker Axe of Rallos
+Axe of Graster Dread Effect
+Axe of Graster Dread Effect II
+Axe of Graster Dread Effect III
+Axe of Graster Hate Reduction Effect
+Axe of Graster Hate Reduction Effect II
+Axe of Graster Hate Reduction Effect III
+Axe of Graster Stun Effect
+Axe of Graster Stun Effect II
+Axe of Graster Stun Effect III
+Axe of Illdaera Dread Effect
+Axe of Illdaera Dread Effect II
+Axe of Illdaera Dread Effect III
+Axe of Illdaera Jolt Effect
+Axe of Illdaera Jolt Effect II
+Axe of Illdaera Jolt Effect III
+Axe of Illdaera Stun Effect
+Axe of Illdaera Stun Effect II
+Axe of Illdaera Stun Effect III
+Axe of Numicia Jolt Effect
+Axe of Numicia Jolt Effect II
+Axe of Numicia Jolt Effect III
+Axe of Numicia Stun Effect
+Axe of Numicia Stun Effect II
+Axe of Numicia Stun Effect III
+Axe of Rallos Dread Effect
+Axe of Rallos Dread Effect II
+Axe of Rallos Dread Effect III
+Axe of Rallos Hate Reduction Effect
+Axe of Rallos Hate Reduction Effect II
+Axe of Rallos Hate Reduction Effect III
+Axe of Rallos Stun Effect
+Axe of Rekatok Jolt Effect
+Axe of Rekatok Jolt Effect II
+Axe of Rekatok Jolt Effect III
+Axe of Rekatok Stun Effect
+Axe of Rekatok Stun Effect II
+Axe of Rekatok Stun Effect III
+Axe of Zurel Jolt Effect
+Axe of Zurel Jolt Effect II
+Axe of Zurel Jolt Effect III
+Axe of Zurel Stun Effect
+Axe of Zurel Stun Effect II
+Axe of Zurel Stun Effect III
+
+# Berserker BP
+Vicious Axe Strike
+
+# Berserker Blinding Fury
+Blinded by Fury I
+Blinded by Fury II
+Blinded by Fury III
+Blinded by Fury IV
+Blinded by Fury V
+Blinded by Fury VI
+Blinded by Fury VII
+Blinded by Fury VIII
+Blinded by Fury IX
+Blinded by Fury X
+Blinded by Fury XI
+Blinded by Fury XII
+Blinded by Fury XIII
+Blinded by Fury XIV
+Blinded by Fury XV
+Blinded by Fury XVI
+Blinded by Fury XVII
+Blinded by Fury XVIII
+Blinded by Fury XIX
+Blinded by Fury XX
+Blinded by Fury XXI
+Blinded by Fury XXII
+
+# Berserker Blood Pact
+Blood Pact Strike I
+Blood Pact Strike II
+Blood Pact Strike III
+Blood Pact Strike IV
+Blood Pact Strike V
+Blood Pact Strike VI
+Blood Pact Strike VII
+Blood Pact Strike VIII
+Blood Pact Strike IX
+Blood Pact Strike X
+Blood Pact Strike XI
+Blood Pact Strike XII
+Blood Pact Strike XIII
+Blood Pact Strike XIV
+Blood Pact Strike XV
+Blood Pact Strike XVI
+Blood Pact Strike XVII
+Blood Pact Strike XVIII
+Blood Pact Strike XIX
+Blood Pact Strike XX
+Blood Pact Strike XXI
+Blood Pact Strike XXII
+Blood Pact Strike XXIII
+Blood Pact Strike XXIV
+Blood Pact Strike XXV
+Blood Pact Strike XXVI
+Blood Pact Strike XXVII
+Blood Pact Strike XXVIII
+Blood Pact Strike XXIX
+Blood Pact Strike XXX
+Blood Pact Strike XXXI
+Blood Pact Strike XXXII
+Blood Pact Strike XXXIII
+Blood Pact Strike XXXIV
+Blood Pact Strike XXXV
+Blood Pact Strike XXXVI
+Blood Pact Strike XXXVII
+Blood Pact Strike XXXVIII
+
+# Berserker Epic
+Essence of Rage
+
+# Berserker Decap
+Decapitation Strike
+Decapitation
+Decapitation I
+Decapitation II
+Decapitation III
+Decapitation IV
+Decapitation V
+Decapitation VI
+Decapitation VII
+Decapitation VIII
+Decapitation IX
+Decapitation X
+Decapitation XI
+Decapitation XII
+Decapitation XIII
+Decapitation XIV
+Decapitation XV
+Decapitation XVI
+Decapitation XVII
+Decapitation XVIII
+Decapitation XIX
+Decapitation XX
+Decapitation XXI
+Decapitation XXII
+Decapitation XXIII
+Decapitation XXIV
+Decapitation XXV
+Decapitation XXVI
+Decapitation XXVII
+Decapitation XXVIII
+
+# Berserker Distracting Strike
+Distracting Strike I
+Distracting Strike II
+Distracting Strike III
+Distracting Strike IV
+Distracting Strike V
+Distracting Strike VI
+Distracting Strike VII
+Distracting Strike VIII
+Distracting Strike IX
+Distracting Strike X
+Distracting Strike XI
+Distracting Strike XII
+Distracting Strike XIII
+Distracting Strike XIV
+Distracting Strike XV
+Distracting Strike XVI
+Distracting Strike XVII
+Distracting Strike XVIII
+Distracting Strike XIX
+Distracting Strike XX
+Distracting Strike XXI
+Distracting Strike XXII
+Distracting Strike XXIII
+Distracting Strike XXIV
+Distracting Strike XXV
+Distracting Strike XXVI
+Distracting Strike XXVII
+Distracting Strike XXVIII
+Distracting Strike XXIX
+Distracting Strike XXX
+Distracting Strike XXXI
+Distracting Strike XXXII
+Distracting Strike XXXIII
+Distracting Strike XXXIV
+Distracting Strike XXXV
+Distracting Strike XXXVI
+Distracting Strike XXXVII
+Distracting Strike XXXVIII
+Distracting Strike XXXIX
+Distracting Strike XL
+Distracting Strike XLI
+Distracting Strike XLII
+Distracting Strike XLIII
+Distracting Strike XLIV
+Distracting Strike XLV
+Distracting Strike XLVI
+Distracting Strike XLVII
+Distracting Strike XLVIII
+Distracting Strike XLIX
+Distracting Strike L
+Distracting Strike LI
+Distracting Strike LII
+Distracting Strike LIII
+Distracting Strike LIV
+
+# Berserker Frenzy Strike
+Augmented Frenzy Strike VII Azia
+Augmented Frenzy Strike VII Beza
+Augmented Frenzy Strike VII Caza
+Amplified Frenzy Strike
+Amplified Frenzy Strike II
+Amplified Frenzy Strike III
+Augmented Frenzy Strike
+Augmented Frenzy Strike II
+Augmented Frenzy Strike III
+Battle Frenzy Strike
+Battle Frenzy Strike II
+Battle Frenzy Strike III
+Blinding Frenzy Strike
+Blinding Frenzy Strike Rk. II
+Blinding Frenzy Strike Rk. III
+Bolstered Frenzy Strike
+Bolstered Frenzy Strike II
+Bolstered Frenzy Strike III
+Buttressed Frenzy Strike
+Buttressed Frenzy Strike II
+Buttressed Frenzy Strike III
+Combat Frenzy Strike
+Desperate Frenzy Strike
+Desperate Frenzy Strike II
+Desperate Frenzy Strike III
+Fearless Frenzy Strike
+Fearless Frenzy Strike II
+Fearless Frenzy Strike III
+Fighting Frenzy Strike
+Fighting Frenzy Strike II
+Fighting Frenzy Strike III
+Heightened Frenzy Strike
+Heightened Frenzy Strike II
+Heightened Frenzy Strike III
+Magnified Frenzy Strike
+Magnified Frenzy Strike II
+Magnified Frenzy Strike III
+Restless Frenzy Strike
+Restless Frenzy Strike Rk. II
+Restless Frenzy Strike Rk. III
+Steel Frenzy Strike
+Steel Frenzy Strike II
+Steel Frenzy Strike III
+Stormwild Frenzy Strike
+Stormwild Frenzy Strike II
+Stormwild Frenzy Strike III
+Torrid Frenzy Strike
+Torrid Frenzy Strike II
+Torrid Frenzy Strike III
+
+# Berserker Rage Disc
+Bloodthirst Effect
+Bubbling Rage Effect
+Bubbling Rage Effect II
+Bubbling Rage Effect III
+Bubbling Rage Strike
+Bubbling Rage Strike II
+Bubbling Rage Strike III
+Capricious Rage Effect
+Capricious Rage Effect II
+Capricious Rage Effect III
+Festering Rage Effect
+Festering Rage Effect II
+Festering Rage Effect III
+Festering Rage Strike
+Festering Rage Strike II
+Festering Rage Strike III
+Frothing Rage Reprisal
+Frothing Rage Reprisal Rk. II
+Frothing Rage Reprisal Rk. III
+Frothing Rage Strike
+Frothing Rage Strike II
+Frothing Rage Strike III
+Festering Rage Reprisal VII Azia
+Festering Rage Reprisal VII Beza
+Festering Rage Reprisal VII Caza
+Festering Rage Strike VII Azia
+Festering Rage Strike VII Beza
+Festering Rage Strike VII Caza
+Increase Damage Effect
+Roiling Rage Strike
+Roiling Rage Strike II
+Roiling Rage Strike III
+Roiling Rage Reprisal
+Roiling Rage Reprisal Rk. II
+Roiling Rage Reprisal Rk. III
+Seething Rage Doom Effect
+Seething Rage Reprisal
+Seething Rage Reprisal Rk. II
+Seething Rage Reprisal Rk. III
+Seething Rage Strike
+Seething Rage Strike II
+Seething Rage Strike III
+Smoldering Rage Reprisal
+Smoldering Rage Reprisal Rk. II
+Smoldering Rage Reprisal Rk. III
+Smoldering Rage Strike
+Smoldering Rage Strike II
+Smoldering Rage Strike III
+
+# Berserker Reflexive Retaliation
+Instinctive Retaliation Trigger
+Instinctive Retaliation Trigger II
+Instinctive Retaliation Trigger III
+Reflexive Retaliation Trigger
+Reflexive Retaliation Trigger II
+Reflexive Retaliation Trigger III
+
+# Berserker Sapping Strike
+Sapping Strike
+Sapping Strike II
+Sapping Strike III
+Sapping Strikes Effect
+Sapping Strikes Effect II
+Sapping Strikes Effect III
+Shriveling Strike
+Shriveling Strike II
+Shriveling Strike III
+Draining Strike
+Draining Strike II
+Draining Strike III
+
+# Berserker Uncontained Frenzy
+Uncontained Frenzy I
+Uncontained Frenzy II
+Uncontained Frenzy III
+Uncontained Frenzy IV
+Uncontained Frenzy V
+Uncontained Frenzy VI
+Uncontained Frenzy VII
+Uncontained Frenzy VIII
+Uncontained Frenzy IX
+Uncontained Frenzy X
+Uncontained Frenzy XI
+Uncontained Frenzy XII
+Uncontained Frenzy XIII
+Uncontained Frenzy XIV
+Uncontained Frenzy XV
+Uncontained Frenzy XVI
+Uncontained Frenzy XVII
+Uncontained Frenzy XVIII
+Uncontained Frenzy XIX
+Uncontained Frenzy XX
+Uncontained Frenzy XXI
+Uncontained Frenzy XXII
+Uncontained Frenzy XXIII
+Uncontained Frenzy XXIV
+Uncontained Frenzy XXV
+Uncontained Frenzy XXVI
+Uncontained Frenzy XXVII
+Uncontained Frenzy XXVIII
+
+# Berserker Untamed Rage
+Untamed Rage Recursion V
+Untamed Rage Recursion VI
+Untamed Rage Recursion VII
+Untamed Rage Recursion VIII
+Untamed Rage Recursion IX
+Untamed Rage Recursion X
+Untamed Rage Recursion XI
+Untamed Rage Recursion XII
+Untamed Rage Recursion XIII
+Untamed Rage Recursion XIV
+Untamed Rage Recursion XV
+
+# Cleric Anticipated Healing
+Anticipated Healing
+Anticipated Healing II
+Anticipated Healing III
+Anticipated Healing IV Azia
+Anticipated Healing IV Beza
+Anticipated Healing IV Caza
+Anticipated Healing V Azia
+Anticipated Healing V Beza
+Anticipated Healing V Caza
+Anticipated Healing VI Azia
+Anticipated Healing VI Beza
+Anticipated Healing VI Caza
+
+# Cleric Infusion
+Avowed Infusion
+Avowed Infusion Rk. II
+Avowed Infusion Rk. III
+Devout Infusion
+Devout Infusion Rk. II
+Devout Infusion Rk. III
+Holy Infusion Heal VII Azia
+Holy Infusion Heal VII Beza
+Holy Infusion Heal VII Caza
+Faithful Infusion
+Faithful Infusion II
+Faithful Infusion III
+Graceful Infusion
+Graceful Infusion II
+Graceful Infusion III
+Merciful Infusion
+Merciful Infusion II
+Merciful Infusion III
+Sincere Infusion
+Sincere Infusion Rk. II
+Sincere Infusion Rk. III
+
+# Cleric Retort
+Axoeviq's Retort Effect
+Axoeviq's Retort Effect II
+Axoeviq's Retort Effect III
+Curate's Retort Effect
+Curate's Retort Effect II
+Curate's Retort Effect III
+Erud's Healing Touch
+Erud's Healing Touch Rk. II
+Erud's Healing Touch Rk. III
+Erud's Retort Effect
+Erud's Retort Effect Rk. II
+Erud's Retort Effect Rk. III
+Fintar's Retort Effect
+Fintar's Retort Effect II
+Fintar's Retort Effect III
+Galvos' Retort Effect
+Galvos' Retort Effect II
+Galvos' Retort Effect III
+Hazuri's Retort Effect
+Hazuri's Retort Effect II
+Hazuri's Retort Effect III
+Jorlleag's Retort Effect
+Jorlleag's Retort Effect II
+Jorlleag's Retort Effect III
+Olsif's Retort Effect
+Olsif's Retort Effect II
+Olsif's Retort Effect III
+Primary's Retort Effect III
+Vicarum's Retort Effect
+Vicarum's Retort Effect II
+Vicarum's Retort Effect III
+
+# Cleric Sanctified Blessing
+Sanctified Blessing I
+Sanctified Blessing II
+Sanctified Blessing III
+Sanctified Blessing IV
+Sanctified Blessing V
+Sanctified Blessing VI
+Sanctified Blessing VII
+Sanctified Blessing VIII
+Sanctified Blessing IX
+Sanctified Blessing X
+Sanctified Blessing XI
+Sanctified Blessing XII
+Sanctified Blessing XIII
+Sanctified Blessing XIV
+Sanctified Blessing XV
+Sanctified Blessing XVI
+Sanctified Blessing XVII
+Sanctified Blessing XVIII
+Sanctified Blessing XIX
+Sanctified Blessing XX
+Sanctified Blessing XXI
+Sanctified Blessing XXII
+Sanctified Blessing XXIII
+Sanctified Blessing XXIV
+Sanctified Blessing XXV
+Sanctified Blessing XXVI
+Sanctified Blessing XXVII
+Sanctified Blessing XXVIII
+Sanctified Blessing XXIX
+Sanctified Blessing XXX
+
+# Cleric Sermon
+Aquifer Slow
+
+# Cleric Shining Rampart
+Crippling Glare Azia
+Crippling Glare Azia II
+Crippling Glare Azia III
+Crippling Glare Azia IV
+Crippling Glare Azia V
+Crippling Glare Azia VI
+Crippling Glare Azia VII
+Crippling Glare Beza
+Crippling Glare Beza II
+Crippling Glare Beza III
+Crippling Glare Beza IV
+Crippling Glare Beza V
+Crippling Glare Beza VI
+Crippling Glare Beza VII
+Crippling Glare Caza
+Crippling Glare Caza II
+Crippling Glare Caza III
+Crippling Glare Caza IV
+Crippling Glare Caza V
+Crippling Glare Caza VI
+Crippling Glare Caza VII
+Crippling Glare VIII Azia
+Crippling Glare VIII Beza
+Crippling Glare VIII Caza
+Crippling Glare II Azia
+Crippling Glare II Beza
+Crippling Glare II Caza
+Crippling Glare III Azia
+Crippling Glare III Beza
+Crippling Glare III Caza
+Crippling Glare IV Azia
+Crippling Glare IV Beza
+Crippling Glare IV Caza
+Crippling Glare IX Azia
+Crippling Glare IX Beza
+Crippling Glare IX Caza
+Crippling Glare V Azia
+Crippling Glare V Beza
+Crippling Glare V Caza
+Crippling Glare VI Azia
+Crippling Glare VI Beza
+Crippling Glare VI Caza
+Crippling Glare VII Azia
+Crippling Glare VII Beza
+Crippling Glare VII Caza
+Crippling Glare VIII Azia
+Crippling Glare VIII Beza
+Crippling Glare VIII Caza
+
+# Cleric Turn Undead
+Infusion of Holy Light I
+Infusion of Holy Light II
+Infusion of Holy Light III
+Infusion of Holy Light IV
+Infusion of Holy Light V
+Infusion of Holy Light VI
+Infusion of Holy Light VII
+Infusion of Holy Light VIII
+Infusion of Holy Light IX
+Infusion of Holy Light X
+Infusion of Holy Light XI
+Infusion of Holy Light XII
+Infusion of Holy Light XIII
+Infusion of Holy Light XIV
+Infusion of Holy Light XV
+Infusion of Holy Light XVI
+Infusion of Holy Light XVII
+Infusion of Holy Light XVIII
+Infusion of Holy Light XIX
+Infusion of Holy Light XX
+Infusion of Holy Light XXI
+Infusion of Holy Light XXII
+Infusion of Holy Light XXIII
+
+# Cleric Vow of Valor
+Pernicious Strike
+Pernicious Strike II
+Pernicious Strike III
+Pernicious Strike Recourse
+Pernicious Strike Recourse II
+Pernicious Strike Recourse III
+Retribution Strike
+Retribution Strike II
+Retribution Strike III
+Retribution Strike Recourse
+Retribution Strike Recourse II
+Retribution Strike Recourse III
+Tenacious Strike
+Tenacious Strike II
+Tenacious Strike III
+Tenacious Strike Recourse
+Tenacious Strike Recourse II
+Tenacious Strike Recourse III
+Truthful Strike
+Truthful Strike II
+Truthful Strike III
+Truthful Strike Recourse
+Truthful Strike Recourse II
+Truthful Strike Recourse III
+Valiant Strike
+Valiant Strike Recourse
+Valiant Strike Rk. II
+Valiant Strike Rk. III
+Valorous Strike
+Valorous Strike XI Azia
+Valorous Strike XI Beza
+Valorous Strike XI Caza
+Valorous Strike Recourse
+Valorous Strike Recourse XI Azia
+Valorous Strike Recourse XI Beza
+Valorous Strike Recourse XI Caza
+Valorous Strike Rk. II
+Valorous Strike Rk. III
+Vanquishing Strike
+Vanquishing Strike Recourse
+Vanquishing Strike Recourse II
+Vanquishing Strike Recourse III
+Vanquishing Strike Rk. II
+Vanquishing Strike Rk. III
+Vehement Strike
+Vehement Strike II
+Vehement Strike III
+Vehement Strike Recourse
+Vehement Strike Recourse II
+Vehement Strike Recourse III
+Venerating Strike
+Venerating Strike Recourse
+Venerating Strike Recourse II
+Venerating Strike Recourse III
+Vengeful Strike
+Vengeful Strike II
+Vengeful Strike III
+Vengeful Strike Recourse
+Vengeful Strike Recourse II
+Vengeful Strike Recourse III
+Victorious Strike
+Victorious Strike Recourse
+Victorious Strike Rk. II
+Victorious Strike Rk. III
+Vigilant Strike
+Vigilant Strike II
+Vigilant Strike III
+Vigilant Strike Recourse
+Vigilant Strike Recourse II
+Vigilant Strike Recourse III
+Vigorous Strike
+Vigorous Strike II
+Vigorous Strike III
+Vigorous Strike Recourse
+Vigorous Strike Recourse II
+Vigorous Strike Recourse III
+Virulent Strike
+Virulent Strike II
+Virulent Strike III
+Virulent Strike Recourse
+Virulent Strike Recourse II
+Virulent Strike Recourse III
+Vital Strike
+Vital Strike II
+Vital Strike III
+Vital Strike Recourse
+Vital Strike Recourse II
+Vital Strike Recourse III
+Vitriolic Strike
+Vitriolic Strike Recourse
+Vitriolic Strike Recourse II
+Vitriolic Strike Recourse III
+Vitriolic Strike Rk. II
+Vitriolic Strike Rk. III
+Vitriolic Strike XI Azia
+Vitriolic Strike XI Beza
+Vitriolic Strike XI Caza
+Vitriolic Strike Recourse XI Azia
+Vitriolic Strike Recourse XI Beza
+Vitriolic Strike Recourse XI Caza
+Vituperative Strike
+Vituperative Strike II
+Vituperative Strike III
+Vituperative Strike Recourse
+Vituperative Strike Recourse II
+Vituperative Strike Recourse III
+Vow of Veneration Rk. II
+Vow of Veneration Rk. III
+
+# Cleric Ward of Rebuke
+Ward of Admonishment Parry
+Ward of Censure Parry
+Ward of Censure Parry II
+Ward of Censure Parry III
+Ward of Condemnation Parry
+Ward of Condemnation Parry II
+Ward of Condemnation Parry III
+Ward of Indictment Parry
+Ward of Indictment Parry II
+Ward of Indictment Parry III
+Ward of Injunction Parry
+Ward of Injunction Parry II
+Ward of Injunction Parry III
+Ward of Prohibition Parry
+Ward of Prohibition Parry II
+Ward of Prohibition Parry III
+Ward of Rebuke Parry
+Ward of Recrimination Parry
+Ward of Recrimination Parry II
+Ward of Recrimination Parry III
+Ward of Repudiation Parry
+Ward of Repudiation Parry II
+Ward of Repudiation Parry III
+Ward of Reprisal Parry
+Ward of Requital Parry
+Ward of Retaliation Parry
+Ward of Retaliation Parry II
+Ward of Retaliation Parry III
+Ward of Retribution Parry
+Ward of Retribution Parry II
+Ward of Retribution Parry III
+Ward of Vengeance Parry
+Ward of the Divine Parry
+
+# Druid Adrenaline Surge
+Adrenaline Barrage Effect
+Adrenaline Barrage Effect II
+Adrenaline Barrage Effect III
+Adrenaline Blast Effect
+Adrenaline Blast Effect II
+Adrenaline Blast Effect III
+Adrenaline Burst Effect
+Adrenaline Deluge Effect
+Adrenaline Deluge Effect II
+Adrenaline Deluge Effect III
+Adrenaline Flood Effect
+Adrenaline Flood Effect II
+Adrenaline Flood Effect III
+Adrenaline Fury Effect
+Adrenaline Fury Effect II
+Adrenaline Fury Effect III
+Adrenaline Rush Effect
+Adrenaline Rush Effect II
+Adrenaline Rush Effect III
+Adrenaline Spate Effect
+Adrenaline Spate Effect II
+Adrenaline Spate Effect III
+Adrenaline Surge Effect
+Adrenaline Surge Effect XII Azia
+Adrenaline Surge Effect XII Beza
+Adrenaline Surge Effect XII Caza
+Adrenaline Swell Effect
+Adrenaline Torrent Effect
+Adrenaline Torrent Effect II
+Adrenaline Torrent Effect III
+
+# Druid Aura
+Coldburst Strike
+Coldburst Strike II
+Coldburst Strike III
+Frostcloak Strike
+Frostcloak Strike II
+Frostcloak Strike III
+Frostfell Strike
+Frostfell Strike II
+Frostfell Strike III
+Frostfell Strike IX Azia
+Frostfell Strike IX Beza
+Frostfell Strike IX Caza
+Frostone Strike
+Frostone Strike II
+Frostone Strike III
+Frostreave Strike
+Frostreave Strike II
+Frostreave Strike III
+Frostweave Strike
+Frostweave Strike II
+Frostweave Strike III
+Icerend Strike
+Icerend Strike II
+Icerend Strike III
+Nightchill Strike
+Nightchill Strike II
+Nightchill Strike III
+Wildblaze Aura Strike
+Wildblaze Aura Strike II
+Wildblaze Aura Strike III
+Wildfire Aura Strike
+Wildfire Aura Strike II
+Wildfire Aura Strike III
+Wildspark Aura Strike
+Wildspark Aura Strike II
+Wildspark Aura Strike III
+
+# Druid Fernspurs
+Wild Barkspurs XIII
+Wild Daggerthorns
+Wild Duskthorns
+Wild Fernspikes
+Wild Fernspurs
+Wild Frondbarbs
+Wild Frondspurs
+Wild Stemfangs
+Wild Thornspikes
+Wild Thornspurs
+Wild Vinespikes
+Wild Vinespurs
+
+# Druid Infusion
+Arboreal Infusion
+Arboreal Infusion II
+Arboreal Infusion III
+Arboreal Infusion II Azia
+Arboreal Infusion II Beza
+Arboreal Infusion II Caza
+
+# Druid Mysterious Ways
+Mending Enigma
+Mending Enigma II
+Mending Enigma III
+Mending Ether
+Mending Ether II
+Mending Ether III
+Mending Heal
+Mending Heal II
+Mending Heal III
+Mending Mystery
+Mending Mystery II
+Mending Mystery III
+Mending Mystery VI Azia
+Mending Mystery VI Beza
+Mending Mystery VI Caza
+
+# Druid Oaken Guard
+Beastsnag Guard Parry
+Beastsnag Guard Parry II
+Beastsnag Guard Parry III
+Beastwood Guard Parry
+Beastwood Guard Parry II
+Beastwood Guard Parry III
+Direwood Guard Parry
+Oaken Guard Parry
+
+# Druid Reptile
+Bulwark of the Reptile Trigger
+Bulwark of the Reptile Trigger II
+Bulwark of the Reptile Trigger III
+Carapace of the Reptile Trigger
+Carapace of the Reptile Trigger II
+Carapace of the Reptile Trigger III
+Chitin of the Reptile Trigger
+Chitin of the Reptile Trigger II
+Chitin of the Reptile Trigger III
+Defense of the Reptile Trigger
+Defense of the Reptile Trigger II
+Defense of the Reptile Trigger III
+Guard of the Reptile Trigger
+Guard of the Reptile Trigger II
+Guard of the Reptile Trigger III
+Hide of the Reptile Trigger
+Hide of the Reptile Trigger II
+Hide of the Reptile Trigger III
+Husk of the Reptile Trigger
+Husk of the Reptile Trigger II
+Husk of the Reptile Trigger III
+Pellicle of the Reptile Trigger
+Pellicle of the Reptile Trigger II
+Pellicle of the Reptile Trigger III
+Scales of the Reptile Trigger
+Shell of the Reptile Trigger
+Shell of the Reptile Trigger II
+Shell of the Reptile Trigger III
+Skin of the Reptile Trigger
+Skin of the Reptile Trigger XII Azia
+Skin of the Reptile Trigger XII Beza
+Skin of the Reptile Trigger XII Caza
+
+# Enchanter Dicho
+Composite Reinforced Strike 1
+Composite Reinforced Strike 2
+Composite Reinforced Strike 3
+Composite Reinforced Strike 4
+Composite Reinforced Strike 5
+Composite Reinforced Strike 6
+Dichotomic Reinforced Strike 1
+Dichotomic Reinforced Strike 2
+Dichotomic Reinforced Strike 3
+Dichotomic Reinforced Strike 4
+Dichotomic Reinforced Strike 5
+Dichotomic Reinforced Strike 6
+Dissident Reinforced Strike 1
+Dissident Reinforced Strike 2
+Dissident Reinforced Strike 3
+Dissident Reinforced Strike 4
+Dissident Reinforced Strike 5
+Dissident Reinforced Strike 6
+Ecliptic Reinforced Strike 1
+Ecliptic Reinforced Strike 2
+Ecliptic Reinforced Strike 3
+Ecliptic Reinforced Strike 4
+Ecliptic Reinforced Strike 5
+Ecliptic Reinforced Strike 6
+Reciprocal Reinforced Strike 1
+Reciprocal Reinforced Strike 2
+Reciprocal Reinforced Strike 3
+Reciprocal Reinforced Strike 4
+Reciprocal Reinforced Strike 5
+Reciprocal Reinforced Strike 6
+
+# Enchanter Epic
+Aegis of Abstraction Trigger
+
+# Enchanter Manaflare
+Mana Flare Strike
+Mana Re-Re-Re-Re-Rebirth
+Mana Re-Re-Re-Re-Rebirth II
+Mana Re-Re-Re-Re-Rebirth III
+Mana Re-Re-Re-Re-Reciprocation
+Mana Re-Re-Re-Re-Reciprocation II
+Mana Re-Re-Re-Re-Reciprocation III
+Mana Re-Re-Re-Re-Recursion
+Mana Re-Re-Re-Re-Recursion XI Azia
+Mana Re-Re-Re-Re-Recursion XI Beza
+Mana Re-Re-Re-Re-Recursion XI Caza
+Mana Re-Re-Re-Re-Reiterate
+Mana Re-Re-Re-Re-Reiteration
+Mana Re-Re-Re-Re-Reiteration II
+Mana Re-Re-Re-Re-Reiteration III
+Mana Re-Re-Re-Re-Repercussion
+Mana Re-Re-Re-Re-Repercussion II
+Mana Re-Re-Re-Re-Repercussion III
+Mana Re-Re-Re-Re-Repetition
+Mana Re-Re-Re-Re-Repetition II
+Mana Re-Re-Re-Re-Repetition III
+Mana Re-Re-Re-Re-Replication
+Mana Re-Re-Re-Re-Replication II
+Mana Re-Re-Re-Re-Replication III
+Mana Re-Re-Re-Re-Resurgence
+Mana Re-Re-Re-Re-Reverberation
+Mana Re-Re-Re-Re-Reverberation II
+Mana Re-Re-Re-Re-Reverberation III
+Mana Re-Re-Re-Re-Reproduction
+Mana Re-Re-Re-Re-Reproduction I
+Mana Re-Re-Re-Re-Reproduction II
+Mana Re-Re-Re-Re-Reproduction III
+Mana Re-Re-Re-Rebirth
+Mana Re-Re-Re-Rebirth II
+Mana Re-Re-Re-Rebirth III
+Mana Re-Re-Re-Reciprocation
+Mana Re-Re-Re-Reciprocation II
+Mana Re-Re-Re-Reciprocation III
+Mana Re-Re-Re-Recursion
+Mana Re-Re-Re-Recursion XI Azia
+Mana Re-Re-Re-Recursion XI Beza
+Mana Re-Re-Re-Recursion XI Caza
+Mana Re-Re-Re-Reiterate
+Mana Re-Re-Re-Reiteration
+Mana Re-Re-Re-Reiteration II
+Mana Re-Re-Re-Reiteration III
+Mana Re-Re-Re-Repercussion
+Mana Re-Re-Re-Repercussion II
+Mana Re-Re-Re-Repercussion III
+Mana Re-Re-Re-Repetition
+Mana Re-Re-Re-Repetition II
+Mana Re-Re-Re-Repetition III
+Mana Re-Re-Re-Replication
+Mana Re-Re-Re-Replication II
+Mana Re-Re-Re-Replication III
+Mana Re-Re-Re-Resurgence
+Mana Re-Re-Re-Reverberation
+Mana Re-Re-Re-Reverberation II
+Mana Re-Re-Re-Reverberation III
+Mana Re-Re-Re-Reproduction
+Mana Re-Re-Re-Reproduction I
+Mana Re-Re-Re-Reproduction II
+Mana Re-Re-Re-Reproduction III
+Mana Re-Re-Rebirth
+Mana Re-Re-Rebirth II
+Mana Re-Re-Rebirth III
+Mana Re-Re-Reciprocation
+Mana Re-Re-Reciprocation II
+Mana Re-Re-Reciprocation III
+Mana Re-Re-Recursion
+Mana Re-Re-Recursion XI Azia
+Mana Re-Re-Recursion XI Beza
+Mana Re-Re-Recursion XI Caza
+Mana Re-Re-Reiterate
+Mana Re-Re-Reiteration
+Mana Re-Re-Reiteration II
+Mana Re-Re-Reiteration III
+Mana Re-Re-Repercussion
+Mana Re-Re-Repercussion II
+Mana Re-Re-Repercussion III
+Mana Re-Re-Repetition
+Mana Re-Re-Repetition II
+Mana Re-Re-Repetition III
+Mana Re-Re-Replication
+Mana Re-Re-Replication II
+Mana Re-Re-Replication III
+Mana Re-Re-Resurgence
+Mana Re-Re-Reverberation
+Mana Re-Re-Reverberation II
+Mana Re-Re-Reverberation III
+Mana Re-Re-Reproduction
+Mana Re-Re-Reproduction I
+Mana Re-Re-Reproduction II
+Mana Re-Re-Reproduction III
+Mana Re-Rebirth
+Mana Re-Rebirth II
+Mana Re-Rebirth III
+Mana Re-Reciprocation
+Mana Re-Reciprocation II
+Mana Re-Reciprocation III
+Mana Re-Recursion
+Mana Re-Recursion XI Azia
+Mana Re-Recursion XI Beza
+Mana Re-Recursion XI Caza
+Mana Re-Reiterate
+Mana Re-Reiteration
+Mana Re-Reiteration II
+Mana Re-Reiteration III
+Mana Re-Repercussion
+Mana Re-Repercussion II
+Mana Re-Repercussion III
+Mana Re-Repetition
+Mana Re-Repetition II
+Mana Re-Repetition III
+Mana Re-Replication
+Mana Re-Replication II
+Mana Re-Replication III
+Mana Re-Resurgence
+Mana Re-Reverberation
+Mana Re-Reverberation II
+Mana Re-Reverberation III
+Mana Re-Reproduction
+Mana Re-Reproduction I
+Mana Re-Reproduction II
+Mana Re-Reproduction III
+Mana Rebirth Strike
+Mana Rebirth Strike II
+Mana Rebirth Strike III
+Mana Reciprocation Strike
+Mana Reciprocation Strike II
+Mana Reciprocation Strike III
+Mana Recursion Strike
+Mana Recursion Strike I
+Mana Recursion Strike II
+Mana Recursion Strike III
+Mana Recursion Strike XI Azia
+Mana Recursion Strike XI Beza
+Mana Recursion Strike XI Caza
+Mana Reiterate Strike
+Mana Reiterate Strike II
+Mana Reiterate Strike III
+Mana Reiteration Strike
+Mana Reiteration Strike II
+Mana Reiteration Strike III
+Mana Repercussion Strike
+Mana Repercussion Strike II
+Mana Repercussion Strike III
+Mana Repetition Strike
+Mana Repetition Strike II
+Mana Repetition Strike III
+Mana Replication Strike
+Mana Replication Strike II
+Mana Replication Strike III
+Mana Reproduction Strike
+Mana Reproduction Strike I
+Mana Reproduction Strike II
+Mana Reproduction Strike III
+Mana Resurgence Strike
+Mana Resurgence Strike I
+Mana Resurgence Strike II
+Mana Resurgence Strike III
+Mana Reverberation Strike
+Mana Reverberation Strike I
+Mana Reverberation Strike II
+Mana Reverberation Strike III
+Mana Ripple I
+Mana Ripple II
+Mana Ripple III
+
+# Enchanter NET
+Lifetap Strike
+Night's Endless Darkness
+Night's Endless Darkness II
+Night's Endless Darkness III
+Night's Endless Terror
+Night's Endless Terror Rk. II
+Night's Endless Terror Rk. III
+Night's Eternal Darkness
+Night's Eternal Darkness II
+Night's Eternal Darkness III
+Night's Perpetual Darkness
+Night's Perpetual Darkness II
+Night's Perpetual Darkness III
+Night's Perpetual Terror
+Night's Perpetual Terror Rk. II
+Night's Perpetual Terror Rk. III
+Trickster's Torment
+
+# Enchanter Pet Proc
+Empowered Clash IV Azia
+Empowered Clash IV Beza
+Empowered Clash IV Caza
+Empowered Clash
+Empowered Clash II
+Empowered Clash III
+Infused Clash
+Infused Clash II
+Infused Clash III
+Infused Pulse
+Infused Pulse II
+Infused Pulse III
+
+# Enchanter PB Mez
+Perilous Disorientation Chance II
+Perilous Disorientation Chance III
+Perilous Disorientation Chance VII Azia
+Perilous Disorientation Chance VII Beza
+Perilous Disorientation Chance VII Caza
+Confusion Relapse II
+Confusion Relapse III
+Disorientation Relapse II
+Disorientation Relapse III
+Docility Relapse Rk. II
+Docility Relapse Rk. III
+Dreams of Veldyn Relapse Rk. II
+Dreams of Veldyn Relapse Rk. III
+Serenity Relapse II
+Serenity Relapse III
+Visions of Kirathas Relapse Rk. II
+Visions of Kirathas Relapse Rk. III
+
+# Enchanter Phantasmic Reflex
+Phantasmic Reflex I
+Phantasmic Reflex II
+Phantasmic Reflex III
+Phantasmic Reflex IV
+Phantasmic Reflex V
+Phantasmic Reflex VI
+Phantasmic Reflex VII
+Phantasmic Reflex VIII
+Phantasmic Reflex IX
+Phantasmic Reflex X
+Phantasmic Reflex XI
+Phantasmic Reflex XII
+Phantasmic Reflex XIII
+Phantasmic Reflex XIV
+Phantasmic Reflex XV
+Phantasmic Reflex XVI
+Phantasmic Reflex XVII
+Phantasmic Reflex XVIII
+Phantasmic Reflex XIX
+Phantasmic Reflex XX
+Phantasmic Reflex XXI
+Phantasmic Reflex XXII
+Phantasmic Reflex XXIII
+Phantasmic Reflex XXIV
+Phantasmic Reflex XXV
+Phantasmic Reflex XXVI
+Phantasmic Reflex XXVII
+Phantasmic Reflex XXVIII
+Phantasmic Reflex XXIX
+Phantasmic Reflex XXX
+
+# Enchanter Spire
+Enchanted Doppelganger I
+Enchanted Doppelganger II
+Enchanted Doppelganger III
+Enchanted Doppelganger IV
+
+# Enchanter Rune of the Deep
+Blurred Shadows
+Blurred Shadows Rk. II
+Blurred Shadows Rk. III
+Crepuscular Shadows
+Crepuscular Shadows II
+Crepuscular Shadows III
+Obscuring Darkness
+Obscuring Darkness II
+Obscuring Darkness III
+Obscuring Eclipse
+Obscuring Eclipse II
+Obscuring Eclipse III
+Obscuring Gloam
+Obscuring Gloam II
+Obscuring Gloam III
+Obscuring Shadows
+Obscuring Shadows II
+Obscuring Shadows III
+Obscuring Umbra
+Obscuring Umbra II
+Obscuring Umbra III
+Tenebrous Shadows
+Tenebrous Shadows II
+Tenebrous Shadows III
+Twilight Shadows
+Twilight Shadows II
+Twilight Shadows III
+Vortex Shadows
+Vortex Shadows II
+Vortex Shadows III
+
+# Enchanter Target Ring Mez
+Hypnotic Stare Mindwipe X
+Anodyne Stare Mindwipe
+Deceiving Stare Mindwipe
+Entrancing Stare Mindwipe
+Hypnotic Stare Mindwipe
+Mesmeric Stare Mindwipe
+Mesmerizing Stare Mindwipe
+Sedative Stare Mindwipe
+Soporific Stare Mindwipe
+Transfixing Stare Mindwipe
+
+# Enchanter Ward
+Bedazzlement Effect XII Azia
+Bedazzlement Effect XII Beza
+Bedazzlement Effect XII Caza
+Arctending Effect
+Arctending Effect II
+Arctending Effect III
+Bafflement Effect
+Bafflement Effect II
+Bafflement Effect III
+Bedazzlement Effect
+Befuddlement Effect
+Befuddlement Effect II
+Befuddlement Effect III
+Bewilderment Effect
+Deviser's Warding Effect
+Deviser's Warding Effect II
+Deviser's Warding Effect III
+Enticer's Warding Effect
+Enticer's Warding Effect II
+Enticer's Warding Effect III
+Marvel's Warding Effect
+Marvel's Warding Effect II
+Marvel's Warding Effect III
+Mastermind's Warding Effect
+Mastermind's Warding Effect II
+Mastermind's Warding Effect III
+Mystifying Effect
+Mystifying Effect II
+Mystifying Effect III
+Stupefier's Warding Effect
+Stupefier's Warding Effect II
+Stupefier's Warding Effect III
+Transfixer's Warding Effect
+Transfixer's Warding Effect II
+Transfixer's Warding Effect III
+
+# Mage Bodyguard
+Groundswell Bodyguard
+Groundswell Bodyguard II
+Groundswell Bodyguard III
+Lunashade Bodyguard
+Lunashade Bodyguard II
+Lunashade Bodyguard III
+Labradorite Bodyguard
+Labradorite Bodyguard II
+Labradorite Bodyguard III
+Pyroxenite Bodyguard
+Pyroxenite Bodyguard II
+Pyroxenite Bodyguard III
+Rhyolitic Bodyguard
+Rhyolitic Bodyguard II
+Rhyolitic Bodyguard III
+Shieldstone Bodyguard
+Shieldstone Bodyguard II
+Shieldstone Bodyguard III
+Steelbound Bodyguard
+Steelbound Bodyguard II
+Steelbound Bodyguard III
+Summon Bodyguard
+Tellurian Bodyguard
+Tellurian Bodyguard II
+Tellurian Bodyguard III
+Tellurian Bodyguard IX
+
+# Mage Burning Vengeance
+Burning Lash
+Burning Lash II
+Burning Lash III
+Burning Lash X
+Burning Retaliation
+Burning Retaliation II
+Burning Retaliation III
+Burning Vengeance
+Burning Vengeance II
+Burning Vengeance III
+Exothermic Lash
+Exothermic Lash II
+Exothermic Lash III
+Igneous Lash
+Igneous Lash II
+Igneous Lash III
+Magmatic Lash
+Magmatic Lash II
+Magmatic Lash III
+Molten Lash
+Molten Lash II
+Molten Lash III
+Skyfire Lash
+Skyfire Lash II
+Skyfire Lash III
+Volcanic Lash
+Volcanic Lash II
+Volcanic Lash III
+
+# Mage Chaotic
+Chaotic Calamity Jolt
+Chaotic Calamity Refreshment
+Chaotic Fire Jolt
+Chaotic Fire Jolt VI
+Chaotic Fire Refreshment
+Chaotic Fire Refreshment VI
+Chaotic Inferno Jolt
+Chaotic Inferno Refreshment
+Chaotic Magma Jolt
+Chaotic Magma Refreshment
+Chaotic Pyroclasm Jolt
+Chaotic Pyroclasm Refreshment
+Flames of Power I
+Flames of Power II
+Flames of Power III
+Flames of Power IV
+Flames of Power Caza I
+Flames of Power Caza II
+Flames of Power Caza III
+Flames of Power Azia I
+Flames of Power Azia II
+Flames of Power Azia III
+Flames of Power Beza I
+Flames of Power Beza II
+Flames of Power Beza III
+Flames of Power Dena I
+Flames of Power Dena II
+Flames of Power Dena III
+Flames of Power Azia IV
+Flames of Power Beza IV
+Flames of Power Caza IV
+Flames of Power Dena IV
+Flames of Power Azia V
+Flames of Power Beza V
+Flames of Power Caza V
+Flames of Power Dena V
+Flames of Power Azia VI
+Flames of Power Beza VI
+Flames of Power Caza VI
+Flames of Power Dena VI
+Flames of Power Azia VII
+Flames of Power Beza VII
+Flames of Power Caza VII
+Flames of Power Dena VII
+Flames of Power Azia VIII
+Flames of Power Beza VIII
+Flames of Power Caza VIII
+Flames of Power Dena VIII
+Flames of Power Azia IX
+Flames of Power Beza IX
+Flames of Power Caza IX
+Flames of Power Dena IX
+Flames of Power I Azia
+Flames of Power I Beza
+Flames of Power I Caza
+Flames of Power II Azia
+Flames of Power II Beza
+Flames of Power II Caza
+Flames of Power III Azia
+Flames of Power III Beza
+Flames of Power III Caza
+Flames of Power IV Azia
+Flames of Power IV Beza
+Flames of Power IV Caza
+Flames of Power V Azia
+Flames of Power V Beza
+Flames of Power V Caza
+Flames of Power VI Azia
+Flames of Power VI Beza
+Flames of Power VI Caza
+Flames of Power VII Azia
+Flames of Power VII Beza
+Flames of Power VII Caza
+Flames of Power VIII Azia
+Flames of Power VIII Beza
+Flames of Power VIII Caza
+Flames of Power Azia X
+Flames of Power Beza X
+Flames of Power Caza X
+Flames of Power Dena X
+Flames of Weakness I
+Flames of Weakness II
+Flames of Weakness III
+Flames of Weakness IV
+
+# Mage Dicho
+Composite Companion Strike 1
+Composite Companion Strike 2
+Composite Companion Strike 3
+Composite Companion Strike 4
+Composite Companion Strike 5
+Composite Companion Strike 6
+Dichotomic Companion Strike 1
+Dichotomic Companion Strike 2
+Dichotomic Companion Strike 3
+Dichotomic Companion Strike 4
+Dichotomic Companion Strike 5
+Dichotomic Companion Strike 6
+Dissident Companion Strike 1
+Dissident Companion Strike 2
+Dissident Companion Strike 3
+Dissident Companion Strike 4
+Dissident Companion Strike 5
+Dissident Companion Strike 6
+Ecliptic Companion Strike 1
+Ecliptic Companion Strike 2
+Ecliptic Companion Strike 3
+Ecliptic Companion Strike 4
+Ecliptic Companion Strike 5
+Ecliptic Companion Strike 6
+
+# Mage Elemental Form
+Elemental Air I
+Elemental Air II
+Elemental Air III
+Elemental Air IV
+Elemental Air V
+Elemental Air VI
+Elemental Air VII
+Elemental Air VIII
+Elemental Air IX
+Elemental Air X
+Elemental Earth I
+Elemental Earth II
+Elemental Earth III
+Elemental Earth IV
+Elemental Earth V
+Elemental Earth VI
+Elemental Earth VII
+Elemental Earth VIII
+Elemental Earth IX
+Elemental Earth X
+Elemental Flames I
+Elemental Flames II
+Elemental Flames III
+Elemental Flames IV
+Elemental Flames V
+Elemental Flames VI
+Elemental Flames VII
+Elemental Flames VIII
+Elemental Flames IX
+Elemental Flames X
+
+# Mage Minion
+Minion Strike
+Minion Strike II
+Minion Strike III
+Minion Strike Azia IV
+Minion Strike Azia V
+Minion Strike Azia VI
+Minion Strike Beza IV
+Minion Strike Beza V
+Minion Strike Beza VI
+Minion Strike Caza IV
+Minion Strike Caza V
+Minion Strike Caza VI
+Minion Strike IV Azia
+Minion Strike IV Beza
+Minion Strike IV Caza
+Minion Strike V Azia
+Minion Strike V Beza
+Minion Strike V Caza
+Minion Strike VI Azia
+Minion Strike VI Beza
+Minion Strike VI Caza
+Minion Strike VII Azia
+Minion Strike VII Beza
+Minion Strike VII Caza
+Minion Strike VIII Azia
+Minion Strike VIII Beza
+Minion Strike VIII Caza
+
+# Mage Pet Proc
+Iceflame Strike
+Iceflame Strike II
+Iceflame Strike III
+Iceflame Strike Azia VIII
+Iceflame Strike Azia IX
+Iceflame Strike Azia X
+Iceflame Strike Beza VIII
+Iceflame Strike Beza IX
+Iceflame Strike Beza X
+Iceflame Strike Caza VIII
+Iceflame Strike Caza IX
+Iceflame Strike Caza X
+Iceflame Strike IX Azia
+Iceflame Strike IX Beza
+Iceflame Strike IX Caza
+Iceflame Strike VIII Azia
+Iceflame Strike VIII Beza
+Iceflame Strike VIII Caza
+Iceflame Strike X Azia
+Iceflame Strike X Beza
+Iceflame Strike X Caza
+Iceflame Strike XI Azia
+Iceflame Strike XI Beza
+Iceflame Strike XI Caza
+Iceflame Strike XII Azia
+Iceflame Strike XII Beza
+Iceflame Strike XII Caza
+
+# Mage Pet Proc AA/Spire
+Air Elemental Strike I
+Air Elemental Strike II
+Air Elemental Strike III
+Air Elemental Strike IV
+Air Elemental Strike V
+Air Elemental Strike VI
+Air Elemental Strike VII
+Air Elemental Strike VIII
+Air Elemental Strike IX
+Air Elemental Strike X
+Air Elemental Strike XI
+Air Elemental Strike XII
+Air Elemental Strike XIII
+Air Elemental Strike XIV
+Air Elemental Strike XV
+Air Elemental Strike XVI
+Air Elemental Strike XVII
+Air Elemental Strike XVIII
+Allied Elemental Strike I
+Allied Elemental Strike II
+Allied Elemental Strike III
+Allied Elemental Strike IV
+Companion's Elemental Strike I
+Companion's Elemental Strike II
+Companion's Elemental Strike III
+Companion's Elemental Strike IV
+Earth Elemental Strike
+Earth Elemental Strike II
+Earth Elemental Strike III
+Earth Elemental Strike IV
+Earth Elemental Strike V
+Earth Elemental Strike VI
+Earth Elemental Strike VII
+Earth Elemental Strike VIII
+Earth Elemental Strike IX
+Earth Elemental Strike X
+Earth Elemental Strike XI
+Earth Elemental Strike XII
+Earth Elemental Strike XIII
+Earth Elemental Strike XIV
+Water Elemental Strike
+Water Elemental Strike II
+Water Elemental Strike III
+Water Elemental Strike IV
+Water Elemental Strike V
+Water Elemental Strike VI
+Water Elemental Strike VII
+Water Elemental Strike VIII
+Water Elemental Strike IX
+Water Elemental Strike X
+Water Elemental Strike XI
+Water Elemental Strike XII
+Water Elemental Strike XIII
+Water Elemental Strike XIV
+Water Elemental Strike XV
+Water Elemental Strike XVI
+Water Elemental Strike XVII
+Water Elemental Strike XVIII
+Water Elemental Strike XIX
+Earth Elemental Strike XV
+Earth Elemental Strike XVI
+Earth Elemental Strike XVII
+Earth Elemental Strike XVIII
+Earth Elemental Strike XIX
+
+# Mage Pet Weapons
+Flamebrand
+Flamebrand II
+Flamebrand III
+Flamebrand IV
+Flamebrand V
+Flamebrand VI
+Flamebrand VII
+Flamebrand VIII
+Flamebrand IX
+Flamebrand X
+Flamelick
+Frenzying Blow
+Frenzying Burst
+Frenzying Burst II
+Frenzying Burst III
+Frenzying Burst IV
+Frenzying Burst V
+Frenzying Burst VI
+Frenzying Burst VII
+Frenzying Burst VIII
+Frenzying Burst IX
+Frenzying Burst X
+Frostchill
+Frostchill II
+Frostchill III
+Frostchill IV
+Frostchill V
+Frostchill VI
+Frostchill VII
+Frostchill VIII
+Frostchill IX
+Frostchill X
+Icesnap
+Jolting Burst
+Jolting Burst II
+Jolting Burst III
+Jolting Burst IV
+Jolting Burst V
+Jolting Burst VI
+Jolting Burst VII
+Jolting Burst VIII
+Jolting Burst IX
+Jolting Burst X
+Jolting Strike
+Windgust
+Windgust II
+Windgust III
+Windgust IV
+Windgust V
+Windgust VI
+Windgust VII
+Windgust VIII
+Windgust IX
+Windgust X
+Windstrike
+
+# Mage Robe
+Companion's Assault XXX
+Companion's Assault XXXI
+Companion's Assault XXXII
+Companion's Assault XXXIII
+Companion's Assault XXXIV
+Companion's Assault XXXV
+Companion's Assault XXXVI
+Companion's Assault XXXVII
+Companion's Assault XXXVIII
+Companion's Assault XXXIX
+
+# Monk Alliance
+Doomwalker's Soulstrike
+Doomwalker's Soulstrike II
+Doomwalker's Soulstrike III
+Firewalker's Soulstrike
+Firewalker's Soulstrike II
+Firewalker's Soulstrike III
+Icewalker's Soulstrike
+Icewalker's Soulstrike II
+Icewalker's Soulstrike III
+Bloodwalker's Soulstrike IV Azia
+Bloodwalker's Soulstrike IV Beza
+Bloodwalker's Soulstrike IV Caza
+Fatewalker's Soulstrike V Azia
+Fatewalker's Soulstrike V Beza
+Fatewalker's Soulstrike V Caza
+
+# Monk Balance
+Dragon's Balance Effect
+Dragon's Balance Effect II
+Dragon's Balance Effect III
+Dragon's Strike
+Dragon's Strike II
+Dragon's Strike III
+Eagle's Balance Effect
+Eagle's Balance Effect II
+Eagle's Balance Effect III
+Eagle's Strike
+Eagle's Strike II
+Eagle's Strike III
+Tiger's Balance Effect
+Tiger's Balance Effect II
+Tiger's Balance Effect III
+Tiger's Strike
+Tiger's Strike II
+Tiger's Strike III
+Dragon's Poised Strike
+Dragon's Poised Strike II
+Dragon's Poised Strike III
+Eagle's Poised Strike
+Eagle's Poised Strike II
+Eagle's Poised Strike III
+Eagle's Symmetry Strike
+Eagle's Symmetry Strike II
+Eagle's Symmetry Strike III
+Tiger's Poised Strike
+Tiger's Poised Strike II
+Tiger's Poised Strike III
+Tiger's Symmetry Strike I
+Tiger's Symmetry Strike II
+Tiger's Symmetry Strike III
+
+# Monk Counterforce
+Contraforce Effect
+Contraforce Effect II
+Contraforce Effect III
+Counterforce Discipline Effect V Azia
+Counterforce Discipline Effect V Beza
+Counterforce Discipline Effect V Caza
+Counterblow Discipline Effect
+Counterblow Discipline Effect II
+Counterblow Discipline Effect III
+Counterstrike Effect
+Counterstrike Effect II
+Counterstrike Effect III
+Slow Effect
+
+# Monk Curse of the Thirteen Fingers
+Curse of Fifteen Strikes I
+Curse of Fifteen Strikes II
+Curse of Fifteen Strikes III
+Curse of Fourteen Fists I
+Curse of Fourteen Fists II
+Curse of Fourteen Fists III
+Curse of the Thirteen Fingers I
+Curse of the Thirteen Fingers II
+Curse of the Thirteen Fingers III
+Curse of Sixteen Shadows
+Curse of Sixteen Shadows I
+Curse of Sixteen Shadows II
+Curse of Sixteen Shadows III
+Curse of Seventeen Facets I
+Curse of Seventeen Facets II
+Curse of Seventeen Facets III
+Doom of Fifteen Strikes I
+Doom of Fifteen Strikes II
+Doom of Fifteen Strikes III
+Doom of Fourteen Fists I
+Doom of Fourteen Fists II
+Doom of Fourteen Fists III
+Doom of the Thirteen Fingers I
+Doom of the Thirteen Fingers II
+Doom of the Thirteen Fingers III
+Doom of Sixteen Shadows I
+Doom of Sixteen Shadows II
+Doom of Sixteen Shadows III
+Doom of Seventeen Facets I
+Doom of Seventeen Facets II
+Doom of Seventeen Facets III
+
+# Monk Distant Strike
+Distant Strike I
+
+# Monk Drunken Monkey
+Drunken Monkey Eagle Strike Boost
+Drunken Monkey Eagle Strike Boost II
+Drunken Monkey Eagle Strike Boost III
+Drunken Monkey Flying Kick Boost
+Drunken Monkey Flying Kick Boost II
+Drunken Monkey Flying Kick Boost III
+Drunken Monkey HTH Boost
+Drunken Monkey HTH Boost II
+Drunken Monkey HTH Boost III
+Drunken Monkey Kick Boost
+Drunken Monkey Kick Boost II
+Drunken Monkey Kick Boost III
+Drunken Monkey Tiger Claw Boost
+Drunken Monkey Tiger Claw Boost II
+Drunken Monkey Tiger Claw Boost III
+Drunken Monkey Weapon Boost
+Drunken Monkey Weapon Boost II
+Drunken Monkey Weapon Boost III
+
+# Monk Divine Surge of Battle
+Divine Surge of Battle I
+Divine Surge of Battle II
+Divine Surge of Battle III
+Divine Surge of Battle IV
+Divine Surge of Battle V
+Divine Surge of Battle VI
+Divine Surge of Battle VII
+Divine Surge of Battle VIII
+Divine Surge of Battle IX
+Divine Surge of Battle X
+Divine Surge of Battle XI
+Divine Surge of Battle XII
+Divine Surge of Battle XIII
+Divine Surge of Battle XIV
+Divine Surge of Battle XV
+Divine Surge of Battle XVI
+Divine Surge of Battle XVII
+Divine Surge of Battle XVIII
+Divine Surge of Battle XIX
+Divine Surge of Battle XX
+
+# Monk Epic
+Peace of the Disciple Strike
+
+# Monk Eye Gouge
+Eye Gouge I
+Eye Gouge II
+Eye Gouge III
+Eye Gouge IV
+Eye Gouge V
+Eye Gouge VI
+Eye Gouge VII
+Eye Gouge VIII
+Eye Gouge IX
+Eye Gouge X
+Eye Gouge XI
+Eye Gouge XII
+Eye Gouge XIII
+Eye Gouge XIV
+Eye Gouge XV
+Eye Gouge XVI
+Eye Gouge XVII
+Eye Gouge XVIII
+Eye Gouge XIX
+Eye Gouge XX
+Eye Gouge XXI
+Eye Gouge XXII
+Eye Gouge XXIII
+Eye Gouge XXIV
+Eye Gouge XXV
+Eye Gouge XXVI
+Eye Gouge XXVII
+Eye Gouge XXVIII
+Eye Gouge XXIX
+Eye Gouge XXX
+Eye Gouge XXXI
+Eye Gouge XXXII
+Eye Gouge XXXIII
+Eye Gouge XXXIV
+Eye Gouge XXXV
+Eye Gouge XXXVI
+Eye Gouge XXXVII
+Eye Gouge XXXIX
+Eye Gouge XXXVIII
+Eye Gouge XL
+Eye Gouge XLI
+Eye Gouge XLII
+Eye Gouge XLIII
+Eye Gouge XLIV
+Eye Gouge XLV
+Eye Gouge XLVI
+
+# Monk Fists of Steel
+Fists of Fury I
+Fists of Fury II
+Fists of Fury III
+Fists of Fury IV
+Fists of Fury V
+Fists of Fury VI
+Fists of Fury VII
+Fists of Fury VIII
+Fists of Fury IX
+Fists of Fury X
+
+# Monk Flinch
+Flinch Recourse
+Flinch Recourse Rk. II
+Flinch Recourse Rk. III
+Intercepting Fist Recourse
+Intercepting Fist Recourse II
+Intercepting Fist Recourse III
+
+# Monk Impenetrable Disc
+Impenetrable Effect
+Impenetrable Effect II
+Impenetrable Effect III
+
+# Monk Infusion of Thunder
+Infusion of Thunder Shock I
+Infusion of Thunder Shock II
+Infusion of Thunder Shock III
+Infusion of Thunder Shock IV
+Infusion of Thunder Shock V
+Infusion of Thunder Shock VI
+Infusion of Thunder Shock VII
+Infusion of Thunder Shock VIII
+Infusion of Thunder Shock IX
+Infusion of Thunder Shock X
+Infusion of Thunder Shock XI
+Infusion of Thunder Shock XII
+Infusion of Thunder Shock XIII
+
+# Monk Protection of the Shadewalker
+Shadewalker's Mending
+Shadewalker's Mending II
+Shadewalker's Mending III
+
+# Monk Rapid Reflexes
+Decisive Reflexes Block
+Decisive Reflexes Block II
+Decisive Reflexes Block III
+Disciplined Reflexes Block
+Disciplined Reflexes Block II
+Disciplined Reflexes Block III
+Nimble Reflexes Block
+Nimble Reflexes Block II
+Nimble Reflexes Block III
+Rapid Reflexes Block
+Rapid Reflexes Block II
+Rapid Reflexes Block III
+Storied Reflexes Block
+Storied Reflexes Block II
+Storied Reflexes Block III
+Swift Reflexes Block
+Swift Reflexes Block II
+Swift Reflexes Block III
+Swift Reflexes Block VII Azia
+Swift Reflexes Block VII Beza
+Swift Reflexes Block VII Caza
+
+# Monk Resonant Kick
+Resonant Kick I
+Resonant Kick II
+Resonant Kick III
+Resonant Kick IV
+Resonant Kick V
+Resonant Kick VI
+Resonant Kick VII
+Resonant Kick VIII
+Resonant Kick IX
+Resonant Kick X
+Resonant Kick XI
+Resonant Kick XII
+Resonant Kick XIII
+Resonant Kick XIV
+Resonant Kick XV
+Resonant Kick XVI
+Resonant Kick XVII
+Resonant Kick XVIII
+Resonant Kick XIX
+Resonant Kick XX
+Resonant Kick XXI
+Resonant Kick XXII
+Resonant Kick XXIII
+Resonant Kick XXIV
+Resonant Kick XXV
+Resonant Kick XXVI
+Resonant Kick XXVII
+Resonant Kick XXVIII
+Resonant Kick XXIX
+Resonant Kick XXX
+Resonant Kick XXXI
+Resonant Kick XXXII
+Resonant Kick XXXIII
+Resonant Kick XXXIV
+Resonant Kick XXXV
+Resonant Kick XXXVI
+Resonant Kick XXXVII
+Resonant Kick XXXVIII
+Resonant Kick XXXIX
+Resonant Kick XL
+Resonant Kick XLI
+Resonant Kick XLII
+Resonant Kick XLIII
+Resonant Kick XLIV
+Resonant Kick XLV
+Resonant Kick XLVI
+Resonant Kick XLVII
+Resonant Kick XLVIII
+Resonant Kick XLIX
+Resonant Kick L
+Resonant Kick LI
+Resonant Kick LII
+Resonant Kick LIII
+Resonant Kick LIV
+
+# Monk Resonant Strike
+Resonant Strike I
+Resonant Strike II
+Resonant Strike III
+Resonant Strike IV
+Resonant Strike V
+Resonant Strike VI
+Resonant Strike VII
+Resonant Strike VIII
+Resonant Strike IX
+Resonant Strike X
+Resonant Strike XI
+Resonant Strike XII
+Resonant Strike XIII
+Resonant Strike XIV
+Resonant Strike XV
+Resonant Strike XVI
+Resonant Strike XVII
+Resonant Strike XVIII
+Resonant Strike XIX
+Resonant Strike XX
+Resonant Strike XXI
+Resonant Strike XXII
+Resonant Strike XXIII
+Resonant Strike XXIV
+Resonant Strike XXV
+Resonant Strike XXVI
+Resonant Strike XXVII
+Resonant Strike XXVIII
+Resonant Strike XXIX
+Resonant Strike XXX
+Resonant Strike XXXI
+Resonant Strike XXXII
+Resonant Strike XXXIII
+Resonant Strike XXXIV
+Resonant Strike XXXV
+Resonant Strike XXXVI
+Resonant Strike XXXVII
+Resonant Strike XXXVIII
+Resonant Strike XXXIX
+Resonant Strike XL
+Resonant Strike XLI
+Resonant Strike XLII
+Resonant Strike XLIII
+Resonant Strike XLIV
+Resonant Strike XLV
+Resonant Strike XLVI
+Resonant Strike XLVII
+Resonant Strike XLVIII
+Resonant Strike XLIX
+Resonant Strike L
+Resonant Strike LI
+Resonant Strike LII
+Resonant Strike LIII
+Resonant Strike LIV
+
+# Monk Robe (Seven Chakras Heel Technique)
+Demon Crusher
+
+# Monk Technique of the Crimson Fist
+Technique of the Celestial Fist Strike
+Technique of the Celestial Fist Strike II
+Technique of the Celestial Fist Strike III
+Technique of the Crimson Fist Strike
+Technique of the Crimson Fist Strike II
+Technique of the Crimson Fist Strike III
+Technique of the Lunar Fist Strike
+Technique of the Lunar Fist Strike II
+Technique of the Lunar Fist Strike III
+Technique of the Shattering Fist Strike
+Technique of the Shattering Fist Strike II
+Technique of the Shattering Fist Strike III
+
+# Monk Thunderfoot
+Thunderfoot I
+Thunderfoot II
+Thunderfoot III
+Thunderfoot IV
+Thunderfoot V
+Thunderfoot VI
+Thunderfoot VII
+Thunderfoot VIII
+Thunderfoot IX
+Thunderfoot X
+Thunderfoot XI
+Thunderfoot XII
+Thunderfoot XIII
+Thunderfoot XIV
+Thunderfoot XV
+Thunderfoot XVI
+Thunderfoot XVII
+Thunderfoot XVIII
+Thunderfoot XIX
+Thunderfoot XX
+Thunderfoot XXI
+Thunderfoot XXII
+Thunderfoot XXIII
+Thunderfoot XXIV
+Thunderfoot XXV
+Thunderfoot XXVI
+Thunderfoot XXVII
+Thunderfoot XXVIII
+Thunderfoot XXIX
+Thunderfoot XXX
+Thunderfoot XXXI
+Thunderfoot XXXII
+Thunderfoot XXXIII
+
+# Monk Zan Fi
+Zan Fi's Echoes Strike I
+Zan Fi's Echoes Strike II
+Zan Fi's Echoes Strike III
+
+# Necro Cascade of Decay Rot
+Cascade of Decay Rot I
+Cascade of Decay Rot II
+Cascade of Decay Rot III
+Cascade of Decay Rot IV
+Cascade of Decay Rot V
+Cascade of Decay Rot VI
+Cascade of Decay Rot VII
+Cascade of Decay Rot VIII
+Cascade of Decay Rot IX
+Cascade of Decay Rot X
+Cascade of Decay Rot XI
+Cascade of Decay Rot XII
+Cascade of Decay Rot XIII
+Cascade of Decay Rot XIV
+Cascade of Decay Rot XV
+Cascade of Decay Rot XVI
+Cascade of Decay Rot XVII
+Cascade of Decay Rot XVIII
+Cascade of Decay Rot XIX
+Cascade of Decay Rot XX
+Cascade of Decay Rot XXI
+Cascade of Decay Rot XXII
+Cascade of Decay Rot XXIII
+Cascade of Decay Rot XXIV
+Cascade of Decay Rot XXV
+
+# Necro Pet Proc from Spire
+Companion's Necromantic Bite I
+Companion's Necromantic Bite II
+Companion's Necromantic Bite III
+Companion's Necromantic Bite IV
+
+# Necro Bestow Undeath
+Bestow Rot Strike
+Bestow Rot Strike II
+Bestow Rot Strike III
+Bestow Ruin Strike
+Bestow Ruin Strike II
+Bestow Ruin Strike III
+Bestow Unlife Strike
+Bestow Unlife Strike II
+Bestow Unlife Strike III
+Bestowed Decay Strike
+Bestowed Decay Strike II
+Bestowed Decay Strike III
+Bestowed Doom Strike
+Bestowed Doom Strike II
+Bestowed Doom Strike III
+Bestowed Dread Strike
+Bestowed Dread Strike II
+Bestowed Dread Strike III
+Bestowed Mortality Strike
+Bestowed Mortality Strike II
+Bestowed Mortality Strike III
+Bestowed Relife Strike
+Bestowed Relife Strike II
+Bestowed Relife Strike III
+Bestow Undeath Strike X Azia
+Bestow Undeath Strike X Beza
+Bestow Undeath Strike X Caza
+Burning Poison
+Burning Poison II
+Burning Poison III
+Burning Toxin
+Burning Toxin II
+Burning Toxin III
+Burning Venom
+Burning Venom II
+Burning Venom III
+
+# Necro Lingering Nightmares
+Nightmare Draw I
+Nightmare Draw II
+Nightmare Draw III
+Nightmare Draw IV
+Nightmare Draw V
+Nightmare Draw VI
+Nightmare Draw VII
+Nightmare Draw VIII
+Nightmare Draw IX
+Nightmare Draw X
+Nightmare Draw XI
+Nightmare Draw XII
+Nightmare Draw XIII
+Nightmare Draw XIV
+Nightmare Draw XV
+Nightmare Draw XVI
+Nightmare Draw XVII
+Nightmare Draw XVIII
+Nightmare Draw XVIX
+
+# Necro Pet Proc
+Empowered Lifeclaw
+Empowered Lifeclaw II
+Empowered Lifeclaw III
+Energized Lifeclaw
+Energized Lifeclaw II
+Energized Lifeclaw III
+Imbued Lifeclaw
+Imbued Lifeclaw II
+Imbued Lifeclaw III
+Incited Lifeclaw
+Incited Lifeclaw II
+Incited Lifeclaw III
+Infused Lifeclaw
+Infused Lifeclaw II
+Infused Lifeclaw III
+Inspired Lifeclaw
+Inspired Lifeclaw II
+Inspired Lifeclaw III
+Instilled Lifeclaw
+Instilled Lifeclaw II
+Instilled Lifeclaw III
+Necrotized Lifeclaw X Azia
+Necrotized Lifeclaw X Beza
+Necrotized Lifeclaw X Caza
+Sanctioned Lifeclaw
+Sanctioned Lifeclaw II
+Sanctioned Lifeclaw III
+
+# Necro Robe
+Consuming Reclamation
+
+# Necro Soulrip
+Coagulated Essence
+
+# Necro Vampiric Embrace
+Vampiric Embrace
+
+# Paladin BP
+Divine Power
+Divine Renewal
+Fervor Recourse
+Fervor Strike
+Major Pious Shield Effect
+Minor Pious Shield Effect
+
+# Paladin Blessing of Life
+Blessing of Life I
+Blessing of Life II
+Blessing of Life III
+Blessing of Life IV
+Blessing of Life V
+Blessing of Life VI
+Blessing of Life VII
+Blessing of Life VIII
+Blessing of Life IX
+Blessing of Life X
+Blessing of Life XI
+Blessing of Life XII
+Blessing of Life XIII
+Blessing of Life XIV
+Blessing of Life XV
+Blessing of Life XVI
+Blessing of Life XVII
+Blessing of Life XVIII
+Blessing of Life XIX
+Blessing of Life XX
+Blessing of Life XXI
+Blessing of Life XXII
+Blessing of Life XXIII
+Blessing of Life XXIV
+Blessing of Life XXV
+Blessing of Life XXVI
+Blessing of Life XXVII
+Blessing of Life XXVIII
+Blessing of Life XXIX
+Blessing of Life XXX
+Blessing of Life XXXI
+Blessing of Life XXXII
+Blessing of Life XXXIII
+Blessing of Life XXXIV
+Blessing of Life XXXV
+Blessing of Life XXXVI
+Blessing of Life XXXVII
+Blessing of Life XXXVIII
+Blessing of Life XXXIX
+Blessing of Life XL
+Blessing of Life XLI
+Blessing of Life XLII
+Blessing of Life XLIII
+Blessing of Life XLIV
+Blessing of Life XLV
+Blessing of Life XLVI
+Blessing of Life XLVII
+Blessing of Life XLVIII
+
+# Paladin Blessed Guardian
+Blessed Guardian Heal
+Blessed Guardian Heal II
+Blessed Guardian Heal III
+Holy Guardian Heal
+Holy Guardian Heal II
+Holy Guardian Heal III
+Holy Guardian Heal IV Azia
+Holy Guardian Heal IV Beza
+Holy Guardian Heal IV Caza
+Revered Guardian Heal
+Revered Guardian Heal II
+Revered Guardian Heal III
+
+# Paladin Epic
+Flames of the Valiant Strike
+
+# Paladin Harmonious Blessing
+Concordant Illumination
+Concordant Illumination II
+Concordant Illumination III
+Confluent Illumination
+Confluent Illumination II
+Confluent Illumination III
+Harmonious Illumination
+Harmonious Illumination II
+Harmonious Illumination III
+Paradoxical Illumination
+Paradoxical Illumination II
+Paradoxical Illumination III
+Penumbral Illumination
+Penumbral Illumination II
+Penumbral Illumination III
+
+# Paladin Inquisitor's Judgment
+Inquisitor's Judgment Strike I
+Inquisitor's Judgment Strike II
+Inquisitor's Judgment Strike III
+Inquisitor's Judgment Strike IV
+Inquisitor's Judgment Strike V
+Inquisitor's Judgment Strike VI
+Inquisitor's Judgment Strike VII
+Inquisitor's Judgment Strike VIII
+Inquisitor's Judgment Strike IX
+Inquisitor's Judgment Strike X
+Inquisitor's Judgment Strike XI
+Inquisitor's Judgment Strike XII
+Inquisitor's Judgment Strike XIII
+Inquisitor's Judgment Strike XIV
+Inquisitor's Judgment Strike XV
+Inquisitor's Judgment Strike XVI
+Inquisitor's Judgment Strike XVII
+Inquisitor's Judgment Strike XVIII
+Inquisitor's Judgment Strike XXVII
+Inquisitor's Judgment Strike XXVIII
+Inquisitor's Judgment Strike XXIX
+Inquisitor's Judgment Strike XIX
+Inquisitor's Judgment Strike XX
+Inquisitor's Judgment Strike XXI
+Inquisitor's Judgment Strike XXII
+Inquisitor's Judgment Strike XXIII
+Inquisitor's Judgment Strike XXIV
+Inquisitor's Judgment Strike XXV
+Inquisitor's Judgment Strike XXVI
+Inquisitor's Judgment Strike XXX
+Inquisitor's Judgment Strike XXXI
+Inquisitor's Judgment Strike XXXII
+Inquisitor's Judgment Strike XXXIII
+Inquisitor's Judgment Strike XXXIV
+Inquisitor's Judgment Strike XXXV
+Inquisitor's Judgment Strike XXXVI
+Inquisitor's Judgment Strike XXXVII
+Inquisitor's Judgment Strike XXXVIII
+Inquisitor's Judgment Strike XXXIX
+Inquisitor's Judgment Strike L
+Inquisitor's Judgment Strike LI
+Inquisitor's Judgment Strike LII
+Inquisitor's Judgment Strike LIII
+
+# Paladin Last Rites
+Benediction Trigger
+Benediction Trigger II
+Benediction Trigger III
+Burial Rites Trigger
+Burial Rites Trigger II
+Burial Rites Trigger III
+Committal Trigger
+Committal Trigger II
+Committal Trigger III
+Consecration Trigger
+Consecration Trigger
+Consecration Trigger II
+Consecration Trigger III
+Elegy Trigger
+Elegy Trigger II
+Elegy Trigger III
+Eulogy Trigger
+Eulogy Trigger II
+Eulogy Trigger III
+Hymnal Trigger
+Hymnal Trigger II
+Hymnal Trigger III
+Last Rites Trigger
+Laudation Trigger
+Laudation Trigger II
+Laudation Trigger III
+Paean Trigger
+Paean Trigger II
+Paean Trigger III
+Remembrance Trigger
+Remembrance Trigger II
+Remembrance Trigger III
+Requiem Trigger
+Requiem Trigger II
+Requiem Trigger III
+Revelation Trigger
+Revelation Trigger II
+Revelation Trigger III
+
+# Paladin Mending
+Penitent Mending
+Penitent Mending II
+Penitent Mending III
+Penitent Mending III Azia
+Penitent Mending III Beza
+Penitent Mending III Caza
+Penitent Mending IV Azia
+Penitent Mending IV Beza
+Penitent Mending IV Caza
+Penitent Mending V Azia
+Penitent Mending V Beza
+Penitent Mending V Caza
+Penitent Mending VI Azia
+Penitent Mending VI Beza
+Penitent Mending VI Caza
+Penitent Reward
+Penitent Reward II
+Penitent Reward III
+Penitent Reward III Azia
+Penitent Reward III Beza
+Penitent Reward III Caza
+Penitent Reward IV Azia
+Penitent Reward IV Beza
+Penitent Reward IV Caza
+Penitent Reward V Azia
+Penitent Reward V Beza
+Penitent Reward V Caza
+Penitent Reward VI Azia
+Penitent Reward VI Beza
+Penitent Reward VI Caza
+
+# Paladin Oathbound
+Oathbound Bulwark I
+Oathbound Bulwark II
+Oathbound Bulwark III
+Oathbound Bulwark IV
+Oathbound Bulwark V
+Oathbound Bulwark VI
+Oathbound Bulwark VII
+Oathbound Bulwark VIII
+
+# Paladin Remorse for the Fallen
+Remorseful Effect
+Remorseful Effect Rk. II
+Remorseful Effect Rk. III
+
+# Paladin Steely Rejuvenation
+Steely Regeneration
+Steely Regeneration II
+Steely Regeneration III
+Steely Reinvigoration
+Steely Reinvigoration II
+Steely Reinvigoration III
+Steely Rejuvenation
+Steely Rejuvenation II
+Steely Rejuvenation III
+Steely Renewal
+Steely Renewal II
+Steely Renewal III
+Steely Restoration
+Steely Restoration II
+Steely Restoration III
+Steely Restoration VII Azia
+Steely Restoration VII Beza
+Steely Restoration VII Caza
+
+# Paladin Strike
+Antipathetic Strike
+Antipathetic Strike II
+Antipathetic Strike III
+Ardent Fury Strike
+Ardent Fury Strike II
+Ardent Fury Strike III
+Ardent Strike
+Ardent Strike II
+Ardent Strike III
+Armor of Ardency Strike
+Armor of Ardency Strike II
+Armor of Ardency Strike III
+Armor of Avowal Strike
+Armor of Avowal Strike II
+Armor of Avowal Strike III
+Armor of Courage Strike
+Armor of Courage Strike II
+Armor of Courage Strike III
+Armor of Eminence Strike
+Armor of Eminence Strike II
+Armor of Eminence Strike III
+Armor of Mercy Strike
+Armor of Mercy Strike II
+Armor of Mercy Strike III
+Armor of Reverence Strike
+Armor of Reverence Strike II
+Armor of Reverence Strike III
+Armor of Sincerity Strike
+Armor of Sincerity Strike II
+Armor of Sincerity Strike III
+Armor of Zeal Strike
+Armor of Zeal Strike II
+Armor of Zeal Strike III
+Armor of the Forthright Strike
+Armor of the Forthright Strike II
+Armor of the Forthright Strike III
+Avowed Fury Strike
+Avowed Fury Strike II
+Avowed Fury Strike III
+Blunted Strike
+Blunted Strike II
+Blunted Strike III
+Condemnation Strike
+Condemnation Strike II
+Condemnation Strike III
+Devout Fury Strike
+Disdained Strike
+Disdained Strike II
+Disdained Strike III
+Earnest Fury Strike
+Earnest Fury Strike II
+Earnest Fury Strike III
+Eminent Fury Strike
+Eminent Fury Strike II
+Eminent Fury Strike III
+Holy Order Strike
+Indignant Strike
+Indignant Strike II
+Indignant Strike III
+Merciful Fury Strike
+Merciful Fury Strike II
+Merciful Fury Strike III
+Pious Fury Strike
+Pious Might Strike
+Reverent Fury Strike
+Reverent Fury Strike II
+Reverent Fury Strike III
+Righteous Fury Strike
+Righteous Indignation Strike VIII Azia
+Righteous Indignation Strike VIII Beza
+Righteous Indignation Strike VIII Caza
+Silvered Fury Strike
+Sincere Fury Strike
+Sincere Fury Strike II
+Sincere Fury Strike III
+Umbrage Strike
+Umbrage Strike II
+Umbrage Strike III
+Vexed Strike
+Vexed Strike II
+Vexed Strike III
+Ward of Nife Strike
+Wrathful Fury Strike
+Wrathful Fury Strike II
+Wrathful Fury Strike III
+Zealous Fury Strike
+Zealous Fury Strike II
+Zealous Fury Strike III
+
+# Paladin Ward of Tunare
+Preservation of Marr Effect
+Preservation of Marr Effect II
+Preservation of Marr Effect III
+Preservation of Oseka Effect
+Preservation of Oseka Effect II
+Preservation of Oseka Effect III
+Preservation of Quellious Effect
+Preservation of Quellious Effect Rk. II
+Preservation of Quellious Effect Rk. III
+Preservation of Rodcet Effect
+Preservation of Rodcet Effect II
+Preservation of Rodcet Effect III
+Preservation of Tunare Effect
+Preservation of Tunare Effect II
+Preservation of Tunare Effect III
+Preservation of the Basilica Effect
+Preservation of the Basilica Effect II
+Preservation of the Basilica Effect III
+Preservation of the Grotto Effect
+Preservation of the Grotto Effect II
+Preservation of the Grotto Effect III
+Preservation of the Fern Effect
+Preservation of the Fern Effect Rk. II
+Preservation of the Fern Effect RK. III
+Preservation of the Iceclad Effect
+Preservation of the Iceclad Effect II
+Preservation of the Iceclad Effect III
+Sustenance of Tunare Effect
+Sustenance of Tunare Effect II
+Sustenance of Tunare Effect III
+Ward of Tunare Effect
+
+# Ranger Arrows
+Flames of Kesh`yk I
+Flames of Kesh`yk II
+Flames of Kesh`yk III
+Flames of Kesh`yk IV
+Flames of Kesh`yk V
+Flames of Kesh`yk VI
+Flames of Kesh`yk VII
+Flames of Kesh`yk VIII
+Flames of Kesh`yk IX
+Flames of Kesh`yk X
+Flames of Kesh`yk XI
+Flames of Kesh`yk XII
+Flames of Kesh`yk XIII
+Flames of Kesh`yk XIV
+Flames of Kesh`yk XV
+Flames of Kesh`yk XVI
+Flames of Kesh`yk XVII
+Flames of Kesh`yk XVIII
+Flames of Kesh`yk XIX
+Flames of Kesh`yk XX
+Flames of Kesh`yk XXI
+Flames of Kesh`yk XXII
+Flames of Kesh`yk XXIII
+Flames of Kesh`yk XXIV
+Flames of Kesh`yk XXV
+Flames of Kesh`yk XXVI
+Flames of Kesh`yk XXVII
+Flames of Kesh`yk XXVIII
+Flames of Kesh`yk XXIX
+Flames of Kesh`yk XXX
+Poison of Kesh`yk I
+Poison of Kesh`yk II
+Poison of Kesh`yk III
+Poison of Kesh`yk IV
+Poison of Kesh`yk V
+Poison of Kesh`yk VI
+Poison of Kesh`yk VII
+Poison of Kesh`yk VIII
+Poison of Kesh`yk IX
+Poison of Kesh`yk X
+Poison of Kesh`yk XI
+Poison of Kesh`yk XII
+Poison of Kesh`yk XIII
+Poison of Kesh`yk XIV
+Poison of Kesh`yk XV
+Poison of Kesh`yk XVI
+Poison of Kesh`yk XVII
+Poison of Kesh`yk XVIII
+Poison of Kesh`yk XIX
+Poison of Kesh`yk XX
+Poison of Kesh`yk XXI
+Poison of Kesh`yk XXII
+Poison of Kesh`yk XXIII
+Poison of Kesh`yk XXIV
+Poison of Kesh`yk XXV
+Poison of Kesh`yk XXVI
+Poison of Kesh`yk XXVII
+Poison of Kesh`yk XXVIII
+Poison of Kesh`yk XXIX
+Poison of Kesh`yk XXX
+
+# Ranger BP
+Major Lightning Call Effect
+Nature's Fury
+
+# Ranger Call/Blade Strike
+Arcing Blades Strike
+Arcing Blades Strike II
+Arcing Blades Strike III
+Call of Fire Strike
+Call of Ice Strike
+Call of Lightning Strike
+Call of Sky Strike
+Crackling Blades Strike
+Crackling Blades Strike Rk. II
+Crackling Blades Strike Rk. III
+Crackling Edges Strike
+Crackling Edges Strike II
+Crackling Edges Strike III
+Cry of Thunder Strike
+Deafening Blades Strike
+Deafening Blades Strike Rk. II
+Deafening Blades Strike Rk. III
+Deafening Edges Strike
+Deafening Edges Strike II
+Deafening Edges Strike III
+Deafening Weapons Strike
+Deafening Weapons Strike II
+Deafening Weapons Strike III
+Devastating Barrage Strike
+Devastating Barrage Strike II
+Devastating Barrage Strike III
+Devastating Blades Strike
+Devastating Blades Strike Rk. II
+Devastating Blades Strike Rk. III
+Devastating Blades Strike XII Azia
+Devastating Blades Strike XII Beza
+Devastating Blades Strike XII Caza
+Devastating Edges Strike
+Devastating Edges Strike II
+Devastating Edges Strike III
+Devastating Impact Strike
+Devastating Impact Strike II
+Devastating Impact Strike III
+Devastating Slashes Strike
+Devastating Slashes Strike II
+Devastating Slashes Strike III
+Devastating Spate Strike
+Devastating Spate Strike II
+Devastating Spate Strike III
+Devastating Steel Strike
+Devastating Steel Strike II
+Devastating Steel Strike III
+Devastating Swords Strike
+Devastating Swords Strike II
+Devastating Swords Strike III
+Devastating Velium Strike
+Devastating Velium Strike II
+Devastating Velium Strike III
+Howling Blades Strike
+Howling Blades Strike II
+Howling Blades Strike III
+Nature's Denial Strike
+Nature's Rebuke Strike
+Roaring Blades Strike
+Roaring Blades Strike II
+Roaring Blades Strike III
+Roaring Weapons Strike
+Roaring Weapons Strike II
+Roaring Weapons Strike III
+Sylvan Call Strike
+Thundering Blades Strike
+Thundering Blades Strike Rk. II
+Thundering Blades Strike Rk. III
+Vociferous Blades Strike
+Vociferous Blades Strike II
+Vociferous Blades Strike III
+
+# Ranger Consumed by the Hunt
+Consumed Effect
+Consumed Effect X Azia
+Consumed Effect X Beza
+Consumed Effect X Caza
+Energized Effect
+Energized Effect II
+Energized Effect III
+Engulfed Effect
+Engulfed Effect II
+Engulfed Effect III
+Galvanized Effect
+Galvanized Effect II
+Galvanized Effect III
+Inspired Effect
+Inspired Effect II
+Inspired Effect III
+Invigorated Effect
+Invigorated Effect II
+Invigorated Effect III
+Provoked Effect
+Provoked Effect II
+Provoked Effect III
+Spurred Effect
+Spurred Effect II
+Spurred Effect III
+Steeled Effect
+Steeled Effect II
+Steeled Effect III
+
+# Ranger DS Proc
+Grasping Nettles
+Grasping Nettles II
+Grasping Nettles III
+Lavastorm Gaze
+Lavastorm Gaze II
+Lavastorm Gaze III
+Luclin's Darkfire Gaze
+Luclin's Darkfire Gaze II
+Luclin's Darkfire Gaze III
+Outrider's Ever-Burning Gaze
+Outrider's Ever-Burning Gaze II
+Outrider's Ever-Burning Gaze III
+Ro's Burning Gaze
+Ro's Burning Gaze II
+Ro's Burning Gaze III
+Ro's Burning Gaze VI Azia
+Ro's Burning Gaze VI Beza
+Ro's Burning Gaze VI Caza
+Shalowain's Crucible Gaze
+Shalowain's Crucible Gaze II
+Shalowain's Crucible Gaze III
+
+# Ranger Ferocious Kick
+Ferocious Kick I
+Ferocious Kick II
+Ferocious Kick III
+Ferocious Kick IV
+Ferocious Kick V
+Ferocious Kick VI
+Ferocious Kick VII
+Ferocious Kick VIII
+Ferocious Kick IX
+Ferocious Kick X
+Ferocious Kick XI
+Ferocious Kick XII
+Ferocious Kick XIII
+Ferocious Kick XIV
+Ferocious Kick XV
+Ferocious Kick XVI
+Ferocious Kick XVII
+Ferocious Kick XVIII
+Ferocious Kick XIX
+Ferocious Kick XX
+Ferocious Kick XXI
+Ferocious Kick XXII
+Ferocious Kick XXIII
+Fury of the Forest I
+Fury of the Forest II
+Fury of the Forest III
+
+# Ranger Heavy Arrow
+Heavy Arrow I
+Heavy Arrow II
+Heavy Arrow III
+Heavy Arrow IV
+Heavy Arrow V
+Heavy Arrow VI
+Heavy Arrow VII
+Heavy Arrow VIII
+Heavy Arrow IX
+Heavy Arrow X
+Heavy Arrow XI
+Heavy Arrow XII
+
+# Ranger Hunter's Fury
+Hunter's Fury I
+Hunter's Fury II
+Hunter's Fury III
+Hunter's Fury IV
+Hunter's Fury V
+Hunter's Fury VI
+Hunter's Fury VII
+Hunter's Fury VIII
+Hunter's Fury IX
+Hunter's Fury X
+Hunter's Fury XI
+Hunter's Fury XII
+Hunter's Fury XIII
+Hunter's Fury XIV
+Hunter's Fury XV
+Hunter's Fury XVI
+Hunter's Fury XVII
+Hunter's Fury XVIII
+Hunter's Fury XIX
+Hunter's Fury XX
+Hunter's Fury XXI
+Hunter's Fury XXII
+Hunter's Fury XXIII
+Hunter's Fury XXIV
+Hunter's Fury XXV
+Hunter's Fury XXVI
+Hunter's Fury XXVII
+Hunter's Fury XXVIII
+Hunter's Fury XXIX
+Hunter's Fury XXX
+Hunter's Fury XXXI
+Hunter's Fury XXXII
+
+# Ranger Jolting Blades
+Jolting Blades Strike
+Jolting Edges Strike
+Jolting Edges Strike II
+Jolting Edges Strike III
+Jolting Emberquartz Strike
+Jolting Emberquartz Strike II
+Jolting Emberquartz Strike III
+Jolting Impact Strike
+Jolting Impact Strike II
+Jolting Impact Strike III
+Jolting Luclinite Strike
+Jolting Luclinite Strike II
+Jolting Luclinite Strike III
+Jolting Shock Strike
+Jolting Shock Strike II
+Jolting Shock Strike III
+Jolting Steel Strike
+Jolting Steel Strike II
+Jolting Steel Strike III
+Jolting Strike
+Jolting Strikes
+Jolting Strikes Rk. II
+Jolting Strikes Rk. III
+Jolting Strikes Strike
+Jolting Swings Strike
+Jolting Swords Strike
+Jolting Swords Strike II
+Jolting Swords Strike III
+Jolting Velium Strike
+Jolting Velium Strike II
+Jolting Velium Strike III
+
+# Ranger Parry
+Arbor Veil Parry
+Arbor Veil Parry II
+Arbor Veil Parry III
+Duskveil Parry
+Duskveil Parry II
+Duskveil Parry III
+Frostveil Parry
+Frostveil Parry II
+Frostveil Parry III
+Nature's Veil Parry
+Shadowveil Parry
+Shadowveil Parry II
+Shadowveil Parry III
+Shimmering Veil Parry
+Shimmering Veil Parry II
+Shimmering Veil Parry III
+Vaporous Veil Parry
+Vaporous Veil Parry II
+Vaporous Veil Parry III
+Veil of Alaris Parry
+Veil of Alaris Parry II
+Veil of Alaris Parry III
+
+# Ranger Synergy
+Outrider's Synergy Strike I
+Outrider's Synergy Strike II
+Outrider's Synergy Strike III
+Outrider's Synergy Strike IV
+Outrider's Synergy Strike V
+Outrider's Synergy Strike VI
+Outrider's Synergy Strike VII
+Outrider's Synergy Strike VIII
+Outrider's Synergy Strike IX
+
+# Rogue Aim Effect
+Baleful Aim Effect
+Baleful Aim Effect II
+Baleful Aim Effect III
+Fatal Aim Effect
+Fatal Aim Effect II
+Fatal Aim Effect III
+Fatal Aim Effect IV Azia
+Fatal Aim Effect IV Beza
+Fatal Aim Effect IV Caza
+Lethal Aim Effect
+Lethal Aim Effect II
+Lethal Aim Effect III
+Poison DD Effect
+
+# Rogue BP
+Poisoned Bladestorm Attunement
+
+# Rogue Blade Stab
+Cloaked Blade Stab
+Cloaked Blade Stab II
+Cloaked Blade Stab III
+Hidden Blade Stab
+Hidden Blade Stab II
+Hidden Blade Stab III
+Holdout Blade Stab
+Holdout Blade Stab II
+Holdout Blade Stab III
+Holdout Blade Stab VII Azia
+Holdout Blade Stab VII Beza
+Holdout Blade Stab VII Caza
+Obfuscated Blade Stab
+Obfuscated Blade Stab II
+Obfuscated Blade Stab III
+Secret Blade Stab
+Secret Blade Stab II
+Secret Blade Stab III
+Veiled Blade Stab
+Veiled Blade Stab II
+Veiled Blade Stab III
+
+# Rogue Blade Strike
+Asp Blade Strike
+Asp Blade Strike II
+Asp Blade Strike III
+Drachnid Blade Strike
+Drachnid Blade Strike II
+Drachnid Blade Strike III
+Netherbian Blade Strike
+Netherbian Blade Strike II
+Netherbian Blade Strike III
+Reefcrawler Blade Strike
+Reefcrawler Blade Strike II
+Reefcrawler Blade Strike III
+Skorpikis Blade Strike
+Skorpikis Blade Strike II
+Skorpikis Blade Strike III
+Toxic Blade Strike
+Toxic Blade Strike II
+Toxic Blade Strike III
+Toxic Blade Strike VIII Azia
+Toxic Blade Strike VIII Beza
+Toxic Blade Strike VIII Caza
+Venomous Blade Strike
+Venomous Blade Strike II
+Venomous Blade Strike III
+
+# Rogue Calming
+Imperceptible Calming
+Indiscernible Effect
+Indiscernible Effect II
+Indiscernible Effect III
+Indiscernible Effect IV Azia
+Indiscernible Effect IV Beza
+Indiscernible Effect IV Caza
+Undetectable Effect
+Undetectable Effect II
+Undetectable Effect III
+Unseeable Effect
+Unseeable Effect II
+Unseeable Effect III
+
+# Rogue Etherium Strikes
+Strike Fury I
+Strike Fury II
+Strike Fury III
+Strike Fury IV
+Strike Fury V
+Strike Fury VI
+Strike Fury VII
+Strike Fury VIII
+Strike Fury IX
+Strike Fury X
+
+# Rogue Envenomed Blade
+Envenomed Blade I
+Envenomed Blade II
+Envenomed Blade III
+Envenomed Blade IV
+Envenomed Blade V
+Envenomed Blade VI
+Envenomed Blade VII
+Envenomed Blade VIII
+Envenomed Blade IX
+Envenomed Blade X
+Envenomed Blade XI
+Envenomed Blade XII
+Envenomed Blade XIII
+Envenomed Blade XIV
+Envenomed Blade XV
+Envenomed Blade XVI
+Envenomed Blade XVII
+Envenomed Blade XVIII
+Envenomed Blade XIX
+Envenomed Blade XX
+Envenomed Blade XXI
+Envenomed Blade XXII
+Envenomed Blade XXIII
+Envenomed Blade XXIV
+Envenomed Blade XXV
+Envenomed Blade XXVI
+Envenomed Blade XXVII
+Envenomed Blade XXVIII
+Envenomed Blade XXIX
+Envenomed Blade XXX
+Envenomed Blade XXXI
+Envenomed Blade XXXII
+Envenomed Blade XXXIII
+
+# Rogue Epic
+Deceiver's Blight Strike
+
+# Rogue Intimidation
+Shadow's Intimidation I
+Shadow's Intimidation II
+Shadow's Intimidation III
+Shadow's Intimidation IV
+Shadow's Intimidation V
+Shadow's Intimidation VI
+Shadow's Intimidation VII
+Shadow's Intimidation VIII
+Shadow's Intimidation IX
+Shadow's Intimidation X
+Shadow's Intimidation XI
+Shadow's Intimidation XII
+Shadow's Intimidation XIII
+Shadow's Intimidation XIV
+Shadow's Intimidation XV
+Shadow's Intimidation XVI
+Shadow's Intimidation XVII
+
+# Rogue Massive Strike
+Massive Strike I
+Massive Strike II
+Massive Strike III
+Massive Strike IV
+Massive Strike V
+Massive Strike VI
+Massive Strike VII
+Massive Strike VIII
+Massive Strike IX
+Massive Strike X
+Massive Strike XI
+Massive Strike XII
+Massive Strike XIII
+Massive Strike XIV
+Massive Strike XV
+Massive Strike XVI
+Massive Strike XVII
+Massive Strike XVIII
+Massive Strike XIX
+Massive Strike XX
+Massive Strike XXI
+Massive Strike XXII
+Massive Strike XXIII
+Massive Strike XXIV
+Massive Strike XXV
+Massive Strike XXVI
+Massive Strike XXVII
+Massive Strike XXVIII
+Massive Strike XXIX
+Massive Strike XXX
+Massive Strike XXXI
+Massive Strike XXXII
+Massive Strike XXXIII
+Massive Strike XXXIV
+Massive Strike XXXV
+Massive Strike XXXVI
+Massive Strike XXXVII
+
+# Rogue Shrouding Speed Disc
+Cloaking Speed Shock
+Cloaking Speed Shock II
+Cloaking Speed Shock III
+Shadowed Speed Shock
+Shadowed Speed Shock II
+Shadowed Speed Shock III
+Shrouding Speed Shock
+Shrouding Speed Shock II
+Shrouding Speed Shock III
+
+# Rogue Spire
+Rake's Weakening I
+Rake's Weakening II
+Rake's Weakening III
+Rake's Weakening IV
+Rake's Weakening V
+
+# Rogue Synergy
+Blackguard's Synergy Strike I
+Blackguard's Synergy Strike II
+Blackguard's Synergy Strike III
+Blackguard's Synergy Strike IV
+Blackguard's Synergy Strike V
+Blackguard's Synergy Strike VI
+Blackguard's Synergy Strike VII
+Blackguard's Synergy Strike VIII
+Blackguard's Synergy Strike IX
+
+# Shaman Chaotic
+Ander's Bite Chance
+Direfang's Bite Chance
+Fleshrot's Spear of Venom Chance
+Mawmun's Bite Chance
+Narandi's Spear of Venom Chance
+Nexona's Spear of Venom Chance
+Oka's Bite Chance
+Reefmaw's Bite Chance
+Serisaria's Spear of Venom Chance
+
+# Shaman Dicho
+Composite Roar Strike 1
+Composite Roar Strike 2
+Composite Roar Strike 3
+Composite Roar Strike 4
+Composite Roar Strike 5
+Composite Roar Strike 6
+Dichotomic Roar Strike 1
+Dichotomic Roar Strike 2
+Dichotomic Roar Strike 3
+Dichotomic Roar Strike 4
+Dichotomic Roar Strike 5
+Dichotomic Roar Strike 6
+Dissident Roar Strike 1
+Dissident Roar Strike 2
+Dissident Roar Strike 3
+Dissident Roar Strike 4
+Dissident Roar Strike 5
+Dissident Roar Strike 6
+Ecliptic Roar Strike 1
+Ecliptic Roar Strike 2
+Ecliptic Roar Strike 3
+Ecliptic Roar Strike 4
+Ecliptic Roar Strike 5
+Ecliptic Roar Strike 6
+Reciprocal Roar Strike 1
+Reciprocal Roar Strike 2
+Reciprocal Roar Strike 3
+Reciprocal Roar Strike 4
+Reciprocal Roar Strike 5
+Reciprocal Roar Strike 6
+
+# Shaman Feral Bite/Rabid Bear
+Feral Bite I
+Feral Bite II
+Feral Bite III
+Feral Bite IV
+Feral Bite V
+Feral Bite VI
+Feral Bite VII
+Feral Bite VIII
+Feral Bite IX
+Feral Bite X
+Feral Bite XI
+Feral Bite XII
+Feral Bite XIII
+Feral Bite XIV
+Feral Bite XV
+Feral Bite XVI
+Feral Bite XVI
+
+# Shaman Lingering Sloth
+Apathetic Health
+Apathetic Health Chance
+Apathetic Health Chance II
+Apathetic Health Chance III
+Apathy Trigger
+Apathy Trigger II
+Apathy Trigger III
+Ennui Health
+Ennui Health Chance
+Ennui Health Chance II
+Ennui Health Chance III
+Ennui Trigger
+Ennui Trigger II
+Ennui Trigger III
+Fatigue Trigger
+Fatigue Trigger II
+Fatigue Trigger III
+Fatigued Health
+Fatigued Health Chance
+Fatigued Health Chance II
+Fatigued Health Chance III
+Incapable Health
+Incapable Health Chance
+Incapable Health Chance II
+Incapable Health Chance III
+Incapacity Trigger
+Incapacity Trigger II
+Incapacity Trigger III
+Languid Health
+Languid Health Chance
+Languor Trigger
+Lassitude Trigger
+Lassitude Trigger XIII Azia
+Lassitude Trigger XIII Beza
+Lassitude Trigger XIII Caza
+Lassitudinal Health
+Lassitudinal Health Chance
+Lethargic Health
+Lethargic Health Chance
+Lethargic Health Chance II
+Lethargic Health Chance III
+Lethargy Trigger
+Lethargy Trigger II
+Lethargy Trigger III
+Lingering Sloth Trigger
+Listless Health
+Listless Health Chance
+Listlessness Trigger
+Melancholy Health
+Melancholy Health Chance
+Melancholy Health Chance II
+Melancholy Health Chance III
+Melancholy Trigger
+Melancholy Trigger II
+Melancholy Trigger III
+Morose Health Chance
+Morose Health Chance II
+Morose Health Chance III
+Moroseness Trigger
+Moroseness Trigger II
+Moroseness Trigger III
+Sluggish Health
+Sluggish Health Chance
+Sluggish Health Chance II
+Sluggish Health Chance III
+Sluggishness Trigger
+Sluggishness Trigger II
+Sluggishness Trigger III
+
+# Shaman Pack of Aina
+Call the Pack Azia
+Call the Pack Beza
+Call the Pack Caza
+Call the Pack II Azia
+Call the Pack II Beza
+Call the Pack II Caza
+Call the Pack III Azia
+Call the Pack III Beza
+Call the Pack III Caza
+Call the Pack IV Azia
+Call the Pack IV Beza
+Call the Pack IV Caza
+Call the Pack V Azia
+Call the Pack V Beza
+Call the Pack V Caza
+Call the Pack VI Azia
+Call the Pack VI Beza
+Call the Pack VI Caza
+Call the Pack VII Azia
+Call the Pack VII Beza
+Call the Pack VII Caza
+Call the Pack VIII Azia
+Call the Pack VIII Beza
+Call the Pack VIII Caza
+Call the Pack IX Azia
+Call the Pack IX Beza
+Call the Pack IX Caza
+Call the Pack X Azia
+Call the Pack X Beza
+Call the Pack X Caza
+
+# Shaman Responsive Spirit
+Spiritual Restitution
+Spiritual Restitution II
+Spiritual Restitution III
+Spiritual Restitution II Azia
+Spiritual Restitution II Beza
+Spiritual Restitution II Caza
+Spiritual Restitution III Azia
+Spiritual Restitution III Beza
+Spiritual Restitution III Caza
+Spiritual Restitution IV Azia
+Spiritual Restitution IV Beza
+Spiritual Restitution IV Caza
+
+# Shaman Spirit
+Cougar Maw
+Jaguar Maw
+Kerran Maw
+Kerran Maw II
+Kerran Maw III
+Leopard Maw
+Leopard Maw II
+Leopard Maw III
+Lion Maw
+Lion Maw II
+Lion Maw III
+Lioness Maw
+Lioness Maw II
+Lioness Maw III
+Lynx Maw
+Manul Maw
+Manul Maw II
+Manul Maw III
+Panther Maw
+Puma Maw
+Sabretooth Maw
+Sabretooth Maw II
+Sabretooth Maw III
+Snow Leopard Maw
+Snow Leopard Maw II
+Snow Leopard Maw III
+Tiger Maw
+Tiger Maw II
+Tiger Maw III
+
+# Shaman Splash of Runedust
+Glyphdust Etching
+Glyphdust Etching II
+Glyphdust Etching III
+Glyphdust Immotility
+Glyphdust Immotility II
+Glyphdust Immotility III
+Glyphdust Slow
+Glyphdust Slow II
+Glyphdust Slow III
+Runedust Etching
+Runedust Etching II
+Runedust Etching III
+Runedust Immotility
+Runedust Immotility II
+Runedust Immotility III
+Runedust Slow
+Runedust Slow II
+Runedust Slow III
+
+# Shaman Totem
+Totemic Form
+Totemic Form I
+Totemic Form II
+
+# SK BP
+Consuming Zeal
+Malefic Theft
+Soothing Zeal
+
+# SK Cascading Theft
+Cascading Theft of Defense I
+Cascading Theft of Defense II
+Cascading Theft of Defense III
+Cascading Theft of Defense IV
+Cascading Theft of Defense V
+Cascading Theft of Defense VI
+Cascading Theft of Defense VII
+Cascading Theft of Defense VIII
+Cascading Theft of Defense IX
+Cascading Theft of Defense X
+Cascading Theft of Defense XI
+Cascading Theft of Defense XII
+Cascading Theft of Defense XIII
+Cascading Theft of Defense XIV
+Cascading Theft of Defense XV
+Cascading Theft of Defense XVI
+Cascading Theft of Defense XVII
+Cascading Theft of Defense XVIII
+Cascading Theft of Defense XIX
+Cascading Theft of Defense XX
+Cascading Theft of Defense XXI
+Cascading Theft of Defense XXII
+Cascading Theft of Defense XXIII
+Cascading Theft of Defense XXIV
+Cascading Theft of Defense XXV
+Cascading Theft of Defense XXVI
+Cascading Theft of Defense XXVII
+Cascading Theft of Defense XXVIII
+Cascading Theft of Defense XXIX
+Cascading Theft of Defense XXX
+Cascading Theft of Defense XXXI
+Cascading Theft of Defense XXXII
+Cascading Theft of Defense XXXIII
+Cascading Theft of Defense XXXIV
+Cascading Theft of Defense XXXV
+Cascading Theft of Defense XXXVI
+Cascading Theft of Life I
+Cascading Theft of Life II
+Cascading Theft of Life III
+Cascading Theft of Life IV
+Cascading Theft of Life V
+Cascading Theft of Life VI
+Cascading Theft of Life VII
+Cascading Theft of Life VIII
+Cascading Theft of Life IX
+Cascading Theft of Life X
+Cascading Theft of Life XI
+Cascading Theft of Life XII
+Cascading Theft of Life XIII
+Cascading Theft of Life XIV
+Cascading Theft of Life XV
+Cascading Theft of Life XVI
+Cascading Theft of Life XVII
+Cascading Theft of Life XVIII
+Cascading Theft of Life XIX
+Cascading Theft of Life XX
+Cascading Theft of Life XXI
+Cascading Theft of Life XXII
+Cascading Theft of Life XXIII
+Cascading Theft of Life XXIV
+
+# SK Corrupted Guardian Disc
+Corrupted Guardian Lifetap
+Corrupted Guardian Lifetap II
+Corrupted Guardian Lifetap III
+Cursed Guardian Lifetap
+Cursed Guardian Lifetap II
+Cursed Guardian Lifetap III
+Unholy Guardian Lifetap
+Unholy Guardian Lifetap II
+Unholy Guardian Lifetap III
+Unholy Guardian Discipline Lifetap IV Azia
+Unholy Guardian Discipline Lifetap IV Beza
+Unholy Guardian Discipline Lifetap IV Caza
+
+# SK Decrepit Skin
+Decrepit Skin Parry
+
+# SK Disruption
+Disruptive Recourse
+Disruptive Recourse II
+Disruptive Recourse III
+Disruptive Recourse III Azia
+Disruptive Recourse III Beza
+Disruptive Recourse III Caza
+Disruptive Recourse IV Azia
+Disruptive Recourse IV Beza
+Disruptive Recourse IV Caza
+Disruptive Recourse V Azia
+Disruptive Recourse V Beza
+Disruptive Recourse V Caza
+Expansive Distraction
+Expansive Distraction II
+Expansive Distraction III
+Expansive Distraction III Azia
+Expansive Distraction III Beza
+Expansive Distraction III Caza
+Expansive Distraction IV Azia
+Expansive Distraction IV Beza
+Expansive Distraction IV Caza
+Expansive Distraction V Azia
+Expansive Distraction V Beza
+Expansive Distraction V Caza
+Precise Disruption
+Precise Disruption II
+Precise Disruption III
+Precise Disruption III Azia
+Precise Disruption III Beza
+Precise Disruption III Caza
+Precise Disruption IV Azia
+Precise Disruption IV Beza
+Precise Disruption IV Caza
+Precise Disruption V Azia
+Precise Disruption V Beza
+Precise Disruption V Caza
+
+# SK Focused Bites
+Ragged Bite of Agony I
+Ragged Bite of Agony II
+Ragged Bite of Agony III
+Ragged Bite of Agony IV
+Ragged Bite of Agony V
+Ragged Bite of Agony VI
+Ragged Bite of Agony VII
+Ragged Bite of Agony VIII
+Ragged Bite of Agony IX
+Ragged Bite of Agony X
+
+# SK Lifedraw
+Cadcane's Lifedraw
+Cadcane's Lifedraw II
+Cadcane's Lifedraw III
+Gorgon Lifedraw
+Gorgon Lifedraw II
+Gorgon Lifedraw III
+Grelleth's Lifedraw
+Grelleth's Lifedraw II
+Grelleth's Lifedraw III
+Kanghammer's Lifedraw
+Kanghammer's Lifedraw II
+Kanghammer's Lifedraw III
+Soul Carapace Lifedraw XV Azia
+Soul Carapace Lifedraw XV Beza
+Soul Carapace Lifedraw XV Caza
+Sholothian Lifedraw
+Sholothian Lifedraw II
+Sholothian Lifedraw III
+Tylix's Lifedraw
+Tylix's Lifedraw II
+Tylix's Lifedraw III
+Vizat's Lifedraw
+Vizat's Lifedraw II
+Vizat's Lifedraw III
+Xetheg's Lifedraw
+Xetheg's Lifedraw II
+Xetheg's Lifedraw III
+
+# SK Horror Strike
+Amygdalan Horror Recourse
+Amygdalan Horror Recourse II
+Amygdalan Horror Recourse III
+Amygdalan Horror Strike
+Amygdalan Horror Strike II
+Amygdalan Horror Strike III
+Brightfeld's Horror Recourse
+Brightfeld's Horror Recourse II
+Brightfeld's Horror Recourse III
+Brightfeld's Horror Strike
+Brightfeld's Horror Strike II
+Brightfeld's Horror Strike III
+Cadcane's Horror Recourse
+Cadcane's Horror Recourse II
+Cadcane's Horror Recourse III
+Cadcane's Horror Strike
+Cadcane's Horror Strike II
+Cadcane's Horror Strike III
+Grelleth's Horror Recourse
+Grelleth's Horror Recourse II
+Grelleth's Horror Recourse III
+Grelleth's Horror Strike
+Grelleth's Horror Strike II
+Grelleth's Horror Strike III
+Husk Devourer's Horror Recourse
+Husk Devourer's Horror Recourse II
+Husk Devourer's Horror Recourse III
+Husk Devourer's Horror Strike
+Husk Devourer's Horror Strike II
+Husk Devourer's Horror Strike III
+Marrowthirst Horror Recourse
+Marrowthirst Horror Strike
+Mental Horror Recourse
+Mental Horror Strike
+Mindshear Horror Recourse
+Mindshear Horror Strike
+Mortimus' Horror Recourse
+Mortimus' Horror Recourse II
+Mortimus' Horror Recourse III
+Mortimus' Horror Strike
+Mortimus' Horror Strike II
+Mortimus' Horror Strike III
+Sholothian Horror Recourse
+Sholothian Horror Recourse II
+Sholothian Horror Recourse III
+Sholothian Horror Strike
+Sholothian Horror Strike II
+Sholothian Horror Strike III
+Soulthirst Horror Recourse
+Soulthirst Horror Strike
+Tylix's Horror Recourse
+Tylix's Horror Recourse II
+Tylix's Horror Recourse III
+Tylix's Horror Strike
+Tylix's Horror Strike II
+Tylix's Horror Strike III
+Vizat's Horror Recourse
+Vizat's Horror Recourse II
+Vizat's Horror Recourse III
+Vizat's Horror Strike
+Vizat's Horror Strike II
+Vizat's Horror Strike III
+
+# SK Insolent Influence
+Ignominious Agitation
+Ignominious Agitation II
+Ignominious Agitation III
+Ignominious Influence Heal
+Ignominious Influence Heal II
+Ignominious Influence Heal III
+Ignominious Reward
+Ignominious Reward II
+Ignominious Reward III
+Impenitent Agitation
+Impenitent Agitation II
+Impenitent Agitation III
+Impenitent Influence Heal
+Impenitent Influence Heal II
+Impenitent Influence Heal III
+Impenitent Reward
+Impenitent Reward II
+Impenitent Reward III
+Impertinent Agitation
+Impertinent Agitation II
+Impertinent Agitation III
+Impertinent Influence Heal
+Impertinent Influence Heal II
+Impertinent Influence Heal III
+Impertinent Reward
+Impertinent Reward II
+Impertinent Reward III
+Impudent Agitation
+Impudent Agitation II
+Impudent Agitation III
+Impudent Influence Heal
+Impudent Influence Heal II
+Impudent Influence Heal III
+Impudent Reward
+Impudent Reward II
+Impudent Reward III
+Incensive Agitation
+Incensive Agitation II
+Incensive Agitation III
+Incensive Influence Heal
+Incensive Influence Heal II
+Incensive Influence Heal III
+Incensive Reward
+Incensive Reward II
+Incensive Reward III
+Insolent Agitation I
+Insolent Agitation II
+Insolent Agitation III
+Insolent Reward
+Insolent Reward II
+Insolent Reward III
+
+# SK Kill Shot procs Face of Impenitence
+Impenitence
+Impenitence II
+Impenitence III
+Impenitence Rk. II
+Impenitence Rk. III
+Remorselessness
+Remorselessness Rk. II
+Ruthlessness
+Ruthlessness II
+Ruthlessness III
+
+# SK Last Breath
+Foul Breath
+Foul Breath II
+Foul Breath III
+Sweet Breath
+Sweet Breath II
+Sweet Breath III
+
+# SK Mental Strike
+Mental Anguish Strike
+Mental Anguish Strike II
+Mental Anguish Strike III
+Mental Corruption Recourse
+Mental Corruption Strike
+Mental Dread Strike
+Mental Dread Strike II
+Mental Dread Strike III
+Mental Fright Strike
+Mental Fright Strike II
+Mental Fright Strike III
+Mental Horror Strike
+Mental Horror Strike VIII Azia
+Mental Horror Strike VIII Beza
+Mental Horror Strike VIII Caza
+Mental Terror Strike
+Mental Terror Strike II
+Mental Terror Strike III
+Mental Torment Strike
+Mental Torment Strike II
+Mental Torment Strike III
+Mental Wretchedness Strike
+Mental Wretchedness Strike II
+Mental Wretchedness Strike III
+
+# SK Remorseless Demeanor
+Remorselessness
+Remorselessness Rk. II
+
+# SK Spite of Ronak
+KraDu's Spite
+KraDu's Spite II
+Kra`Du's Spite II
+Kra`Du's Spite III
+Mirenilla's Spite
+Mirenilla's Spite II
+Mirenilla's Spite III
+Ronak's Spite
+Ronak's Spite II
+Ronak's Spite III
+
+# SK Rigor Mortis
+Rigid Body
+Rigid Body II
+Rigid Body III
+
+# SK Shroud
+Shroud of Chaos Strike
+Shroud of Death Strike
+Shroud of Discord Strike
+Shroud of Zelinstein Strike
+Shroud of Zelinstein Strike II
+Shroud of Zelinstein Strike III
+Shroud of the Blightborn Strike
+Shroud of the Darksworn Strike
+Shroud of the Darksworn Strike II
+Shroud of the Darksworn Strike III
+Shroud of the Doomscale Strike
+Shroud of the Doomscale Strike II
+Shroud of the Doomscale Strike III
+Shroud of the Gloomborn Strike
+Shroud of the Krellnakor Strike
+Shroud of the Krellnakor Strike II
+Shroud of the Krellnakor Strike III
+Shroud of the Nightborn Strike
+Shroud of the Nightborn Strike Rk. II
+Shroud of the Nightborn Strike Rk. III
+Shroud of the Plagueborne Strike
+Shroud of the Plagueborne Strike II
+Shroud of the Plagueborne Strike III
+Shroud of the Restless Strike
+Shroud of the Restless Strike II
+Shroud of the Restless Strike III
+Shroud of Rimeclaw Strike
+Shroud of Rimeclaw Strike II
+Shroud of Rimeclaw Strike III
+Shroud of the Shadeborne Strike
+Shroud of the Shadeborne Strike II
+Shroud of the Shadeborne Strike III
+
+# SK Soul Flay
+Soul Flay I
+Soul Flay II
+Soul Flay III
+Soul Flay IV
+Soul Flay V
+Soul Flay VI
+Soul Flay VII
+Soul Flay VIII
+Soul Flay IX
+Soul Flay X
+Soul Flay XI
+Soul Flay XII
+Soul Flay XIII
+Soul Flay XIV
+Soul Flay XV
+Soul Flay XVI
+Soul Flay XVII
+Soul Flay XIX
+Soul Flay XVIII
+Soul Flay XX
+Soul Flay XXI
+Soul Flay XXII
+Soul Flay XXIII
+Soul Flay XXIV
+Soul Flay XXV
+Soul Flay XXVI
+Soul Flay XXVII
+Soul Flay XXVIII
+
+# SK Touch of the Cursed
+Touch of the Cursed I
+Touch of the Cursed II
+Touch of the Cursed III
+Touch of the Cursed IV
+Touch of the Cursed V
+Touch of the Cursed VI
+Touch of the Cursed VII
+Touch of the Cursed VIII
+Touch of the Cursed IX
+Touch of the Cursed X
+Touch of the Cursed XI
+Touch of the Cursed XII
+Touch of the Cursed XIII
+Touch of the Cursed XIV
+Touch of the Cursed XV
+Touch of the Cursed XVI
+Touch of the Cursed XVII
+Touch of the Cursed XVIII
+Touch of the Cursed XIX
+Touch of the Cursed XX
+Touch of the Cursed XXI
+Touch of the Cursed XXII
+Touch of the Cursed XXIII
+Touch of the Cursed XXIV
+Touch of the Cursed XXV
+Touch of the Cursed XXVI
+Touch of the Cursed XXVII
+Touch of the Cursed XXVIII
+Touch of the Cursed XXIX
+Touch of the Cursed XXX
+Touch of the Cursed XXXI
+Touch of the Cursed XXXII
+Touch of the Cursed XXXIII
+Touch of the Cursed XXXIV
+Touch of the Cursed XXXV
+Touch of the Cursed XXXVI
+Touch of the Cursed XXXVII
+Touch of the Cursed XXXVIII
+Touch of the Cursed XXXIX
+Touch of the Cursed XL
+Touch of the Cursed XLI
+Touch of the Cursed XLII
+Touch of the Cursed XLIII
+Touch of the Cursed XLIV
+Touch of the Cursed XLV
+Touch of the Cursed XLVI
+Touch of the Cursed XLVII
+Touch of the Cursed XLVIII
+Touch of the Cursed XLIX
+Touch of the Cursed L
+Touch of the Cursed LI
+Touch of the Cursed LII
+Touch of the Cursed LIII
+Touch of the Cursed LIV
+
+# SK Skin
+Cadcane's Skin Effect
+Cadcane's Skin Effect II
+Cadcane's Skin Effect III
+Gorgon Skin Effect
+Gorgon Skin Effect II
+Gorgon Skin Effect III
+Grelleth's Skin Effect
+Grelleth's Skin Effect II
+Grelleth's Skin Effect III
+Krizad's Skin Effect
+Krizad's Skin Effect II
+Krizad's Skin Effect III
+Malarian Skin Effect
+Malarian Skin Effect II
+Malarian Skin Effect III
+Sholothian Skin Effect
+Sholothian Skin Effect II
+Sholothian Skin Effect III
+Spitetangle's Skin Effect
+Spitetangle's Skin Effect II
+Spitetangle's Skin Effect III
+Tylix's Skin Effect
+Tylix's Skin Effect II
+Tylix's Skin Effect III
+Umbral Skin Effect
+Umbral Skin Effect II
+Umbral Skin Effect III
+Vizat's Skin Effect
+Vizat's Skin Effect II
+Vizat's Skin Effect III
+Xenacious' Skin Effect
+Xenacious' Skin Effect II
+Xenacious' Skin Effect III
+
+# Necro Chaotic
+Chaotic Power I
+Chaotic Power II
+Chaotic Power III
+Chaotic Power IV
+Chaotic Power V
+Chaotic Power VI
+Chaotic Power VII
+Chaotic Power VIII
+Chaotic Power IX
+Chaotic Power X
+Chaotic Power XI
+Chaotic Power XII
+Chaotic Weakness
+Chaotic Weakness IX
+Chaotic Weakness X
+Chaotic Weakness XI
+Chaotic Weakness XII
+
+# Necro Vampiric Embrace
+Vampiric Embrace
+Vampiric Embrace Strike
+
+# Warrior Biting/Barbed Tongue
+Barbed Tongue Strike
+Barbed Tongue Strike II
+Barbed Tongue Strike III
+Biting Tongue Strike
+Biting Tongue Strike II
+Biting Tongue Strike III
+Razor Tongue Strike
+Razor Tongue Strike II
+Razor Tongue Strike III
+
+# Warrior Determined Reprisal
+Determined Reprisal Recourse
+Determined Reprisal Recourse II
+Determined Reprisal Recourse III
+
+# Warrior Expanse
+Expansive Discord
+Expansive Discord II
+Expansive Discord III
+Expansive Discord III Azia
+Expansive Discord III Beza
+Expansive Discord III Caza
+Expansive Discord IV Azia
+Expansive Discord IV Beza
+Expansive Discord IV Caza
+Expansive Discord V Azia
+Expansive Discord V Beza
+Expansive Discord V Caza
+Expansive Disharmony
+Expansive Disharmony II
+Expansive Disharmony III
+
+# Warrior Precision
+Concordant Vigor
+Concordant Vigor II
+Concordant Vigor III
+Confluent Vigor III Azia
+Confluent Vigor III Beza
+Confluent Vigor III Caza
+Harmonious Vigor
+Harmonious Vigor II
+Harmonious Vigor III
+Precise Discord
+Precise Discord II
+Precise Discord III
+Precise Discord III Azia
+Precise Discord III Beza
+Precise Discord III Caza
+Precise Discord IV Azia
+Precise Discord IV Beza
+Precise Discord IV Caza
+Precise Discord V Azia
+Precise Discord V Beza
+Precise Discord V Caza
+Precise Disharmony
+Precise Disharmony II
+Precise Disharmony III
+
+# Warrior Infused by Rage
+Infusion of Rage I
+Infusion of Rage II
+Infusion of Rage III
+Infusion of Rage IV
+Infusion of Rage V
+Infusion of Rage VI
+Infusion of Rage VII
+Infusion of Rage VIII
+Infusion of Rage IX
+Infusion of Rage X
+Infusion of Rage XI
+Infusion of Rage XII
+Infusion of Rage XIII
+Infusion of Rage XIV
+Infusion of Rage XV
+Infusion of Rage XVI
+Infusion of Rage XVII
+Infusion of Rage XVIII
+Infusion of Rage XIX
+Infusion of Rage XX
+Infusion of Rage XXI
+Infusion of Rage XXII
+Infusion of Rage XXIII
+Infusion of Rage XXIV
+Infusion of Rage XXV
+Infusion of Rage XXVI
+Infusion of Rage XXVII
+Infusion of Rage XXVIII
+Infusion of Rage XXIX
+Infusion of Rage XXX
+Infusion of Rage XXXI
+Infusion of Rage XXXII
+Infusion of Rage XXXIII
+Infusion of Rage XXXIV
+Infusion of Rage XXXV
+Strike of Ire I
+Strike of Ire II
+Strike of Ire III
+Strike of Ire IV
+Strike of Ire V
+Strike of Ire VI
+Strike of Ire VII
+Strike of Ire IX
+Strike of Ire VIII
+Strike of Ire X
+Strike of Ire XI
+Strike of Ire XII
+Strike of Ire XIII
+Strike of Ire XIV
+Strike of Ire XV
+Strike of Ire XVI
+Strike of Ire XVII
+
+# Warrior Runes
+Akhevan Rune Effect
+Akhevan Rune Effect II
+Akhevan Rune Effect III
+Darkened Rune Effect
+Darkened Rune Effect II
+Darkened Rune Effect III
+Draconic Rune Effect
+Draconic Rune Effect Rk. II
+Draconic Rune Effect Rk. III
+Draconic Runes Effect
+Draconic Runes Effect Rk. II
+Draconic Runes Effect Rk. III
+Mystical Rune Effect
+Mystical Rune Effect II
+Mystical Rune Effect III
+Phantasmic Runes Effect
+Phantasmic Runes Effect II
+Phantasmic Runes Effect III
+Rallosian Rune Effect
+Rallosian Rune Effect II
+Rallosian Rune Effect III
+Relentless Rune Effect
+Relentless Rune Effect II
+Relentless Rune Effect III
+Rune Effect
+Stalwart Rune Effect
+Stalwart Rune Effect II
+Stalwart Rune Effect III
+Tenacious Rune Effect
+Tenacious Rune Effect II
+Tenacious Rune Effect III
+Timeworn Runes Effect
+Timeworn Runes Effect Rk. II
+Timeworn Runes Effect Rk. III
+
+# Warrior Sneering Grin
+Sneering Grin I
+Sneering Grin II
+Sneering Grin III
+Sneering Grin IV
+Sneering Grin V
+Sneering Grin VI
+Sneering Grin VII
+Sneering Grin VIII
+Sneering Grin IX
+Sneering Grin X
+Sneering Grin XI
+
+# Warrior Stun Defense
+Levincrash Defense Stun I
+Levincrash Defense Stun II
+Levincrash Defense Stun III
+Stormstrike Defense Stun I
+Stormstrike Defense Stun II
+Stormstrike Defense Stun III
+Stun Effect
+Tempestuous Defense Stun I
+Tempestuous Defense Stun II
+Tempestuous Defense Stun III
+
+# Warrior Stunning Kick
+Stunning Kick I
+Stunning Kick II
+Stunning Kick III
+Stunning Kick IV
+Stunning Kick V
+Stunning Kick VI
+Stunning Kick VII
+Stunning Kick VIII
+Stunning Kick IX
+Stunning Kick X
+Stunning Kick XI
+Stunning Kick XII
+Stunning Kick XIII
+Stunning Kick XIV
+Stunning Kick XIX
+Stunning Kick XV
+Stunning Kick XVI
+Stunning Kick XVII
+Stunning Kick XVIII
+Stunning Kick XX
+Stunning Kick XXI
+Stunning Kick XXII
+Stunning Kick XXIII
+Stunning Kick XXIV
+Stunning Kick XXIX
+Stunning Kick XXV
+Stunning Kick XXVI
+Stunning Kick XXVII
+Stunning Kick XXVIII
+Stunning Kick XXX
+Stunning Kick XXXI
+Stunning Kick XXXII
+Stunning Kick XXXIII
+Stunning Kick XXXIV
+Stunning Kick XXXV
+Stunning Kick XXXVI
+Stunning Kick XXXVII
+Stunning Kick XXXVIII
+Stunning Kick XXXIX
+Stunning Kick XL
+Stunning Kick XLI
+Stunning Kick XLII
+Stunning Kick XLIII
+
+# Warrior TBM BP
+Martial Rage Strike
+Provacative Strike
+
+# Warrior Last Stand
+Climactic Stand Effect
+Climactic Stand Effect II
+Climactic Stand Effect III
+Culminating Stand Effect
+Culminating Stand Effect II
+Culminating Stand Effect III
+Final Stand Effect VI Azia
+Final Stand Effect VI Beza
+Final Stand Effect VI Caza
+Last Stand Effect
+Last Stand Effect II
+Last Stand Effect III
+Resolute Stand Effect
+Resolute Stand Effect II
+Resolute Stand Effect III
+Ultimate Stand Effect
+Ultimate Stand Effect II
+Ultimate Stand Effect III
+
+# Warrior Wade into Battle
+Wade into Battle Shout
+Wade into Battle Shout II
+Wade into Battle Shout III
+
+# Wizard Arcane Fusion
+Arcane Fusion I
+Arcane Fusion II
+Arcane Fusion III
+Arcane Fusion IV
+Arcane Fusion V
+Arcane Fusion VI
+Arcane Fusion VII
+Arcane Fusion VIII
+Arcane Fusion IX
+Arcane Fusion X
+Arcane Fusion XI
+Arcane Fusion XII
+Arcane Fusion XIII
+
+# Wizard Claw
+Blazing Infiltration
+Blazing Infiltration IX
+Blazing Infiltration X
+Blazing Infiltration XI
+Blazing Infiltration XII
+Icy Infiltration
+Icy Infiltration IX
+Icy Infiltration X
+Icy Infiltration XI
+Icy Infiltration XII
+Magical Infiltration
+Magical Infiltration IX
+Magical Infiltration X
+Magical Infiltration XI
+Magical Infiltration XII
+Syllable of Angerwarding
+Syllable of Angerwarding IX
+Syllable of Angerwarding X
+Syllable of Angerwarding XI
+Syllable of Angerwarding XII
+Syllable of Fire
+Syllable of Fire II
+Syllable of Fire III
+Syllable of Fire IX Azia
+Syllable of Fire IX Beza
+Syllable of Fire IX Caza
+Syllable of Fire X Azia
+Syllable of Fire X Beza
+Syllable of Fire X Caza
+Syllable of Fire XI Azia
+Syllable of Fire XI Beza
+Syllable of Fire XI Caza
+Syllable of Fire XII Azia
+Syllable of Fire XII Beza
+Syllable of Fire XII Caza
+Syllable of Fire XIII Azia
+Syllable of Fire XIII Beza
+Syllable of Fire XIII Caza
+Syllable of Fire Rk. II
+Syllable of Fire Rk. III
+Syllable of Ice
+Syllable of Ice II
+Syllable of Ice III
+Syllable of Ice IX Azia
+Syllable of Ice IX Beza
+Syllable of Ice IX Caza
+Syllable of Ice X Azia
+Syllable of Ice X Beza
+Syllable of Ice X Caza
+Syllable of Ice XI Azia
+Syllable of Ice XI Beza
+Syllable of Ice XI Caza
+Syllable of Ice XII Azia
+Syllable of Ice XII Beza
+Syllable of Ice XII Caza
+Syllable of Ice XIII Azia
+Syllable of Ice XIII Beza
+Syllable of Ice XIII Caza
+Syllable of Ice Rk. 2
+Syllable of Ice Rk. 3
+Syllable of Magic
+Syllable of Magic II
+Syllable of Magic III
+Syllable of Magic IX Azia
+Syllable of Magic IX Beza
+Syllable of Magic IX Caza
+Syllable of Magic X Azia
+Syllable of Magic X Beza
+Syllable of Magic X Caza
+Syllable of Magic XI Azia
+Syllable of Magic XI Beza
+Syllable of Magic XI Caza
+Syllable of Magic XII Azia
+Syllable of Magic XII Beza
+Syllable of Magic XII Caza
+Syllable of Magic XIII Azia
+Syllable of Magic XIII Beza
+Syllable of Magic XIII Caza
+Syllable of Magic Rk. II
+Syllable of Magic Rk. III
+Syllable of Mana Boost
+Syllable of Mana Boost II
+Syllable of Mana Boost III
+Syllable of Mana Boost IX Azia
+Syllable of Mana Boost IX Beza
+Syllable of Mana Boost IX Caza
+Syllable of Mana Boost X Azia
+Syllable of Mana Boost X Beza
+Syllable of Mana Boost X Caza
+Syllable of Mana Boost XI Azia
+Syllable of Mana Boost XI Beza
+Syllable of Mana Boost XI Caza
+Syllable of Mana Boost XII Azia
+Syllable of Mana Boost XII Beza
+Syllable of Mana Boost XII Caza
+Syllable of Mana Boost XIII Azia
+Syllable of Mana Boost XIII Beza
+Syllable of Mana Boost XIII Caza
+Syllable of Mana Boost Rk. II
+Syllable of Mana Boost Rk. III
+Syllable of Mastery
+Syllable of Mastery II
+Syllable of Mastery III
+Syllable of Mastery IX Azia
+Syllable of Mastery IX Beza
+Syllable of Mastery IX Caza
+Syllable of Mastery X Azia
+Syllable of Mastery X Beza
+Syllable of Mastery X Caza
+Syllable of Mastery XI Azia
+Syllable of Mastery XI Beza
+Syllable of Mastery XI Caza
+Syllable of Mastery XII Azia
+Syllable of Mastery XII Beza
+Syllable of Mastery XII Caza
+Syllable of Mastery XIII Azia
+Syllable of Mastery XIII Beza
+Syllable of Mastery XIII Caza
+Syllable of Mastery Rk. II
+Syllable of Mastery Rk. III
+Syllable of Mending Rk. II
+Syllable of Mending Rk. III
+Syllable of Refreshment
+Syllable of Refreshment IX
+Syllable of Refreshment X
+Syllable of Refreshment XI
+
+# Wizard Concussion
+Concussive Chill
+Concussive Chill II
+Concussive Chill III
+Concussive Chill IV
+Concussive Chill V
+Concussive Chill VI
+Concussive Chill VII
+Concussive Chill VIII
+Concussive Chill IX
+Concussive Chill X
+Concussive Chill XI
+Concussive Chill XII
+Concussive Chill XIII
+Concussive Flame
+Concussive Flame II
+Concussive Flame III
+Concussive Flame IV
+Concussive Flame V
+Concussive Flame VI
+Concussive Flame VII
+Concussive Flame VIII
+Concussive Flame IX
+Concussive Flame X
+Concussive Flame XI
+Concussive Flame XII
+Concussive Flame XIII
+Concussive Magic
+Concussive Magic II
+Concussive Magic III
+Concussive Magic IV
+Concussive Magic V
+Concussive Magic VI
+Concussive Magic VII
+Concussive Magic VIII
+Concussive Magic IX
+Concussive Magic X
+Concussive Magic XI
+Concussive Magic XII
+Concussive Magic XIII
+
+# Wizard Mana Weave
+Thricewoven Power I
+Thricewoven Power II
+Thricewoven Power III
+Thricewoven Power IV
+Thricewoven Power V
+Thricewoven Power VI
+Thricewoven Power VII
+Thricewoven Power VIII
+Thricewoven Power IX
+Thricewoven Weakness
+Thricewoven Weakness VII
+Thricewoven Weakness VIII
+Thricewoven Weakness IX
+Weave of Power
+Weave of Weakness
+
+# Wizard Pet AA
+Gift of Arcana I
+Gift of Arcana II
+Gift of Arcana III
+Gift of Arcana IV
+Gift of Arcana V
+Gift of Arcana VI
+Gift of Arcana VII
+Gift of Arcana VIII
+Gift of Arcana IX
+Gift of Fire I
+Gift of Fire II
+Gift of Fire III
+Gift of Fire IV
+Gift of Fire V
+Gift of Fire VI
+Gift of Fire VII
+Gift of Fire VIII
+Gift of Fire IX
+Gift of Ice I
+Gift of Ice II
+Gift of Ice III
+Gift of Ice IV
+Gift of Ice V
+Gift of Ice VI
+Gift of Ice VII
+Gift of Ice VIII
+Gift of Ice IX
+
+# Wizard Synergy
+Evoker's Synergy Strike I
+Evoker's Synergy Strike II
+Evoker's Synergy Strike III
+Evoker's Synergy Strike IV
+Evoker's Synergy Strike V
+Evoker's Synergy Strike VI
+Evoker's Synergy Strike VII
+Evoker's Synergy Strike VIII
+Evoker's Synergy Strike IX
+Evoker's Synergy Strike X
+
+# Wizard Tendrilmist Guard
+Tendrilmist Guard Effect
+
+# Wizard Trifurcating
+Arcomancy I
+Arcomancy II
+Arcomancy III
+Arcomancy IV
+Arcomancy V
+Arcomancy VI
+Arcomancy VII
+Arcomancy VIII
+Arcomancy IX
+Arcomancy X
+Arcomancy XI
+Arcomancy XII
+Arcomancy XIII
+Arcomancy XIV
+Arcomancy XV
+Arcomancy XVI
+Arcomancy XVII
+Arcomancy XVIII
+Arcomancy XIX
+Arcomancy XX
+Arcomancy XXI
+Arcomancy XXII
+Arcomancy XXIII
+Arcomancy XXIV
+Arcomancy XXV
+Arcomancy XXVI
+Arcomancy XXVII
+Arcomancy XXVIII
+Arcomancy XXIX
+Arcomancy XXX
+Arcomancy XXXI
+Arcomancy XXXII
+Arcomancy XXXIII
+Arcomancy XXXIV
+Arcomancy XXXV
+Arcomancy XXXVI
+Arcomancy XXXVII
+Arcomancy XXXVIII
+Arcomancy XXXIX
+Arcomancy L
+Arcomancy LI
+Arcomancy LII
+Arcomancy LIII
+Cryomancy I
+Cryomancy II
+Cryomancy III
+Cryomancy IV
+Cryomancy V
+Cryomancy VI
+Cryomancy VII
+Cryomancy VIII
+Cryomancy IX
+Cryomancy X
+Cryomancy XI
+Cryomancy XII
+Cryomancy XIII
+Cryomancy XIV
+Cryomancy XV
+Cryomancy XVI
+Cryomancy XVII
+Cryomancy XVIII
+Cryomancy XIX
+Cryomancy XX
+Cryomancy XXI
+Cryomancy XXII
+Cryomancy XXIII
+Cryomancy XXIV
+Cryomancy XXV
+Cryomancy XXVI
+Cryomancy XXVII
+Cryomancy XXVIII
+Cryomancy XXIX
+Cryomancy XXX
+Cryomancy XXXI
+Cryomancy XXXII
+Cryomancy XXXIII
+Cryomancy XXXIV
+Cryomancy XXXV
+Cryomancy XXXVI
+Cryomancy XXXVII
+Cryomancy XXXVIII
+Cryomancy XXXIX
+Cryomancy XL
+Cryomancy XLI
+Cryomancy XLII
+Cryomancy XLIII
+Pyromancy I
+Pyromancy II
+Pyromancy III
+Pyromancy IV
+Pyromancy V
+Pyromancy VI
+Pyromancy VII
+Pyromancy VIII
+Pyromancy IX
+Pyromancy X
+Pyromancy XI
+Pyromancy XII
+Pyromancy XIII
+Pyromancy XIV
+Pyromancy XV
+Pyromancy XVI
+Pyromancy XVII
+Pyromancy XVIII
+Pyromancy XIX
+Pyromancy XX
+Pyromancy XXI
+Pyromancy XXII
+Pyromancy XXIII
+Pyromancy XXIV
+Pyromancy XXV
+Pyromancy XXVI
+Pyromancy XXVII
+Pyromancy XXVIII
+Pyromancy XXIX
+Pyromancy XXX
+Pyromancy XXXI
+Pyromancy XXXII
+Pyromancy XXXIII
+Pyromancy XXXIV
+Pyromancy XXXV
+Pyromancy XXXVI
+Pyromancy XXXVII
+Pyromancy XXXVIII
+Pyromancy XXXIX
+Pyromancy XL
+Pyromancy XLI
+Pyromancy XLII
+Pyromancy XLIII
+
+# Melee
+Draconic Rage Strike
+
+# AnyoneAlleviating Burst I
+Alleviating Burst I
+Alleviating Burst II
+Alleviating Burst III
+Alleviating Burst IV
+Alleviating Burst V
+Alleviating Burst VI
+Alleviating Burst VII
+Alleviating Burst VIII
+Alleviating Burst IX
+Alleviating Burst X
+Alleviating Burst XI
+Alleviating Burst XII
+Alleviating Burst XIII
+Alleviating Burst XIV
+Alleviating Burst XV
+Alleviating Burst XVI
+Alleviating Burst XVII
+Alleviating Burst XVIII
+Alleviating Burst XIX
+Alleviating Burst XX
+Alleviating Burst XXI
+Alleviating Burst XXII
+Alleviating Burst XXIII
+Alleviating Burst XXIV
+Alleviating Burst XXV
+Alleviating Burst XXVI
+Alleviating Hand XI
+Alleviating Hand XII
+Alleviating Hand XIII
+Alleviating Hand XIV
+Alleviating Hand XV
+Alleviating Hand XVI
+Alleviating Hand XVII
+Alleviating Hand XVIII
+Alleviating Hand XIX
+Alleviating Hand XX
+Alleviating Hand XXI
+Alleviating Hand XXII
+Alleviating Hand XXIII
+Alleviating Light I
+Alleviating Light II
+Alleviating Light III
+Alleviating Light IV
+Alleviating Light V
+Alleviating Light VI
+Alleviating Light VII
+Alleviating Light VIII
+Alleviating Light IX
+Alleviating Light X
+Alleviation V
+Alleviation VI
+Alleviation VII
+Alleviation VIII
+Alleviation IX
+Apothic Healing
+Arcane Jolt
+Arcane Strike I
+Arcane Strike II
+Arcane Strike III
+Arcane Strike IV
+Arcane Strike V
+Arcane Strike VI
+Arcane Strike VII
+Arcane Strike VIII
+Arcane Strike IX
+Arms of Holy Wrath I
+Arms of Holy Wrath II
+Arms of Holy Wrath III
+Arms of Holy Wrath IV
+Arms of Holy Wrath VI
+Arms of Holy Wrath VII
+Arms of Holy Wrath VIII
+Arms of Holy Wrath V
+Arms of Holy Wrath IX
+Arms of Holy Wrath X
+Arms of Holy Wrath XI
+Arms of Holy Wrath XII
+Arms of Holy Wrath XIII
+Arms of Holy Wrath XIV
+Arms of Holy Wrath XV
+Arms of Holy Wrath XVI
+Arms of Holy Wrath XVII
+Arms of Holy Wrath II Recourse
+Arms of Holy Wrath III Recourse
+Arms of Holy Wrath IV Recourse
+Arms of Holy Wrath V Recourse
+Arms of Holy Wrath VI Recourse
+Arms of Holy Wrath VII Recourse
+Arms of Holy Wrath VIII Recourse
+Arms of Holy Wrath IX Recourse
+Arms of Holy Wrath X Recourse
+Arms of Holy Wrath XI Recourse
+Arms of Holy Wrath XII Recourse
+Arms of Holy Wrath XIII Recourse
+
+# Old parsing of banestrike
+Banestrike
+Banestrike I
+Banestrike II
+Banestrike III
+Banestrike IV
+Banestrike V
+Banestrike VI
+Banestrike VII
+Banestrike VIII
+Banestrike IX
+Banestrike X
+Banestrike XI
+Banestrike XII
+Banestrike XIII
+Banestrike XIV
+Banestrike XV
+Banestrike XVI
+Banestrike XVII
+Banestrike XVIII
+Banestrike XIX
+Banestrike XX
+Banestrike XXI
+Banestrike XXII
+Banestrike XXIII
+Banestrike XXIV
+Banestrike XXV
+Banestrike XXVI
+Banestrike XXVII
+Banestrike XXVIII
+Banestrike XXIX
+Banestrike XXX
+Banestrike XXXI
+
+Bite of the Shissar Poison Strike
+Bite of the Shissar Poison Strike I
+Bite of the Shissar Poison Strike II
+Bite of the Shissar Poison Strike III
+Bite of the Shissar Poison Strike IV
+Bite of the Shissar Poison Strike V
+Bite of the Shissar Poison Strike VI
+Bite of the Shissar Poison Strike VII
+Bite of the Shissar Poison Strike VIII
+Bite of the Shissar Poison Strike IX
+Bite of the Shissar Poison Strike X
+Bite of the Shissar Poison Strike XI
+Bite of the Shissar Poison Strike XII
+Bite of the Shissar Poison Strike XIII
+Bite of the Shissar Poison Strike XIV
+Bite of the Shissar Poison Strike XV
+Bite of the Shissar Poison Strike XVI
+Bite of the Shissar Poison Strike XVII
+Bite of the Shissar Poison Strike XVIII
+Bite of the Shissar Poison Strike XIX
+Bite of the Shissar Poison Strike XX
+Blast of Evocations
+Blaze of Fire
+Blaze of Fire I
+Blaze of Fire II
+Blaze of Fire III
+Blaze of Fire IV
+Blaze of Fire V
+Blaze of Fire VI
+Blaze of Fire VII
+Blaze of Fire VIII
+Blazing Strike I
+Blazing Strike II
+Blazing Strike III
+Blazing Strike IV
+Brell's Blessed Aloe Balm
+Brell's Blessed Barrier
+Brell's Blessed Bastion
+Brell's Blessed Bastion Rk. II
+Brell's Blessed Bastion Rk. III
+Brell's Blessed Chromatic Strike
+Brell's Blessed Invigorating Balm
+Brell's Blessed Invigorating Redress
+Brell's Blessed Invigorating Relief
+Brell's Blessed Soothing Balm
+Brell's Blessed Soothing Wave
+Brell's Blessed Stone Balm
+Brell's Revered Invigorating Balm
+Brell's Revered Soothing Balm
+Brell's Sacred Aloe Balm
+Brell's Sacred Chromatic Strike
+Brell's Sacred Invigorating Balm
+Brell's Sacred Invigorating Redress
+Brell's Sacred Invigorating Relief
+Brell's Sacred Soothing Balm
+Brell's Sacred Soothing Wave
+Brell's Sacred Stone Balm
+Burst of Cold I
+Burst of Cold II
+Burst of Cold III
+Burst of Cold IV
+Burst of Cold V
+Burst of Cold VI
+Burst of Cold VII
+Burst of Cold VIII
+Burst of Cold IX
+Burst of Cold X
+Burst of Flames
+Burst of Flames I
+Burst of Flames II
+Burst of Flames III
+Burst of Flames IV
+Burst of Flames V
+Burst of Flames VI
+Burst of Flames VII
+Burst of Flames VIII
+Burst of Flames IX
+Burst of Flames X
+Burst of Ice I
+Burst of Ice II
+Burst of Ice III
+Burst of Ice IV
+Burst of Ice V
+Burst of Ice VI
+Burst of Ice VII
+Burst of Ice VIII
+Burst of Ice IX
+Burst of Ice X
+Burst of Ice XI
+Burst of Ice XII
+Burst of Ice XIII
+Burst of Ice XIV
+Burst of Ice XV
+Calming V
+Calming VI
+Calming VII
+Calming VIII
+Calming IX
+Calming Strike I
+Calming Strike II
+Calming Strike III
+Calming Strike IV
+Calming Strike V
+Calming Strike VI
+Calming Strike VII
+Calming Strike VIII
+Calming Strike IX
+Calming Strike X
+Calming Strike XI
+Calming Strike XII
+Calming Strike XIII
+Calming Strike XIV
+Calming Strike XV
+Chaos V
+Chaos VI
+Chaos VII
+Chaos Strike
+Consoling Strike
+Consoling Strike I
+Consoling Strike II
+Consoling Strike III
+Consoling Strike IV
+Consoling Strike V
+Consoling Strike VI
+Consoling Strike VII
+Consoling Strike VIII
+Contact Poison I
+Contact Poison II
+Contact Poison III
+Contact Poison IV
+Crippling Snare
+Devout Rune
+Devout Rune I
+Devout Rune II
+Devout Rune III
+Devout Rune IV
+Devout Rune V
+Devout Rune VI
+Devout Rune VII
+Devout Rune VIII
+Disease V
+Disease VI
+Disease VII
+Disease VIII
+Disease IX
+Dragonmagic Focus
+Dragonmagic Spell
+Fire I
+Fire II
+Fire III
+Fire IV
+Fire V
+Fire VI
+Fire VII
+Fire VIII
+Fire IX
+Fire X
+Fire XI
+Fire XII
+Fire XIII
+Fire XIV
+Fiery Strike I
+Fiery Strike II
+Fiery Strike III
+Fiery Strike IV
+Fiery Strike V
+Fiery Strike VI
+Fiery Strike VII
+Fiery Strike VIII
+Fiery Strike IX
+Fire Strike
+Flame Strike
+Frigid Strike I
+Frigid Strike II
+Frigid Strike III
+Frigid Strike IV
+Focused Apothic Healing
+Focused Sarnak's Strike
+Force of Corruption I
+Force of Corruption II
+Force of Corruption III
+Force of Corruption IV
+Force of Corruption V
+Force of Corruption VI
+Force of Corruption VII
+Force of Corruption VIII
+Force of Corruption IX
+Force of Corruption X
+Force of Corruption XI
+Force of Corruption XII
+Force of Corruption XIII
+Force of Corruption XIV
+Force of Corruption XV
+Force of Magic I
+Force of Magic II
+Force of Magic III
+Force of Magic IV
+Force of Magic V
+Force of Magic VI
+Force of Magic VII
+Force of Magic VIII
+Force of Magic IX
+Force of Magic X
+Force of Magic XI
+Force of Magic XII
+Force of Magic XIII
+Force of Magic XIV
+Force of Magic XV
+Frightful Force
+Frost I
+Frost II
+Frost III
+Frost IV
+Frost X
+Frost XI
+Frost XII
+Frost XIII
+Frost XIV
+Frost V
+Frost VI
+Frost VII
+Frost VIII
+Frost IX
+Gift of Mana
+Gift of Mana (70)
+Gift of Mana (75)
+Gift of Mana (80)
+Gift of Mana (85)
+Gift of Mana (90)
+Gift of Mana (95)
+Gift of Mana (100)
+Gift of Mana (105)
+Gift of Mana (110)
+Gift of Mana (115)
+Gift of Mana (120)
+Gift of Mana (125)
+Gift of Mana (130)
+Gift of Mana (135)
+Gift of Mana (140)
+Gracious Gift of Mana (100)
+Gracious Gift of Mana (105)
+Gracious Gift of Mana (110)
+Gracious Gift of Mana (115)
+Gracious Gift of Mana (120)
+Gracious Gift of Mana (125)
+Gracious Gift of Mana (130)
+Gracious Gift of Mana (135)
+Gracious Gift of Mana (140)
+Hammer of Magic
+Hammer of Magic I
+Hammer of Magic II
+Hammer of Magic III
+Hammer of Magic IV
+Hammer of Magic V
+Hammer of Magic VI
+Hammer of Magic VII
+Hammer of Magic VIII
+Hand of Holy Wrath I
+Hand of Holy Wrath II
+Hand of Holy Wrath III
+Hand of Holy Wrath IV
+Hand of Holy Wrath V
+Hand of Holy Wrath VI
+Hand of Holy Wrath VII
+Hand of Holy Wrath VIII
+Hand of Holy Wrath IX
+Hand of Holy Wrath X
+Hand of Holy Wrath XI
+Hand of Holy Wrath XII
+Hand of Holy Wrath XIII
+Hand of Holy Wrath XIV
+Hand of Holy Wrath XV
+Hand of Holy Wrath XVI
+Hand of Holy Wrath XVII
+Hand of Remedy IV
+Hand of Remedy V
+Hand of Remedy VI
+Hand of Remedy VII
+Hand of Remedy VIII
+Hand of Remedy IX
+Hand of Soothing V
+Hand of Soothing VI
+Hand of Soothing VII
+Hand of Soothing VIII
+Hand of Soothing IX
+Hand of Soothing X
+Heal
+Heal II
+Heal III
+Healing Burst I
+Healing Burst II
+Healing Burst III
+Healing Burst IV
+Healing Burst V
+Healing Burst VI
+Healing Burst VII
+Healing Burst VIII
+Healing Burst IX
+Healing Burst X
+Healing Burst XI
+Healing Burst XII
+Healing Burst XIII
+Healing Burst XIV
+Healing Burst XV
+# sympathetic not paladin AA
+Healing Light VIII
+Healing Light IX
+Healing Light X
+Hedgewizard's Spell
+Injection of Poison
+Injection of Poison I
+Injection of Poison II
+Injection of Poison III
+Injection of Poison IV
+Injection of Poison V
+Injection of Poison VI
+Injection of Poison VII
+Injection of Poison VIII
+Invigorating Burst I
+Invigorating Burst II
+Invigorating Burst III
+Invigorating Burst IV
+Invigorating Burst V
+Invigorating Burst VI
+Invigorating Burst VII
+Invigorating Burst VIII
+Invigorating Burst IX
+Invigorating Burst X
+Invigorating Burst XI
+Invigorating Burst XII
+Invigorating Burst XIII
+Invigorating Burst XIV
+Invigorating Burst XV
+Invigorating Burst XVI
+Invigorating Burst XVII
+Invigorating Burst XVIII
+Invigorating Burst XIX
+Invigorating Hand XI
+Invigorating Hand XII
+Invigorating Hand XIII
+Invigorating Hand XIV
+Invigorating Hand XV
+Invigorating Hand XVI
+Jann's Light
+Lightning V
+Lightning VI
+Lightning VII
+Lightning VIII
+Lightning IX
+Mana
+Mana II
+Mana III
+Mana IV
+Minion
+Minion II
+Minion III
+Minion IV
+Minion V
+Obulus Soothing
+Obulus Strike
+Overdrive Punch
+Perfusion of Healing
+Perfusion of Healing I
+Perfusion of Healing II
+Perfusion of Healing III
+Perfusion of Healing IV
+Perfusion of Healing V
+Perfusion of Healing VI
+Perfusion of Healing VII
+Perfusion of Healing VIII
+Perfusion of Plague
+Perfusion of Plague I
+Perfusion of Plague II
+Perfusion of Plague III
+Perfusion of Plague IV
+Perfusion of Plague V
+Perfusion of Plague VI
+Perfusion of Plague VII
+Perfusion of Plague VIII
+Pulse of Corruption I
+Pulse of Corruption II
+Pulse of Corruption III
+Pulse of Corruption IV
+Pulse of Corruption V
+Pulse of Corruption VI
+Pulse of Corruption VII
+Pulse of Corruption VIII
+Pulse of Corruption IX
+Pulse of Corruption X
+Pulse of Disease I
+Pulse of Disease II
+Pulse of Disease III
+Pulse of Disease IV
+Pulse of Disease V
+Pulse of Disease VI
+Pulse of Disease VII
+Pulse of Disease VIII
+Pulse of Disease IX
+Pulse of Disease X
+Pulse of Disease XI
+Pulse of Disease XII
+Pulse of Disease XIII
+Pulse of Disease XIV
+Pulse of Disease XV
+Pulse of Fire I
+Pulse of Fire II
+Pulse of Fire III
+Pulse of Fire IV
+Pulse of Fire V
+Pulse of Fire VI
+Pulse of Fire VII
+Pulse of Fire VIII
+Pulse of Fire IX
+Pulse of Fire X
+Pulse of Flames I
+Pulse of Flames II
+Pulse of Flames III
+Pulse of Flames IV
+Pulse of Flames V
+Pulse of Flames VI
+Pulse of Flames VII
+Pulse of Flames VIII
+Pulse of Flames IX
+Pulse of Flames X
+Pulse of Flames XI
+Pulse of Flames XII
+Pulse of Flames XIII
+Pulse of Flames XIV
+Pulse of Flames XV
+Pulse of Magic I
+Pulse of Magic II
+Pulse of Magic III
+Pulse of Magic IV
+Pulse of Magic V
+Pulse of Magic VI
+Pulse of Magic VII
+Pulse of Magic VIII
+Pulse of Magic IX
+Pulse of Magic X
+Pulse of Poison I
+Pulse of Poison II
+Pulse of Poison III
+Pulse of Poison IV
+Pulse of Poison V
+Pulse of Poison VI
+Pulse of Poison VII
+Pulse of Poison VIII
+Pulse of Poison IX
+Pulse of Poison X
+Pulse of Sickness I
+Pulse of Sickness II
+Pulse of Sickness III
+Pulse of Sickness IV
+Pulse of Sickness V
+Pulse of Sickness VI
+Pulse of Sickness VII
+Pulse of Sickness VIII
+Pulse of Sickness IX
+Pulse of Sickness X
+Pulse of Venom I
+Pulse of Venom II
+Pulse of Venom III
+Pulse of Venom IV
+Pulse of Venom V
+Pulse of Venom VI
+Pulse of Venom VII
+Pulse of Venom VIII
+Pulse of Venom IX
+Pulse of Venom X
+Pulse of Venom XI
+Pulse of Venom XII
+Pulse of Venom XIII
+Pulse of Venom XIV
+Pulse of Venom XV
+Pure Magical Energy
+Reassuring Strike
+Reassuring Strike I
+Reassuring Strike II
+Reassuring Strike III
+Reassuring Strike IV
+Reassuring Strike V
+Reassuring Strike VI
+Reassuring Strike VII
+Reassuring Strike VIII
+Remote Healing Blessing
+Remote Healing Blessing I
+Remote Healing Blessing II
+Remote Healing Blessing III
+Remote Healing Blessing IV
+Remote Healing Blessing V
+Remote Healing Blessing VI
+Remote Healing Blessing VII
+Remote Healing Blessing VIII
+Remote Healing Flood
+Remote Healing Flood I
+Remote Healing Flood II
+Remote Healing Flood III
+Remote Healing Flood IV
+Remote Healing Flood V
+Remote Healing Flood VI
+Remote Healing Flood VII
+Remote Healing Flood VIII
+Remote Healing Light I
+Remote Healing Light II
+Remote Healing Light III
+Remote Healing Light IV
+Remote Healing Light V
+Remote Healing Light VI
+Remote Healing Light VII
+Remote Healing Light VIII
+Remote Healing Light IX
+Remote Healing Light X
+Remote Healing Surge I
+Remote Healing Surge II
+Remote Healing Surge III
+Remote Healing Surge IV
+Remote Healing Surge V
+Remote Healing Surge VI
+Remote Healing Surge VII
+Remote Healing Surge VIII
+Remote Healing Surge IX
+Remote Healing Surge X
+Remote Healing Surge XI
+Remote Healing Surge XII
+Remote Healing Surge XIII
+Remote Healing Surge XIV
+Remote Healing Surge XV
+Restless Strike
+Life Sap I
+Life Sap II
+Life Sap III
+Life Sap IV
+Sarnak's Strike
+Scorpion's Agony Poison Strike I
+Scorpion's Agony Poison Strike II
+Scorpion's Agony Poison Strike III
+Scorpion's Agony Poison Strike IV
+Scorpion's Agony Poison Strike V
+Scorpion's Agony Poison Strike VI
+Scorpion's Agony Poison Strike VII
+Scorpion's Agony Poison Strike VIII
+Scorpion's Agony Poison Strike IX
+Scorpion's Agony Poison Strike X
+Scorpion's Agony Poison Strike XI
+Scorpion's Agony Poison Strike XII
+Scorpion's Agony Poison Strike XIII
+Scorpion's Agony Poison Strike XIV
+Scorpion's Agony Poison Strike XV
+Scorpion's Agony Poison Strike XVI
+Scorpion's Agony Poison Strike XVII
+Scorpion's Agony Poison Strike XVIII
+Scorpion's Agony Poison Strike XIX
+Scorpion's Agony Poison Strike XX
+Scorpion's Agony Poison Strike XXI
+Scorpion's Agony Poison Strike XXII
+Servant Strike
+Servant Strike II
+Servant Strike III
+Servant Strike Azia IV
+Servant Strike Azia V
+Servant Strike Azia VI
+Servant Strike Beza IV
+Servant Strike Beza V
+Servant Strike Beza VI
+Servant Strike Caza IV
+Servant Strike Caza V
+Servant Strike Caza VI
+Servant Strike IV Azia
+Servant Strike IV Beza
+Servant Strike IV Caza
+Servant Strike V Azia
+Servant Strike V Beza
+Servant Strike V Caza
+Servant Strike VI Azia
+Servant Strike VI Beza
+Servant Strike VI Caza
+Servant Strike VII Azia
+Servant Strike VII Beza
+Servant Strike VII Caza
+Servant Strike VIII Azia
+Servant Strike VIII Beza
+Servant Strike VIII Caza
+Soothing V
+Soothing VI
+Soothing VII
+Soothing VIII
+Soothing IX
+Soothing Strike
+Soothing Strike I
+Soothing Strike II
+Soothing Strike III
+Soothing Strike IV
+Soothing Strike V
+Soothing Strike VI
+Soothing Strike VII
+Soothing Strike VIII
+Soothing Strike IX
+Soothing Strike X
+Soothing Strike XI
+Soothing Strike XII
+Soothing Wave
+Spectral Strike
+Spider's Bite Poison Strike I
+Spider's Bite Poison Strike II
+Spider's Bite Poison Strike III
+Spider's Bite Poison Strike IV
+Spider's Bite Poison Strike V
+Spider's Bite Poison Strike VI
+Spider's Bite Poison Strike VII
+Spider's Bite Poison Strike VIII
+Spider's Bite Poison Strike IX
+Spider's Bite Poison Strike X
+Spider's Bite Poison Strike XI
+Spider's Bite Poison Strike XII
+Spider's Bite Poison Strike XIII
+Spider's Bite Poison Strike XIV
+Spider's Bite Poison Strike XV
+Spider's Bite Poison Strike XVI
+Spider's Bite Poison Strike XVII
+Spider's Bite Poison Strike XVIII
+Spider's Bite Poison Strike XIX
+Spike of Anger
+Spike of Anger I
+Spike of Anger II
+Spike of Anger III
+Spike of Anger IV
+Spike of Anger V
+Spike of Anger VI
+Spike of Anger VII
+Spike of Anger VIII
+Spike of Anger IX
+Spike of Corruption
+Spike of Corruption I
+Spike of Corruption II
+Spike of Corruption III
+Spike of Corruption IV
+Spike of Corruption V
+Spike of Corruption VI
+Spike of Corruption VII
+Spike of Corruption VIII
+Spike of Corruption IX
+Spike of Ice
+Spike of Ice I
+Spike of Ice II
+Spike of Ice III
+Spike of Ice IV
+Spike of Ice V
+Spike of Ice VI
+Spike of Ice VII
+Spike of Ice VIII
+Spike of Ice IX
+Spike of Magic
+Spike of Magic I
+Spike of Magic II
+Spike of Magic III
+Spike of Magic IV
+Spike of Magic V
+Spike of Magic VI
+Spike of Magic VII
+Spike of Magic VIII
+Spike of Magic IX
+Spirit Strike
+Strike of Corruption I
+Strike of Corruption II
+Strike of Corruption III
+Strike of Corruption IV
+Strike of Corruption V
+Strike of Corruption VI
+Strike of Corruption VII
+Strike of Corruption VIII
+Strike of Corruption IX
+Strike of Corruption X
+Strike of Corruption XI
+Strike of Corruption XII
+Strike of Disease I
+Strike of Disease II
+Strike of Disease III
+Strike of Disease IV
+Strike of Disease V
+Strike of Disease VI
+Strike of Disease VII
+Strike of Disease VIII
+Strike of Disease IX
+Strike of Disease X
+Strike of Disease XI
+Strike of Disease XII
+Strike of Disease XIII
+Strike of Disease XIV
+Strike of Disease XV
+Strike of Disease XVI
+Strike of Disease XVII
+Strike of Fire I
+Strike of Fire II
+Strike of Fire III
+Strike of Fire IV
+Strike of Fire V
+Strike of Fire VI
+Strike of Fire VII
+Strike of Fire VIII
+Strike of Fire IX
+Strike of Fire X
+Strike of Fire XI
+Strike of Fire XII
+Strike of Flames I
+Strike of Flames II
+Strike of Flames III
+Strike of Flames IV
+Strike of Flames V
+Strike of Flames VI
+Strike of Flames VII
+Strike of Flames VIII
+Strike of Flames IX
+Strike of Flames X
+Strike of Flames XI
+Strike of Flames XII
+Strike of Flames XIII
+Strike of Flames XIV
+Strike of Flames XV
+Strike of Flames XVI
+Strike of Flames XVII
+Strike of Ice
+Strike of Ice I
+Strike of Ice II
+Strike of Ice III
+Strike of Ice IV
+Strike of Ice V
+Strike of Ice VI
+Strike of Ice VII
+Strike of Ice VIII
+Strike of Ice IX
+Strike of Ice X
+Strike of Ice XI
+Strike of Ice XII
+Strike of Magic
+Strike of Magic I
+Strike of Magic II
+Strike of Magic III
+Strike of Magic IV
+Strike of Magic V
+Strike of Magic VI
+Strike of Magic VII
+Strike of Magic VIII
+Strike of Magic IX
+Strike of Magic X
+Strike of Magic XI
+Strike of Magic XII
+Strike of Poison I
+Strike of Poison II
+Strike of Poison III
+Strike of Poison IV
+Strike of Poison V
+Strike of Poison VI
+Strike of Poison VII
+Strike of Poison VIII
+Strike of Poison IX
+Strike of Poison X
+Strike of Poison XI
+Strike of Poison XII
+Strike of Sickness I
+Strike of Sickness II
+Strike of Sickness III
+Strike of Sickness IV
+Strike of Sickness V
+Strike of Sickness VI
+Strike of Sickness VII
+Strike of Sickness VIII
+Strike of Sickness IX
+Strike of Sickness X
+Strike of Sickness XI
+Strike of Sickness XII
+Strike of Venom I
+Strike of Venom II
+Strike of Venom III
+Strike of Venom IV
+Strike of Venom V
+Strike of Venom VI
+Strike of Venom VII
+Strike of Venom VIII
+Strike of Venom IX
+Strike of Venom X
+Strike of Venom XI
+Strike of Venom XII
+Strike of Venom XIII
+Strike of Venom XIV
+Strike of Venom XV
+Strike of Venom XVI
+Strike of Venom XVII
+Strike of the Shissar Poison Strike I
+Strike of the Shissar Poison Strike II
+Strike of the Shissar Poison Strike III
+Strike of the Shissar Poison Strike IV
+Strike of the Shissar Poison Strike V
+Strike of the Shissar Poison Strike VI
+Strike of the Shissar Poison Strike VII
+Strike of the Shissar Poison Strike VIII
+Strike of the Shissar Poison Strike IX
+Strike of the Shissar Poison Strike X
+Strike of the Shissar Poison Strike XI
+Strike of the Shissar Poison Strike XII
+Strike of the Shissar Poison Strike XIII
+Strike of the Shissar Poison Strike XIV
+Strike of the Shissar Poison Strike XV
+Strike of the Shissar Poison Strike XVI
+Strike of the Shissar Poison Strike XVII
+Strike of the Shissar Poison Strike XVIII
+Strike of the Shissar Poison Strike XVIX
+Surge of Cold I
+Surge of Cold II
+Surge of Cold III
+Surge of Cold IV
+Surge of Cold V
+Surge of Cold VI
+Surge of Cold VII
+Surge of Cold VIII
+Surge of Cold IX
+Surge of Cold X
+Surge of Cold XI
+Surge of Cold XII
+Surge of Corruption I
+Surge of Corruption II
+Surge of Corruption III
+Surge of Corruption IV
+Surge of Corruption V
+Surge of Corruption VI
+Surge of Corruption VII
+Surge of Corruption VIII
+Surge of Corruption IX
+Surge of Corruption X
+Surge of Corruption XI
+Surge of Corruption XII
+Surge of Corruption XIII
+Surge of Corruption XIV
+Surge of Corruption XV
+Surge of Corruption XVI
+Surge of Corruption XVII
+Surge of Ice
+Surge of Ice I
+Surge of Ice II
+Surge of Ice III
+Surge of Ice IV
+Surge of Ice V
+Surge of Ice VI
+Surge of Ice VII
+Surge of Ice VIII
+Surge of Ice IX
+Surge of Ice X
+Surge of Ice XI
+Surge of Ice XII
+Surge of Ice XIII
+Surge of Ice XIV
+Surge of Ice XV
+Surge of Ice XVI
+Surge of Ice XVII
+Surge of Magic I
+Surge of Magic II
+Surge of Magic III
+Surge of Magic IV
+Surge of Magic V
+Surge of Magic VI
+Surge of Magic VII
+Surge of Magic VIII
+Surge of Magic IX
+Surge of Magic X
+Surge of Magic XI
+Surge of Magic XII
+Surge of Magic XIII
+Surge of Magic XIV
+Surge of Magic XV
+Surge of Magic XVI
+Surge of Magic XVII
+Temporal Strike I
+Temporal Strike II
+Temporal Strike III
+Temporal Strike IV
+Toxic Force V
+Toxic Force VI
+Toxic Force VII
+Toxic Force VIII
+Toxic Force IX
+Toxic Force X
+Toxic Force XI
+Toxic Force XII
+Toxin V
+Toxin VI
+Toxin VII
+Toxin VIII
+Toxin IX
+Toxin X
+Vampiric Consumption
+Vampiric Consumption I
+Vampiric Consumption II
+Vampiric Consumption III
+Vampiric Consumption IV
+Vampiric Consumption V
+Vampiric Consumption VI
+Vampiric Consumption VII
+Vampiric Consumption VIII
+Vampiric Consumption IX
+Vampiric Draw
+Vampiric Draw I
+Vampiric Draw II
+Vampiric Draw III
+Vampiric Draw IV
+Vampiric Draw V
+Vampiric Draw VI
+Vampiric Draw VII
+Vampiric Draw VIII
+Vampiric Draw VIX
+Vampiric Strike I
+Vampiric Strike II
+Vampiric Strike III
+Vampiric Strike IV
+Vampiric Strike V
+Vampiric Strike VI
+Vampiric Strike VII
+Vampiric Strike VIII
+Vampiric Strike IX
+Vampiric Strike X
+Vampiric Strike XI
+Vampiric Strike XII
+Vampiric Strike XIII
+Vampiric Strike XIV
+Vampiric Strike XV
+Vampiric Strike XVI
+Vampiric Strike XVII
+Vampiric Touch I
+Vampiric Touch II
+Vampiric Touch III
+Vampiric Touch IV
+Vampiric Touch V
+Vampiric Touch VI
+Vampiric Touch VII
+Vampiric Touch VIII
+Vampiric Touch IX
+Vampiric Touch X
+Vampiric Touch XI
+Vampiric Touch XII
+Vector of Health
+Vector of Health I
+Vector of Health II
+Vector of Health III
+Vector of Health IV
+Vector of Health V
+Vector of Health VI
+Vector of Health VII
+Vector of Health VIII
+Vector of Health IX
+Vector of Sickness
+Vector of Sickness I
+Vector of Sickness II
+Vector of Sickness III
+Vector of Sickness IV
+Vector of Sickness V
+Vector of Sickness VI
+Vector of Sickness VII
+Vector of Sickness VIII
+Vector of Sickness IX
+Wave of Anger
+Wave of Anger I
+Wave of Anger II
+Wave of Anger III
+Wave of Anger IV
+Wave of Anger V
+Wave of Anger VI
+Wave of Anger VII
+Wave of Anger VIII
+Wave of Anger IX
+Wave of Corruption
+Wave of Corruption I
+Wave of Corruption II
+Wave of Corruption III
+Wave of Corruption IV
+Wave of Corruption V
+Wave of Corruption VI
+Wave of Corruption VII
+Wave of Corruption VIII
+Wave of Corruption IX
+Wave of Poison
+Wave of Poison I
+Wave of Poison II
+Wave of Poison III
+Wave of Poison IV
+Wave of Poison V
+Wave of Poison VI
+Wave of Poison VII
+Wave of Poison VIII
+Wave of Poison VIX

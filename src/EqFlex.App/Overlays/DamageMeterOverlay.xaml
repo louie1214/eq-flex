@@ -1,0 +1,211 @@
+<Window x:Class="EqFlex.App.Overlays.DamageMeterOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        Topmost="True"
+        ShowInTaskbar="False"
+        Width="280" Height="260"
+        MinWidth="200" MinHeight="80"
+        ResizeMode="CanResize"
+        PreviewMouseDown="Window_PreviewMouseDown">
+
+    <Border Background="#D91A1A2E"
+            CornerRadius="6"
+            BorderBrush="#40FFFFFF"
+            BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>  <!-- header -->
+                <RowDefinition Height="Auto"/>  <!-- divider -->
+                <RowDefinition Height="*"/>     <!-- player list -->
+                <RowDefinition Height="14"/>    <!-- resize grip row -->
+            </Grid.RowDefinitions>
+
+            <!-- Header: drag area, timer | fight label | mode toggle + lock + close -->
+            <Grid Grid.Row="0" x:Name="DragArea" Height="28"
+                  MouseLeftButtonDown="DragArea_MouseLeftButtonDown">
+                <Border Background="#22FFFFFF" CornerRadius="5,5,0,0"/>
+                <Grid Margin="6,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>   <!-- timer -->
+                        <ColumnDefinition Width="*"/>      <!-- fight label -->
+                        <ColumnDefinition Width="Auto"/>   <!-- controls -->
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Fight timer — ticks every second while fight is active -->
+                    <TextBlock Grid.Column="0"
+                               Text="{Binding FightTimer}"
+                               VerticalAlignment="Center"
+                               FontSize="12" FontWeight="Bold"
+                               Foreground="#FF9CDCFE"
+                               Margin="0,0,6,0"
+                               MinWidth="30"/>
+
+                    <!-- NPC name + metric -->
+                    <TextBlock Grid.Column="1"
+                               Text="{Binding FightLabel}"
+                               VerticalAlignment="Center"
+                               FontSize="11" FontWeight="SemiBold"
+                               Foreground="#FFD4D4D4"
+                               TextTrimming="CharacterEllipsis"/>
+
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+
+                        <!-- DPS / Tank / Heal mode toggle -->
+                        <TextBlock Text="DPS" FontSize="10" Cursor="Hand"
+                                   VerticalAlignment="Center" Margin="0,0,4,0"
+                                   MouseLeftButtonDown="DpsMode_MouseLeftButtonDown">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#FF555555"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Mode}" Value="Dps">
+                                            <Setter Property="Foreground" Value="#FF9CDCFE"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="·" FontSize="10" Foreground="#FF444444"
+                                   VerticalAlignment="Center" Margin="0,0,4,0"/>
+                        <TextBlock Text="Tank" FontSize="10" Cursor="Hand"
+                                   VerticalAlignment="Center" Margin="0,0,4,0"
+                                   MouseLeftButtonDown="TankMode_MouseLeftButtonDown">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#FF555555"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Mode}" Value="Tank">
+                                            <Setter Property="Foreground" Value="#FF9CDCFE"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="·" FontSize="10" Foreground="#FF444444"
+                                   VerticalAlignment="Center" Margin="0,0,4,0"/>
+                        <TextBlock Text="Heal" FontSize="10" Cursor="Hand"
+                                   VerticalAlignment="Center" Margin="0,0,10,0"
+                                   MouseLeftButtonDown="HealMode_MouseLeftButtonDown">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="#FF555555"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Mode}" Value="Heal">
+                                            <Setter Property="Foreground" Value="#FF9CDCFE"/>
+                                            <Setter Property="FontWeight" Value="SemiBold"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <!-- Lock / Unlock -->
+                        <TextBlock x:Name="LockBtn" Text="🔒" FontSize="11" Cursor="Hand"
+                                   VerticalAlignment="Center" Margin="0,0,8,0"
+                                   MouseLeftButtonDown="Lock_MouseLeftButtonDown">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Opacity" Value="0.7"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <!-- Close -->
+                        <TextBlock Text="✕" FontSize="11" Cursor="Hand"
+                                   Foreground="#FF888888" VerticalAlignment="Center"
+                                   MouseLeftButtonDown="Close_MouseLeftButtonDown">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="#FFFF5555"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- Divider -->
+            <Border Grid.Row="1" Height="1" Background="#28FFFFFF"/>
+
+            <!-- Player list — scrollable when content exceeds window height -->
+            <ScrollViewer Grid.Row="2"
+                          VerticalScrollBarVisibility="Hidden"
+                          HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl ItemsSource="{Binding Players}" Margin="4,3,4,2">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="21" Margin="0,1">
+                                <Grid.ColumnDefinitions>
+                                    <!-- Bar column: star-width proportional to Percent -->
+                                    <ColumnDefinition Width="{Binding Percent,
+                                        Converter={StaticResource PctToStarConverter}}"/>
+                                    <!-- Remainder column -->
+                                    <ColumnDefinition Width="{Binding Percent,
+                                        Converter={StaticResource PctToStarConverter},
+                                        ConverterParameter=remainder}"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Bar fills column 0 — scales automatically with window width -->
+                                <Border Grid.Column="0"
+                                        Background="#FF007ACC"
+                                        CornerRadius="2"
+                                        Opacity="0.30"/>
+
+                                <!-- Text spans both columns -->
+                                <Grid Grid.ColumnSpan="2" Margin="5,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0"
+                                               Text="{Binding Name}"
+                                               VerticalAlignment="Center"
+                                               FontSize="11" Foreground="#FFD4D4D4"
+                                               TextTrimming="CharacterEllipsis"/>
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal"
+                                                VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding DamageText}"
+                                                   FontSize="11" Foreground="#FFD4D4D4"/>
+                                        <TextBlock Text="  " FontSize="11"/>
+                                        <TextBlock Text="{Binding Dps, StringFormat=N0}"
+                                                   FontSize="11" Foreground="#FF9CDCFE"/>
+                                        <TextBlock Text="  " FontSize="11"/>
+                                        <TextBlock Text="{Binding Percent, StringFormat=F0}"
+                                                   FontSize="10" Foreground="#FF666666"
+                                                   VerticalAlignment="Center"/>
+                                        <TextBlock Text="%" FontSize="10" Foreground="#FF666666"
+                                                   VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <!-- Resize grip — drag to resize the overlay -->
+            <Grid Grid.Row="3" HorizontalAlignment="Right" Width="14" Height="14"
+                  Cursor="SizeNWSE" Margin="0,0,2,2"
+                  MouseLeftButtonDown="ResizeGrip_MouseLeftButtonDown">
+                <Path Data="M 0,12 L 12,0 L 12,12 Z"
+                      Fill="#35FFFFFF" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

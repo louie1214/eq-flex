@@ -1,0 +1,42 @@
+<Window x:Class="EqFlex.App.Overlays.FctOverlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FCT" Width="400" Height="300"
+        MinWidth="160" MinHeight="120"
+        AllowsTransparency="True" WindowStyle="None"
+        Background="Transparent" ShowInTaskbar="False"
+        Topmost="True" ResizeMode="CanResize">
+
+    <Grid>
+        <!-- Dim background when unlocked so the user can see the window boundary -->
+        <Border x:Name="UnlockBg" Background="#50000000" CornerRadius="4"
+                BorderBrush="#40FFFFFF" BorderThickness="1"
+                Visibility="Collapsed"/>
+
+        <!-- Canvas where floating text elements are added in code-behind -->
+        <Canvas x:Name="FctCanvas" ClipToBounds="True" Background="Transparent"/>
+
+        <!-- Drag header — only visible when unlocked -->
+        <Border x:Name="DragHeader" Height="22" VerticalAlignment="Top"
+                Background="#60000000" CornerRadius="4,4,0,0"
+                Cursor="SizeAll" Visibility="Collapsed"
+                MouseLeftButtonDown="DragHeader_MouseLeftButtonDown">
+            <Grid Margin="8,0">
+                <TextBlock Text="FCT Overlay" FontSize="10" FontWeight="SemiBold"
+                           Foreground="#FFD4D4D4" VerticalAlignment="Center"/>
+                <TextBlock x:Name="LockBtn" Text="🔓" FontSize="12" Cursor="Hand"
+                           HorizontalAlignment="Right" VerticalAlignment="Center"
+                           MouseLeftButtonDown="Lock_MouseLeftButtonDown"/>
+            </Grid>
+        </Border>
+
+        <!-- Resize grip — only visible when unlocked -->
+        <Border x:Name="ResizeGrip" Width="14" Height="14"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,2,2" Cursor="SizeNWSE" Visibility="Collapsed"
+                MouseLeftButtonDown="ResizeGrip_MouseLeftButtonDown">
+            <Path Data="M 0,12 L 12,0 L 12,12 Z"
+                  Fill="#40FFFFFF" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        </Border>
+    </Grid>
+</Window>

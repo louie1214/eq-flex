@@ -1,0 +1,139 @@
+<UserControl x:Class="EqFlex.App.Views.LogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BgDarkBrush}">
+    <StackPanel Margin="24">
+        <TextBlock Text="Log Management" FontSize="15" FontWeight="SemiBold"
+                   Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,20"/>
+
+        <!-- Active profile -->
+        <TextBlock Text="Active Profile" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+        <TextBlock Text="{Binding ActiveProfile.Name, FallbackValue='None'}"
+                   FontWeight="SemiBold" Margin="0,2,0,16"/>
+
+        <!-- Log path -->
+        <TextBlock Text="Log File"/>
+        <Grid Margin="0,4,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding LogPath, UpdateSourceTrigger=PropertyChanged}"
+                     IsReadOnly="{Binding IsTailing}"/>
+            <Button Grid.Column="1" Content="Browse…" Command="{Binding BrowseLogCommand}"
+                    IsEnabled="{Binding CanStart}"
+                    Margin="6,0,0,0"/>
+        </Grid>
+
+        <!-- Parse time range -->
+        <TextBlock Text="Parse range" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+        <ComboBox ItemsSource="{Binding TimeRangeOptions}"
+                  SelectedItem="{Binding SelectedTimeRange}"
+                  Width="160" HorizontalAlignment="Left"
+                  Margin="0,4,0,12"
+                  IsEnabled="{Binding CanStart}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Label}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!-- Controls -->
+        <WrapPanel Margin="0,0,0,16">
+            <!-- Parse existing log -->
+            <Button Content="Parse Log" Command="{Binding ParseLogCommand}"
+                    IsEnabled="{Binding CanStart}"
+                    ToolTip="{Binding SelectedTimeRange.Label, StringFormat='Parse log — {0}'}"
+                    Margin="0,0,8,0"/>
+
+            <!-- Live tail only -->
+            <Button Content="▶ Tail Live" Command="{Binding StartTailingCommand}"
+                    IsEnabled="{Binding CanStart}"
+                    ToolTip="Start reading new entries from the end of the log (skips history)"
+                    Margin="0,0,8,0"/>
+
+            <!-- Cancel replay in progress -->
+            <Button Content="✕ Cancel" Command="{Binding CancelReplayCommand}"
+                    IsEnabled="{Binding IsReplaying}"
+                    Visibility="{Binding IsReplaying, Converter={StaticResource BoolToVisConverter}}"
+                    Margin="0,0,8,0"/>
+
+            <!-- Stop tailing -->
+            <Button Content="■ Stop" Command="{Binding StopAllCommand}"
+                    IsEnabled="{Binding IsTailing}"/>
+        </WrapPanel>
+
+        <!-- Replay progress (visible only while parsing) -->
+        <Border Visibility="{Binding IsReplaying, Converter={StaticResource BoolToVisConverter}}"
+                Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1" CornerRadius="4" Padding="12,10" Margin="0,0,0,12">
+            <StackPanel>
+                <DockPanel Margin="0,0,0,6">
+                    <TextBlock DockPanel.Dock="Right"
+                               Text="{Binding ReplayProgressText}"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                    <TextBlock Text="Parsing log…" FontWeight="SemiBold"/>
+                </DockPanel>
+                <ProgressBar Value="{Binding ReplayProgress}" Minimum="0" Maximum="100"
+                             Height="6" Background="{StaticResource BgDarkBrush}"
+                             Foreground="{StaticResource AccentBrush}"
+                             BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Log archiving -->
+        <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1" CornerRadius="4" Padding="12,8" Margin="0,0,0,12">
+            <StackPanel>
+                <CheckBox Content="Archive log when it reaches size limit"
+                          IsChecked="{Binding LogArchiveEnabled}"/>
+                <Grid Margin="0,6,0,0"
+                      Visibility="{Binding LogArchiveEnabled,
+                                   Converter={StaticResource BoolToVisConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="72"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Max size:" VerticalAlignment="Center"
+                               Foreground="{StaticResource TextDimBrush}" Margin="0,0,8,0"/>
+                    <TextBox Grid.Column="1" TextAlignment="Right"
+                             Text="{Binding LogArchiveSizeMb, UpdateSourceTrigger=LostFocus}"/>
+                    <TextBlock Grid.Column="2" Text=" MB" VerticalAlignment="Center"
+                               Foreground="{StaticResource TextDimBrush}"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Status panel -->
+        <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="1" CornerRadius="4" Padding="12,8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Status:"
+                           Foreground="{StaticResource TextDimBrush}"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding StatusText}"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Lines processed:"
+                           Foreground="{StaticResource TextDimBrush}" Margin="0,4,0,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="{Binding LinesProcessed, StringFormat=N0}" Margin="0,4,0,0"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Last event:"
+                           Foreground="{StaticResource TextDimBrush}" Margin="0,4,0,0"/>
+                <TextBlock Grid.Row="2" Grid.Column="1"
+                           Text="{Binding LastEventTime}" Margin="0,4,0,0"/>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

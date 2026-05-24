@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\EqFlex.Core\EqFlex.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiteDB" Version="5.0.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\spells.txt" CopyToOutputDirectory="Always" />
+    <Content Include="Data\npcs.txt" CopyToOutputDirectory="Always" />
+    <Content Include="Data\petnames.txt" CopyToOutputDirectory="Always" />
+    <Content Include="Data\procs.txt" CopyToOutputDirectory="Always" />
+    <Content Include="Data\titles.txt" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

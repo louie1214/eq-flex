@@ -1,0 +1,108 @@
+<UserControl x:Class="EqFlex.App.Views.CharacterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BgDarkBrush}">
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Profile list -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Characters" FontSize="15" FontWeight="SemiBold"
+                       Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,8"/>
+
+            <ListBox Grid.Row="1" ItemsSource="{Binding Profiles}"
+                     SelectedItem="{Binding SelectedProfile}"
+                     Background="{StaticResource BgMidBrush}"
+                     BorderBrush="{StaticResource BorderBrush}"
+                     Foreground="{StaticResource TextPrimaryBrush}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="4,2">
+                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding PlayerName}" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+                <Button Content="Set Active" Command="{Binding ActivateProfileCommand}"
+                        Margin="0,0,6,0" ToolTip="Use this profile for log parsing and triggers"/>
+                <Button Content="New" Command="{Binding NewProfileCommand}" Margin="0,0,6,0"/>
+                <Button Content="Edit" Command="{Binding EditProfileCommand}" Margin="0,0,6,0"/>
+                <Button Content="Delete" Command="{Binding DeleteProfileCommand}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Edit form -->
+        <Border Grid.Column="2" Background="{StaticResource BgMidBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                CornerRadius="4" Padding="20"
+                Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisConverter}}">
+            <StackPanel>
+                <TextBlock Text="Profile Details" FontSize="15" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,16"/>
+
+                <TextBlock Text="Display Name"/>
+                <TextBox Text="{Binding EditName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+
+                <TextBlock Text="EQ Character Name (for You= substitution)"/>
+                <TextBox Text="{Binding EditPlayerName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+
+                <TextBlock Text="Log File Path"/>
+                <Grid Margin="0,4,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Text="{Binding EditLogPath, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Button Grid.Column="1" Content="Browse…" Command="{Binding BrowseLogPathCommand}"
+                            Margin="6,0,0,0"/>
+                </Grid>
+
+                <TextBlock Text="Parsing Options" FontWeight="SemiBold" Margin="0,0,0,8"/>
+                <CheckBox Content="Auto-rename log on startup" IsChecked="{Binding EditAutoRename}"/>
+                <CheckBox Content="Parse Damage" IsChecked="{Binding EditParseDamage}"/>
+                <CheckBox Content="Parse Healing" IsChecked="{Binding EditParseHealing}"/>
+                <CheckBox Content="Parse Casting" IsChecked="{Binding EditParseCasting}"/>
+                <CheckBox Content="Trade Mode" IsChecked="{Binding EditParseTrade}"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <Button Content="Save" Command="{Binding SaveProfileCommand}" Margin="0,0,8,0"/>
+                    <Button Content="Cancel" Command="{Binding CancelEditCommand}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Placeholder when not editing -->
+        <Border Grid.Column="2" Background="{StaticResource BgMidBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                CornerRadius="4"
+                Visibility="{Binding IsEditing, Converter={StaticResource InverseBoolToVisConverter}}">
+            <TextBlock Text="Select a profile or click New to create one."
+                       Foreground="{StaticResource TextDimBrush}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+    </Grid>
+</UserControl>

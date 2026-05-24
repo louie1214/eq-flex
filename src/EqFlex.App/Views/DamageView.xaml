@@ -1,0 +1,185 @@
+<UserControl x:Class="EqFlex.App.Views.DamageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource BgDarkBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" x:Name="LayoutGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="340" MinWidth="200"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="*" MinWidth="400"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Drag handle between fight list and parse panel -->
+            <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Stretch"
+                          Background="{StaticResource BorderBrush}"
+                          ResizeBehavior="PreviousAndNext" Cursor="SizeWE"/>
+
+            <!-- Fight list (left panel) — multi-select enabled -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Background="{StaticResource BgMidBrush}"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                        Padding="8,6">
+                    <TextBlock Text="Fights (Ctrl/Shift to combine)"
+                               Foreground="{StaticResource TextSecondaryBrush}" FontWeight="SemiBold"/>
+                </Border>
+
+                <DataGrid x:Name="FightGrid" Grid.Row="1"
+                          ItemsSource="{Binding Fights}"
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          SelectionChanged="FightGrid_SelectionChanged"
+                          BorderThickness="0,0,1,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Time" Binding="{Binding StartTime}" Width="112"
+                                            ElementStyle="{StaticResource DimCell}"/>
+                        <DataGridTextColumn Header="NPC" Binding="{Binding NpcName}" Width="*"/>
+                        <DataGridTextColumn Header="DPS" Binding="{Binding Dps, StringFormat=N0}" Width="68"/>
+                        <DataGridTextColumn Header="Dur" Binding="{Binding Duration}" Width="52"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!-- Right panel: summary header + tabs -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Selection summary -->
+                <Border Grid.Row="0" Background="{StaticResource BgMidBrush}"
+                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                        Padding="12,6">
+                    <TextBlock Text="{Binding SelectionSummary}"
+                               FontWeight="SemiBold" Foreground="{StaticResource TextSecondaryBrush}"/>
+                </Border>
+
+                <TabControl Grid.Row="1" BorderThickness="0">
+
+                    <!-- Damage / Players tab -->
+                    <TabItem Header="Damage">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Players -->
+                            <DataGrid Grid.Row="0" x:Name="PlayersGrid"
+                                      ItemsSource="{Binding Players}"
+                                      SelectedItem="{Binding SelectedPlayer}"
+                                      BorderThickness="0,0,0,1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Player" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Class" Binding="{Binding Class}" Width="48"/>
+                                    <DataGridTextColumn Header="Damage" Binding="{Binding Damage, StringFormat=N0}" Width="100"/>
+                                    <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="50"/>
+                                    <DataGridTextColumn Header="DPS" Binding="{Binding Dps, StringFormat=N0}" Width="72"
+                                                        HeaderStyle="{StaticResource AccentHeader}"/>
+                                    <DataGridTextColumn Header="SDPS" Binding="{Binding Sdps, StringFormat=N0}" Width="72"
+                                                        HeaderStyle="{StaticResource AccentHeader}"/>
+                                    <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="52"/>
+                                    <DataGridTextColumn Header="Hit%" Binding="{Binding HitRate}" Width="56"/>
+                                    <DataGridTextColumn Header="Parsed" Binding="{Binding ParsedSec}" Width="60"/>
+                                    <DataGridTextColumn Header="Crit%" Binding="{Binding CritPct}" Width="60"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <!-- Abilities for selected player -->
+                            <DataGrid Grid.Row="1" x:Name="AbilitiesGrid"
+                                      ItemsSource="{Binding Abilities}"
+                                      BorderThickness="0">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Ability / Spell" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Damage" Binding="{Binding Damage, StringFormat=N0}" Width="100"/>
+                                    <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="50"/>
+                                    <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="52"/>
+                                    <DataGridTextColumn Header="Max" Binding="{Binding Max, StringFormat=N0}" Width="90"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+
+                    <!-- Tanking tab -->
+                    <TabItem Header="Tanking">
+                        <DataGrid x:Name="TankingGrid" ItemsSource="{Binding Tanking}" BorderThickness="0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Player / Pet" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Dmg Taken" Binding="{Binding Damage, StringFormat=N0}" Width="120"/>
+                                <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="56"/>
+                                <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="64"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+
+                    <!-- Healing tab — healers (top) and spells for selected healer (bottom) -->
+                    <TabItem Header="Healing">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <DataGrid Grid.Row="0" x:Name="HealersGrid"
+                                      ItemsSource="{Binding Healers}"
+                                      SelectedItem="{Binding SelectedHealer}"
+                                      BorderThickness="0,0,0,1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Healer" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Class" Binding="{Binding Class}" Width="56"/>
+                                    <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=N0}" Width="110"/>
+                                    <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="56"/>
+                                    <DataGridTextColumn Header="HPS" Binding="{Binding Hps, StringFormat=N0}" Width="80"
+                                                        HeaderStyle="{StaticResource AccentHeader}"/>
+                                    <DataGridTextColumn Header="SHPS" Binding="{Binding Shps, StringFormat=N0}" Width="80"
+                                                        HeaderStyle="{StaticResource AccentHeader}"/>
+                                    <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="64"/>
+                                    <DataGridTextColumn Header="Crit%" Binding="{Binding CritPct}" Width="64"/>
+                                    <DataGridTextColumn Header="Overheal" Binding="{Binding OverHeal, StringFormat=N0}" Width="110"/>
+                                    <DataGridTextColumn Header="OH%" Binding="{Binding OverHealPct}" Width="64"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <DataGrid Grid.Row="1" x:Name="HealSpellsGrid"
+                                      ItemsSource="{Binding HealSpells}"
+                                      BorderThickness="0">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Spell" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=N0}" Width="110"/>
+                                    <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="56"/>
+                                    <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="64"/>
+                                    <DataGridTextColumn Header="Crits" Binding="{Binding Crits}" Width="64"/>
+                                    <DataGridTextColumn Header="Max" Binding="{Binding Max, StringFormat=N0}" Width="110"/>
+                                    <DataGridTextColumn Header="Overheal" Binding="{Binding OverHeal, StringFormat=N0}" Width="110"/>
+                                    <DataGridTextColumn Header="OH%" Binding="{Binding OverHealPct}" Width="64"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem>
+
+                </TabControl>
+            </Grid>
+        </Grid>
+
+        <!-- Bottom toolbar -->
+        <Border Grid.Row="1" Background="{StaticResource BgMidBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0"
+                Padding="8,6">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Copy Parse" Command="{Binding CopyParseCommand}" Margin="0,0,8,0"/>
+                <Button Content="Clear" Command="{Binding ClearFightsCommand}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+<UserControl x:Class="EqFlex.App.Controls.ColorWheelPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Width="168">
+        <!-- Wheel: transparent background so the Grid is hit-testable -->
+        <Grid Width="168" Height="168" HorizontalAlignment="Left" Cursor="Cross"
+              Background="Transparent"
+              MouseLeftButtonDown="Wheel_MouseDown"
+              MouseMove="Wheel_MouseMove"
+              MouseLeftButtonUp="Wheel_MouseUp">
+            <Image x:Name="WheelImage" Stretch="Fill" IsHitTestVisible="False"/>
+            <Canvas IsHitTestVisible="False">
+                <Ellipse x:Name="SelectionDotShadow" Width="10" Height="10"
+                         Stroke="Black" StrokeThickness="1" Fill="Transparent" Opacity="0.5"/>
+                <Ellipse x:Name="SelectionDot" Width="10" Height="10"
+                         Stroke="White" StrokeThickness="2" Fill="Transparent"/>
+            </Canvas>
+        </Grid>
+
+        <!-- Brightness (Value) slider -->
+        <Grid Margin="0,6,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Brightness" FontSize="11"
+                       VerticalAlignment="Center" Margin="0,0,8,0"
+                       Foreground="#FF888888"/>
+            <Slider Grid.Column="1" x:Name="ValueSlider" Minimum="0" Maximum="1" Value="1"
+                    ValueChanged="Value_ValueChanged"/>
+        </Grid>
+    </StackPanel>
+</UserControl>
