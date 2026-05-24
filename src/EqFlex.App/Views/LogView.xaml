@@ -82,30 +82,6 @@
             </StackPanel>
         </Border>
 
-        <!-- Log archiving -->
-        <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
-                BorderThickness="1" CornerRadius="4" Padding="12,8" Margin="0,0,0,12">
-            <StackPanel>
-                <CheckBox Content="Archive log when it reaches size limit"
-                          IsChecked="{Binding LogArchiveEnabled}"/>
-                <Grid Margin="0,6,0,0"
-                      Visibility="{Binding LogArchiveEnabled,
-                                   Converter={StaticResource BoolToVisConverter}}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="72"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Max size:" VerticalAlignment="Center"
-                               Foreground="{StaticResource TextDimBrush}" Margin="0,0,8,0"/>
-                    <TextBox Grid.Column="1" TextAlignment="Right"
-                             Text="{Binding LogArchiveSizeMb, UpdateSourceTrigger=LostFocus}"/>
-                    <TextBlock Grid.Column="2" Text=" MB" VerticalAlignment="Center"
-                               Foreground="{StaticResource TextDimBrush}"/>
-                </Grid>
-            </StackPanel>
-        </Border>
-
         <!-- Status panel -->
         <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
                 BorderThickness="1" CornerRadius="4" Padding="12,8">

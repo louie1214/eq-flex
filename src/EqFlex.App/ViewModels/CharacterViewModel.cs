@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
@@ -22,7 +23,8 @@ public sealed partial class CharacterViewModel : ObservableObject
     [ObservableProperty] private string _editName = string.Empty;
     [ObservableProperty] private string _editPlayerName = string.Empty;
     [ObservableProperty] private string _editLogPath = string.Empty;
-    [ObservableProperty] private bool _editAutoRename = true;
+    [ObservableProperty] private bool _editLogArchiveEnabled;
+    [ObservableProperty] private int _editLogArchiveSizeMb = 500;
     [ObservableProperty] private bool _editParseDamage = true;
     [ObservableProperty] private bool _editParseHealing = true;
     [ObservableProperty] private bool _editParseCasting = true;
@@ -87,7 +89,8 @@ public sealed partial class CharacterViewModel : ObservableObject
         profile.Name = EditName.Trim();
         profile.PlayerName = EditPlayerName.Trim();
         profile.LogPath = EditLogPath.Trim();
-        profile.AutoRenameLog = EditAutoRename;
+        profile.LogArchiveEnabled = EditLogArchiveEnabled;
+        profile.LogArchiveSizeMb = Math.Max(1, EditLogArchiveSizeMb);
         profile.ParseDamage = EditParseDamage;
         profile.ParseHealing = EditParseHealing;
         profile.ParseCasting = EditParseCasting;
@@ -132,7 +135,8 @@ public sealed partial class CharacterViewModel : ObservableObject
         EditName = p.Name;
         EditPlayerName = p.PlayerName;
         EditLogPath = p.LogPath;
-        EditAutoRename = p.AutoRenameLog;
+        EditLogArchiveEnabled = p.LogArchiveEnabled;
+        EditLogArchiveSizeMb = p.LogArchiveSizeMb > 0 ? p.LogArchiveSizeMb : 500;
         EditParseDamage = p.ParseDamage;
         EditParseHealing = p.ParseHealing;
         EditParseCasting = p.ParseCasting;
@@ -142,7 +146,9 @@ public sealed partial class CharacterViewModel : ObservableObject
     private void ClearEditForm()
     {
         EditName = EditPlayerName = EditLogPath = string.Empty;
-        EditAutoRename = EditParseDamage = EditParseHealing = EditParseCasting = true;
+        EditLogArchiveEnabled = false;
+        EditLogArchiveSizeMb = 500;
+        EditParseDamage = EditParseHealing = EditParseCasting = true;
         EditParseTrade = false;
     }
 }

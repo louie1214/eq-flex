@@ -40,9 +40,6 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
     [ObservableProperty] private double _replayProgress;      // 0–100
     [ObservableProperty] private string _replayProgressText = string.Empty;
     [ObservableProperty] private ParseTimeRangeOption _selectedTimeRange;
-    [ObservableProperty] private bool _logArchiveEnabled;
-    [ObservableProperty] private int _logArchiveSizeMb = 500;
-
     public IReadOnlyList<ParseTimeRangeOption> TimeRangeOptions { get; } =
     [
         new("Last hour",    TimeSpan.FromHours(1)),
@@ -72,9 +69,6 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
     partial void OnIsReplayingChanged(bool value) => NotifyCanStartChanged();
     partial void OnLogPathChanged(string value) => NotifyCanStartChanged();
 
-    partial void OnLogArchiveEnabledChanged(bool value) => SaveArchiveSettings();
-    partial void OnLogArchiveSizeMbChanged(int value) => SaveArchiveSettings();
-
     public LogViewModel(ProfileStore profileStore, FightManager fightManager,
         ISpellDataService spells, SettingsStore settingsStore, TriggerEngine triggerEngine,
         FctOverlayViewModel fctVm)
@@ -87,21 +81,9 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
         _fctVm = fctVm;
         _selectedTimeRange = TimeRangeOptions[^1]; // default: All
 
-        var s = settingsStore.Load();
-        _logArchiveEnabled = s.LogArchiveEnabled;
-        _logArchiveSizeMb = Math.Max(1, s.LogArchiveSizeMb);
-
         var lastProfile = profileStore.GetLastUsed();
         if (lastProfile is not null)
             LoadProfile(lastProfile);
-    }
-
-    private void SaveArchiveSettings()
-    {
-        var s = _settingsStore.Load();
-        s.LogArchiveEnabled = LogArchiveEnabled;
-        s.LogArchiveSizeMb = Math.Max(1, LogArchiveSizeMb);
-        _settingsStore.Save(s);
     }
 
     public void LoadProfile(CharacterProfile profile)
@@ -230,10 +212,6 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
 
         StopAll();
         LinesProcessed = 0;
-
-        var profile = ActiveProfile;
-        if (profile?.AutoRenameLog == true)
-            TryRenameLog(LogPath);
 
         var (damage, healing, cast, registry) = BuildParsers();
         _processor = BuildProcessor(damage, healing, cast, registry);
@@ -443,9 +421,10 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
         tailer.LineRead += line => _processor!.Enqueue(line);
         tailer.Error += ex => Application.Current.Dispatcher.InvokeAsync(() =>
             StatusText = $"Error: {ex.Message}");
-        if (LogArchiveEnabled && LogArchiveSizeMb > 0)
+        var profile = ActiveProfile;
+        if (profile?.LogArchiveEnabled == true && profile.LogArchiveSizeMb > 0)
         {
-            tailer.MaxSizeBytes = (long)LogArchiveSizeMb * 1024 * 1024;
+            tailer.MaxSizeBytes = (long)profile.LogArchiveSizeMb * 1024 * 1024;
             tailer.ArchiveNeeded += OnArchiveNeeded;
         }
         return tailer;

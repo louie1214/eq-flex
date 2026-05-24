@@ -15,10 +15,6 @@ public sealed class AppSettings
     // Keyed layout widths: splitter positions and DataGrid column widths.
     public Dictionary<string, double> LayoutWidths { get; set; } = [];
 
-    // Log archiving
-    public bool LogArchiveEnabled { get; set; }
-    public int LogArchiveSizeMb { get; set; } = 500;
-
     // Overlay
     public double OverlayLeft { get; set; } = -1;
     public double OverlayTop { get; set; } = -1;

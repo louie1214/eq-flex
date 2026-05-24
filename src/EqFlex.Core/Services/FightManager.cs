@@ -264,6 +264,8 @@ public sealed class FightManager : IFightRegistry
         }
     }
 
+    public string? PlayerName => _registry?.PlayerName;
+
     public string? GetPlayerClass(string name) =>
         _registry?.IsMerc(name) == true ? "MERC" : _registry?.GetPlayerClass(name);
 

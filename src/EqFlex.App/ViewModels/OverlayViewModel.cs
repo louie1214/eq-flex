@@ -20,8 +20,7 @@ public sealed partial class OverlayViewModel : ObservableObject
     private readonly DispatcherTimer _autoHideTimer;
     private readonly DispatcherTimer _timerTick;
     private Fight? _lastFight;
-    private long _currentFightId = -1;
-    private DateTime _fightStartWallClock;
+    private Fight? _currentActiveFight;
 
     [ObservableProperty] private bool _isOpen;
     [ObservableProperty] private bool _isLocked = true;
@@ -51,7 +50,12 @@ public sealed partial class OverlayViewModel : ObservableObject
         };
 
         _timerTick = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-        _timerTick.Tick += (_, _) => FightTimer = ElapsedStr();
+        _timerTick.Tick += (_, _) =>
+        {
+            _fm.CheckExpiry((long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalSeconds);
+            if (_currentActiveFight is not null)
+                FightTimer = FormatDuration((long)_currentActiveFight.DurationSeconds);
+        };
 
         var s = settingsStore.Load();
         InitialLeft = s.OverlayLeft;
@@ -68,7 +72,7 @@ public sealed partial class OverlayViewModel : ObservableObject
         fm.SessionStarted += (_, _) =>
         {
             _lastFight = null;
-            _currentFightId = -1;
+            _currentActiveFight = null;
             _timerTick.Stop();
             FightLabel = "No active fight";
             FightTimer = string.Empty;
@@ -130,26 +134,23 @@ public sealed partial class OverlayViewModel : ObservableObject
         {
             target = active.MaxBy(f => f.LastTime)!;
             _lastFight = target;
+            _currentActiveFight = target;
 
-            if (AutoShow && !IsOpen) { _autoHideTimer.Stop(); IsOpen = true; }
-            else _autoHideTimer.Stop();
+            var playerInFight = IsPlayerParticipating(target);
+            if (AutoShow && !IsOpen && playerInFight) { _autoHideTimer.Stop(); IsOpen = true; }
+            else if (playerInFight) _autoHideTimer.Stop();
 
-            // Start (or keep) the live timer for this fight.
-            if (target.Id != _currentFightId)
-            {
-                _currentFightId = target.Id;
-                _fightStartWallClock = DateTime.Now;
-            }
             if (!_timerTick.IsEnabled) _timerTick.Start();
-            FightTimer = ElapsedStr();
+            FightTimer = FormatDuration((long)target.DurationSeconds);
         }
         else
         {
             target = _lastFight;
+            _currentActiveFight = null;
+
             if (AutoShow && IsOpen && !_autoHideTimer.IsEnabled)
                 _autoHideTimer.Start();
 
-            // Fight ended — freeze the timer at the final log-derived duration.
             _timerTick.Stop();
             FightTimer = target is not null
                 ? FormatDuration((long)target.DurationSeconds)
@@ -239,6 +240,13 @@ public sealed partial class OverlayViewModel : ObservableObject
             }));
     }
 
+    private bool IsPlayerParticipating(Fight fight)
+    {
+        var name = _fm.PlayerName;
+        if (name is null) return true;
+        return fight.PlayerStats.ContainsKey(name) || fight.PlayerTankStats.ContainsKey(name);
+    }
+
     /// <summary>Resets the auto-hide countdown when the user interacts with the overlay.</summary>
     public void ResetAutoHideTimer()
     {
@@ -258,12 +266,6 @@ public sealed partial class OverlayViewModel : ObservableObject
         s.OverlayHeight = height;
         s.OverlayLocked = IsLocked;
         _settingsStore.Save(s);
-    }
-
-    private string ElapsedStr()
-    {
-        var secs = (long)(DateTime.Now - _fightStartWallClock).TotalSeconds;
-        return FormatDuration(secs);
     }
 
     private static string FormatDuration(long seconds)
