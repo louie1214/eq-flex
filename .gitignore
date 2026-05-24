@@ -33,7 +33,9 @@ Thumbs.db
 *.db-journal
 *.db-shm
 *.db-wal
+CLAUDE.md
 .claude/
+
 
 # Logs
 *.log
