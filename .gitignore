@@ -3,6 +3,7 @@ bin/
 obj/
 publish/
 releases/
+cloudflare/
 
 # Visual Studio
 .vs/

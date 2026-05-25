@@ -43,8 +43,9 @@ public partial class DamageView : UserControl
 
         RestoreColumns(settings, "fight",      FightGrid);
         RestoreColumns(settings, "players",    PlayersGrid);
-        RestoreColumns(settings, "abilities",  AbilitiesGrid);
-        RestoreColumns(settings, "tanking",    TankingGrid);
+        RestoreColumns(settings, "abilities",     AbilitiesGrid);
+        RestoreColumns(settings, "pet.abilities", PetAbilitiesGrid);
+        RestoreColumns(settings, "tanking",       TankingGrid);
         RestoreColumns(settings, "healers",    HealersGrid);
         RestoreColumns(settings, "healspells", HealSpellsGrid);
     }
@@ -61,8 +62,9 @@ public partial class DamageView : UserControl
 
         SaveColumns(settings, "fight",      FightGrid);
         SaveColumns(settings, "players",    PlayersGrid);
-        SaveColumns(settings, "abilities",  AbilitiesGrid);
-        SaveColumns(settings, "tanking",    TankingGrid);
+        SaveColumns(settings, "abilities",     AbilitiesGrid);
+        SaveColumns(settings, "pet.abilities", PetAbilitiesGrid);
+        SaveColumns(settings, "tanking",       TankingGrid);
         SaveColumns(settings, "healers",    HealersGrid);
         SaveColumns(settings, "healspells", HealSpellsGrid);
 

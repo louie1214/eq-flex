@@ -14,9 +14,33 @@ public partial class TriggersView : UserControl
         InitializeComponent();
         DataContextChanged += (_, _) =>
         {
-            if (DataContext is TriggersViewModel vm)
-                vm.ItemSelectRequested += SelectTreeItem;
+            if (DataContext is not TriggersViewModel vm) return;
+            vm.ItemSelectRequested    += SelectTreeItem;
+            vm.ShareFolderRequested   += OnShareFolder;
+            vm.ImportFromCodeRequested += OnImportFromCode;
         };
+    }
+
+    private void OnShareFolder(ViewModels.TriggerFolderNode folder)
+    {
+        if (DataContext is not TriggersViewModel vm) return;
+        var dlgVm = new ViewModels.ShareTriggerViewModel(folder, vm.ShareService);
+        var dlg   = new ShareTriggerDialog { DataContext = dlgVm, Owner = Window.GetWindow(this) };
+        dlg.ShowDialog();
+    }
+
+    private void OnImportFromCode()
+    {
+        if (DataContext is not TriggersViewModel vm) return;
+        OpenImportDialog(vm, prefilledCode: string.Empty);
+    }
+
+    internal void OpenImportDialog(TriggersViewModel vm, string prefilledCode)
+    {
+        var dlgVm = new ViewModels.ImportShareViewModel(vm.ShareService, prefilledCode);
+        var dlg   = new ImportShareDialog { DataContext = dlgVm, Owner = Window.GetWindow(this) };
+        if (dlg.ShowDialog() == true)
+            vm.NotifyImportComplete();
     }
 
     // ── Tree selection ────────────────────────────────────────────────────────

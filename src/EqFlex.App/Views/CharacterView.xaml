@@ -40,7 +40,9 @@
                     <DataTemplate>
                         <StackPanel Margin="4,2">
                             <TextBlock Text="{Binding Name}" FontWeight="SemiBold"/>
-                            <TextBlock Text="{Binding PlayerName}" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                            <TextBlock Foreground="{StaticResource TextDimBrush}" FontSize="11">
+                                <Run Text="{Binding PlayerName}"/><Run Text=" — "/><Run Text="{Binding Server}"/>
+                            </TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -67,11 +69,8 @@
                 <TextBlock Text="Display Name"/>
                 <TextBox Text="{Binding EditName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
 
-                <TextBlock Text="EQ Character Name (for You= substitution)"/>
-                <TextBox Text="{Binding EditPlayerName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
-
                 <TextBlock Text="Log File Path"/>
-                <Grid Margin="0,4,0,12">
+                <Grid Margin="0,4,0,4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -80,6 +79,15 @@
                     <Button Grid.Column="1" Content="Browse…" Command="{Binding BrowseLogPathCommand}"
                             Margin="6,0,0,0"/>
                 </Grid>
+                <TextBlock Text="Located in your EverQuest folder: eqlog_CharacterName_Server.txt"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,12"
+                           TextWrapping="Wrap"/>
+
+                <TextBlock Text="EQ Character Name"/>
+                <TextBox Text="{Binding EditPlayerName, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+
+                <TextBlock Text="Server"/>
+                <TextBox Text="{Binding EditServer, UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
 
                 <TextBlock Text="Log Archiving" FontWeight="SemiBold" Margin="0,0,0,8"/>
                 <CheckBox Content="Archive log when it reaches size limit"

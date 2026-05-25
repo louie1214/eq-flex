@@ -17,6 +17,7 @@ public sealed partial class TriggerFolderNode : ObservableObject
 
     public TriggerFolder Folder { get; }
     public int FolderId => Folder.Id;
+    public bool IsFolder => true;
 
     [ObservableProperty] private string _folderName;
     [ObservableProperty] private bool _folderEnabled;

@@ -55,6 +55,9 @@ public sealed partial class ShellViewModel : ObservableObject
         settings.LastActiveProfileId = profile.Id;
         _settingsStore.Save(settings);
 
+        if (CurrentPage is CharacterViewModel charVm)
+            charVm.Reload();
+
         var logVm = _services.GetRequiredService<LogViewModel>();
         logVm.LoadProfile(profile);
         if (logVm.StartTailingCommand.CanExecute(null))

@@ -22,6 +22,7 @@ public sealed partial class CharacterViewModel : ObservableObject
     // Edit form fields
     [ObservableProperty] private string _editName = string.Empty;
     [ObservableProperty] private string _editPlayerName = string.Empty;
+    [ObservableProperty] private string _editServer = string.Empty;
     [ObservableProperty] private string _editLogPath = string.Empty;
     [ObservableProperty] private bool _editLogArchiveEnabled;
     [ObservableProperty] private int _editLogArchiveSizeMb = 500;
@@ -49,7 +50,18 @@ public sealed partial class CharacterViewModel : ObservableObject
     partial void OnSelectedProfileChanged(CharacterProfile? value) =>
         ActivateProfileCommand.NotifyCanExecuteChanged();
 
-    private void Reload()
+    partial void OnEditLogPathChanged(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return;
+        var stem = Path.GetFileNameWithoutExtension(value);
+        var parts = stem.Replace("eqlog_", string.Empty, StringComparison.OrdinalIgnoreCase).Split('_');
+        if (string.IsNullOrWhiteSpace(EditPlayerName) && parts.Length > 0 && !string.IsNullOrWhiteSpace(parts[0]))
+            EditPlayerName = parts[0];
+        if (string.IsNullOrWhiteSpace(EditServer) && parts.Length > 1 && !string.IsNullOrWhiteSpace(parts[1]))
+            EditServer = char.ToUpper(parts[1][0]) + parts[1][1..];
+    }
+
+    public void Reload()
     {
         Profiles = new ObservableCollection<CharacterProfile>(_store.GetAll()
             .OrderByDescending(p => p.LastUsed));
@@ -88,6 +100,7 @@ public sealed partial class CharacterViewModel : ObservableObject
         var profile = SelectedProfile ?? new CharacterProfile();
         profile.Name = EditName.Trim();
         profile.PlayerName = EditPlayerName.Trim();
+        profile.Server = EditServer.Trim();
         profile.LogPath = EditLogPath.Trim();
         profile.LogArchiveEnabled = EditLogArchiveEnabled;
         profile.LogArchiveSizeMb = Math.Max(1, EditLogArchiveSizeMb);
@@ -134,6 +147,7 @@ public sealed partial class CharacterViewModel : ObservableObject
     {
         EditName = p.Name;
         EditPlayerName = p.PlayerName;
+        EditServer = p.Server;
         EditLogPath = p.LogPath;
         EditLogArchiveEnabled = p.LogArchiveEnabled;
         EditLogArchiveSizeMb = p.LogArchiveSizeMb > 0 ? p.LogArchiveSizeMb : 500;
@@ -145,7 +159,7 @@ public sealed partial class CharacterViewModel : ObservableObject
 
     private void ClearEditForm()
     {
-        EditName = EditPlayerName = EditLogPath = string.Empty;
+        EditName = EditPlayerName = EditServer = EditLogPath = string.Empty;
         EditLogArchiveEnabled = false;
         EditLogArchiveSizeMb = 500;
         EditParseDamage = EditParseHealing = EditParseCasting = true;

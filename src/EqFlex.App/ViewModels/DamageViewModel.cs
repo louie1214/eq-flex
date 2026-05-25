@@ -24,6 +24,12 @@ public sealed partial class DamageViewModel : ObservableObject
     [ObservableProperty] private ObservableCollection<PlayerDamageRow> _players = [];
     [ObservableProperty] private PlayerDamageRow? _selectedPlayer;
     [ObservableProperty] private ObservableCollection<AbilityRow> _abilities = [];
+    [ObservableProperty] private ObservableCollection<AbilityRow> _petAbilities = [];
+
+    public bool HasPetAbilities => PetAbilities.Count > 0;
+
+    partial void OnPetAbilitiesChanged(ObservableCollection<AbilityRow> value) =>
+        OnPropertyChanged(nameof(HasPetAbilities));
     [ObservableProperty] private ObservableCollection<TankRow> _tanking = [];
     [ObservableProperty] private ObservableCollection<HealerRow> _healers = [];
     [ObservableProperty] private HealerRow? _selectedHealer;
@@ -255,20 +261,29 @@ public sealed partial class DamageViewModel : ObservableObject
 
     private void RefreshAbilities()
     {
-        if (_abilityMap is null || SelectedPlayer is null) { Abilities.Clear(); return; }
-        if (!_abilityMap.TryGetValue(SelectedPlayer.Name, out var agg)) { Abilities.Clear(); return; }
+        if (_abilityMap is null || SelectedPlayer is null) { Abilities.Clear(); PetAbilities.Clear(); return; }
+        if (!_abilityMap.TryGetValue(SelectedPlayer.Name, out var agg)) { Abilities.Clear(); PetAbilities.Clear(); return; }
 
         var total = Math.Max(1L, agg.dmg);
-        Abilities = new ObservableCollection<AbilityRow>(
-            agg.abilities
-                .OrderByDescending(kv => kv.Value.d)
-                .Select(kv => new AbilityRow(
-                    Name: kv.Key,
-                    Damage: kv.Value.d,
-                    Percent: Math.Round(kv.Value.d * 100.0 / total, 1),
-                    Hits: kv.Value.h,
-                    Crits: kv.Value.c,
-                    Max: kv.Value.max)));
+        var player = new List<AbilityRow>();
+        var pet = new List<AbilityRow>();
+
+        foreach (var kv in agg.abilities.OrderByDescending(kv => kv.Value.d))
+        {
+            var isPet = kv.Key.EndsWith(" (Pet)", StringComparison.OrdinalIgnoreCase);
+            var displayName = isPet ? kv.Key[..^6] : kv.Key;
+            var row = new AbilityRow(
+                Name: displayName,
+                Damage: kv.Value.d,
+                Percent: Math.Round(kv.Value.d * 100.0 / total, 1),
+                Hits: kv.Value.h,
+                Crits: kv.Value.c,
+                Max: kv.Value.max);
+            (isPet ? pet : player).Add(row);
+        }
+
+        Abilities = new ObservableCollection<AbilityRow>(player);
+        PetAbilities = new ObservableCollection<AbilityRow>(pet);
     }
 
     private void RefreshHealSpells()
@@ -321,6 +336,7 @@ public sealed partial class DamageViewModel : ObservableObject
         Players.Clear();
         Tanking.Clear();
         Abilities.Clear();
+        PetAbilities.Clear();
         Healers.Clear();
         HealSpells.Clear();
         _abilityMap = null;

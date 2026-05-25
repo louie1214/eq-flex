@@ -57,13 +57,14 @@
                 <!-- Active character — click to go to Characters page -->
                 <Button Command="{Binding ShowCharactersCommand}"
                         Margin="8,0" HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Left" Padding="10,7"
+                        HorizontalContentAlignment="Center" Padding="10,7"
                         ToolTip="Click to manage characters">
-                    <StackPanel>
+                    <StackPanel HorizontalAlignment="Center">
                         <TextBlock Text="CHARACTER" FontSize="9" FontWeight="SemiBold"
                                    Foreground="{StaticResource TextDimBrush}"
-                                   Margin="0,0,0,2"/>
-                        <TextBlock TextTrimming="CharacterEllipsis" FontWeight="SemiBold">
+                                   HorizontalAlignment="Center" Margin="0,0,0,2"/>
+                        <TextBlock TextTrimming="CharacterEllipsis" FontWeight="SemiBold"
+                                   TextAlignment="Center">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="Text" Value="{Binding ActiveProfile.Name}"/>
@@ -73,6 +74,24 @@
                                             <Setter Property="Text" Value="No character selected"/>
                                             <Setter Property="Foreground" Value="{StaticResource TextDimBrush}"/>
                                             <Setter Property="FontWeight" Value="Normal"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="{Binding ActiveProfile.Server}"
+                                   FontSize="11" TextTrimming="CharacterEllipsis"
+                                   TextAlignment="Center" HorizontalAlignment="Center"
+                                   Foreground="{StaticResource TextDimBrush}"
+                                   Margin="0,1,0,0">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ActiveProfile.Server}" Value="">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ActiveProfile}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

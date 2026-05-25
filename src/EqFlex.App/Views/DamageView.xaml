@@ -96,18 +96,48 @@
                                 </DataGrid.Columns>
                             </DataGrid>
 
-                            <!-- Abilities for selected player -->
-                            <DataGrid Grid.Row="1" x:Name="AbilitiesGrid"
-                                      ItemsSource="{Binding Abilities}"
-                                      BorderThickness="0">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Ability / Spell" Binding="{Binding Name}" Width="*"/>
-                                    <DataGridTextColumn Header="Damage" Binding="{Binding Damage, StringFormat=N0}" Width="100"/>
-                                    <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="50"/>
-                                    <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="52"/>
-                                    <DataGridTextColumn Header="Max" Binding="{Binding Max, StringFormat=N0}" Width="90"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                            <!-- Abilities for selected player (bottom half) -->
+                            <DockPanel Grid.Row="1">
+
+                                <!-- Pet section — docked to bottom, hidden when player has no pet -->
+                                <Border DockPanel.Dock="Bottom"
+                                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0"
+                                        Visibility="{Binding HasPetAbilities, Converter={StaticResource BoolToVisConverter}}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="160"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="PET" FontSize="9" FontWeight="SemiBold"
+                                                   Foreground="{StaticResource TextDimBrush}" Margin="6,4,0,2"/>
+                                        <DataGrid Grid.Row="1" x:Name="PetAbilitiesGrid"
+                                                  ItemsSource="{Binding PetAbilities}"
+                                                  BorderThickness="0">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Ability / Spell" Binding="{Binding Name}" Width="*"/>
+                                                <DataGridTextColumn Header="Damage" Binding="{Binding Damage, StringFormat=N0}" Width="100"/>
+                                                <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="50"/>
+                                                <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="52"/>
+                                                <DataGridTextColumn Header="Max" Binding="{Binding Max, StringFormat=N0}" Width="90"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Player abilities — fills remaining space -->
+                                <DataGrid x:Name="AbilitiesGrid"
+                                          ItemsSource="{Binding Abilities}"
+                                          BorderThickness="0">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Ability / Spell" Binding="{Binding Name}" Width="*"/>
+                                        <DataGridTextColumn Header="Damage" Binding="{Binding Damage, StringFormat=N0}" Width="100"/>
+                                        <DataGridTextColumn Header="%" Binding="{Binding Percent, StringFormat=F1}" Width="50"/>
+                                        <DataGridTextColumn Header="Hits" Binding="{Binding Hits}" Width="52"/>
+                                        <DataGridTextColumn Header="Max" Binding="{Binding Max, StringFormat=N0}" Width="90"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                            </DockPanel>
                         </Grid>
                     </TabItem>
 

@@ -6,6 +6,7 @@ public sealed class AppSettings
 {
     public int Id { get; set; } = 1;
     public int? LastActiveProfileId { get; set; }
+    public bool SetupComplete { get; set; }
     public double MainWindowLeft { get; set; }
     public double MainWindowTop { get; set; }
     public double MainWindowWidth { get; set; } = 900;

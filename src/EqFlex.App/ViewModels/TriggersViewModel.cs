@@ -19,6 +19,8 @@ public sealed partial class TriggersViewModel : ObservableObject
     private readonly TriggerStore _store;
     private readonly TriggerEngine _engine;
     private readonly Services.OverlayManager _overlayManager;
+    private readonly Services.TriggerShareService _shareService;
+    public Services.TriggerShareService ShareService => _shareService;
 
     // ── Tree state ────────────────────────────────────────────────────────────
 
@@ -28,6 +30,7 @@ public sealed partial class TriggersViewModel : ObservableObject
     private TriggerNode?       _selectedTriggerNode;
 
     [ObservableProperty] private bool _hasTreeSelection;
+    [ObservableProperty] private bool _hasFolderSelection;
     [ObservableProperty] private bool _isSelectMode;
     [ObservableProperty] private bool _isLoading;
 
@@ -59,11 +62,13 @@ public sealed partial class TriggersViewModel : ObservableObject
     public sealed record OverlayOption(int Id, string Name);
     public IReadOnlyList<OverlayOption> AvailableOverlays { get; private set; } = [];
 
-    public TriggersViewModel(TriggerStore store, TriggerEngine engine, Services.OverlayManager overlayManager)
+    public TriggersViewModel(TriggerStore store, TriggerEngine engine,
+        Services.OverlayManager overlayManager, Services.TriggerShareService shareService)
     {
         _store = store;
         _engine = engine;
         _overlayManager = overlayManager;
+        _shareService = shareService;
         Reload();
     }
 
@@ -161,6 +166,7 @@ public sealed partial class TriggersViewModel : ObservableObject
             _selectedTriggerNode = null;
             SelectedTrigger      = null;
             HasTreeSelection     = true;
+            HasFolderSelection   = true;
         }
         else if (item is TriggerNode triggerNode)
         {
@@ -168,6 +174,7 @@ public sealed partial class TriggersViewModel : ObservableObject
             _selectedTriggerNode = triggerNode;
             SelectedTrigger      = triggerNode.Trigger;
             HasTreeSelection     = true;
+            HasFolderSelection   = false;
         }
         else
         {
@@ -175,9 +182,11 @@ public sealed partial class TriggersViewModel : ObservableObject
             _selectedTriggerNode = null;
             SelectedTrigger      = null;
             HasTreeSelection     = false;
+            HasFolderSelection   = false;
         }
         AddTriggerCommand.NotifyCanExecuteChanged();
         DeleteSelectedCommand.NotifyCanExecuteChanged();
+        ShareFolderCommand.NotifyCanExecuteChanged();
     }
 
     partial void OnSelectedTriggerChanged(Trigger? value)
@@ -356,7 +365,7 @@ public sealed partial class TriggersViewModel : ObservableObject
         AudioPath     = a.AudioPath,  SpeakInterrupt = a.SpeakInterrupt, OverlayId = a.OverlayId
     };
 
-    // ── Import ────────────────────────────────────────────────────────────────
+    // ── Import / Share ────────────────────────────────────────────────────────
 
     public NagImporter.ImportResult ImportFromNag(string jsonPath)
     {
@@ -364,6 +373,20 @@ public sealed partial class TriggersViewModel : ObservableObject
         if (result.Error is null) Reload();
         return result;
     }
+
+    [RelayCommand(CanExecute = nameof(HasFolderSelection))]
+    private void ShareFolder() => ShareFolderRequested?.Invoke(_selectedFolderNode!);
+
+    [RelayCommand]
+    private void ImportFromCode() => ImportFromCodeRequested?.Invoke();
+
+    /// <summary>Raised when the user invokes Share on a folder — view opens the share dialog.</summary>
+    public event Action<TriggerFolderNode>? ShareFolderRequested;
+
+    /// <summary>Raised when the user clicks Import Code — view opens the import dialog.</summary>
+    public event Action? ImportFromCodeRequested;
+
+    public void NotifyImportComplete() => Reload();
 
     // ── Commands ──────────────────────────────────────────────────────────────
 

@@ -401,11 +401,14 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
         catch { return fallback; }
     }
 
+    /// <summary>Raised when a {FLEX:share/CODE} is detected in a live log line.</summary>
+    public event Action<string>? ShareCodeDetected;
+
     private LogProcessor BuildProcessor(DamageParser damage, HealingParser healing, CastParser cast,
         PlayerRegistry registry, bool includeTriggers = true)
     {
         var profile = ActiveProfile;
-        return new LogProcessor(
+        var processor = new LogProcessor(
             profile?.ParseDamage != false ? damage : null,
             profile?.ParseHealing != false ? healing : null,
             profile?.ParseCasting != false ? cast : null,
@@ -413,6 +416,11 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
             _spells,
             onPetCharmed: petName => _fightManager.RemoveFight(petName),
             triggerEngine: includeTriggers ? _triggerEngine : null);
+
+        if (includeTriggers)
+            processor.ShareCodeDetected += code => ShareCodeDetected?.Invoke(code);
+
+        return processor;
     }
 
     private LogTailer BuildTailer()

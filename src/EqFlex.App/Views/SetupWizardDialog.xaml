@@ -1,0 +1,146 @@
+<Window x:Class="EqFlex.App.Views.SetupWizardDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EQ Flex — Setup" Width="500" Height="510"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource BgDarkBrush}"
+        Foreground="{StaticResource TextPrimaryBrush}"
+        FontFamily="Segoe UI" FontSize="13">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- ── Step 0: Welcome ── -->
+        <StackPanel Grid.Row="0" Margin="40,36,40,0"
+                    Visibility="{Binding IsWelcomeStep, Converter={StaticResource BoolToVisConverter}}">
+            <TextBlock Text="EQ Flex" FontSize="32" FontWeight="Bold"
+                       Foreground="{StaticResource AccentBrush}"
+                       HorizontalAlignment="Center" Margin="0,0,0,8"/>
+            <TextBlock Text="A live damage meter and overlay for EverQuest."
+                       FontSize="14" HorizontalAlignment="Center"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       Margin="0,0,0,32"/>
+
+            <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" LineHeight="22">
+                EQ Flex parses your EverQuest log file in real time and gives you a live
+                damage meter, a transparent always-on-top overlay, floating combat text,
+                and a trigger system for alerts and timers.
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}"
+                       LineHeight="22" Margin="0,12,0,0">
+                This wizard will walk you through adding your first character and
+                selecting your log file. It only takes a moment.
+            </TextBlock>
+        </StackPanel>
+
+        <!-- ── Step 1: Character setup ── -->
+        <StackPanel Grid.Row="0" Margin="40,36,40,0"
+                    Visibility="{Binding IsCharacterStep, Converter={StaticResource BoolToVisConverter}}">
+            <TextBlock Text="Set up your character" FontSize="18" FontWeight="SemiBold"
+                       Foreground="{StaticResource AccentBrush}" Margin="0,0,0,24"/>
+
+            <TextBlock Text="Profile Name" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            <TextBox Text="{Binding ProfileName, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,4,0,16"/>
+
+            <TextBlock Text="Log File" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            <Grid Margin="0,4,0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding LogPath, UpdateSourceTrigger=PropertyChanged}"
+                         IsReadOnly="True"/>
+                <Button Grid.Column="1" Content="Browse…" Command="{Binding BrowseLogCommand}"
+                        Margin="6,0,0,0"/>
+            </Grid>
+            <TextBlock Text="Located in your EverQuest folder: eqlog_CharacterName_Server.txt"
+                       Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,16"
+                       TextWrapping="Wrap"/>
+
+            <TextBlock Text="EQ Character Name" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            <TextBox Text="{Binding PlayerName, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,4,0,16"/>
+
+            <TextBlock Text="Server" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+            <TextBox Text="{Binding Server, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <!-- ── Step 2: Done ── -->
+        <StackPanel Grid.Row="0" Margin="40,36,40,0"
+                    Visibility="{Binding IsDoneStep, Converter={StaticResource BoolToVisConverter}}">
+            <TextBlock Text="You're all set!" FontSize="22" FontWeight="SemiBold"
+                       Foreground="{StaticResource AccentBrush}" Margin="0,0,0,8"/>
+            <TextBlock Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,24">
+                <Run Text="{Binding ProfileName}"/> has been added. Here's what to explore:
+            </TextBlock>
+
+            <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="4" Padding="16,12" Margin="0,0,0,8">
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Margin="0,0,0,2">Damage Meter</TextBlock>
+                    <TextBlock Foreground="{StaticResource TextDimBrush}" TextWrapping="Wrap">
+                        Click Parse Log on the Log page to see your fight history, DPS, and healing.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="4" Padding="16,12" Margin="0,0,0,8">
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Margin="0,0,0,2">Overlay</TextBlock>
+                    <TextBlock Foreground="{StaticResource TextDimBrush}" TextWrapping="Wrap">
+                        A transparent DPS meter you can position over the game window.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <Border Background="{StaticResource BgMidBrush}" BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="1" CornerRadius="4" Padding="16,12">
+                <StackPanel>
+                    <TextBlock FontWeight="SemiBold" Margin="0,0,0,2">Triggers &amp; FCT</TextBlock>
+                    <TextBlock Foreground="{StaticResource TextDimBrush}" TextWrapping="Wrap">
+                        Set up alerts, timers, and floating combat numbers from the Triggers and Overlays pages.
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- ── Navigation bar ── -->
+        <Border Grid.Row="1" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0"
+                Padding="20,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Skip (welcome + character steps only) -->
+                <Button Grid.Column="0" Content="Skip setup" x:Name="SkipBtn"
+                        HorizontalAlignment="Left" Click="Skip_Click"
+                        Visibility="{Binding IsDoneStep, Converter={StaticResource InverseBoolToVisConverter}}"/>
+
+                <!-- Step buttons -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <!-- Welcome step -->
+                    <Button Content="Get Started" Width="110" Click="GetStarted_Click"
+                            Visibility="{Binding IsWelcomeStep, Converter={StaticResource BoolToVisConverter}}"/>
+
+                    <!-- Character step -->
+                    <Button Content="Back" Width="70" Command="{Binding BackCommand}" Margin="0,0,8,0"
+                            Visibility="{Binding IsCharacterStep, Converter={StaticResource BoolToVisConverter}}"/>
+                    <Button Content="Next" Width="70" Command="{Binding NextCommand}"
+                            Visibility="{Binding IsCharacterStep, Converter={StaticResource BoolToVisConverter}}"/>
+
+                    <!-- Done step -->
+                    <Button Content="Let's Go!" Width="100" Click="Finish_Click"
+                            Visibility="{Binding IsDoneStep, Converter={StaticResource BoolToVisConverter}}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

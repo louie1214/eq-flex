@@ -13,6 +13,49 @@
             <models:TriggerActionType>Timer</models:TriggerActionType>
             <models:TriggerActionType>ShowFct</models:TriggerActionType>
         </x:Array>
+
+        <!--
+            Custom TreeViewItem template for folder nodes.
+            Identical to the WPF default except the expander ToggleButton is always visible —
+            the default hides it via a HasItems=false trigger, which obscures empty folders.
+        -->
+        <ControlTemplate x:Key="FolderTreeViewItemTemplate" TargetType="TreeViewItem">
+            <StackPanel>
+                <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ToggleButton x:Name="Expander" Grid.Column="0" Focusable="False" ClickMode="Press"
+                                      IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <TextBlock x:Name="Arrow" Text="▶" FontSize="7"
+                                               Foreground="{StaticResource TextDimBrush}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="Arrow" Property="Text" Value="▼"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        <ContentPresenter x:Name="PART_Header" Grid.Column="1"
+                                          ContentSource="Header" VerticalAlignment="Center"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                    </Grid>
+                </Border>
+                <ItemsPresenter x:Name="ItemsHost" Margin="16,0,0,0" Visibility="Collapsed"/>
+            </StackPanel>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsExpanded" Value="True">
+                    <Setter TargetName="ItemsHost" Property="Visibility" Value="Visible"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -50,10 +93,18 @@
                     <Button Content="Delete" Command="{Binding DeleteSelectedCommand}"
                             Padding="6,3" FontSize="11" Margin="0,0,4,0"
                             Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"/>
-                    <Button Content="Import NAG…" Padding="6,3" FontSize="11" Margin="0,0,8,0"
+                    <Button Content="Import NAG…" Padding="6,3" FontSize="11" Margin="0,0,4,0"
                             Click="ImportNag_Click"
                             Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"
                             ToolTip="Import triggers from a NAG trigger-database.json file"/>
+                    <Button Content="Share…" Command="{Binding ShareFolderCommand}"
+                            Padding="6,3" FontSize="11" Margin="0,0,4,0"
+                            Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"
+                            ToolTip="Share the selected folder with a short share code"/>
+                    <Button Content="Import Code…" Command="{Binding ImportFromCodeCommand}"
+                            Padding="6,3" FontSize="11" Margin="0,0,8,0"
+                            Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"
+                            ToolTip="Import a shared trigger folder by share code"/>
                     <!-- Select-mode toggle (always visible) -->
                     <Button Content="☑ Select" Click="ToggleSelectMode_Click"
                             Padding="6,3" FontSize="11" Margin="0,0,4,0">
@@ -99,6 +150,8 @@
                         <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
                         <Setter Property="Padding" Value="3,3"/>
                         <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="Template" Value="{StaticResource FolderTreeViewItemTemplate}"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
@@ -117,6 +170,7 @@
                                 <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
                                 <Setter Property="Padding" Value="3,2"/>
                                 <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
@@ -131,6 +185,10 @@
                                         </MultiTrigger.Conditions>
                                         <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
                                     </MultiTrigger>
+                                    <!-- Sub-folders get the always-visible expander; trigger nodes use the default -->
+                                    <DataTrigger Binding="{Binding IsFolder, FallbackValue=False}" Value="True">
+                                        <Setter Property="Template" Value="{StaticResource FolderTreeViewItemTemplate}"/>
+                                    </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </HierarchicalDataTemplate.ItemContainerStyle>
