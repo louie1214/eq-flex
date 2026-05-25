@@ -26,7 +26,8 @@ Zero-auth trigger sharing backend. Users POST a trigger package JSON, get back a
    The output shows your worker URL, e.g. `https://eq-flex-share.YOUR_ACCOUNT.workers.dev`.
 
 5. **Update `TriggerShareService.WorkerBaseUrl`**
-   In `src/EqFlex.App/Services/TriggerShareService.cs`, replace the placeholder with your worker URL.
+   In `src/EqFlex.App/Services/TriggerShareService.cs`, set the URL to your worker endpoint.
+   Current: `https://eq-flex-share.eqflex.workers.dev`
 
 ## Endpoints
 

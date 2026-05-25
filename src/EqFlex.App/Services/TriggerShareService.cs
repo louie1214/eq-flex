@@ -18,8 +18,7 @@ namespace EqFlex.App.Services;
 /// </summary>
 public sealed class TriggerShareService
 {
-    // Deploy cloudflare/worker.js and replace this URL with your worker's endpoint.
-    internal const string WorkerBaseUrl = "https://eq-flex-share.ACCOUNT.workers.dev";
+    internal const string WorkerBaseUrl = "https://eq-flex-share.eqflex.workers.dev";
 
     private static readonly JsonSerializerOptions JsonOpts = new()
     {
