@@ -59,6 +59,14 @@ All user data is stored in a single file:
 
 This LiteDB database holds character profiles, app settings, overlay positions, and all triggers. To back up or transfer your configuration, copy that file. To reset to defaults, delete it.
 
+Errors and crashes are logged to:
+
+```
+%APPDATA%\EqFlex\logs\eqflex-YYYYMMDD.log
+```
+
+Logs roll daily and the last 7 days are retained. If you encounter a bug, including the relevant log file in your report helps significantly.
+
 ## Requirements
 
 - Windows 10/11 (64-bit)
