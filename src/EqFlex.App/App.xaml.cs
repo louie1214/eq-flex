@@ -1,5 +1,6 @@
 using System.IO;
 using System.Windows;
+using Serilog;
 using System.Windows.Media;
 using EqFlex.App.Overlays;
 using EqFlex.App.Services;
@@ -20,6 +21,24 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+
+        // Catch unhandled exceptions from all three surfaces and write them to the log.
+        DispatcherUnhandledException += (_, ex) =>
+        {
+            Log.Error(ex.Exception, "Unhandled UI thread exception");
+            ex.Handled = true;
+            ShowCrashMessage(ex.Exception);
+        };
+        AppDomain.CurrentDomain.UnhandledException += (_, ex) =>
+        {
+            if (ex.ExceptionObject is Exception e2)
+                Log.Fatal(e2, "Unhandled background thread exception (terminating={T})", ex.IsTerminating);
+        };
+        TaskScheduler.UnobservedTaskException += (_, ex) =>
+        {
+            Log.Error(ex.Exception, "Unobserved task exception");
+            ex.SetObserved();
+        };
 
         var dbPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
@@ -164,7 +183,18 @@ public partial class App : Application
     {
         IsShuttingDown = true;
         (Services as IDisposable)?.Dispose();
+        Log.CloseAndFlush();
         base.OnExit(e);
+    }
+
+    private static void ShowCrashMessage(Exception ex)
+    {
+        var logDir = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "EqFlex", "logs");
+        MessageBox.Show(
+            $"An unexpected error occurred:\n\n{ex.Message}\n\nDetails have been written to:\n{logDir}",
+            "EQ Flex — Error", MessageBoxButton.OK, MessageBoxImage.Error);
     }
 
     /// <summary>Returns true if the point lands on any connected monitor (so the window will be visible).</summary>

@@ -15,5 +15,16 @@
 
         <Button Content="Save Settings" Command="{Binding SaveCommand}"
                 HorizontalAlignment="Left" Margin="0,20,0,0"/>
+
+        <Separator Background="{StaticResource BorderBrush}" Margin="0,20,0,16"/>
+
+        <TextBlock Text="Diagnostics" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <Button Content="Open Log Folder" Command="{Binding OpenLogsCommand}"
+                HorizontalAlignment="Left"
+                ToolTip="%APPDATA%\EqFlex\logs"
+                Margin="0,0,0,8"/>
+        <Button Content="Clear All User Data…" Command="{Binding ClearUserDataCommand}"
+                HorizontalAlignment="Left"
+                ToolTip="Deletes all profiles, triggers, overlays, and settings, then restarts the app"/>
     </StackPanel>
 </UserControl>
