@@ -1,0 +1,11 @@
+name              = "eq-flex-share"
+main              = "worker.js"
+compatibility_date = "2024-09-23"
+
+# After running `wrangler kv namespace create FLEX_SHARE`, paste the returned id below.
+kv_namespaces = [
+  { binding = "FLEX_SHARE", id = "REPLACE_WITH_KV_NAMESPACE_ID" }
+]
+
+[vars]
+# No secrets needed — rate limiting is IP-based, no auth tokens required.

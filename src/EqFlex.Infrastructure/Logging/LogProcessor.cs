@@ -52,6 +52,9 @@ public sealed class LogProcessor : IDisposable
     private readonly Dictionary<string, long> _recentCharmCasts = new(StringComparer.OrdinalIgnoreCase);
     private const long CharmCastWindowSec = 30;
 
+    // Raised when a {FLEX:share/XXXXXXXX} code appears in a live log line.
+    public event Action<string>? ShareCodeDetected;
+
     private Task? _consumer;
     private CancellationTokenSource? _cts;
 
@@ -156,6 +159,10 @@ public sealed class LogProcessor : IDisposable
 
         // Trigger engine evaluates every line — independent of combat parse routing
         _triggerEngine?.Process(action, timestamp);
+
+        // Share code detection — look for {FLEX:share/XXXXXXXX} in any live log line
+        if (ShareCodeDetected is not null && action.Contains("{FLEX:share/", StringComparison.Ordinal))
+            TryDetectShareCode(action);
 
         // Charm landing / break detection
         if (_spells is not null && _registry is not null)
@@ -305,6 +312,17 @@ public sealed class LogProcessor : IDisposable
         if (!_spells!.TryMatchCharmBreak(action, out var entityName)) return;
         if (_registry!.IsVerifiedPet(entityName))
             _registry.RemovePet(entityName);
+    }
+
+    private void TryDetectShareCode(string action)
+    {
+        const string prefix = "{FLEX:share/";
+        var start = action.IndexOf(prefix, StringComparison.Ordinal) + prefix.Length;
+        if (start < prefix.Length) return;
+        var end = action.IndexOf('}', start);
+        if (end <= start) return;
+        var code = action[start..end];
+        if (code.Length == 8) ShareCodeDetected?.Invoke(code);
     }
 
     public void Dispose() => Stop();

@@ -93,10 +93,18 @@
                     <Button Content="Delete" Command="{Binding DeleteSelectedCommand}"
                             Padding="6,3" FontSize="11" Margin="0,0,4,0"
                             Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"/>
-                    <Button Content="Import NAG…" Padding="6,3" FontSize="11" Margin="0,0,8,0"
+                    <Button Content="Import NAG…" Padding="6,3" FontSize="11" Margin="0,0,4,0"
                             Click="ImportNag_Click"
                             Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"
                             ToolTip="Import triggers from a NAG trigger-database.json file"/>
+                    <Button Content="Share…" Command="{Binding ShareFolderCommand}"
+                            Padding="6,3" FontSize="11" Margin="0,0,4,0"
+                            Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"
+                            ToolTip="Share the selected folder with a short share code"/>
+                    <Button Content="Import Code…" Command="{Binding ImportFromCodeCommand}"
+                            Padding="6,3" FontSize="11" Margin="0,0,8,0"
+                            Visibility="{Binding IsSelectMode, Converter={StaticResource InverseBoolToVisConverter}}"
+                            ToolTip="Import a shared trigger folder by share code"/>
                     <!-- Select-mode toggle (always visible) -->
                     <Button Content="☑ Select" Click="ToggleSelectMode_Click"
                             Padding="6,3" FontSize="11" Margin="0,0,4,0">

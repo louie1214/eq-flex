@@ -1,0 +1,66 @@
+<Window x:Class="EqFlex.App.Views.ImportShareDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Import Triggers from Code"
+        Width="420" SizeToContent="Height"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Background="{StaticResource BgDarkBrush}"
+        Foreground="{StaticResource TextPrimaryBrush}"
+        ShowInTaskbar="False">
+
+    <StackPanel Margin="20">
+
+        <!-- Code input -->
+        <TextBlock Text="Share code:" Foreground="{StaticResource TextSecondaryBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <Grid Margin="0,0,0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0"
+                     Text="{Binding CodeInput, UpdateSourceTrigger=PropertyChanged}"
+                     FontFamily="Consolas" Padding="6,4" Margin="0,0,8,0"
+                     x:Name="CodeBox"/>
+            <Button Grid.Column="1" Content="Preview"
+                    Command="{Binding PreviewCommand}"
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"
+                    Padding="10,4"/>
+        </Grid>
+        <TextBlock Text="Paste a share code like {FLEX:share/ABC12345} or just ABC12345."
+                   Foreground="{StaticResource TextDimBrush}" FontSize="10" Margin="0,0,0,16"
+                   TextWrapping="Wrap"/>
+
+        <!-- Loading -->
+        <TextBlock Text="Fetching…"
+                   Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                   Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisConverter}}"
+                   Margin="0,0,0,8"/>
+
+        <!-- Error -->
+        <TextBlock Text="{Binding ErrorMessage}"
+                   Foreground="#FFFF4444" FontSize="11" TextWrapping="Wrap"
+                   Visibility="{Binding ErrorMessage, Converter={StaticResource NotNullToVisConverter}}"
+                   Margin="0,0,0,8"/>
+
+        <!-- Preview -->
+        <Border Visibility="{Binding HasPreview, Converter={StaticResource BoolToVisConverter}}"
+                Background="{StaticResource BgMidBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                CornerRadius="3" Padding="12,10" Margin="0,0,0,16">
+            <TextBlock Text="{Binding PreviewText}" FontSize="12" TextWrapping="Wrap"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       FontFamily="Consolas"/>
+        </Border>
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Import"
+                    Command="{Binding ImportCommand}"
+                    Padding="12,5" Margin="0,0,8,0"
+                    Background="{StaticResource AccentBrush}"/>
+            <Button Content="Cancel" Click="Cancel_Click" Padding="12,5"/>
+        </StackPanel>
+
+    </StackPanel>
+</Window>

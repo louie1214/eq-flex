@@ -3,6 +3,7 @@ using System.Windows;
 using Serilog;
 using System.Windows.Media;
 using EqFlex.App.Overlays;
+using System.Net.Http;
 using EqFlex.App.Services;
 using EqFlex.App.ViewModels;
 using EqFlex.App.Views;
@@ -71,6 +72,10 @@ public partial class App : Application
         // Overlay manager (multi-window trigger overlays)
         services.AddSingleton<OverlayManager>();
         services.AddSingleton<UpdateService>();
+
+        // Trigger sharing (Cloudflare Worker + KV)
+        services.AddSingleton<System.Net.Http.HttpClient>();
+        services.AddSingleton<TriggerShareService>();
 
         // ViewModels
         services.AddSingleton<OverlayViewModel>();
@@ -186,6 +191,20 @@ public partial class App : Application
             if (wizard.ShowDialog() == true && wizardVm.CreatedProfile is not null)
                 Services.GetRequiredService<ShellViewModel>().ActivateProfile(wizardVm.CreatedProfile);
         }
+
+        // When a {FLEX:share/CODE} appears in the live log, offer import via the Triggers page.
+        var logVm = Services.GetRequiredService<LogViewModel>();
+        logVm.ShareCodeDetected += code =>
+        {
+            Dispatcher.InvokeAsync(() =>
+            {
+                var triggersVm = Services.GetRequiredService<TriggersViewModel>();
+                var dlgVm = new ImportShareViewModel(Services.GetRequiredService<TriggerShareService>(), code);
+                var dlg   = new ImportShareDialog { DataContext = dlgVm, Owner = MainWindow };
+                dlgVm.ImportCompleted += () => triggersVm.NotifyImportComplete();
+                dlg.Show();
+            });
+        };
 
         // Check for updates in the background after the UI is visible.
         var shellVm = Services.GetRequiredService<ShellViewModel>();
