@@ -49,6 +49,7 @@ public partial class App : Application
 
         // Overlay manager (multi-window trigger overlays)
         services.AddSingleton<OverlayManager>();
+        services.AddSingleton<UpdateService>();
 
         // ViewModels
         services.AddSingleton<OverlayViewModel>();
@@ -153,6 +154,10 @@ public partial class App : Application
 
         shell.Show();
         MainWindow = shell;
+
+        // Check for updates in the background after the UI is visible.
+        var shellVm = Services.GetRequiredService<ShellViewModel>();
+        _ = shellVm.CheckForUpdateAsync();
     }
 
     protected override void OnExit(ExitEventArgs e)

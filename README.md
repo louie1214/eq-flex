@@ -16,7 +16,8 @@ An EverQuest log-parsing desktop app for Windows. Combines a live damage meter w
 ### Always-on-top DPS Overlay
 - Transparent, click-through window that sits over the game
 - Three views: DPS / Tank / Heal — toggle from the overlay header
-- Live fight timer; auto-show on fight start, auto-hide on expiry (configurable delay)
+- Live fight timer derived from log timestamps
+- Auto-show when you participate in a fight; auto-hide on expiry (configurable delay)
 - Drag to reposition, resize grip, lock/unlock
 
 ### Trigger System
@@ -39,13 +40,19 @@ An EverQuest log-parsing desktop app for Windows. Combines a live damage meter w
 - All colors customizable via HSV color wheel picker
 
 ### Character Profiles
-- Per-character log file association
+- Per-character log file association and parsing options
+- Per-profile log archiving — automatically renames and clears the log when it exceeds a configurable size limit
 - Profiles persist across restarts via LiteDB
+
+### Auto-Update
+- Checks GitHub Releases for new versions on startup
+- Sidebar notification shows available version with release notes
+- One-click download and install via Velopack — restarts into the new version automatically
 
 ## Requirements
 
 - Windows 10/11 (64-bit)
-- [.NET 10 Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
+- [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0)
 
 ## Building from Source
 
@@ -66,6 +73,7 @@ The app project targets `net10.0-windows` and requires the Windows Desktop Runti
 | MVVM | CommunityToolkit.Mvvm |
 | Storage | LiteDB (`%APPDATA%\EqFlex\eqflex.db`) |
 | DI | Microsoft.Extensions.DependencyInjection |
+| Updates | Velopack |
 | Tests | xUnit |
 
 Parsing logic is ported from [EQLogParser](https://github.com/kauffman12/EQLogParser) with DI refactoring and architectural changes.

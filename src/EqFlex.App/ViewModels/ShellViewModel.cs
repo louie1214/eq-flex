@@ -1,8 +1,12 @@
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EqFlex.App.Services;
+using EqFlex.App.Views;
 using EqFlex.Core.Models;
 using EqFlex.Infrastructure.Storage;
 using Microsoft.Extensions.DependencyInjection;
+using Velopack;
 
 namespace EqFlex.App.ViewModels;
 
@@ -14,6 +18,9 @@ public sealed partial class ShellViewModel : ObservableObject
     [ObservableProperty] private ObservableObject? _currentPage;
     [ObservableProperty] private string _activeSection = "Characters";
     [ObservableProperty] private CharacterProfile? _activeProfile;
+    [ObservableProperty] private string? _pendingUpdateVersion;
+
+    private UpdateInfo? _pendingUpdate;
 
     public OverlayViewModel OverlayVm { get; }
 
@@ -80,4 +87,25 @@ public sealed partial class ShellViewModel : ObservableObject
 
     [RelayCommand]
     private void ToggleOverlay() => OverlayVm.IsOpen = !OverlayVm.IsOpen;
+
+    public async Task CheckForUpdateAsync()
+    {
+        var svc = _services.GetRequiredService<UpdateService>();
+        var info = await svc.CheckAsync();
+        if (info is null) return;
+        _pendingUpdate = info;
+        PendingUpdateVersion = info.TargetFullRelease.Version.ToString();
+    }
+
+    [RelayCommand]
+    private void ShowUpdateDialog()
+    {
+        if (_pendingUpdate is null) return;
+        var svc = _services.GetRequiredService<UpdateService>();
+        var dlg = new UpdateDialog(svc, _pendingUpdate)
+        {
+            Owner = Application.Current.MainWindow
+        };
+        dlg.ShowDialog();
+    }
 }

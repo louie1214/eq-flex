@@ -41,6 +41,19 @@
 
                 <Separator Background="{StaticResource BorderBrush}" Margin="8,10"/>
 
+                <!-- Update available badge -->
+                <Button Command="{Binding ShowUpdateDialogCommand}"
+                        Margin="8,0,8,6" HorizontalAlignment="Stretch"
+                        Padding="8,5"
+                        Visibility="{Binding PendingUpdateVersion,
+                                     Converter={StaticResource NotNullToVisConverter}}"
+                        ToolTip="A new version of EQ Flex is available">
+                    <TextBlock>
+                        <Run Text="⬆ Update " Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold"/>
+                        <Run Text="{Binding PendingUpdateVersion}" Foreground="{StaticResource AccentBrush}"/>
+                    </TextBlock>
+                </Button>
+
                 <!-- Active character — click to go to Characters page -->
                 <Button Command="{Binding ShowCharactersCommand}"
                         Margin="8,0" HorizontalAlignment="Stretch"
