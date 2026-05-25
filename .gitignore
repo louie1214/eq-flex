@@ -1,6 +1,8 @@
 # Build output
 bin/
 obj/
+publish/
+releases/
 
 # Visual Studio
 .vs/
