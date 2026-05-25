@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:EqFlex.App.ViewModels"
         xmlns:views="clr-namespace:EqFlex.App.Views"
-        Title="EQ Flex" Height="780" Width="1320"
+        Title="EQ Flex" Icon="Resources/eq-flex.ico" Height="780" Width="1320"
         MinHeight="500" MinWidth="800"
         Background="{StaticResource BgDarkBrush}"
         Foreground="{StaticResource TextPrimaryBrush}"
