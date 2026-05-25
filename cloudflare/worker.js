@@ -5,7 +5,7 @@
 const ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'; // 32 unambiguous chars (no 0/O, 1/I/l)
 const CODE_LEN  = 8;
 const TTL_SEC   = 90 * 24 * 60 * 60; // 90 days
-const MAX_BODY  = 512 * 1024;         // 512 KB
+const MAX_BODY  = 4 * 1024 * 1024;    // 4 MB
 const RATE_MAX  = 20;                 // max POSTs per IP per minute
 
 function genCode() {
