@@ -49,6 +49,16 @@ An EverQuest log-parsing desktop app for Windows. Combines a live damage meter w
 - Sidebar notification shows available version with release notes
 - One-click download and install via Velopack — restarts into the new version automatically
 
+## User Data
+
+All user data is stored in a single file:
+
+```
+%APPDATA%\EqFlex\eqflex.db
+```
+
+This LiteDB database holds character profiles, app settings, overlay positions, and all triggers. To back up or transfer your configuration, copy that file. To reset to defaults, delete it.
+
 ## Requirements
 
 - Windows 10/11 (64-bit)
