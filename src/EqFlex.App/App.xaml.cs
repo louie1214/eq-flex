@@ -5,7 +5,9 @@ using System.Windows.Media;
 using EqFlex.App.Overlays;
 using EqFlex.App.Services;
 using EqFlex.App.ViewModels;
+using EqFlex.App.Views;
 using EqFlex.Core.Interfaces;
+using EqFlex.Core.Models;
 using EqFlex.Core.Services;
 using EqFlex.Infrastructure.Data;
 using EqFlex.Infrastructure.Storage;
@@ -173,6 +175,17 @@ public partial class App : Application
 
         shell.Show();
         MainWindow = shell;
+
+        // First-launch setup wizard
+        if (!winSettings.SetupComplete)
+        {
+            var wizardVm = new SetupWizardViewModel(
+                Services.GetRequiredService<ProfileStore>(),
+                Services.GetRequiredService<SettingsStore>());
+            var wizard = new SetupWizardDialog { DataContext = wizardVm };
+            if (wizard.ShowDialog() == true && wizardVm.CreatedProfile is not null)
+                Services.GetRequiredService<ShellViewModel>().ActivateProfile(wizardVm.CreatedProfile);
+        }
 
         // Check for updates in the background after the UI is visible.
         var shellVm = Services.GetRequiredService<ShellViewModel>();
