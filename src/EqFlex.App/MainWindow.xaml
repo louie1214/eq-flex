@@ -16,6 +16,7 @@
         <DataTemplate DataType="{x:Type vm:SettingsViewModel}"><views:SettingsView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:TriggersViewModel}"><views:TriggersView/></DataTemplate>
         <DataTemplate DataType="{x:Type vm:OverlaysViewModel}"><views:OverlaysView/></DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TunnelViewModel}"><views:TunnelView/></DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -37,6 +38,7 @@
                 <Button Content="Log"        Command="{Binding ShowLogCommand}"        Margin="8,3" HorizontalAlignment="Stretch"/>
                 <Button Content="Triggers"   Command="{Binding ShowTriggersCommand}"   Margin="8,3" HorizontalAlignment="Stretch"/>
                 <Button Content="Overlays"   Command="{Binding ShowOverlaysCommand}"   Margin="8,3" HorizontalAlignment="Stretch"/>
+                <Button Content="Tunnel"     Command="{Binding ShowTunnelCommand}"     Margin="8,3" HorizontalAlignment="Stretch"/>
                 <Button Content="Settings"   Command="{Binding ShowSettingsCommand}"   Margin="8,3" HorizontalAlignment="Stretch"/>
 
                 <Separator Background="{StaticResource BorderBrush}" Margin="8,10"/>

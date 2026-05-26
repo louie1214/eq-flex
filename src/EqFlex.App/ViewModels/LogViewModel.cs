@@ -404,21 +404,31 @@ public sealed partial class LogViewModel : ObservableObject, IDisposable
     /// <summary>Raised when a {FLEX:share/CODE} is detected in a live log line.</summary>
     public event Action<string>? ShareCodeDetected;
 
+    /// <summary>Raised when an auction line is parsed. Fires on the LogProcessor consumer thread.</summary>
+    public event Action<TradeRecord>? TradeDetected;
+
     private LogProcessor BuildProcessor(DamageParser damage, HealingParser healing, CastParser cast,
         PlayerRegistry registry, bool includeTriggers = true)
     {
         var profile = ActiveProfile;
+        var tradeParser = profile?.ParseTrade == true
+            ? new TradeChatParser(profile.Server ?? string.Empty)
+            : null;
+
         var processor = new LogProcessor(
-            profile?.ParseDamage != false ? damage : null,
-            profile?.ParseHealing != false ? healing : null,
-            profile?.ParseCasting != false ? cast : null,
+            profile?.ParseCombat != false ? damage : null,
+            profile?.ParseCombat != false ? healing : null,
+            profile?.ParseCombat != false ? cast : null,
             registry,
             _spells,
             onPetCharmed: petName => _fightManager.RemoveFight(petName),
-            triggerEngine: includeTriggers ? _triggerEngine : null);
+            triggerEngine: includeTriggers ? _triggerEngine : null,
+            trade: tradeParser);
 
         if (includeTriggers)
             processor.ShareCodeDetected += code => ShareCodeDetected?.Invoke(code);
+
+        processor.TradeDetected += record => TradeDetected?.Invoke(record);
 
         return processor;
     }

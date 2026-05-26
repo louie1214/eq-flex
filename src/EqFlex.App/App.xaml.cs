@@ -61,6 +61,10 @@ public partial class App : Application
         spellData.Load(dataDir);
         services.AddSingleton<ISpellDataService>(spellData);
 
+        var itemIndex = new ItemNameIndex(dataDir);
+        services.AddSingleton(itemIndex);
+        services.AddSingleton<ItemStatService>();
+
         // Domain
         services.AddSingleton<FightManager>();
         services.AddSingleton<TriggerEngine>();
@@ -69,6 +73,12 @@ public partial class App : Application
         services.AddSingleton<TriggerStore>();
         services.AddSingleton<OverlayWindowStore>();
 
+        // Trade storage
+        services.AddSingleton<TradeStore>();
+
+        // Sound library — bundled + user-imported audio files
+        services.AddSingleton<SoundLibrary>();
+
         // Overlay manager (multi-window trigger overlays)
         services.AddSingleton<OverlayManager>();
         services.AddSingleton<UpdateService>();
@@ -76,6 +86,9 @@ public partial class App : Application
         // Trigger sharing (Cloudflare Worker + KV)
         services.AddSingleton<System.Net.Http.HttpClient>();
         services.AddSingleton<TriggerShareService>();
+
+        // Araduneauctions.net API client
+        services.AddSingleton<AraduneApiClient>();
 
         // ViewModels
         services.AddSingleton<OverlayViewModel>();
@@ -87,6 +100,7 @@ public partial class App : Application
         services.AddTransient<SettingsViewModel>();
         services.AddSingleton<TriggersViewModel>();
         services.AddSingleton<OverlaysViewModel>();
+        services.AddSingleton<TunnelViewModel>();
 
         Services = services.BuildServiceProvider();
 
@@ -192,8 +206,20 @@ public partial class App : Application
                 Services.GetRequiredService<ShellViewModel>().ActivateProfile(wizardVm.CreatedProfile);
         }
 
+        // Forward live trade events to TunnelViewModel (UI) and TradeStore (persistence).
+        var tradeStore = Services.GetRequiredService<TradeStore>();
+        var tunnelVm   = Services.GetRequiredService<TunnelViewModel>();
+        var logVm      = Services.GetRequiredService<LogViewModel>();
+
+        logVm.TradeDetected += record =>
+        {
+            try { tradeStore.Save(record); }
+            catch (Exception ex) { Log.Warning(ex, "TradeStore.Save failed for record from {Seller}", record.Seller); }
+            if (!logVm.IsReplaying)
+                Dispatcher.InvokeAsync(() => tunnelVm.AddLiveTrade(record));
+        };
+
         // When a {FLEX:share/CODE} appears in the live log, offer import via the Triggers page.
-        var logVm = Services.GetRequiredService<LogViewModel>();
         logVm.ShareCodeDetected += code =>
         {
             Dispatcher.InvokeAsync(() =>

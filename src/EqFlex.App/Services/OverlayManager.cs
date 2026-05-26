@@ -19,6 +19,7 @@ public sealed class OverlayManager
     private readonly TriggerEngine _engine;
     private readonly OverlayWindowStore _store;
     private readonly FctOverlayViewModel _fctVm;
+    private readonly SoundLibrary _sounds;
     private readonly SpeechSynthesizer _tts = new();
     private MediaPlayer? _audioPlayer;
 
@@ -26,11 +27,12 @@ public sealed class OverlayManager
 
     public IReadOnlyCollection<TriggerOverlayViewModel> Overlays => _overlays.Values.Select(e => e.Vm).ToList();
 
-    public OverlayManager(TriggerEngine engine, OverlayWindowStore store, FctOverlayViewModel fctVm)
+    public OverlayManager(TriggerEngine engine, OverlayWindowStore store, FctOverlayViewModel fctVm, SoundLibrary sounds)
     {
         _engine = engine;
-        _store = store;
-        _fctVm = fctVm;
+        _store  = store;
+        _fctVm  = fctVm;
+        _sounds = sounds;
         _engine.TriggerFired += OnTriggerFired;
     }
 
@@ -84,6 +86,30 @@ public sealed class OverlayManager
         return vm;
     }
 
+    public void ShowAlertText(string text, int overlayId, int durationSec = 10,
+        string color = "#FFD4D4D4", double fontSize = 13, bool isBold = false)
+    {
+        var vm = ResolveOverlay(overlayId);
+        if (vm is null) return;
+        Application.Current.Dispatcher.InvokeAsync(() =>
+        {
+            vm.Alerts.Insert(0, new TriggerAlertItem(text, color, durationSec, fontSize, isBold));
+            if (!vm.IsOpen) vm.IsOpen = true;
+        });
+    }
+
+    public void PlayAudio(string? nameOrPath)
+    {
+        var path = _sounds.Resolve(nameOrPath);
+        if (path is null) return;
+        Application.Current.Dispatcher.InvokeAsync(() =>
+        {
+            _audioPlayer ??= new MediaPlayer();
+            _audioPlayer.Open(new Uri(path, UriKind.Absolute));
+            _audioPlayer.Play();
+        });
+    }
+
     private void OnTriggerFired(TriggerFiredArgs args)
     {
         var text = TriggerEngine.Substitute(args.Action.Text, args.Captures);
@@ -96,12 +122,7 @@ public sealed class OverlayManager
                 break;
 
             case TriggerActionType.PlayAudio when !string.IsNullOrWhiteSpace(args.Action.AudioPath):
-                Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    _audioPlayer ??= new MediaPlayer();
-                    _audioPlayer.Open(new Uri(args.Action.AudioPath, UriKind.Absolute));
-                    _audioPlayer.Play();
-                });
+                PlayAudio(args.Action.AudioPath);
                 break;
 
             case TriggerActionType.DisplayText:

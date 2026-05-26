@@ -6,15 +6,11 @@
         <TextBlock Text="Settings" FontSize="15" FontWeight="SemiBold"
                    Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,20"/>
 
-        <TextBlock Text="Parsing" FontWeight="SemiBold" Margin="0,0,0,8"/>
-        <CheckBox Content="Parse Damage" IsChecked="{Binding ParseDamage}"/>
-        <CheckBox Content="Parse Healing" IsChecked="{Binding ParseHealing}"/>
-        <CheckBox Content="Parse Casting" IsChecked="{Binding ParseCasting}"/>
-        <CheckBox Content="Parse Chat" IsChecked="{Binding ParseChat}"/>
-        <CheckBox Content="Trade Mode" IsChecked="{Binding ParseTrade}"/>
-
-        <Button Content="Save Settings" Command="{Binding SaveCommand}"
-                HorizontalAlignment="Left" Margin="0,20,0,0"/>
+        <TextBlock Text="Audio" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <TextBlock Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,8" TextWrapping="Wrap"
+                   Text="Built-in sounds are available in all audio pickers. Import your own WAV, MP3, OGG, or FLAC files to add them to the list."/>
+        <Button Content="Import Audio File…" Command="{Binding ImportAudioCommand}"
+                HorizontalAlignment="Left" Padding="10,5"/>
 
         <Separator Background="{StaticResource BorderBrush}" Margin="0,20,0,16"/>
 

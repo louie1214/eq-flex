@@ -188,23 +188,4 @@ public partial class TriggersView : UserControl
             "NAG Import", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
-    private void BrowseAudio_Click(object sender, RoutedEventArgs e)
-    {
-        if (DataContext is not TriggersViewModel vm || vm.SelectedAction is null) return;
-
-        var dlg = new OpenFileDialog
-        {
-            Title  = "Select Audio File",
-            Filter = "Audio files (*.wav;*.mp3)|*.wav;*.mp3|All files (*.*)|*.*"
-        };
-
-        var existing = vm.SelectedAction.AudioPath;
-        if (!string.IsNullOrEmpty(existing) && File.Exists(existing))
-            dlg.InitialDirectory = Path.GetDirectoryName(existing);
-
-        if (dlg.ShowDialog() != true) return;
-
-        vm.SelectedAction.AudioPath = dlg.FileName;
-        AudioPathBox.Text = dlg.FileName;
-    }
 }

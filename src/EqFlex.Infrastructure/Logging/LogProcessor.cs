@@ -4,6 +4,7 @@ using EqFlex.Core.Interfaces;
 using EqFlex.Core.Models;
 using EqFlex.Core.Parsing;
 using EqFlex.Core.Services;
+using Serilog;
 
 namespace EqFlex.Infrastructure.Logging;
 
@@ -43,6 +44,7 @@ public sealed class LogProcessor : IDisposable
     private readonly DamageParser? _damage;
     private readonly HealingParser? _healing;
     private readonly CastParser? _cast;
+    private readonly TradeChatParser? _trade;
     private readonly PlayerRegistry? _registry;
     private readonly ISpellDataService? _spells;
     private readonly Action<string>? _onPetCharmed;
@@ -55,6 +57,9 @@ public sealed class LogProcessor : IDisposable
     // Raised when a {FLEX:share/XXXXXXXX} code appears in a live log line.
     public event Action<string>? ShareCodeDetected;
 
+    // Raised when an auction line is parsed into a trade record.
+    public event Action<TradeRecord>? TradeDetected;
+
     private Task? _consumer;
     private CancellationTokenSource? _cts;
 
@@ -64,11 +69,13 @@ public sealed class LogProcessor : IDisposable
 
     public LogProcessor(DamageParser? damage, HealingParser? healing, CastParser? cast,
         PlayerRegistry? registry = null, ISpellDataService? spells = null,
-        Action<string>? onPetCharmed = null, TriggerEngine? triggerEngine = null)
+        Action<string>? onPetCharmed = null, TriggerEngine? triggerEngine = null,
+        TradeChatParser? trade = null)
     {
         _damage = damage;
         _healing = healing;
         _cast = cast;
+        _trade = trade;
         _registry = registry;
         _spells = spells;
         _onPetCharmed = onPetCharmed;
@@ -118,7 +125,10 @@ public sealed class LogProcessor : IDisposable
     private async Task ConsumeAsync(CancellationToken token)
     {
         await foreach (var line in _channel.Reader.ReadAllAsync(token).ConfigureAwait(false))
-            ProcessLine(line);
+        {
+            try { ProcessLine(line); }
+            catch (Exception ex) { Log.Warning(ex, "LogProcessor: unhandled exception on line: {Line}", line); }
+        }
     }
 
     private void ProcessLine(string line)
@@ -163,6 +173,13 @@ public sealed class LogProcessor : IDisposable
         // Share code detection — look for {FLEX:share/XXXXXXXX} in any live log line
         if (ShareCodeDetected is not null && action.Contains("{FLEX:share/", StringComparison.Ordinal))
             TryDetectShareCode(action);
+
+        // Trade chat parsing — auction channel broadcasts and Auction[N] tells
+        if (_trade is not null && TradeDetected is not null)
+        {
+            var record = _trade.TryParse(action, timestamp);
+            if (record is not null) TradeDetected.Invoke(record);
+        }
 
         // Charm landing / break detection
         if (_spells is not null && _registry is not null)

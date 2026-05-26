@@ -65,6 +65,16 @@ public sealed class AppSettings
     public int FctFloatDistance { get; set; } = 120;
     public double FctFloatDuration { get; set; } = 2.5;
     public int FctLaneCount { get; set; } = 5;
+
+    // Tunnel — Krono PP exchange rate used for alert total-equivalent price comparisons (0 = unknown)
+    public double KronoPpRate { get; set; }
+
+    // Tunnel — shared display settings applied to all item alerts
+    public string AlertTextColor { get; set; } = "#FFD4D4D4";
+    public double AlertFontSize  { get; set; } = 13;
+    public bool   AlertIsBold    { get; set; }
+    public string AlertSoundPath { get; set; } = string.Empty;
+    public int    AlertOverlayId { get; set; }
 }
 
 public sealed class SettingsStore

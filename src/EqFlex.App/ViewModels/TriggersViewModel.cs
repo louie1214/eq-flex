@@ -20,7 +20,9 @@ public sealed partial class TriggersViewModel : ObservableObject
     private readonly TriggerEngine _engine;
     private readonly Services.OverlayManager _overlayManager;
     private readonly Services.TriggerShareService _shareService;
+    private readonly Services.SoundLibrary _soundLibrary;
     public Services.TriggerShareService ShareService => _shareService;
+    public IReadOnlyList<Services.SoundFile> AvailableSounds => _soundLibrary.Sounds;
 
     // ── Tree state ────────────────────────────────────────────────────────────
 
@@ -63,12 +65,14 @@ public sealed partial class TriggersViewModel : ObservableObject
     public IReadOnlyList<OverlayOption> AvailableOverlays { get; private set; } = [];
 
     public TriggersViewModel(TriggerStore store, TriggerEngine engine,
-        Services.OverlayManager overlayManager, Services.TriggerShareService shareService)
+        Services.OverlayManager overlayManager, Services.TriggerShareService shareService,
+        Services.SoundLibrary soundLibrary)
     {
-        _store = store;
-        _engine = engine;
+        _store        = store;
+        _engine       = engine;
         _overlayManager = overlayManager;
         _shareService = shareService;
+        _soundLibrary = soundLibrary;
         Reload();
     }
 
@@ -445,6 +449,33 @@ public sealed partial class TriggersViewModel : ObservableObject
         SelectedTrigger.Actions     = [.. EditActions];
         _store.Save(SelectedTrigger);
         Reload(reSelectTriggerId: id);
+    }
+
+    // ── Sound ─────────────────────────────────────────────────────────────────
+
+    [RelayCommand]
+    private void ImportSound()
+    {
+        var dlg = new Microsoft.Win32.OpenFileDialog
+        {
+            Title  = "Import audio file",
+            Filter = "Audio files|*.wav;*.mp3;*.ogg;*.flac|All files|*.*"
+        };
+        if (dlg.ShowDialog() != true) return;
+        var imported = _soundLibrary.Import(dlg.FileName);
+        OnPropertyChanged(nameof(AvailableSounds));
+        if (imported is not null && SelectedAction is not null)
+        {
+            SelectedAction.AudioPath = imported.FileName;
+            _overlayManager.PlayAudio(imported.FileName);
+        }
+    }
+
+    [RelayCommand]
+    private void PreviewSound()
+    {
+        if (!string.IsNullOrWhiteSpace(SelectedAction?.AudioPath))
+            _overlayManager.PlayAudio(SelectedAction.AudioPath);
     }
 
     // ── Phrase editing ────────────────────────────────────────────────────────
