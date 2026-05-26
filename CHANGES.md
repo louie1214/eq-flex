@@ -8,6 +8,6 @@
 ### Setup Wizard
 - First-launch wizard walks new users through creating a character profile and picking a log file
 
-### Fixes & Polish
+### Fixes and Polish
 - Trigger overlay expander always visible on empty folders
 - Various stability improvements
