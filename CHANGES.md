@@ -7,6 +7,7 @@
 - Krono tab: live Krono price from tlp-auctions.com with local sale history
 - Prices tab: search items against local trade data or fall back to the tlp-auctions.com API; "Include API" checkbox forces both sources simultaneously
 - Enable Trade Mode per character profile from the Characters page
+- Note: tlp-auctions.com plans to support the Frostreaver server around June 3rd — Krono prices and item lookups for that server may not be available until then
 
 ### Item Alerts
 - Keyword-based alerts that fire when matching WTS/WTB lines appear in the live log
