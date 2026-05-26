@@ -39,10 +39,20 @@ An EverQuest log-parsing desktop app for Windows. Combines a live damage meter w
 - Heal display includes overheal: `+1,234 (456 oh)` or `(456 oh)` for pure overheal
 - All colors customizable via HSV color wheel picker
 
+### TLP Tunnel (Trade Mode)
+- Parses real-time auction channel broadcasts — WTS, WTB, Selling, Buying
+- **Trades tab** — live feed with per-item rows; search and filter by type; hover any item for on-demand stat lookup via Lucy
+- **Krono tab** — current Krono price from tlp-auctions.com; local sale history with timestamps
+- **Prices tab** — search by item name; uses local data first, falls back to tlp-auctions.com API; optionally include both sources in one search
+- **Item Alerts** — keyword alerts with optional max price caps (platinum, Krono, or combined); Krono-to-PP rate used for total-equivalent comparisons; shared display, overlay, and sound settings for all alerts; 14-day hit history
+- Enable per character profile
+
 ### Character Profiles
+- Selecting a profile shows a read-only detail card (name, character, server, log path, parsing options)
 - Per-character log file association and parsing options
 - Per-profile log archiving — automatically renames and clears the log when it exceeds a configurable size limit
 - Profiles persist across restarts via LiteDB
+- App starts live tailing automatically on launch when a profile was previously active
 
 ### Auto-Update
 - Checks GitHub Releases for new versions on startup

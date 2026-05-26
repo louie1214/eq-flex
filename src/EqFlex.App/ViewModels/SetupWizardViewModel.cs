@@ -97,9 +97,7 @@ public sealed partial class SetupWizardViewModel : ObservableObject
             PlayerName = PlayerName.Trim(),
             Server = Server.Trim(),
             LogPath = LogPath.Trim(),
-            ParseDamage = true,
-            ParseHealing = true,
-            ParseCasting = true,
+            ParseCombat = true,
             LastUsed = DateTime.UtcNow
         };
         _profileStore.Upsert(profile);

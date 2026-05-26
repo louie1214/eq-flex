@@ -13,14 +13,22 @@
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Text="Characters" FontSize="15" FontWeight="SemiBold"
                        Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,8"/>
 
-            <ListBox Grid.Row="1" ItemsSource="{Binding Profiles}"
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,8">
+                <Button Content="New"    Command="{Binding NewProfileCommand}"      Margin="0,0,6,0"/>
+                <Button Content="Edit"   Command="{Binding EditProfileCommand}"     Margin="0,0,6,0"/>
+                <Button Content="Delete" Command="{Binding DeleteProfileCommand}"   Margin="0,0,6,0"/>
+                <Button Content="Set Active" Command="{Binding ActivateProfileCommand}"
+                        ToolTip="Use this profile for log parsing and triggers"/>
+            </StackPanel>
+
+            <ListBox Grid.Row="2" ItemsSource="{Binding Profiles}"
                      SelectedItem="{Binding SelectedProfile}"
                      Background="{StaticResource BgMidBrush}"
                      BorderBrush="{StaticResource BorderBrush}"
@@ -47,15 +55,108 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-
-            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
-                <Button Content="Set Active" Command="{Binding ActivateProfileCommand}"
-                        Margin="0,0,6,0" ToolTip="Use this profile for log parsing and triggers"/>
-                <Button Content="New" Command="{Binding NewProfileCommand}" Margin="0,0,6,0"/>
-                <Button Content="Edit" Command="{Binding EditProfileCommand}" Margin="0,0,6,0"/>
-                <Button Content="Delete" Command="{Binding DeleteProfileCommand}"/>
-            </StackPanel>
         </Grid>
+
+        <!-- Read-only detail view -->
+        <Border Grid.Column="2" Background="{StaticResource BgMidBrush}"
+                BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                CornerRadius="4" Padding="20"
+                Visibility="{Binding ShowDetail, Converter={StaticResource BoolToVisConverter}}">
+            <StackPanel>
+                <TextBlock Text="{Binding SelectedProfile.Name}" FontSize="15" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,20"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Character"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1"
+                               Text="{Binding SelectedProfile.PlayerName}"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Server"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1"
+                               Text="{Binding SelectedProfile.Server}"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Log File"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1"
+                               Text="{Binding SelectedProfile.LogPath}"
+                               VerticalAlignment="Center" Margin="0,0,0,10"
+                               TextWrapping="Wrap" FontSize="11"
+                               Foreground="{StaticResource TextPrimaryBrush}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Log Archiving"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1"
+                               VerticalAlignment="Center" Margin="0,0,0,10">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="Disabled"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedProfile.LogArchiveEnabled}" Value="True">
+                                        <Setter Property="Text"
+                                                Value="{Binding SelectedProfile.LogArchiveSizeMb,
+                                                        StringFormat='Enabled (max {0} MB)'}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Parse Combat"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                               VerticalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1"
+                               VerticalAlignment="Center" Margin="0,0,0,10">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="No"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedProfile.ParseCombat}" Value="True">
+                                        <Setter Property="Text" Value="Yes"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="Trade Mode"
+                               Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                               VerticalAlignment="Center"/>
+                    <TextBlock Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="No"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedProfile.ParseTrade}" Value="True">
+                                        <Setter Property="Text" Value="Yes"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+        </Border>
 
         <!-- Edit form -->
         <Border Grid.Column="2" Background="{StaticResource BgMidBrush}"
@@ -63,7 +164,7 @@
                 CornerRadius="4" Padding="20"
                 Visibility="{Binding IsEditing, Converter={StaticResource BoolToVisConverter}}">
             <StackPanel>
-                <TextBlock Text="Profile Details" FontSize="15" FontWeight="SemiBold"
+                <TextBlock Text="Edit Profile" FontSize="15" FontWeight="SemiBold"
                            Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,16"/>
 
                 <TextBlock Text="Display Name"/>
@@ -108,9 +209,7 @@
                 </Grid>
 
                 <TextBlock Text="Parsing Options" FontWeight="SemiBold" Margin="0,0,0,8"/>
-                <CheckBox Content="Parse Damage" IsChecked="{Binding EditParseDamage}"/>
-                <CheckBox Content="Parse Healing" IsChecked="{Binding EditParseHealing}"/>
-                <CheckBox Content="Parse Casting" IsChecked="{Binding EditParseCasting}"/>
+                <CheckBox Content="Parse Combat" IsChecked="{Binding EditParseCombat}"/>
                 <CheckBox Content="Trade Mode" IsChecked="{Binding EditParseTrade}"/>
 
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
@@ -120,11 +219,11 @@
             </StackPanel>
         </Border>
 
-        <!-- Placeholder when not editing -->
+        <!-- Placeholder when nothing selected -->
         <Border Grid.Column="2" Background="{StaticResource BgMidBrush}"
                 BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
                 CornerRadius="4"
-                Visibility="{Binding IsEditing, Converter={StaticResource InverseBoolToVisConverter}}">
+                Visibility="{Binding ShowPlaceholder, Converter={StaticResource BoolToVisConverter}}">
             <TextBlock Text="Select a profile or click New to create one."
                        Foreground="{StaticResource TextDimBrush}"
                        HorizontalAlignment="Center" VerticalAlignment="Center"/>

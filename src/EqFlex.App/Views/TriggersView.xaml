@@ -530,13 +530,27 @@
                                 <ColumnDefinition Width="100"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Audio file:" VerticalAlignment="Center"
                                        Foreground="{StaticResource TextDimBrush}"/>
-                            <TextBox Grid.Column="1" x:Name="AudioPathBox"
-                                     Text="{Binding SelectedAction.AudioPath, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Button Grid.Column="2" Content="Browse…" Margin="6,0,0,0"
-                                    Click="BrowseAudio_Click"/>
+                            <ComboBox Grid.Column="1"
+                                      ItemsSource="{Binding AvailableSounds}"
+                                      SelectedValuePath="FileName"
+                                      SelectedValue="{Binding SelectedAction.AudioPath}"
+                                      ScrollViewer.CanContentScroll="False">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <Button Grid.Column="2" Content="Import…" Margin="6,0,4,0"
+                                    ToolTip="Add a custom audio file to the library"
+                                    Command="{Binding ImportSoundCommand}"/>
+                            <Button Grid.Column="3" Content="▶"
+                                    ToolTip="Preview selected sound"
+                                    Command="{Binding PreviewSoundCommand}"/>
                         </Grid>
                     </StackPanel>
                 </Border>

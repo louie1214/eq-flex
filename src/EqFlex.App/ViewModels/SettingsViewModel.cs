@@ -3,32 +3,38 @@ using System.IO;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EqFlex.App.Services;
 using EqFlex.Infrastructure.Storage;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Win32;
 
 namespace EqFlex.App.ViewModels;
 
 public sealed partial class SettingsViewModel : ObservableObject
 {
     private readonly SettingsStore _store;
+    private readonly SoundLibrary  _soundLibrary;
     private AppSettings _settings;
 
-    [ObservableProperty] private bool _parseDamage = true;
-    [ObservableProperty] private bool _parseHealing = true;
-    [ObservableProperty] private bool _parseCasting = true;
-    [ObservableProperty] private bool _parseChat;
-    [ObservableProperty] private bool _parseTrade;
-
-    public SettingsViewModel(SettingsStore store)
+    public SettingsViewModel(SettingsStore store, SoundLibrary soundLibrary)
     {
-        _store = store;
-        _settings = store.Load();
+        _store        = store;
+        _soundLibrary = soundLibrary;
+        _settings     = store.Load();
     }
 
     [RelayCommand]
-    private void Save()
+    private void ImportAudio()
     {
-        _store.Save(_settings);
+        var dlg = new OpenFileDialog
+        {
+            Title  = "Import audio file",
+            Filter = "Audio files|*.wav;*.mp3;*.ogg;*.flac|All files|*.*"
+        };
+        if (dlg.ShowDialog() != true) return;
+        _soundLibrary.Import(dlg.FileName);
+        MessageBox.Show($"'{Path.GetFileName(dlg.FileName)}' imported successfully.\n\nIt is now available in all sound pickers.",
+            "Audio Imported", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     [RelayCommand]

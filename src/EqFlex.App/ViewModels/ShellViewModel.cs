@@ -31,12 +31,14 @@ public sealed partial class ShellViewModel : ObservableObject
         _settingsStore = settingsStore;
         OverlayVm = overlayVm;
 
-        // Restore last active profile
+        // Restore last active profile and start tailing immediately
         var settings = settingsStore.Load();
         if (settings.LastActiveProfileId.HasValue)
         {
-            ActiveProfile = profileStore.GetAll()
+            var saved = profileStore.GetAll()
                 .FirstOrDefault(p => p.Id == settings.LastActiveProfileId.Value);
+            if (saved is not null)
+                ActivateProfile(saved);
         }
 
         ShowCharacters();
@@ -87,6 +89,15 @@ public sealed partial class ShellViewModel : ObservableObject
 
     [RelayCommand]
     private void ShowOverlays() { ActiveSection = "Overlays"; CurrentPage = _services.GetRequiredService<OverlaysViewModel>(); }
+
+    [RelayCommand]
+    private void ShowTunnel()
+    {
+        ActiveSection = "Tunnel";
+        var vm = _services.GetRequiredService<TunnelViewModel>();
+        vm.EnsureLoaded(ActiveProfile?.Server ?? string.Empty);
+        CurrentPage = vm;
+    }
 
     [RelayCommand]
     private void ToggleOverlay() => OverlayVm.IsOpen = !OverlayVm.IsOpen;

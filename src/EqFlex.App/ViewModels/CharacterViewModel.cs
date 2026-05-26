@@ -26,9 +26,7 @@ public sealed partial class CharacterViewModel : ObservableObject
     [ObservableProperty] private string _editLogPath = string.Empty;
     [ObservableProperty] private bool _editLogArchiveEnabled;
     [ObservableProperty] private int _editLogArchiveSizeMb = 500;
-    [ObservableProperty] private bool _editParseDamage = true;
-    [ObservableProperty] private bool _editParseHealing = true;
-    [ObservableProperty] private bool _editParseCasting = true;
+    [ObservableProperty] private bool _editParseCombat = true;
     [ObservableProperty] private bool _editParseTrade;
 
     public CharacterViewModel(ProfileStore store)
@@ -47,8 +45,18 @@ public sealed partial class CharacterViewModel : ObservableObject
         _shell = shell;
     }
 
-    partial void OnSelectedProfileChanged(CharacterProfile? value) =>
+    partial void OnSelectedProfileChanged(CharacterProfile? value)
+    {
         ActivateProfileCommand.NotifyCanExecuteChanged();
+        OnPropertyChanged(nameof(ShowDetail));
+        OnPropertyChanged(nameof(ShowPlaceholder));
+    }
+
+    partial void OnIsEditingChanged(bool value)
+    {
+        OnPropertyChanged(nameof(ShowDetail));
+        OnPropertyChanged(nameof(ShowPlaceholder));
+    }
 
     partial void OnEditLogPathChanged(string value)
     {
@@ -75,6 +83,8 @@ public sealed partial class CharacterViewModel : ObservableObject
     }
 
     private bool HasSelectedProfile => SelectedProfile is not null;
+    public bool ShowDetail      => SelectedProfile is not null && !IsEditing;
+    public bool ShowPlaceholder => SelectedProfile is null     && !IsEditing;
 
     [RelayCommand]
     private void NewProfile()
@@ -104,9 +114,7 @@ public sealed partial class CharacterViewModel : ObservableObject
         profile.LogPath = EditLogPath.Trim();
         profile.LogArchiveEnabled = EditLogArchiveEnabled;
         profile.LogArchiveSizeMb = Math.Max(1, EditLogArchiveSizeMb);
-        profile.ParseDamage = EditParseDamage;
-        profile.ParseHealing = EditParseHealing;
-        profile.ParseCasting = EditParseCasting;
+        profile.ParseCombat = EditParseCombat;
         profile.ParseTrade = EditParseTrade;
         profile.LastUsed = DateTime.UtcNow;
 
@@ -151,9 +159,7 @@ public sealed partial class CharacterViewModel : ObservableObject
         EditLogPath = p.LogPath;
         EditLogArchiveEnabled = p.LogArchiveEnabled;
         EditLogArchiveSizeMb = p.LogArchiveSizeMb > 0 ? p.LogArchiveSizeMb : 500;
-        EditParseDamage = p.ParseDamage;
-        EditParseHealing = p.ParseHealing;
-        EditParseCasting = p.ParseCasting;
+        EditParseCombat = p.ParseCombat;
         EditParseTrade = p.ParseTrade;
     }
 
@@ -162,7 +168,7 @@ public sealed partial class CharacterViewModel : ObservableObject
         EditName = EditPlayerName = EditServer = EditLogPath = string.Empty;
         EditLogArchiveEnabled = false;
         EditLogArchiveSizeMb = 500;
-        EditParseDamage = EditParseHealing = EditParseCasting = true;
+        EditParseCombat = true;
         EditParseTrade = false;
     }
 }
