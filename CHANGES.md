@@ -1,3 +1,8 @@
+## What's New in 1.2.1
+
+### Fixes
+- Overlay dropdown in the trigger editor now populates correctly
+
 ## What's New in 1.2.0
 
 ### TLP Tunnel (Trade Mode)
