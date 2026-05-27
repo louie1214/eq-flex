@@ -227,6 +227,7 @@ public sealed partial class TriggersViewModel : ObservableObject
             .Concat(_overlayManager.Overlays
                 .Select(vm => new OverlayOption(vm.OverlayId, vm.OverlayName)))
             .ToList();
+        OnPropertyChanged(nameof(AvailableOverlays));
         ReloadEngine();
         IsLoading = false;
 
