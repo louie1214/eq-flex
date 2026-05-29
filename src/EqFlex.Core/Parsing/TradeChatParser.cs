@@ -31,7 +31,7 @@ public sealed class TradeChatParser
     // Negative lookbehind excludes +5/−5 stat modifiers and x20-style quantity markers.
     // Negative lookahead excludes "N x Item" quantity notation (e.g. "3 x Krono").
     private static readonly Regex BareNumberPriceRegex = new(
-        @"(?<![+\-x])\b(\d+(?:\.\d+)?)()(?!\s+x\b)(?=\s*(?:,|;|$|(?:obo|pst|or\s+best|or\s+bo|tell\s+me)\b)|\s+[A-Za-z]|\s+-\s)",
+        @"(?<![+\-x])\b(\d+(?:\.\d+)?)()(?!\s+x\b)(?=\s*(?:,|;|$|(?:obo|pst|or\s+best|or\s+bo|tell\s+me)\b)|\s+[A-Za-z]|\s+[-/|]\s)",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // "x20", "x 7", "x2" — quantity markers to strip from item names
@@ -43,7 +43,7 @@ public sealed class TradeChatParser
     // Comma/slash/plus with optional surrounding spaces, OR hyphen with mandatory spaces
     // (preserves intra-name hyphens like "Frost-Covered Tome").
     private static readonly Regex ItemSeparatorRegex = new(
-        @"\s*[,/+]\s*|\s+-\s+",
+        @"\s*[,/+|]\s*|\s+-\s+",
         RegexOptions.Compiled);
 
     // Trailing noise phrases to strip from item names
@@ -52,7 +52,7 @@ public sealed class TradeChatParser
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // Chars that delimit items but are not part of item names
-    private static readonly char[] _nameTrimChars = [',', ' ', ':', ';', '-', '/', '+'];
+    private static readonly char[] _nameTrimChars = [',', ' ', ':', ';', '-', '/', '+', '|'];
 
     private readonly string _server;
 

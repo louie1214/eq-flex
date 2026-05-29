@@ -213,6 +213,26 @@ public sealed class TradeChatParserTests
     }
 
     [Fact]
+    public void Slash_separator_splits_items_with_prices()
+    {
+        var r = Parse("Seller auctions, 'WTS Spell: Cripple 100 / Spell: Pillar of Frost 100 / Spell: Defoliation 100'");
+        Assert.Equal(3, r.Items.Count);
+        Assert.Equal("Spell: Cripple",         r.Items[0].Name); Assert.Equal(100, r.Items[0].Price);
+        Assert.Equal("Spell: Pillar of Frost",  r.Items[1].Name); Assert.Equal(100, r.Items[1].Price);
+        Assert.Equal("Spell: Defoliation",      r.Items[2].Name); Assert.Equal(100, r.Items[2].Price);
+    }
+
+    [Fact]
+    public void Pipe_separator_splits_items_without_prices()
+    {
+        var r = Parse("Buyer auctions, 'WTB Shield | Helm | Boots'");
+        Assert.Equal(3, r.Items.Count);
+        Assert.Equal("Shield", r.Items[0].Name);
+        Assert.Equal("Helm",   r.Items[1].Name);
+        Assert.Equal("Boots",  r.Items[2].Name);
+    }
+
+    [Fact]
     public void Plus_separator_splits_items_without_prices()
     {
         var r = Parse("Seller auctions, 'WTS Medallion of Nathsar + Medallion of Kunzar'");
