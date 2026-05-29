@@ -482,9 +482,14 @@ public sealed partial class TunnelViewModel : ObservableObject
         SelectedAlert.IsEnabled  = EditIsEnabled;
         _store.SaveAlert(SelectedAlert);
 
-        // Replace (not Remove+Insert) to refresh the grid row without crashing DataGridCellsPanel
+        // Remove+Insert forces WPF to re-bind the row (same-reference Replace is a no-op for bindings).
+        // Safe since AlertsGrid has IsVirtualizing=False which prevents the DataGridCellsPanel crash.
         var idx = Alerts.IndexOf(SelectedAlert);
-        if (idx >= 0) Alerts[idx] = SelectedAlert;
+        if (idx >= 0)
+        {
+            Alerts.RemoveAt(idx);
+            Alerts.Insert(idx, SelectedAlert);
+        }
     }
 
     [RelayCommand]
