@@ -163,6 +163,115 @@ public sealed class TradeChatParserTests
         Assert.Null(item.PricePp);
     }
 
+    // ── Separator styles ──────────────────────────────────────────────────────
+
+    [Fact]
+    public void Hyphen_separator_splits_items_with_prices()
+    {
+        var r = Parse("Seller auctions, 'WTS Tribal Mask 25p - Ravenscale Gloves 25p - Reed Belt 50p'");
+        Assert.Equal(3, r.Items.Count);
+        Assert.Equal("Tribal Mask",      r.Items[0].Name); Assert.Equal(25, r.Items[0].Price);
+        Assert.Equal("Ravenscale Gloves",r.Items[1].Name); Assert.Equal(25, r.Items[1].Price);
+        Assert.Equal("Reed Belt",        r.Items[2].Name); Assert.Equal(50, r.Items[2].Price);
+    }
+
+    [Fact]
+    public void Hyphen_separator_splits_items_without_prices()
+    {
+        var r = Parse("Seller auctions, 'WTS Cloak - Mask - Boots'");
+        Assert.Equal(3, r.Items.Count);
+        Assert.Equal("Cloak", r.Items[0].Name);
+        Assert.Equal("Mask",  r.Items[1].Name);
+        Assert.Equal("Boots", r.Items[2].Name);
+    }
+
+    [Fact]
+    public void Intra_name_hyphen_preserved()
+    {
+        var r = Parse("Seller auctions, 'WTS Frost-Covered Tome 400'");
+        Assert.Single(r.Items);
+        Assert.Equal("Frost-Covered Tome", r.Items[0].Name);
+        Assert.Equal(400, r.Items[0].Price);
+    }
+
+    [Fact]
+    public void Comma_separator_splits_items_without_prices()
+    {
+        var r = Parse("Seller auctions, 'WTS Black Ice Leggings,Spider Fur Collar'");
+        Assert.Equal(2, r.Items.Count);
+        Assert.Equal("Black Ice Leggings", r.Items[0].Name);
+        Assert.Equal("Spider Fur Collar",  r.Items[1].Name);
+    }
+
+    [Fact]
+    public void Slash_separator_splits_items_without_prices()
+    {
+        var r = Parse("Buyer auctions, 'WTB Shield / Helm'");
+        Assert.Equal(2, r.Items.Count);
+        Assert.Equal("Shield", r.Items[0].Name);
+        Assert.Equal("Helm",   r.Items[1].Name);
+    }
+
+    [Fact]
+    public void Plus_separator_splits_items_without_prices()
+    {
+        var r = Parse("Seller auctions, 'WTS Medallion of Nathsar + Medallion of Kunzar'");
+        Assert.Equal(2, r.Items.Count);
+        Assert.Equal("Medallion of Nathsar", r.Items[0].Name);
+        Assert.Equal("Medallion of Kunzar",  r.Items[1].Name);
+    }
+
+    // ── Space-separated chains (bare numbers as price separators) ─────────────
+
+    [Fact]
+    public void Space_separated_item_price_chain()
+    {
+        var r = Parse("Seller auctions, 'WTS Thin Banded Belt 200 Gnome Skin Gloves 400 Dark Ember 900'");
+        Assert.Equal(3, r.Items.Count);
+        Assert.Equal("Thin Banded Belt",  r.Items[0].Name); Assert.Equal(200, r.Items[0].Price);
+        Assert.Equal("Gnome Skin Gloves", r.Items[1].Name); Assert.Equal(400, r.Items[1].Price);
+        Assert.Equal("Dark Ember",        r.Items[2].Name); Assert.Equal(900, r.Items[2].Price);
+    }
+
+    [Fact]
+    public void Mixed_bare_and_unit_price_chain()
+    {
+        var r = Parse("Seller auctions, 'WTS Ring of the Ancients 900 Guise of the Deceiver 1kr Ball of Golem Clay 150'");
+        Assert.Equal(3, r.Items.Count);
+        Assert.Equal("Ring of the Ancients",   r.Items[0].Name); Assert.Equal(900,          r.Items[0].Price); Assert.Equal(PriceUnit.PP,    r.Items[0].Unit);
+        Assert.Equal("Guise of the Deceiver",  r.Items[1].Name); Assert.Equal(1,            r.Items[1].Price); Assert.Equal(PriceUnit.Krono, r.Items[1].Unit);
+        Assert.Equal("Ball of Golem Clay",     r.Items[2].Name); Assert.Equal(150,          r.Items[2].Price); Assert.Equal(PriceUnit.PP,    r.Items[2].Unit);
+    }
+
+    // ── Quantity markers ──────────────────────────────────────────────────────
+
+    [Fact]
+    public void Quantity_marker_stripped_from_item_name()
+    {
+        var r = Parse("Seller auctions, 'WTS Spider Silk x20 20p Spiderling Silk x90 30p'");
+        Assert.Equal(2, r.Items.Count);
+        Assert.Equal("Spider Silk",     r.Items[0].Name); Assert.Equal(20, r.Items[0].Price);
+        Assert.Equal("Spiderling Silk", r.Items[1].Name); Assert.Equal(30, r.Items[1].Price);
+    }
+
+    // ── Trailing noise ────────────────────────────────────────────────────────
+
+    [Fact]
+    public void Trailing_or_clause_not_added_as_item()
+    {
+        var r = Parse("Seller auctions, 'WTS Ring of the Ancients 600p or trade for shield'");
+        Assert.Single(r.Items);
+        Assert.Equal("Ring of the Ancients", r.Items[0].Name);
+    }
+
+    [Fact]
+    public void Trailing_at_location_not_added_as_item()
+    {
+        var r = Parse("Buyer auctions, 'WTB krono 1300 - at shady'");
+        Assert.Single(r.Items);
+        Assert.Equal("krono", r.Items[0].Name);
+    }
+
     // ── ParseMaxPrice ─────────────────────────────────────────────────────────
 
     [Fact]

@@ -3,10 +3,6 @@ using EqFlex.Core.Models;
 
 namespace EqFlex.Core.Parsing;
 
-/// <summary>
-/// Parses EverQuest auction channel lines into TradeRecord objects.
-/// Handles in-zone auction broadcasts and Auction/Auction1/Auction2 channel tells.
-/// </summary>
 public sealed class TradeChatParser
 {
     // "PlayerName auctions, 'MESSAGE'"
@@ -14,12 +10,12 @@ public sealed class TradeChatParser
         @"^(\w+) auctions, '(.+)'$",
         RegexOptions.Compiled);
 
-    // "PlayerName tells Auction[N]:[N], 'MESSAGE'" — covers Auction, Auction1, Auction2, etc.
+    // "PlayerName tells Auction[N]:[N], 'MESSAGE'"
     private static readonly Regex AuctionTellRegex = new(
         @"^(\w+) tells Auction\d*:\d+, '(.+)'$",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    // Splits message into typed segments at keyword boundaries
+    // Splits message at WTS/WTB keyword boundaries
     private static readonly Regex KeywordRegex = new(
         @"\b(WTS|WTB|WTSell|WTBuy|Selling|Buying)\b",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -31,11 +27,32 @@ public sealed class TradeChatParser
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // Bare number prices (no unit suffix) — assumed platinum.
-    // Only matches at end-of-item positions: before a comma/semicolon, end of string,
-    // or trailing keywords like OBO/PST. Negative lookbehind excludes +5/−5 stat modifiers.
+    // Matches before: comma/semicolon, end-of-string, the next item's first word, or noise keywords.
+    // Negative lookbehind excludes +5/−5 stat modifiers and x20-style quantity markers.
+    // Negative lookahead excludes "N x Item" quantity notation (e.g. "3 x Krono").
     private static readonly Regex BareNumberPriceRegex = new(
-        @"(?<![+\-])\b(\d+(?:\.\d+)?)()(?=\s*(?:,|;|$|(?:obo|pst|or\s+best|or\s+bo|tell\s+me)\b))",
+        @"(?<![+\-x])\b(\d+(?:\.\d+)?)()(?!\s+x\b)(?=\s*(?:,|;|$|(?:obo|pst|or\s+best|or\s+bo|tell\s+me)\b)|\s+[A-Za-z]|\s+-\s)",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    // "x20", "x 7", "x2" — quantity markers to strip from item names
+    private static readonly Regex QuantityRegex = new(
+        @"\s*\bx\s*\d+\b",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    // Splits a no-price segment into individual items.
+    // Comma/slash/plus with optional surrounding spaces, OR hyphen with mandatory spaces
+    // (preserves intra-name hyphens like "Frost-Covered Tome").
+    private static readonly Regex ItemSeparatorRegex = new(
+        @"\s*[,/+]\s*|\s+-\s+",
+        RegexOptions.Compiled);
+
+    // Trailing noise phrases to strip from item names
+    private static readonly Regex TrailingJunkRegex = new(
+        @"\s+(?:pst|obo|or\s+best\s+offer?|or\s+bo|tell\s+me|each|wtb|wts)\s*$",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    // Chars that delimit items but are not part of item names
+    private static readonly char[] _nameTrimChars = [',', ' ', ':', ';', '-', '/', '+'];
 
     private readonly string _server;
 
@@ -43,7 +60,6 @@ public sealed class TradeChatParser
 
     /// <summary>
     /// Parses a user-entered max-price string into its platinum and Krono components.
-    /// Accepts the same shorthand as auction lines: "10k", "1kr", "1kr 5kpp", "5000", etc.
     /// </summary>
     public static (double? Pp, double? Krono) ParseMaxPrice(string? input)
     {
@@ -66,30 +82,30 @@ public sealed class TradeChatParser
         var m = AuctionBroadcastRegex.Match(action);
         if (m.Success)
         {
-            seller = m.Groups[1].Value;
+            seller  = m.Groups[1].Value;
             message = m.Groups[2].Value;
         }
         else
         {
             m = AuctionTellRegex.Match(action);
             if (!m.Success) return null;
-            seller = m.Groups[1].Value;
+            seller  = m.Groups[1].Value;
             message = m.Groups[2].Value;
         }
 
         var keywords = KeywordRegex.Matches(message);
         if (keywords.Count == 0) return null;
 
-        var items = new List<TradeItem>();
+        var items       = new List<TradeItem>();
         var primaryType = ClassifyKeyword(keywords[0].Value);
 
         for (int i = 0; i < keywords.Count; i++)
         {
-            var kw = keywords[i];
-            var type = ClassifyKeyword(kw.Value);
+            var kw           = keywords[i];
+            var type         = ClassifyKeyword(kw.Value);
             int contentStart = kw.Index + kw.Length;
             int contentEnd   = i + 1 < keywords.Count ? keywords[i + 1].Index : message.Length;
-            var segment = message[contentStart..contentEnd].Trim().TrimStart(':', ' ');
+            var segment      = message[contentStart..contentEnd].Trim().TrimStart(':', ' ');
             ExtractItems(segment, type, items);
         }
 
@@ -109,8 +125,6 @@ public sealed class TradeChatParser
         kw.StartsWith("Buy", StringComparison.OrdinalIgnoreCase)
             ? TradeType.WTB : TradeType.WTS;
 
-    private static readonly char[] _nameTrimChars = [',', ' ', ':', ';'];
-
     private static void ExtractItems(string segment, TradeType type, List<TradeItem> items)
     {
         if (string.IsNullOrWhiteSpace(segment)) return;
@@ -118,18 +132,20 @@ public sealed class TradeChatParser
         var priceMatches = MergePriceMatches(segment);
         if (priceMatches.Count == 0)
         {
-            // No price tokens — treat the whole segment as one item name
-            var name = segment.Trim(_nameTrimChars);
-            if (!string.IsNullOrWhiteSpace(name))
-                items.Add(new TradeItem { Name = name, Type = type });
+            // No price tokens — split on common item separators (, / - +) and add each part
+            foreach (var part in ItemSeparatorRegex.Split(segment))
+            {
+                var name = CleanName(part);
+                if (!string.IsNullOrWhiteSpace(name) && !IsJunkTrailing(name))
+                    items.Add(new TradeItem { Name = name, Type = type });
+            }
             return;
         }
 
         int pos = 0;
         foreach (var pm in priceMatches)
         {
-            // Trim both ends to strip leading ", " from items after the first
-            var name = segment[pos..pm.Index].Trim(_nameTrimChars);
+            var name = CleanName(segment[pos..pm.Index]);
             if (string.IsNullOrWhiteSpace(name))
             {
                 if (items.Count > 0)
@@ -137,13 +153,11 @@ public sealed class TradeChatParser
                     var prev = items[^1];
                     if (prev.Price is null)
                     {
-                        // First price for this item
                         prev.Price = ParsePriceValue(pm);
                         prev.Unit  = ParsePriceUnit(pm);
                     }
                     else if (prev.Price2 is null)
                     {
-                        // Second component of a combined price (e.g., "1kr 5kpp")
                         prev.Price2 = ParsePriceValue(pm);
                         prev.Unit2  = ParsePriceUnit(pm);
                     }
@@ -162,13 +176,33 @@ public sealed class TradeChatParser
             pos = pm.Index + pm.Length;
         }
 
-        // Capture any item after the last price (listed without a price, e.g. "WTS Sword 500k, Shield")
-        var trailing = segment[pos..].Trim(_nameTrimChars);
-        if (!string.IsNullOrWhiteSpace(trailing) && !IsJunkSuffix(trailing))
+        // Any text after the last price — add as a priceless item if it's not noise
+        var trailing = CleanName(segment[pos..]);
+        if (!string.IsNullOrWhiteSpace(trailing) && !IsJunkTrailing(trailing))
             items.Add(new TradeItem { Name = trailing, Type = type });
     }
 
-    // Combines unit-suffixed and bare-number price matches, ordered by position.
+    // Strips quantity markers, separator chars, and trailing noise from a raw name fragment.
+    private static string CleanName(string raw)
+    {
+        var s = QuantityRegex.Replace(raw, "").Trim(_nameTrimChars);
+        return TrailingJunkRegex.Replace(s, "").Trim();
+    }
+
+    // Returns true when a string is clearly not an item name (noise after a price or separator).
+    private static bool IsJunkTrailing(string s) =>
+        s.Equals("pst",            StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("obo",            StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("or best offer",  StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("or bo",          StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("tell me",        StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("each",           StringComparison.OrdinalIgnoreCase) ||
+        s.StartsWith("or ",        StringComparison.OrdinalIgnoreCase) ||
+        s.StartsWith("at ",        StringComparison.OrdinalIgnoreCase) ||
+        s.StartsWith("@ ",         StringComparison.OrdinalIgnoreCase) ||
+        s.StartsWith("all ",       StringComparison.OrdinalIgnoreCase);
+
+    // Combines unit-suffixed and bare-number price matches ordered by position.
     // Bare-number matches that overlap a unit-suffixed match are excluded.
     private static List<Match> MergePriceMatches(string segment)
     {
@@ -179,14 +213,6 @@ public sealed class TradeChatParser
             .Where(m => !covered.Contains(m.Index));
         return primary.Concat(bare).OrderBy(m => m.Index).ToList();
     }
-
-    // Common suffixes that follow a price but aren't item names
-    private static bool IsJunkSuffix(string s) =>
-        s.Equals("pst", StringComparison.OrdinalIgnoreCase) ||
-        s.Equals("obo", StringComparison.OrdinalIgnoreCase) ||
-        s.Equals("or best offer", StringComparison.OrdinalIgnoreCase) ||
-        s.Equals("or bo", StringComparison.OrdinalIgnoreCase) ||
-        s.Equals("tell me", StringComparison.OrdinalIgnoreCase);
 
     private static double? ParsePriceValue(Match m)
     {
