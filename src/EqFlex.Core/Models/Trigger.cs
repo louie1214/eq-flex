@@ -42,6 +42,10 @@ public sealed class TriggerAction
     // Speak
     public bool SpeakInterrupt { get; set; }
 
+    // Text outline — empty StrokeColor or 0 thickness means no outline
+    public string StrokeColor { get; set; } = string.Empty;
+    public double StrokeThickness { get; set; }
+
     /// <summary>
     /// Id of the OverlayWindow that receives DisplayText/Timer actions.
     /// 0 = route to whichever overlay is first/default.

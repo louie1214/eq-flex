@@ -294,7 +294,22 @@
                             <CheckBox Content="Bold" IsChecked="{Binding AlertIsBold}"
                                       VerticalAlignment="Center"
                                       Foreground="{StaticResource TextPrimaryBrush}"
-                                      Margin="0,0,20,0"/>
+                                      Margin="0,0,12,0"/>
+
+                            <!-- Outline color -->
+                            <TextBlock Text="Outline" VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                                       Margin="0,0,6,0"/>
+                            <ctrl:ColorPickerButton SelectedHex="{Binding AlertStrokeColor, Mode=TwoWay}"
+                                                    VerticalAlignment="Center" Margin="0,0,8,0"
+                                                    ToolTip="Outline color — clear hex field to remove outline"/>
+                            <TextBox Width="40" Padding="4,3" VerticalContentAlignment="Center"
+                                     Text="{Binding AlertStrokeThickness, UpdateSourceTrigger=LostFocus}"
+                                     ToolTip="Outline thickness in pixels (0 = none)"
+                                     Margin="0,0,4,0"/>
+                            <TextBlock Text="px" VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextDimBrush}" FontSize="11"
+                                       Margin="0,0,20,0"/>
 
                             <!-- Separator -->
                             <Rectangle Width="1" Fill="{StaticResource BorderBrush}"

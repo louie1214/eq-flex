@@ -488,6 +488,29 @@
                             <CheckBox Grid.Column="3" Content="Bold"
                                       IsChecked="{Binding EditActionBold}" VerticalAlignment="Center"/>
                         </Grid>
+                        <!-- Text outline -->
+                        <Grid Margin="0,0,0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Outline:" VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextDimBrush}"/>
+                            <ctrl:ColorPickerButton Grid.Column="1"
+                                SelectedHex="{Binding EditActionStrokeColor, Mode=TwoWay}"
+                                VerticalAlignment="Center" Margin="0,0,8,0"
+                                ToolTip="Outline color — pick a color or clear the hex field to remove the outline"/>
+                            <TextBlock Grid.Column="2" Text="Thickness:" VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextDimBrush}" Margin="0,0,6,0"/>
+                            <TextBox Grid.Column="3"
+                                     Text="{Binding EditActionStrokeThickness, UpdateSourceTrigger=LostFocus}"
+                                     ToolTip="Outline thickness in pixels (0 = no outline)"/>
+                            <TextBlock Grid.Column="4" Text=" px" VerticalAlignment="Center"
+                                       Foreground="{StaticResource TextDimBrush}" Margin="4,0"/>
+                        </Grid>
                         <!-- Overlay (DisplayText / Timer only) -->
                         <Grid Margin="0,0,0,6">
                             <Grid.Style>
@@ -537,7 +560,8 @@
                             <ComboBox Grid.Column="1"
                                       ItemsSource="{Binding AvailableSounds}"
                                       SelectedValuePath="FileName"
-                                      SelectedValue="{Binding SelectedAction.AudioPath}"
+                                      SelectedValue="{Binding SelectedAction.AudioPath,
+                                                      UpdateSourceTrigger=PropertyChanged}"
                                       ScrollViewer.CanContentScroll="False">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>

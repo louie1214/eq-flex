@@ -70,11 +70,13 @@ public sealed class AppSettings
     public double KronoPpRate { get; set; }
 
     // Tunnel — shared display settings applied to all item alerts
-    public string AlertTextColor { get; set; } = "#FFD4D4D4";
-    public double AlertFontSize  { get; set; } = 13;
-    public bool   AlertIsBold    { get; set; }
-    public string AlertSoundPath { get; set; } = string.Empty;
-    public int    AlertOverlayId { get; set; }
+    public string AlertTextColor      { get; set; } = "#FFD4D4D4";
+    public double AlertFontSize       { get; set; } = 13;
+    public bool   AlertIsBold         { get; set; }
+    public string AlertStrokeColor    { get; set; } = string.Empty;
+    public double AlertStrokeThickness{ get; set; }
+    public string AlertSoundPath      { get; set; } = string.Empty;
+    public int    AlertOverlayId      { get; set; }
 }
 
 public sealed class SettingsStore

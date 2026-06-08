@@ -57,6 +57,8 @@ public sealed partial class TriggersViewModel : ObservableObject
     [ObservableProperty] private double _editActionFontSize = 13;
     [ObservableProperty] private bool _editActionBold;
     [ObservableProperty] private string _editActionTimerBarColor = "#FF007ACC";
+    [ObservableProperty] private string _editActionStrokeColor = string.Empty;
+    [ObservableProperty] private double _editActionStrokeThickness;
     private bool _syncingAction;
 
     // ── Overlay + folder pickers ──────────────────────────────────────────────
@@ -365,9 +367,10 @@ public sealed partial class TriggersViewModel : ObservableObject
 
     private static TriggerAction CloneAction(TriggerAction a) => new()
     {
-        ActionType    = a.ActionType, Text = a.Text, DurationSec = a.DurationSec,
-        TextColor     = a.TextColor,  FontSize = a.FontSize, IsBold = a.IsBold,
-        AudioPath     = a.AudioPath,  SpeakInterrupt = a.SpeakInterrupt, OverlayId = a.OverlayId
+        ActionType      = a.ActionType, Text = a.Text, DurationSec = a.DurationSec,
+        TextColor       = a.TextColor,  FontSize = a.FontSize, IsBold = a.IsBold,
+        StrokeColor     = a.StrokeColor, StrokeThickness = a.StrokeThickness,
+        AudioPath       = a.AudioPath,  SpeakInterrupt = a.SpeakInterrupt, OverlayId = a.OverlayId
     };
 
     // ── Import / Share ────────────────────────────────────────────────────────
@@ -542,11 +545,13 @@ public sealed partial class TriggersViewModel : ObservableObject
         _syncingAction = true;
         try
         {
-            EditActionColor         = value?.TextColor ?? "#FFD4D4D4";
-            EditActionFontSize      = value?.FontSize > 0 ? value.FontSize : 13;
-            EditActionBold          = value?.IsBold ?? false;
-            EditActionTimerBarColor = string.IsNullOrEmpty(value?.TimerBarColor)
+            EditActionColor          = value?.TextColor ?? "#FFD4D4D4";
+            EditActionFontSize       = value?.FontSize > 0 ? value.FontSize : 13;
+            EditActionBold           = value?.IsBold ?? false;
+            EditActionTimerBarColor  = string.IsNullOrEmpty(value?.TimerBarColor)
                 ? "#FF007ACC" : value.TimerBarColor;
+            EditActionStrokeColor    = value?.StrokeColor ?? string.Empty;
+            EditActionStrokeThickness = value?.StrokeThickness ?? 0;
         }
         finally { _syncingAction = false; }
     }
@@ -569,6 +574,16 @@ public sealed partial class TriggersViewModel : ObservableObject
     partial void OnEditActionTimerBarColorChanged(string value)
     {
         if (!_syncingAction && SelectedAction is not null) SelectedAction.TimerBarColor = value;
+    }
+
+    partial void OnEditActionStrokeColorChanged(string value)
+    {
+        if (!_syncingAction && SelectedAction is not null) SelectedAction.StrokeColor = value;
+    }
+
+    partial void OnEditActionStrokeThicknessChanged(double value)
+    {
+        if (!_syncingAction && SelectedAction is not null) SelectedAction.StrokeThickness = value;
     }
 
     [RelayCommand]

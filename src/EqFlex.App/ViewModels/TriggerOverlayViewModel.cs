@@ -12,21 +12,27 @@ namespace EqFlex.App.ViewModels;
 
 public sealed partial class TriggerAlertItem : ObservableObject
 {
-    public string Text { get; }
-    public string TextColor { get; }
-    public double FontSize { get; }
-    public bool IsBold { get; }
-    public bool IsPreview { get; }
+    public string Text            { get; }
+    public string TextColor       { get; }
+    public double FontSize        { get; }
+    public bool   IsBold          { get; }
+    public string StrokeColor     { get; }
+    public double StrokeThickness { get; }
+    public bool   IsPreview       { get; }
     [ObservableProperty] private double _secondsRemaining;
 
     public TriggerAlertItem(string text, string color, double durationSec,
-        double fontSize = 13, bool isBold = false, bool isPreview = false)
+        double fontSize = 13, bool isBold = false,
+        string strokeColor = "", double strokeThickness = 0,
+        bool isPreview = false)
     {
-        Text = text;
-        TextColor = color;
-        FontSize = fontSize > 0 ? fontSize : 13;
-        IsBold = isBold;
-        IsPreview = isPreview;
+        Text            = text;
+        TextColor       = color;
+        FontSize        = fontSize > 0 ? fontSize : 13;
+        IsBold          = isBold;
+        StrokeColor     = strokeColor;
+        StrokeThickness = strokeThickness;
+        IsPreview       = isPreview;
         SecondsRemaining = durationSec;
     }
 
@@ -179,7 +185,8 @@ public sealed partial class TriggerOverlayViewModel : ObservableObject
             case TriggerActionType.DisplayText:
                 Alerts.Insert(0, new TriggerAlertItem(
                     text, args.Action.TextColor, args.Action.DurationSec,
-                    args.Action.FontSize, args.Action.IsBold));
+                    args.Action.FontSize, args.Action.IsBold,
+                    args.Action.StrokeColor, args.Action.StrokeThickness));
                 if (!IsOpen) IsOpen = true;
                 break;
 
