@@ -23,11 +23,14 @@
         <Border Grid.Row="1" Background="{StaticResource BgMidBrush}"
                 BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
                 CornerRadius="4" Padding="12" Margin="0,0,0,12">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <TextBlock x:Name="NotesBlock" TextWrapping="Wrap"
-                           Foreground="{StaticResource TextSecondaryBrush}"
-                           FontFamily="Consolas" FontSize="12"/>
-            </ScrollViewer>
+            <RichTextBox x:Name="NotesBox"
+                         IsReadOnly="True"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Foreground="{StaticResource TextSecondaryBrush}"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Disabled"
+                         IsDocumentEnabled="True"/>
         </Border>
 
         <ProgressBar Grid.Row="2" x:Name="DownloadProgress"
