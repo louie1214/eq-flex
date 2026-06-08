@@ -291,7 +291,10 @@ public sealed class FightManager : IFightRegistry
         foreach (var (name, fight) in _active)
         {
             var idle = nowSeconds - fight.LastTime;
-            if (idle >= MaxTimeoutSec || (idle >= IdleTimeoutSec && fight.DamageHits > 0))
+            // Match EQLP: strict > (not >=), and any combat action (hits or tank hits) triggers
+            // the shorter 30s timeout rather than waiting for the 60s hard cap.
+            var hasActions = fight.DamageHits > 0 || fight.TankHits > 0;
+            if (idle > MaxTimeoutSec || (idle > IdleTimeoutSec && hasActions))
                 RemoveFight(name);
         }
     }
@@ -335,6 +338,21 @@ public sealed class FightManager : IFightRegistry
             return false;
 
         var isDefenderPlayer = _registry?.IsPetOrPlayerOrMerc(record.Defender) == true;
+
+        // npcs.txt is ground truth: if a name is in the NPC database, treat it as an NPC
+        // even if it also appears in the player registry. This handles the case where an NPC's
+        // name collides with a player character name (e.g. a player named "Terror" on the server
+        // causing the NPC "Terror" to be registered via a /who line).
+        if (isAttackerPlayer && !record.AttackerIsSpell && _spells.IsNpc(record.Attacker))
+        {
+            if (_registry?.IsVerifiedPet(record.Attacker) == true) _registry!.RemovePet(record.Attacker);
+            isAttackerPlayer = false;
+        }
+        if (isDefenderPlayer && _spells.IsNpc(record.Defender))
+        {
+            if (_registry?.IsVerifiedPet(record.Defender) == true) _registry!.RemovePet(record.Defender);
+            isDefenderPlayer = false;
+        }
 
         // Behavioral charm break: a registered pet attacking a verified player means the
         // charm has broken. Un-register the pet so subsequent events classify correctly.
@@ -402,7 +420,16 @@ public sealed class FightManager : IFightRegistry
             if (!PlayerRegistry.IsPossiblePlayerName(record.Defender)) { npcIsDefender = true; return true; }
             if (!PlayerRegistry.IsPossiblePlayerName(record.Attacker)) return true;
 
-            npcIsDefender = true;
+            // Both names look like players — resolve via active-fight presence.
+            // If exactly one side already has an ongoing fight, that entity is the NPC.
+            // This prevents "NpcName attacks Player" lines from creating phantom player-named fights
+            // and leaving the real NPC fight's LastTime frozen.
+            var attackerActive = _active.ContainsKey(record.Attacker);
+            var defenderActive = _active.ContainsKey(record.Defender);
+            if (attackerActive && !defenderActive) return true;          // attacker is NPC (npcIsDefender=false)
+            if (defenderActive && !attackerActive) { npcIsDefender = true; return true; }  // defender is NPC
+
+            npcIsDefender = true;  // truly ambiguous — default defender-is-NPC
         }
 
         return true;

@@ -87,13 +87,15 @@ public sealed class OverlayManager
     }
 
     public void ShowAlertText(string text, int overlayId, int durationSec = 10,
-        string color = "#FFD4D4D4", double fontSize = 13, bool isBold = false)
+        string color = "#FFD4D4D4", double fontSize = 13, bool isBold = false,
+        string strokeColor = "", double strokeThickness = 0)
     {
         var vm = ResolveOverlay(overlayId);
         if (vm is null) return;
         Application.Current.Dispatcher.InvokeAsync(() =>
         {
-            vm.Alerts.Insert(0, new TriggerAlertItem(text, color, durationSec, fontSize, isBold));
+            vm.Alerts.Insert(0, new TriggerAlertItem(text, color, durationSec, fontSize, isBold,
+                strokeColor, strokeThickness));
             if (!vm.IsOpen) vm.IsOpen = true;
         });
     }
@@ -121,10 +123,6 @@ public sealed class OverlayManager
                 _tts.SpeakAsync(text);
                 break;
 
-            case TriggerActionType.PlayAudio when !string.IsNullOrWhiteSpace(args.Action.AudioPath):
-                PlayAudio(args.Action.AudioPath);
-                break;
-
             case TriggerActionType.DisplayText:
             case TriggerActionType.Timer:
                 var vm = ResolveOverlay(args.Action.OverlayId);
@@ -139,6 +137,11 @@ public sealed class OverlayManager
                 });
                 break;
         }
+
+        // Audio plays on any action type that has a path configured (including PlayAudio,
+        // DisplayText, Timer, etc.) — lets users attach a sound to any action type.
+        if (!string.IsNullOrWhiteSpace(args.Action.AudioPath))
+            PlayAudio(args.Action.AudioPath);
     }
 
     private static Color ParseColor(string hex)

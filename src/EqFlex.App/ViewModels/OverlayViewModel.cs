@@ -21,6 +21,7 @@ public sealed partial class OverlayViewModel : ObservableObject
     private readonly DispatcherTimer _timerTick;
     private Fight? _lastFight;
     private Fight? _currentActiveFight;
+    private long _lastRefreshMs;
 
     [ObservableProperty] private bool _isOpen;
     [ObservableProperty] private bool _isLocked = true;
@@ -114,13 +115,17 @@ public sealed partial class OverlayViewModel : ObservableObject
 
     private void OnFightUpdated(object? sender, Fight fight)
     {
+        var now = Environment.TickCount64;
+        if (now - _lastRefreshMs < 250) return;
+        _lastRefreshMs = now;
         if (Application.Current.Dispatcher.CheckAccess()) DoRefresh();
         else Application.Current.Dispatcher.InvokeAsync(DoRefresh);
     }
 
     private void OnFightExpired(object? sender, Fight fight)
     {
-        _lastFight = fight;
+        if (fight.DamageTotal > 0 || fight.TankTotal > 0)
+            _lastFight = fight;
         if (Application.Current.Dispatcher.CheckAccess()) DoRefresh();
         else Application.Current.Dispatcher.InvokeAsync(DoRefresh);
     }
@@ -132,16 +137,18 @@ public sealed partial class OverlayViewModel : ObservableObject
 
         if (active.Count > 0)
         {
-            target = active.MaxBy(f => f.LastTime)!;
-            _lastFight = target;
-            _currentActiveFight = target;
+            var latestFight = active.MaxBy(f => f.LastTime)!;
+            _currentActiveFight = latestFight;
+            var hasData = latestFight.DamageTotal > 0 || latestFight.TankTotal > 0;
+            if (hasData) _lastFight = latestFight;
+            target = hasData ? latestFight : _lastFight;
 
-            var playerInFight = IsPlayerParticipating(target);
+            var playerInFight = target is not null && IsPlayerParticipating(target);
             if (AutoShow && !IsOpen && playerInFight) { _autoHideTimer.Stop(); IsOpen = true; }
             else if (playerInFight) _autoHideTimer.Stop();
 
             if (!_timerTick.IsEnabled) _timerTick.Start();
-            FightTimer = FormatDuration((long)target.DurationSeconds);
+            FightTimer = target is not null ? FormatDuration((long)latestFight.DurationSeconds) : string.Empty;
         }
         else
         {

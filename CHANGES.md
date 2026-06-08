@@ -1,3 +1,8 @@
+## What's New in 1.2.2
+
+### Fixes
+- Fight duration now correct when an NPC name collides with a player character name on the server (e.g. a player named "Terror" causing the NPC Terror to be registered as a player via a /who line, which rejected all Terror combat as PvP and froze the fight timer at a few seconds)
+
 ## What's New in 1.2.1
 
 ### Fixes

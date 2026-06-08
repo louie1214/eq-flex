@@ -109,26 +109,32 @@ public sealed partial class TunnelViewModel : ObservableObject
 
     // ── Shared alert display settings (apply to all alerts) ───────────────────
     [ObservableProperty] private bool   _showAlertSettings;
-    [ObservableProperty] private string _alertTextColor = "#FFD4D4D4";
-    [ObservableProperty] private double _alertFontSize  = 13;
+    [ObservableProperty] private string _alertTextColor       = "#FFD4D4D4";
+    [ObservableProperty] private double _alertFontSize        = 13;
     [ObservableProperty] private bool   _alertIsBold;
-    [ObservableProperty] private string _alertSoundPath = string.Empty;
+    [ObservableProperty] private string _alertStrokeColor     = string.Empty;
+    [ObservableProperty] private double _alertStrokeThickness;
+    [ObservableProperty] private string _alertSoundPath       = string.Empty;
     [ObservableProperty] private int    _alertOverlayId;
 
-    partial void OnAlertTextColorChanged(string value)  => SaveAlertDisplaySettings();
-    partial void OnAlertFontSizeChanged(double value)   => SaveAlertDisplaySettings();
-    partial void OnAlertIsBoldChanged(bool value)       => SaveAlertDisplaySettings();
-    partial void OnAlertSoundPathChanged(string value)  => SaveAlertDisplaySettings();
-    partial void OnAlertOverlayIdChanged(int value)     => SaveAlertDisplaySettings();
+    partial void OnAlertTextColorChanged(string value)       => SaveAlertDisplaySettings();
+    partial void OnAlertFontSizeChanged(double value)        => SaveAlertDisplaySettings();
+    partial void OnAlertIsBoldChanged(bool value)            => SaveAlertDisplaySettings();
+    partial void OnAlertStrokeColorChanged(string value)     => SaveAlertDisplaySettings();
+    partial void OnAlertStrokeThicknessChanged(double value) => SaveAlertDisplaySettings();
+    partial void OnAlertSoundPathChanged(string value)       => SaveAlertDisplaySettings();
+    partial void OnAlertOverlayIdChanged(int value)          => SaveAlertDisplaySettings();
 
     private void SaveAlertDisplaySettings()
     {
         var s = _settings.Load();
-        s.AlertTextColor = AlertTextColor;
-        s.AlertFontSize  = AlertFontSize;
-        s.AlertIsBold    = AlertIsBold;
-        s.AlertSoundPath = AlertSoundPath;
-        s.AlertOverlayId = AlertOverlayId;
+        s.AlertTextColor       = AlertTextColor;
+        s.AlertFontSize        = AlertFontSize;
+        s.AlertIsBold          = AlertIsBold;
+        s.AlertStrokeColor     = AlertStrokeColor;
+        s.AlertStrokeThickness = AlertStrokeThickness;
+        s.AlertSoundPath       = AlertSoundPath;
+        s.AlertOverlayId       = AlertOverlayId;
         _settings.Save(s);
     }
 
@@ -174,11 +180,13 @@ public sealed partial class TunnelViewModel : ObservableObject
         _settings       = settings;
         var cfg = settings.Load();
         _kronoRatePp    = cfg.KronoPpRate;
-        _alertTextColor = cfg.AlertTextColor.Length > 0 ? cfg.AlertTextColor : "#FFD4D4D4";
-        _alertFontSize  = cfg.AlertFontSize  > 0 ? cfg.AlertFontSize  : 13;
-        _alertIsBold    = cfg.AlertIsBold;
-        _alertSoundPath = cfg.AlertSoundPath;
-        _alertOverlayId = cfg.AlertOverlayId;
+        _alertTextColor       = cfg.AlertTextColor.Length > 0 ? cfg.AlertTextColor : "#FFD4D4D4";
+        _alertFontSize        = cfg.AlertFontSize  > 0 ? cfg.AlertFontSize  : 13;
+        _alertIsBold          = cfg.AlertIsBold;
+        _alertStrokeColor     = cfg.AlertStrokeColor;
+        _alertStrokeThickness = cfg.AlertStrokeThickness;
+        _alertSoundPath       = cfg.AlertSoundPath;
+        _alertOverlayId       = cfg.AlertOverlayId;
     }
 
     /// <summary>Fetches item stats for a tooltip; returns null if unknown or not found on Lucy.</summary>
@@ -417,7 +425,8 @@ public sealed partial class TunnelViewModel : ObservableObject
     {
         var text = $"{item.Name}  ·  {record.Seller}  ·  {item.PriceDisplay}";
         _overlayManager.ShowAlertText(text, AlertOverlayId, color: AlertTextColor,
-            fontSize: AlertFontSize, isBold: AlertIsBold);
+            fontSize: AlertFontSize, isBold: AlertIsBold,
+            strokeColor: AlertStrokeColor, strokeThickness: AlertStrokeThickness);
         if (!string.IsNullOrEmpty(AlertSoundPath))
             _overlayManager.PlayAudio(AlertSoundPath);
 

@@ -1,6 +1,7 @@
 <Window x:Class="EqFlex.App.Overlays.TriggerOverlay"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ctrl="clr-namespace:EqFlex.App.Controls"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStyle="None"
@@ -86,8 +87,11 @@
                     <ItemsControl ItemsSource="{Binding Alerts}" Margin="6,4,6,2">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Text}"
-                                           Foreground="{Binding TextColor}"
+                                <ctrl:OutlinedTextBlock
+                                           Text="{Binding Text}"
+                                           Fill="{Binding TextColor, Converter={StaticResource StringToBrushConverter}}"
+                                           StrokeColor="{Binding StrokeColor}"
+                                           StrokeThickness="{Binding StrokeThickness}"
                                            FontSize="{Binding FontSize}"
                                            FontWeight="{Binding IsBold, Converter={StaticResource BoldConverter}}"
                                            TextWrapping="Wrap" Margin="0,1"
