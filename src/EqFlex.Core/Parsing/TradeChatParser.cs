@@ -21,22 +21,36 @@ public sealed class TradeChatParser
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // Unit-suffixed prices — Krono matched before 'k' to prevent false matches.
-    // Matches: 1kr, 2 KR, 1krono, 1kronos, 12k, 10.5k, 500pp, 5kpp, 6000p
+    // Matches: 1kr, 2 KR, 1krono, 1kronos, 12k, 10.5k, 500pp, 5kpp, 6000p, 10,000pp
+    // Comma-formatted alternative (e.g. 10,000pp) precedes the plain-digit alternative so it
+    // consumes the full token and prevents the bare-number regex from matching just "10".
     private static readonly Regex PriceRegex = new(
-        @"\b(\d+(?:\.\d+)?)\s*(kr(?:ono)?s?|kpp?|pp?|k)\b",
+        @"\b(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*(kr(?:ono)?s?|kpp?|pp?|k)\b",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // Bare number prices (no unit suffix) — assumed platinum.
-    // Matches before: comma/semicolon, end-of-string, the next item's first word, or noise keywords.
+    // Matches before: comma/semicolon, end-of-string, the next item's first word, noise keywords,
+    // or "@" location marker ("5000 @ EC").
     // Negative lookbehind excludes +5/−5 stat modifiers and x20-style quantity markers.
     // Negative lookahead excludes "N x Item" quantity notation (e.g. "3 x Krono").
+    // Comma-formatted thousands (e.g. 10,000) listed first to prevent partial match on "10".
     private static readonly Regex BareNumberPriceRegex = new(
-        @"(?<![+\-x])\b(\d+(?:\.\d+)?)()(?!\s+x\b)(?=\s*(?:,|;|$|(?:obo|pst|or\s+best|or\s+bo|tell\s+me)\b)|\s+[A-Za-z]|\s+[-/|]\s)",
+        @"(?<![+\-x])\b(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)()(?!\s+x\b)(?=\s*(?:,|;|$|(?:obo|pst|or\s+best|or\s+bo|tell\s+me)\b)|\s+@|\s+[A-Za-z]|\s+[-/|]\s)",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    // "x20", "x 7", "x2" — quantity markers to strip from item names
+    // "x20", "x 7", "x2" — quantity markers to strip from item names (suffix form)
     private static readonly Regex QuantityRegex = new(
         @"\s*\bx\s*\d+\b",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    // "5 x", "5x" — prefix quantity markers to strip from the start of cleaned names
+    private static readonly Regex LeadingQuantityRegex = new(
+        @"^\d+\s*x\s+",
+        RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+    // Leading noise words that appear after a price (e.g. "each, Item2" → "Item2")
+    private static readonly Regex LeadingJunkRegex = new(
+        @"^(?:each|ea)\b[\s,;]*",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // Splits a no-price segment into individual items.
@@ -48,7 +62,7 @@ public sealed class TradeChatParser
 
     // Trailing noise phrases to strip from item names
     private static readonly Regex TrailingJunkRegex = new(
-        @"\s+(?:pst|obo|or\s+best\s+offer?|or\s+bo|tell\s+me|each|wtb|wts)\s*$",
+        @"\s+(?:pst|obo|or\s+best\s+offer?|or\s+bo|tell\s+me|send\s+tells?|each|ea|wtb|wts)\s*$",
         RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
     // Chars that delimit items but are not part of item names
@@ -182,10 +196,13 @@ public sealed class TradeChatParser
             items.Add(new TradeItem { Name = trailing, Type = type });
     }
 
-    // Strips quantity markers, separator chars, and trailing noise from a raw name fragment.
+    // Strips quantity markers, separator chars, leading/trailing noise from a raw name fragment.
     private static string CleanName(string raw)
     {
         var s = QuantityRegex.Replace(raw, "").Trim(_nameTrimChars);
+        s = s.TrimEnd('@').TrimEnd();             // strip trailing "@" price connector ("Sword @ 5000")
+        s = LeadingQuantityRegex.Replace(s, ""); // strip "5 x" / "5x" prefix quantities
+        s = LeadingJunkRegex.Replace(s, "");      // strip "each"/"ea" left by prior price
         return TrailingJunkRegex.Replace(s, "").Trim();
     }
 
@@ -196,10 +213,12 @@ public sealed class TradeChatParser
         s.Equals("or best offer",  StringComparison.OrdinalIgnoreCase) ||
         s.Equals("or bo",          StringComparison.OrdinalIgnoreCase) ||
         s.Equals("tell me",        StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("send tell",      StringComparison.OrdinalIgnoreCase) ||
         s.Equals("each",           StringComparison.OrdinalIgnoreCase) ||
+        s.Equals("ea",             StringComparison.OrdinalIgnoreCase) ||
         s.StartsWith("or ",        StringComparison.OrdinalIgnoreCase) ||
         s.StartsWith("at ",        StringComparison.OrdinalIgnoreCase) ||
-        s.StartsWith("@ ",         StringComparison.OrdinalIgnoreCase) ||
+        s.StartsWith("@",          StringComparison.OrdinalIgnoreCase) ||
         s.StartsWith("all ",       StringComparison.OrdinalIgnoreCase);
 
     // Combines unit-suffixed and bare-number price matches ordered by position.

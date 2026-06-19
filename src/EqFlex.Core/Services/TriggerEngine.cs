@@ -95,6 +95,7 @@ public sealed class TriggerEngine
     /// <summary>Replace {S0}, {GroupName}, {C}, {L} tokens in text with captured values.</summary>
     public static string Substitute(string template, IReadOnlyDictionary<string, string> captures)
     {
+        if (string.IsNullOrEmpty(template)) return template ?? string.Empty;
         foreach (var (key, value) in captures)
             template = template.Replace(key, value, StringComparison.OrdinalIgnoreCase);
         return template;

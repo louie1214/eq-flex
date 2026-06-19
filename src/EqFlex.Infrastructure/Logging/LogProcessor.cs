@@ -154,8 +154,12 @@ public sealed class LogProcessor : IDisposable
         if (_registry is not null)
         {
             ProcessGroupLine(action);
-            if (action.Length > 0 && action[0] == '[')
-                ProcessWhoLine(action);
+            // /who lines: "[Level Class] Name" — may be prefixed with " AFK "
+            var whoAction = action.TrimStart();
+            if (whoAction.StartsWith("AFK ", StringComparison.OrdinalIgnoreCase))
+                whoAction = whoAction[4..].TrimStart();
+            if (whoAction.Length > 0 && whoAction[0] == '[')
+                ProcessWhoLine(whoAction);
             // Charmed pet communication — register pet before damage lines arrive
             if (action.Contains("told you,", StringComparison.OrdinalIgnoreCase))
                 TryDetectPetCommunication(action);
@@ -233,31 +237,58 @@ public sealed class LogProcessor : IDisposable
     }
 
     // Parse /who output lines to get high-confidence class information.
-    // Format: "[Level ClassName] PlayerName (Race)  ..."
-    // e.g.   "[120 Bard] Louie (High Elf)  ZONE: guildlobby"
+    // Formats:
+    //   Simple:    "[120 Bard] Louie (High Elf)  ZONE: guildlobby"
+    //   Titled:    "[65 Overlord (Warrior)] Name (Race)"
+    //   AFK:       "AFK [120 Bard] Name" — prefix stripped by ProcessLine before calling here
     private void ProcessWhoLine(string action)
     {
         var bracket = action.IndexOf(']');
         if (bracket < 4) return;
 
         var content = action.AsSpan(1, bracket - 1);
-        if (content.StartsWith("ANON ", StringComparison.OrdinalIgnoreCase)) return;
+
+        // [ANONYMOUS] PlayerName — register player but class unknown
+        if (content.StartsWith("ANON", StringComparison.OrdinalIgnoreCase))
+        {
+            var afterAnon = action.AsSpan(bracket + 1).TrimStart();
+            var anonEnd = afterAnon.IndexOf(' ');
+            var anonName = (anonEnd > 0 ? afterAnon[..anonEnd] : afterAnon).ToString();
+            if (PlayerRegistry.IsPossiblePlayerName(anonName))
+                _registry!.AddVerifiedPlayer(anonName);
+            return;
+        }
 
         var space = content.IndexOf(' ');
         if (space < 1) return;
-        if (!uint.TryParse(content[..space], out var level) || level == 0 || level > 125) return;
+        if (!uint.TryParse(content[..space], out var level) || level == 0 || level > 200) return;
 
-        var className = content[(space + 1)..].ToString();
-        if (!WhoClassMap.TryGetValue(className, out var classAbbr)) return;
+        // Handle both:
+        //   "[120 Bard]"                    → classRaw = "Bard"
+        //   "[65 Overlord (Warrior)]"        → extract from parens → "Warrior"
+        //   "[130 Bloodreaver (Shadow Knight)]" → "Shadow Knight"
+        var classRaw = content[(space + 1)..].ToString();
+        string className;
+        var parenIdx = classRaw.IndexOf('(');
+        if (parenIdx >= 0)
+            className = classRaw[(parenIdx + 1)..].TrimEnd(')', ' ').Trim();
+        else
+            className = classRaw;
 
+        // Extract player name — strip race suffix e.g. "Bloodydagger(Iksar)" → "Bloodydagger"
         var afterBracket = action.AsSpan(bracket + 1).TrimStart();
         var nameEnd = afterBracket.IndexOf(' ');
         var playerName = (nameEnd > 0 ? afterBracket[..nameEnd] : afterBracket).ToString();
+        var parenInName = playerName.IndexOf('(');
+        if (parenInName > 0)
+            playerName = playerName[..parenInName];
 
         if (!PlayerRegistry.IsPossiblePlayerName(playerName)) return;
 
         _registry!.AddVerifiedPlayer(playerName);
-        _registry!.SetPlayerClass(playerName, classAbbr, highConfidence: true);
+
+        if (WhoClassMap.TryGetValue(className, out var classAbbr))
+            _registry!.SetPlayerClass(playerName, classAbbr, highConfidence: true);
     }
 
     // Detect charmed pet from the tell it sends when attacking:

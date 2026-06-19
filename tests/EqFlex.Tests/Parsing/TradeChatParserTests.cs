@@ -292,6 +292,108 @@ public sealed class TradeChatParserTests
         Assert.Equal("krono", r.Items[0].Name);
     }
 
+    // ── Comma-formatted prices ────────────────────────────────────────────────
+
+    [Fact]
+    public void Comma_formatted_pp_price()
+    {
+        var r = Parse("Seller auctions, 'WTS Flowing Black Silk Sash 10,000pp'");
+        Assert.Single(r.Items);
+        Assert.Equal("Flowing Black Silk Sash", r.Items[0].Name);
+        Assert.Equal(10000, r.Items[0].Price);
+        Assert.Equal(PriceUnit.PP, r.Items[0].Unit);
+    }
+
+    [Fact]
+    public void Comma_formatted_bare_price()
+    {
+        var r = Parse("Seller auctions, 'WTS Gloves of Aniki 15,000'");
+        Assert.Single(r.Items);
+        Assert.Equal("Gloves of Aniki", r.Items[0].Name);
+        Assert.Equal(15000, r.Items[0].Price);
+        Assert.Equal(PriceUnit.PP, r.Items[0].Unit);
+    }
+
+    [Fact]
+    public void Comma_formatted_price_multi_item()
+    {
+        var r = Parse("Seller auctions, 'WTS Sword 10,000 Shield 5,000'");
+        Assert.Equal(2, r.Items.Count);
+        Assert.Equal("Sword",  r.Items[0].Name); Assert.Equal(10000, r.Items[0].Price);
+        Assert.Equal("Shield", r.Items[1].Name); Assert.Equal(5000,  r.Items[1].Price);
+    }
+
+    // ── "@" price connector ───────────────────────────────────────────────────
+
+    [Fact]
+    public void At_sign_price_connector_stripped_from_name()
+    {
+        var r = Parse("Seller auctions, 'WTS Sword @ 5000pp'");
+        Assert.Single(r.Items);
+        Assert.Equal("Sword", r.Items[0].Name);
+        Assert.Equal(5000, r.Items[0].Price);
+    }
+
+    [Fact]
+    public void At_sign_location_not_added_as_item()
+    {
+        var r = Parse("Seller auctions, 'WTS Sword 5000 @ EC tunnel'");
+        Assert.Single(r.Items);
+        Assert.Equal("Sword", r.Items[0].Name);
+    }
+
+    // ── "ea" / "each" trailing noise ─────────────────────────────────────────
+
+    [Fact]
+    public void Trailing_ea_not_added_as_item()
+    {
+        var r = Parse("Seller auctions, 'WTS Spider Silk 50pp ea'");
+        Assert.Single(r.Items);
+        Assert.Equal("Spider Silk", r.Items[0].Name);
+        Assert.Equal(50, r.Items[0].Price);
+    }
+
+    [Fact]
+    public void Trailing_each_does_not_leak_into_next_item_name()
+    {
+        // "each" follows first price; must not become prefix of "Shield"
+        var r = Parse("Seller auctions, 'WTS Sword 500 each, Shield 300'");
+        Assert.Equal(2, r.Items.Count);
+        Assert.Equal("Sword",  r.Items[0].Name); Assert.Equal(500, r.Items[0].Price);
+        Assert.Equal("Shield", r.Items[1].Name); Assert.Equal(300, r.Items[1].Price);
+    }
+
+    // ── Leading quantity prefix ("N x") ───────────────────────────────────────
+
+    [Fact]
+    public void Leading_quantity_prefix_stripped()
+    {
+        var r = Parse("Seller auctions, 'WTS 5 x Bone Chips 50pp'");
+        Assert.Single(r.Items);
+        Assert.Equal("Bone Chips", r.Items[0].Name);
+        Assert.Equal(50, r.Items[0].Price);
+    }
+
+    [Fact]
+    public void Leading_quantity_prefix_no_space_stripped()
+    {
+        var r = Parse("Seller auctions, 'WTS 5x Bone Chips 50pp'");
+        Assert.Single(r.Items);
+        Assert.Equal("Bone Chips", r.Items[0].Name);
+        Assert.Equal(50, r.Items[0].Price);
+    }
+
+    // ── "send tell" trailing noise ────────────────────────────────────────────
+
+    [Fact]
+    public void Trailing_send_tell_not_added_as_item()
+    {
+        var r = Parse("Seller auctions, 'WTS Ring 5000 send tell'");
+        Assert.Single(r.Items);
+        Assert.Equal("Ring", r.Items[0].Name);
+        Assert.Equal(5000, r.Items[0].Price);
+    }
+
     // ── ParseMaxPrice ─────────────────────────────────────────────────────────
 
     [Fact]

@@ -69,6 +69,29 @@ public sealed class AppSettings
     // Tunnel — Krono PP exchange rate used for alert total-equivalent price comparisons (0 = unknown)
     public double KronoPpRate { get; set; }
 
+    // Copy parse — shared mode selector
+    public string CopyMode { get; set; } = "Damage";
+
+    // Copy Damage parse
+    public int  CopyParsePlayerCount  { get; set; } = 10;
+    public bool CopyParseShowDps      { get; set; } = true;
+    public bool CopyParseShowDuration { get; set; } = true;
+    public bool CopyParseShowPercent  { get; set; }
+    public bool CopyParseShowCrit     { get; set; }
+
+    // Copy Tanking parse
+    public int  CopyTankPlayerCount { get; set; } = 10;
+    public bool CopyTankShowPercent { get; set; } = true;
+    public bool CopyTankShowHits    { get; set; }
+
+    // Copy Healing parse
+    public int  CopyHealPlayerCount  { get; set; } = 10;
+    public bool CopyHealShowHps      { get; set; } = true;
+    public bool CopyHealShowDuration { get; set; } = true;
+    public bool CopyHealShowPercent  { get; set; }
+    public bool CopyHealShowOverheal { get; set; }
+    public bool CopyHealShowCrit     { get; set; }
+
     // Tunnel — shared display settings applied to all item alerts
     public string AlertTextColor      { get; set; } = "#FFD4D4D4";
     public double AlertFontSize       { get; set; } = 13;

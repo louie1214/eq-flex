@@ -1,5 +1,8 @@
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using EqFlex.App.ViewModels;
 using EqFlex.Infrastructure.Storage;
@@ -9,6 +12,9 @@ namespace EqFlex.App.Views;
 
 public partial class TunnelView : UserControl
 {
+    private ScrollViewer? _tradesScrollViewer;
+    private double        _detailPaneWidth = 300;
+
     public TunnelView()
     {
         InitializeComponent();
@@ -16,12 +22,80 @@ public partial class TunnelView : UserControl
         Unloaded += OnUnloaded;
     }
 
-    // ── Layout persistence ────────────────────────────────────────────────────
+    // ── Layout persistence + scroll-lock setup ────────────────────────────────
 
     private void OnLoaded(object sender, RoutedEventArgs e) =>
-        Dispatcher.InvokeAsync(RestoreLayout, DispatcherPriority.Loaded);
+        Dispatcher.InvokeAsync(() =>
+        {
+            RestoreLayout();
+            _tradesScrollViewer = FindScrollViewer(TradesGrid);
+            if (DataContext is TunnelViewModel vm)
+            {
+                vm.FilteredTrades.CollectionChanged += OnTradesCollectionChanged;
+                vm.PropertyChanged                  += OnVmPropertyChanged;
+            }
+        }, DispatcherPriority.Loaded);
 
-    private void OnUnloaded(object sender, RoutedEventArgs e) => SaveLayout();
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        SaveLayout();
+        if (DataContext is TunnelViewModel vm)
+        {
+            vm.FilteredTrades.CollectionChanged -= OnTradesCollectionChanged;
+            vm.PropertyChanged                  -= OnVmPropertyChanged;
+        }
+    }
+
+    private void OnVmPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName != nameof(TunnelViewModel.HasSelectedTrade)) return;
+        var show = (DataContext as TunnelViewModel)?.HasSelectedTrade == true;
+        if (show)
+        {
+            TradesDetailPane.Visibility = Visibility.Visible;
+            TradesSplitter.Visibility   = Visibility.Visible;
+            TradesContentGrid.ColumnDefinitions[1].Width    = new GridLength(4);
+            TradesContentGrid.ColumnDefinitions[2].MinWidth = 180;
+            TradesContentGrid.ColumnDefinitions[2].Width    = new GridLength(_detailPaneWidth);
+        }
+        else
+        {
+            var w = TradesContentGrid.ColumnDefinitions[2].ActualWidth;
+            if (w > 0) _detailPaneWidth = w;
+            TradesContentGrid.ColumnDefinitions[2].MinWidth = 0;
+            TradesDetailPane.Visibility = Visibility.Collapsed;
+            TradesSplitter.Visibility   = Visibility.Collapsed;
+            TradesContentGrid.ColumnDefinitions[1].Width = new GridLength(0);
+            TradesContentGrid.ColumnDefinitions[2].Width = new GridLength(0);
+        }
+    }
+
+    // When items are prepended at index 0 and the user isn't at the top,
+    // compensate the scroll offset so the current viewport stays anchored.
+    private void OnTradesCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        if (e.Action != NotifyCollectionChangedAction.Add || e.NewStartingIndex != 0) return;
+        if (_tradesScrollViewer is null) return;
+
+        var currentOffset = _tradesScrollViewer.VerticalOffset;
+        if (currentOffset <= 0) return;   // at top — let new rows appear naturally
+
+        var compensation = TradesGrid.RowHeight * (e.NewItems?.Count ?? 1);
+        var newOffset    = currentOffset + compensation;
+        Dispatcher.BeginInvoke(DispatcherPriority.Background,
+            () => _tradesScrollViewer?.ScrollToVerticalOffset(newOffset));
+    }
+
+    private static ScrollViewer? FindScrollViewer(DependencyObject o)
+    {
+        if (o is ScrollViewer sv) return sv;
+        for (var i = 0; i < VisualTreeHelper.GetChildrenCount(o); i++)
+        {
+            var result = FindScrollViewer(VisualTreeHelper.GetChild(o, i));
+            if (result is not null) return result;
+        }
+        return null;
+    }
 
     private void RestoreLayout()
     {

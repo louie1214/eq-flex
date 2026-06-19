@@ -106,45 +106,157 @@
                         </WrapPanel>
                     </Border>
 
-                    <DataGrid x:Name="TradesGrid"
-                              Grid.Row="1"
-                              ItemsSource="{Binding FilteredTrades}"
-                              AutoGenerateColumns="False" IsReadOnly="True"
-                              CanUserSortColumns="True" CanUserReorderColumns="True"
-                              GridLinesVisibility="Horizontal" HeadersVisibility="Column"
-                              SelectionMode="Single"
-                              Background="{StaticResource BgDarkBrush}"
-                              RowBackground="{StaticResource BgDarkBrush}"
-                              AlternatingRowBackground="{StaticResource BgMidBrush}"
-                              BorderThickness="0" ColumnHeaderHeight="28" RowHeight="24"
-                              ColumnHeaderStyle="{StaticResource ColHeader}"
-                              CellStyle="{StaticResource Cell}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Time"   Binding="{Binding TimeDisplay}" Width="110"  ElementStyle="{StaticResource TradeRawLineTooltipCell}"/>
-                            <DataGridTextColumn Header="Type"   Binding="{Binding TypeDisplay}" Width="50"  ElementStyle="{StaticResource TradeRawLineTooltipCell}"/>
-                            <DataGridTextColumn Header="Seller" Binding="{Binding Seller}"      Width="110" ElementStyle="{StaticResource TradeRawLineTooltipCell}"/>
-                            <DataGridTemplateColumn Header="Item" Width="*" SortMemberPath="ItemName">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ItemName}" TextTrimming="CharacterEllipsis"
-                                                   Foreground="{StaticResource TextPrimaryBrush}"
-                                                   ToolTipService.ShowDuration="30000"
-                                                   ToolTipService.InitialShowDelay="600"
-                                                   ToolTipService.ToolTipOpening="OnTradeItemTooltipOpening">
-                                            <TextBlock.ToolTip>
-                                                <ToolTip Background="#1E1E1E" BorderBrush="#555" BorderThickness="1" Padding="8,6">
-                                                    <TextBlock Text="Loading…" FontFamily="Consolas" FontSize="11"
-                                                               Foreground="#E8E8E8"
-                                                               MaxWidth="340" TextWrapping="Wrap"/>
-                                                </ToolTip>
-                                            </TextBlock.ToolTip>
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Price"  Binding="{Binding Price}"       Width="100"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                    <Grid Grid.Row="1" x:Name="TradesContentGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="0"/>
+                        </Grid.ColumnDefinitions>
+
+                        <GridSplitter x:Name="TradesSplitter" Grid.Column="1" Width="4"
+                                      HorizontalAlignment="Stretch" Cursor="SizeWE"
+                                      Background="{StaticResource BorderBrush}"
+                                      ResizeBehavior="PreviousAndNext"
+                                      Visibility="Collapsed"/>
+
+                        <DataGrid x:Name="TradesGrid"
+                                  Grid.Column="0"
+                                  ItemsSource="{Binding FilteredTrades}"
+                                  SelectedItem="{Binding SelectedTradeRow, Mode=TwoWay}"
+                                  AutoGenerateColumns="False" IsReadOnly="True"
+                                  CanUserSortColumns="True" CanUserReorderColumns="True"
+                                  GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                                  SelectionMode="Single"
+                                  Background="{StaticResource BgDarkBrush}"
+                                  RowBackground="{StaticResource BgDarkBrush}"
+                                  AlternatingRowBackground="{StaticResource BgMidBrush}"
+                                  BorderThickness="0" ColumnHeaderHeight="28" RowHeight="24"
+                                  ColumnHeaderStyle="{StaticResource ColHeader}"
+                                  CellStyle="{StaticResource Cell}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Time"   Binding="{Binding TimeDisplay}" Width="110"  ElementStyle="{StaticResource TradeRawLineTooltipCell}"/>
+                                <DataGridTextColumn Header="Type"   Binding="{Binding TypeDisplay}" Width="50"   ElementStyle="{StaticResource TradeRawLineTooltipCell}"/>
+                                <DataGridTextColumn Header="Seller" Binding="{Binding Seller}"      Width="110"  ElementStyle="{StaticResource TradeRawLineTooltipCell}"/>
+                                <DataGridTextColumn Header="Item"   Binding="{Binding ItemName}"    Width="*"/>
+                                <DataGridTextColumn Header="Price"  Binding="{Binding Price}"       Width="100"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!-- ── Trade detail pane ── -->
+                        <Border x:Name="TradesDetailPane" Grid.Column="2"
+                                Visibility="Collapsed"
+                                Background="{StaticResource BgMidBrush}"
+                                BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Header: item name + close -->
+                                <Border Grid.Row="0" Background="{StaticResource BgDarkBrush}"
+                                        BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
+                                        Padding="12,8">
+                                    <DockPanel>
+                                        <Button DockPanel.Dock="Right" Content="✕"
+                                                Command="{Binding ClearSelectionCommand}"
+                                                Background="Transparent" BorderThickness="0"
+                                                Foreground="{StaticResource TextDimBrush}" FontSize="10"
+                                                Width="22" Height="22" Cursor="Hand" VerticalAlignment="Top"
+                                                Padding="0"/>
+                                        <TextBlock Text="{Binding SelectedTradeRow.ItemName}"
+                                                   FontWeight="SemiBold" TextWrapping="Wrap"
+                                                   Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,4,0"/>
+                                    </DockPanel>
+                                </Border>
+
+                                <!-- Scrollable content -->
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel Margin="12,10">
+
+                                        <!-- Meta rows -->
+                                        <Grid Margin="0,0,0,14">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Seller"
+                                                       Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedTradeRow.Seller}"
+                                                       Foreground="{StaticResource TextPrimaryBrush}" FontSize="11" Margin="0,0,0,4"/>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Time"
+                                                       Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedTradeRow.TimeDisplay}"
+                                                       Foreground="{StaticResource TextPrimaryBrush}" FontSize="11" Margin="0,0,0,4"/>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Type"
+                                                       Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedTradeRow.TypeDisplay}"
+                                                       Foreground="{StaticResource TextPrimaryBrush}" FontSize="11" Margin="0,0,0,4"/>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Price"
+                                                       Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedTradeRow.Price}"
+                                                       Foreground="{StaticResource TextPrimaryBrush}" FontSize="11"/>
+                                        </Grid>
+
+                                        <!-- All items in this auction -->
+                                        <TextBlock Text="AUCTION ITEMS" FontSize="10" FontWeight="SemiBold"
+                                                   Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6"/>
+                                        <ItemsControl ItemsSource="{Binding SelectedTradeRow.Source.Items}"
+                                                      Margin="0,0,0,14">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid Margin="0,2">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Grid.Column="0" Text="{Binding Name}"
+                                                                   Foreground="{StaticResource TextPrimaryBrush}"
+                                                                   FontSize="12" TextTrimming="CharacterEllipsis"/>
+                                                        <TextBlock Grid.Column="1" Text="{Binding PriceDisplay}"
+                                                                   Foreground="{StaticResource TextDimBrush}"
+                                                                   FontSize="12" Margin="8,0,0,0"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+
+                                        <!-- Item stats (loaded from Lucy) -->
+                                        <TextBlock Text="ITEM STATS" FontSize="10" FontWeight="SemiBold"
+                                                   Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6"/>
+                                        <TextBlock Text="Loading…" FontSize="11"
+                                                   Foreground="{StaticResource TextDimBrush}"
+                                                   Visibility="{Binding IsLoadingDetailStats, Converter={StaticResource BoolToVisConverter}}"
+                                                   Margin="0,0,0,4"/>
+                                        <TextBlock Text="{Binding DetailStatsText}"
+                                                   FontFamily="Consolas" FontSize="11"
+                                                   Foreground="{StaticResource TextSecondaryBrush}"
+                                                   TextWrapping="Wrap"
+                                                   Visibility="{Binding IsLoadingDetailStats, Converter={StaticResource InverseBoolToVisConverter}}"
+                                                   Margin="0,0,0,14"/>
+
+                                        <!-- Raw auction line -->
+                                        <TextBlock Text="RAW LINE" FontSize="10" FontWeight="SemiBold"
+                                                   Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6"/>
+                                        <TextBlock Text="{Binding SelectedTradeRow.Source.RawLine}"
+                                                   FontFamily="Consolas" FontSize="10"
+                                                   Foreground="{StaticResource TextDimBrush}"
+                                                   TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </Grid>
             </TabItem>
 
@@ -226,12 +338,11 @@
             <TabItem Header="Alerts">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>  <!-- toolbar -->
-                        <RowDefinition Height="Auto"/>  <!-- display settings panel -->
-                        <RowDefinition Height="160"/>   <!-- alerts list -->
-                        <RowDefinition Height="Auto"/>  <!-- edit form -->
-                        <RowDefinition Height="Auto"/>  <!-- hits label -->
-                        <RowDefinition Height="*"/>     <!-- hits grid -->
+                        <RowDefinition Height="Auto"/>          <!-- toolbar -->
+                        <RowDefinition Height="Auto"/>          <!-- display settings panel -->
+                        <RowDefinition Height="2*" MinHeight="80"/>  <!-- alerts section -->
+                        <RowDefinition Height="4"/>             <!-- splitter -->
+                        <RowDefinition Height="*" MinHeight="60"/>   <!-- hits section -->
                     </Grid.RowDefinitions>
 
                     <!-- Toolbar -->
@@ -356,9 +467,15 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- Alerts list -->
+                    <!-- Alerts section (edit form + list) -->
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
                     <DataGrid x:Name="AlertsGrid"
-                              Grid.Row="2"
+                              Grid.Row="1"
                               ItemsSource="{Binding Alerts}"
                               SelectedItem="{Binding SelectedAlert}"
                               AutoGenerateColumns="False"
@@ -392,7 +509,7 @@
                     </DataGrid>
 
                     <!-- Edit form -->
-                    <Border Grid.Row="3"
+                    <Border Grid.Row="0"
                             Background="{StaticResource BgMidBrush}"
                             BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,1"
                             Padding="12,10"
@@ -448,9 +565,22 @@
                                        Command="{Binding SaveAlertCommand}"/>
                         </Grid>
                     </Border>
+                    </Grid><!-- end alerts section -->
+
+                    <!-- Splitter -->
+                    <GridSplitter Grid.Row="3" Height="4" HorizontalAlignment="Stretch"
+                                  Background="{StaticResource BorderBrush}"
+                                  ResizeBehavior="PreviousAndNext" Cursor="SizeNS"/>
+
+                    <!-- Hits section (label + grid) -->
+                    <Grid Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
                     <!-- Hits label -->
-                    <Border Grid.Row="4" Background="{StaticResource BgMidBrush}"
+                    <Border Grid.Row="0" Background="{StaticResource BgMidBrush}"
                             BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
                             Padding="16,5">
                         <TextBlock Text="Recent hits (14 days)" FontSize="11"
@@ -459,7 +589,7 @@
 
                     <!-- Hits grid -->
                     <DataGrid x:Name="AlertHitsGrid"
-                              Grid.Row="5"
+                              Grid.Row="1"
                               ItemsSource="{Binding AlertHits}"
                               AutoGenerateColumns="False" IsReadOnly="True"
                               CanUserSortColumns="True" CanUserReorderColumns="True"
@@ -478,6 +608,7 @@
                             <DataGridTextColumn Header="Price"  Binding="{Binding Price}"       Width="80"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    </Grid><!-- end hits section -->
                 </Grid>
             </TabItem>
 

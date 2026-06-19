@@ -101,6 +101,19 @@ public sealed class ItemStatService
     }
 
     /// <summary>
+    /// Returns stats for every Lucy entry that shares this item name, sorted oldest ID first.
+    /// Most items return a single result; items whose name was re-used across expansions return
+    /// multiple results so callers can show the version appropriate for their server era.
+    /// </summary>
+    public async Task<IReadOnlyList<ItemStatDto>> GetAllStatsAsync(string itemName, CancellationToken ct = default)
+    {
+        if (!_nameIndex.TryGetIds(itemName, out var ids)) return [];
+        var tasks   = ids.Select(id => GetStatsAsync(itemName, id, ct));
+        var results = await Task.WhenAll(tasks);
+        return results.Where(r => r is not null).Select(r => r!).ToList();
+    }
+
+    /// <summary>
     /// Returns stats for the given item. Checks LiteDB cache first; fetches Lucy on miss.
     /// Returns null if the item is unknown or not found on Lucy.
     /// </summary>

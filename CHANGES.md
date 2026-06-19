@@ -1,3 +1,21 @@
+## What's New in 1.2.3
+
+### TLP Tunnel improvements
+- Click any trade row to open a detail pane showing full item stats, auction metadata, and raw log line
+- Detail pane is resizable via a drag splitter; width is remembered between sessions
+- When an item name maps to multiple Lucy item IDs (same name re-used across expansions), the detail pane shows stats for every version
+- Scroll position is now anchored when new trades arrive while viewing an entry
+
+### Damage meter
+- Consolidated copy toolbar: single Copy button with a Damage / Tanking / Healing selector, shared Top N and Fields controls
+
+### Class detection
+- /who lines with player titles (e.g. `[65 Overlord (Warrior)]`) now correctly resolve the class from inside the parentheses
+- AFK prefix on /who lines no longer causes the line to be skipped
+- Race suffix in player names (e.g. `Bloodydagger(Iksar)`) is now stripped before name validation
+- Anonymous players on /who are now registered even when class is unknown
+- Level cap for /who parsing raised to 200
+
 ## What's New in 1.2.2
 
 ### Fixes

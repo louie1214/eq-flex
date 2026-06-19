@@ -6,6 +6,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EqFlex.Core.Models;
 using EqFlex.Core.Services;
+using EqFlex.Infrastructure.Storage;
 
 namespace EqFlex.App.ViewModels;
 
@@ -18,7 +19,109 @@ public sealed record HealSpellRow(string Name, long Total, double Percent, int H
 
 public sealed partial class DamageViewModel : ObservableObject
 {
-    private readonly FightManager _fm;
+    private readonly FightManager    _fm;
+    private readonly SettingsStore   _settings;
+
+    // ── Copy Damage settings ───────────────────────────────────────────────
+    [ObservableProperty] private int  _copyParsePlayerCount;
+    [ObservableProperty] private bool _copyParseShowDps;
+    [ObservableProperty] private bool _copyParseShowDuration;
+    [ObservableProperty] private bool _copyParseShowPercent;
+    [ObservableProperty] private bool _copyParseShowCrit;
+
+    partial void OnCopyParsePlayerCountChanged(int value)  => SaveCopyParseSettings();
+    partial void OnCopyParseShowDpsChanged(bool value)     => SaveCopyParseSettings();
+    partial void OnCopyParseShowDurationChanged(bool value)=> SaveCopyParseSettings();
+    partial void OnCopyParseShowPercentChanged(bool value) => SaveCopyParseSettings();
+    partial void OnCopyParseShowCritChanged(bool value)    => SaveCopyParseSettings();
+
+    private void SaveCopyParseSettings()
+    {
+        var s = _settings.Load();
+        s.CopyParsePlayerCount  = CopyParsePlayerCount;
+        s.CopyParseShowDps      = CopyParseShowDps;
+        s.CopyParseShowDuration = CopyParseShowDuration;
+        s.CopyParseShowPercent  = CopyParseShowPercent;
+        s.CopyParseShowCrit     = CopyParseShowCrit;
+        _settings.Save(s);
+    }
+
+    // ── Copy Tanking settings ──────────────────────────────────────────────
+    [ObservableProperty] private int  _copyTankPlayerCount;
+    [ObservableProperty] private bool _copyTankShowPercent;
+    [ObservableProperty] private bool _copyTankShowHits;
+
+    partial void OnCopyTankPlayerCountChanged(int value) => SaveCopyTankSettings();
+    partial void OnCopyTankShowPercentChanged(bool value)=> SaveCopyTankSettings();
+    partial void OnCopyTankShowHitsChanged(bool value)   => SaveCopyTankSettings();
+
+    private void SaveCopyTankSettings()
+    {
+        var s = _settings.Load();
+        s.CopyTankPlayerCount = CopyTankPlayerCount;
+        s.CopyTankShowPercent = CopyTankShowPercent;
+        s.CopyTankShowHits    = CopyTankShowHits;
+        _settings.Save(s);
+    }
+
+    // ── Copy Healing settings ──────────────────────────────────────────────
+    [ObservableProperty] private int  _copyHealPlayerCount;
+    [ObservableProperty] private bool _copyHealShowHps;
+    [ObservableProperty] private bool _copyHealShowDuration;
+    [ObservableProperty] private bool _copyHealShowPercent;
+    [ObservableProperty] private bool _copyHealShowOverheal;
+    [ObservableProperty] private bool _copyHealShowCrit;
+
+    partial void OnCopyHealPlayerCountChanged(int value)  => SaveCopyHealSettings();
+    partial void OnCopyHealShowHpsChanged(bool value)     => SaveCopyHealSettings();
+    partial void OnCopyHealShowDurationChanged(bool value)=> SaveCopyHealSettings();
+    partial void OnCopyHealShowPercentChanged(bool value) => SaveCopyHealSettings();
+    partial void OnCopyHealShowOverhealChanged(bool value)=> SaveCopyHealSettings();
+    partial void OnCopyHealShowCritChanged(bool value)    => SaveCopyHealSettings();
+
+    private void SaveCopyHealSettings()
+    {
+        var s = _settings.Load();
+        s.CopyHealPlayerCount  = CopyHealPlayerCount;
+        s.CopyHealShowHps      = CopyHealShowHps;
+        s.CopyHealShowDuration = CopyHealShowDuration;
+        s.CopyHealShowPercent  = CopyHealShowPercent;
+        s.CopyHealShowOverheal = CopyHealShowOverheal;
+        s.CopyHealShowCrit     = CopyHealShowCrit;
+        _settings.Save(s);
+    }
+
+    // ── Copy mode (shared selector) ───────────────────────────────────────────
+    [ObservableProperty] private string _copyMode = "Damage";
+
+    partial void OnCopyModeChanged(string value)
+    {
+        var s = _settings.Load();
+        s.CopyMode = value;
+        _settings.Save(s);
+        OnPropertyChanged(nameof(CopyModeIsDamage));
+        OnPropertyChanged(nameof(CopyModeIsTanking));
+        OnPropertyChanged(nameof(CopyModeIsHealing));
+        OnPropertyChanged(nameof(CurrentCopyPlayerCount));
+    }
+
+    public bool CopyModeIsDamage  => CopyMode == "Damage";
+    public bool CopyModeIsTanking => CopyMode == "Tanking";
+    public bool CopyModeIsHealing => CopyMode == "Healing";
+
+    public int CurrentCopyPlayerCount
+    {
+        get => CopyMode switch { "Tanking" => CopyTankPlayerCount, "Healing" => CopyHealPlayerCount, _ => CopyParsePlayerCount };
+        set
+        {
+            switch (CopyMode)
+            {
+                case "Tanking": CopyTankPlayerCount  = value; break;
+                case "Healing": CopyHealPlayerCount  = value; break;
+                default:        CopyParsePlayerCount = value; break;
+            }
+        }
+    }
 
     [ObservableProperty] private ObservableCollection<FightRow> _fights = [];
     [ObservableProperty] private ObservableCollection<PlayerDamageRow> _players = [];
@@ -39,11 +142,33 @@ public sealed partial class DamageViewModel : ObservableObject
     // The DataGrid sets this via binding on SelectionChanged
     private IList<FightRow> _selectedFights = [];
 
-    public DamageViewModel(FightManager fm)
+    public DamageViewModel(FightManager fm, SettingsStore settings)
     {
-        _fm = fm;
-        _fm.FightUpdated += OnFightUpdated;
-        _fm.FightExpired += OnFightExpired;
+        _fm       = fm;
+        _settings = settings;
+
+        var s = settings.Load();
+        _copyParsePlayerCount  = s.CopyParsePlayerCount > 0 ? s.CopyParsePlayerCount : 10;
+        _copyParseShowDps      = s.CopyParseShowDps;
+        _copyParseShowDuration = s.CopyParseShowDuration;
+        _copyParseShowPercent  = s.CopyParseShowPercent;
+        _copyParseShowCrit     = s.CopyParseShowCrit;
+
+        _copyTankPlayerCount = s.CopyTankPlayerCount > 0 ? s.CopyTankPlayerCount : 10;
+        _copyTankShowPercent = s.CopyTankShowPercent;
+        _copyTankShowHits    = s.CopyTankShowHits;
+
+        _copyHealPlayerCount  = s.CopyHealPlayerCount > 0 ? s.CopyHealPlayerCount : 10;
+        _copyHealShowHps      = s.CopyHealShowHps;
+        _copyHealShowDuration = s.CopyHealShowDuration;
+        _copyHealShowPercent  = s.CopyHealShowPercent;
+        _copyHealShowOverheal = s.CopyHealShowOverheal;
+        _copyHealShowCrit     = s.CopyHealShowCrit;
+
+        _copyMode = s.CopyMode ?? "Damage";
+
+        _fm.FightUpdated  += OnFightUpdated;
+        _fm.FightExpired  += OnFightExpired;
         _fm.SessionStarted += (_, _) => ClearFights();
     }
 
@@ -307,27 +432,128 @@ public sealed partial class DamageViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void CopyActiveParse()
+    {
+        switch (CopyMode)
+        {
+            case "Tanking": CopyTanking(); break;
+            case "Healing": CopyHealing(); break;
+            default:        CopyParse();   break;
+        }
+    }
+
+    [RelayCommand]
     private void CopyParse()
     {
         if (_selectedFights.Count == 0) return;
 
         var fights = _selectedFights.Select(r => r.Fight).ToList();
-        var sb = new StringBuilder();
 
-        foreach (var fight in fights)
+        // Aggregate damage across selected fights (mirrors RefreshFromSelection)
+        var agg = new Dictionary<string, (long dmg, double parsedSecs, int hits, int crits)>(StringComparer.OrdinalIgnoreCase);
+        long totalDmg = 0;
+        double totalDuration = 0;
+
+        foreach (var f in fights)
         {
-            var dur = Math.Max(1, fight.DurationSeconds);
-            sb.AppendLine($"--- {fight.NpcName} | {fight.DamageTotal:N0} dmg | {fight.Dps:N0} DPS | {dur:F0}s ---");
-            var total = Math.Max(1L, fight.DamageTotal);
-            var rank = 1;
-            foreach (var p in fight.PlayerStats.Values.OrderByDescending(p => p.Damage))
+            totalDmg     += f.DamageTotal;
+            totalDuration += f.DurationSeconds;
+            foreach (var (name, ps) in f.PlayerStats)
             {
-                sb.AppendLine($"  {rank++}. {p.Name} -- {p.Damage:N0} ({p.Damage * 100.0 / total:F1}%) | {p.Damage / dur:N0} DPS | {p.Hits} hits | {p.CritPercent:F1}% crit");
+                agg.TryGetValue(name, out var e);
+                agg[name] = (e.dmg + ps.Damage, e.parsedSecs + ps.ParsedSeconds,
+                             e.hits + ps.Hits, e.crits + ps.Crits);
             }
         }
 
-        Clipboard.SetText(sb.ToString());
+        var dur   = Math.Max(1, totalDuration);
+        var total = Math.Max(1L, totalDmg);
+
+        // Header: "FightName in 284s, 66.96K Damage @235"
+        var fightTitle = fights.Count == 1
+            ? fights[0].NpcName
+            : $"{fights.Count} Fights";
+        var header = $"{fightTitle} in {(int)dur}s, {FormatK(totalDmg)} Damage @{(long)(totalDmg / dur)}";
+
+        // Players: "{rank}. {name} = {dmgK}[@{dps}][ in {parsedSec}s][ ({pct}%)][ {crit}%c]"
+        var count = Math.Max(1, CopyParsePlayerCount);
+        var playerParts = agg
+            .Where(kv => kv.Value.dmg > 0)
+            .OrderByDescending(kv => kv.Value.dmg)
+            .Take(count)
+            .Select((kv, i) =>
+            {
+                var (name, e) = (kv.Key, kv.Value);
+                var sb = new StringBuilder();
+                sb.Append($"{i + 1}. {name} = {FormatK(e.dmg)}");
+                if (CopyParseShowDps)
+                    sb.Append($"@{(long)(e.dmg / dur)}");
+                if (CopyParseShowDuration)
+                    sb.Append($" in {(int)e.parsedSecs}s");
+                if (CopyParseShowPercent)
+                    sb.Append($" ({e.dmg * 100.0 / total:F1}%)");
+                if (CopyParseShowCrit && e.hits > 0)
+                    sb.Append($" {e.crits * 100.0 / e.hits:F1}%c");
+                return sb.ToString();
+            });
+
+        Clipboard.SetText(header + ", " + string.Join(" | ", playerParts));
     }
+
+    [RelayCommand]
+    private void CopyTanking()
+    {
+        if (_selectedFights.Count == 0 || Tanking.Count == 0) return;
+
+        var dur        = Math.Max(1, _selectedFights.Sum(r => r.Fight.DurationSeconds));
+        var fightTitle = _selectedFights.Count == 1 ? _selectedFights[0].NpcName : $"{_selectedFights.Count} Fights";
+        var totalTank  = Math.Max(1L, Tanking.Sum(t => t.Damage));
+        var header     = $"{fightTitle} in {(int)dur}s, {FormatK(totalTank)} Tank Damage";
+
+        var count = Math.Max(1, CopyTankPlayerCount);
+        var parts = Tanking.Take(count).Select((t, i) =>
+        {
+            var sb = new StringBuilder();
+            sb.Append($"{i + 1}. {t.Name} = {FormatK(t.Damage)}");
+            if (CopyTankShowPercent) sb.Append($" ({t.Percent:F1}%)");
+            if (CopyTankShowHits)    sb.Append($" {t.Hits} hits");
+            return sb.ToString();
+        });
+
+        Clipboard.SetText(header + ", " + string.Join(" | ", parts));
+    }
+
+    [RelayCommand]
+    private void CopyHealing()
+    {
+        if (_selectedFights.Count == 0 || Healers.Count == 0) return;
+
+        var dur        = Math.Max(1, _selectedFights.Sum(r => r.Fight.DurationSeconds));
+        var fightTitle = _selectedFights.Count == 1 ? _selectedFights[0].NpcName : $"{_selectedFights.Count} Fights";
+        var totalHeal  = Math.Max(1L, Healers.Sum(h => h.Total));
+        var header     = $"{fightTitle} in {(int)dur}s, {FormatK(totalHeal)} Healing";
+
+        var count = Math.Max(1, CopyHealPlayerCount);
+        var parts = Healers.Take(count).Select((h, i) =>
+        {
+            var sb = new StringBuilder();
+            sb.Append($"{i + 1}. {h.Name} = {FormatK(h.Total)}");
+            if (CopyHealShowHps) sb.Append($"@{(long)h.Shps}");
+            if (CopyHealShowDuration && _healerMap != null && _healerMap.TryGetValue(h.Name, out var hs))
+                sb.Append($" in {(int)hs.ParsedSeconds}s");
+            if (CopyHealShowPercent)  sb.Append($" ({h.Percent:F1}%)");
+            if (CopyHealShowOverheal) sb.Append($" OH:{h.OverHealPct}");
+            if (CopyHealShowCrit)     sb.Append($" {h.CritPct}c");
+            return sb.ToString();
+        });
+
+        Clipboard.SetText(header + ", " + string.Join(" | ", parts));
+    }
+
+    private static string FormatK(long n) =>
+        n >= 1_000_000 ? $"{Math.Round(n / 1_000_000m, 2)}M"
+        : n >= 1_000   ? $"{Math.Round(n / 1_000m, 2)}K"
+        : n.ToString();
 
     [RelayCommand]
     private void ClearFights()

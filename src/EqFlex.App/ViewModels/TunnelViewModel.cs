@@ -81,6 +81,53 @@ public sealed partial class TunnelViewModel : ObservableObject
     public ObservableCollection<TradeRowVm> FilteredTrades { get; } = [];
     public string[] TypeFilters { get; } = ["All", "WTS", "WTB"];
 
+    // ── Trade detail pane ─────────────────────────────────────────────────────
+    [ObservableProperty] private TradeRowVm? _selectedTradeRow;
+    [ObservableProperty] private bool        _hasSelectedTrade;
+    [ObservableProperty] private string      _detailStatsText     = string.Empty;
+    [ObservableProperty] private bool        _isLoadingDetailStats;
+    private int _detailLoadVersion;
+
+    partial void OnSelectedTradeRowChanged(TradeRowVm? value)
+    {
+        HasSelectedTrade     = value is not null;
+        DetailStatsText      = string.Empty;
+        IsLoadingDetailStats = false;
+        if (value is null) return;
+        _ = LoadDetailStatsAsync(value, ++_detailLoadVersion);
+    }
+
+    [RelayCommand]
+    private void ClearSelection() => SelectedTradeRow = null;
+
+    private async Task LoadDetailStatsAsync(TradeRowVm row, int version)
+    {
+        IsLoadingDetailStats = true;
+        var allStats = await _itemStats.GetAllStatsAsync(row.ItemName);
+        if (version != _detailLoadVersion) return;
+        IsLoadingDetailStats = false;
+
+        if (allStats.Count == 0)
+        {
+            DetailStatsText = "(no stats found)";
+        }
+        else if (allStats.Count == 1)
+        {
+            DetailStatsText = allStats[0].FormatTooltip();
+        }
+        else
+        {
+            var sb = new System.Text.StringBuilder();
+            for (int i = 0; i < allStats.Count; i++)
+            {
+                if (i > 0) sb.Append("\n\n");
+                sb.Append($"── Version {i + 1} of {allStats.Count} (ID {allStats[i].ItemId}) ──\n");
+                sb.Append(allStats[i].FormatTooltip());
+            }
+            DetailStatsText = sb.ToString();
+        }
+    }
+
     // ── Krono tab ──────────────────────────────────────────────────────────────
     [ObservableProperty] private double _kronoRatePp;
     [ObservableProperty] private string _kronoApiPrice = "—";
@@ -395,6 +442,7 @@ public sealed partial class TunnelViewModel : ObservableObject
         {
             foreach (var item in record.Items)
             {
+                if (string.IsNullOrEmpty(alert.ItemName)) continue;
                 if (!item.Name.Contains(alert.ItemName, StringComparison.OrdinalIgnoreCase)) continue;
                 if (alert.AlertType != TradeType.Unknown && item.Type != alert.AlertType) continue;
                 var hasCap = alert.MaxPricePp.HasValue || alert.MaxPriceKrono.HasValue;
@@ -457,8 +505,9 @@ public sealed partial class TunnelViewModel : ObservableObject
     {
         var alert = new ItemAlert { IsEnabled = true, AlertType = TradeType.WTS };
         _store.SaveAlert(alert);
-        Alerts.Add(alert);
-        SelectedAlert = alert;
+        var newId = alert.Id;
+        LoadAlerts();
+        SelectedAlert = Alerts.FirstOrDefault(a => a.Id == newId);
     }
 
     [RelayCommand]
@@ -489,16 +538,10 @@ public sealed partial class TunnelViewModel : ObservableObject
         (SelectedAlert.MaxPricePp, SelectedAlert.MaxPriceKrono) =
             TradeChatParser.ParseMaxPrice(EditMaxPrice);
         SelectedAlert.IsEnabled  = EditIsEnabled;
+        var savedId = SelectedAlert.Id;
         _store.SaveAlert(SelectedAlert);
-
-        // Remove+Insert forces WPF to re-bind the row (same-reference Replace is a no-op for bindings).
-        // Safe since AlertsGrid has IsVirtualizing=False which prevents the DataGridCellsPanel crash.
-        var idx = Alerts.IndexOf(SelectedAlert);
-        if (idx >= 0)
-        {
-            Alerts.RemoveAt(idx);
-            Alerts.Insert(idx, SelectedAlert);
-        }
+        LoadAlerts();
+        SelectedAlert = Alerts.FirstOrDefault(a => a.Id == savedId);
     }
 
     [RelayCommand]

@@ -106,9 +106,15 @@ public sealed class OverlayManager
         if (path is null) return;
         Application.Current.Dispatcher.InvokeAsync(() =>
         {
-            _audioPlayer ??= new MediaPlayer();
+            if (_audioPlayer is null)
+            {
+                _audioPlayer = new MediaPlayer();
+                // Play once the media is actually loaded; Open() is async so calling
+                // Play() immediately after Open() races — this guarantees correct timing.
+                _audioPlayer.MediaOpened += (_, _) => _audioPlayer.Play();
+            }
+            _audioPlayer.Stop();   // resets position to 0 and clears ended state
             _audioPlayer.Open(new Uri(path, UriKind.Absolute));
-            _audioPlayer.Play();
         });
     }
 
