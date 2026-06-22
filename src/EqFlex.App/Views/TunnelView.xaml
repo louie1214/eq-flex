@@ -142,6 +142,20 @@
                             </DataGrid.Columns>
                         </DataGrid>
 
+                        <!-- "N new" badge — floats above the grid when the feed is paused with buffered items -->
+                        <Border Grid.Column="0" Panel.ZIndex="10"
+                                HorizontalAlignment="Center" VerticalAlignment="Top"
+                                Margin="0,32,0,0" Padding="10,4" CornerRadius="10"
+                                Background="{StaticResource AccentBrush}"
+                                Cursor="Hand"
+                                MouseLeftButtonUp="OnNewBadgeClick"
+                                Visibility="{Binding HasBufferedTrades, Converter={StaticResource BoolToVisConverter}}">
+                            <TextBlock Foreground="White" FontSize="11" FontWeight="SemiBold">
+                                <Run Text="{Binding BufferedTradeCount, Mode=OneWay}"/>
+                                <Run Text="new ↑"/>
+                            </TextBlock>
+                        </Border>
+
                         <!-- ── Trade detail pane ── -->
                         <Border x:Name="TradesDetailPane" Grid.Column="2"
                                 Visibility="Collapsed"

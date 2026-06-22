@@ -1,4 +1,3 @@
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,27 +28,36 @@ public partial class TunnelView : UserControl
         {
             RestoreLayout();
             _tradesScrollViewer = FindScrollViewer(TradesGrid);
+            if (_tradesScrollViewer is not null)
+                _tradesScrollViewer.ScrollChanged += OnTradesScrollChanged;
             if (DataContext is TunnelViewModel vm)
-            {
-                vm.FilteredTrades.CollectionChanged += OnTradesCollectionChanged;
-                vm.PropertyChanged                  += OnVmPropertyChanged;
-            }
+                vm.PropertyChanged += OnVmPropertyChanged;
         }, DispatcherPriority.Loaded);
 
     private void OnUnloaded(object sender, RoutedEventArgs e)
     {
         SaveLayout();
+        if (_tradesScrollViewer is not null)
+            _tradesScrollViewer.ScrollChanged -= OnTradesScrollChanged;
         if (DataContext is TunnelViewModel vm)
-        {
-            vm.FilteredTrades.CollectionChanged -= OnTradesCollectionChanged;
-            vm.PropertyChanged                  -= OnVmPropertyChanged;
-        }
+            vm.PropertyChanged -= OnVmPropertyChanged;
+    }
+
+    // Only react to user-initiated scrolls — ignore events fired because content was added/removed
+    // (ExtentHeightChange != 0). Without this guard, inserting items at index 0 while the user
+    // is at the top triggers a momentary non-zero offset and accidentally pauses the feed.
+    private void OnTradesScrollChanged(object sender, ScrollChangedEventArgs e)
+    {
+        if (e.ExtentHeightChange != 0) return;
+        if (DataContext is not TunnelViewModel vm) return;
+        vm.SetScrollPaused(_tradesScrollViewer!.VerticalOffset >= 1.0);
     }
 
     private void OnVmPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName != nameof(TunnelViewModel.HasSelectedTrade)) return;
         var show = (DataContext as TunnelViewModel)?.HasSelectedTrade == true;
+
         if (show)
         {
             TradesDetailPane.Visibility = Visibility.Visible;
@@ -68,22 +76,8 @@ public partial class TunnelView : UserControl
             TradesContentGrid.ColumnDefinitions[1].Width = new GridLength(0);
             TradesContentGrid.ColumnDefinitions[2].Width = new GridLength(0);
         }
-    }
 
-    // When items are prepended at index 0 and the user isn't at the top,
-    // compensate the scroll offset so the current viewport stays anchored.
-    private void OnTradesCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-    {
-        if (e.Action != NotifyCollectionChangedAction.Add || e.NewStartingIndex != 0) return;
-        if (_tradesScrollViewer is null) return;
-
-        var currentOffset = _tradesScrollViewer.VerticalOffset;
-        if (currentOffset <= 0) return;   // at top — let new rows appear naturally
-
-        var compensation = TradesGrid.RowHeight * (e.NewItems?.Count ?? 1);
-        var newOffset    = currentOffset + compensation;
-        Dispatcher.BeginInvoke(DispatcherPriority.Background,
-            () => _tradesScrollViewer?.ScrollToVerticalOffset(newOffset));
+        (DataContext as TunnelViewModel)?.SetSelectionPaused(show);
     }
 
     private static ScrollViewer? FindScrollViewer(DependencyObject o)
@@ -141,6 +135,15 @@ public partial class TunnelView : UserControl
             if (settings.LayoutWidths.TryGetValue($"{key}.col.{i}", out var w) && w > 40)
                 grid.Columns[i].Width = new DataGridLength(w);
         }
+    }
+
+    // Flush buffered trades directly — bypasses the scroll/pause logic so it works even when the
+    // detail pane is open (which would re-pause immediately if we only called ScrollToTop).
+    private void OnNewBadgeClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        if (DataContext is TunnelViewModel vm)
+            vm.FlushBuffer();
+        _tradesScrollViewer?.ScrollToTop();
     }
 
     // ── Item tooltip — Trades tab ──────────────────────────────────────────────

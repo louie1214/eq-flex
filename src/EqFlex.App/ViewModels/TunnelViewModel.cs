@@ -68,7 +68,11 @@ public sealed partial class TunnelViewModel : ObservableObject
     private readonly OverlayManager   _overlayManager;
     private readonly SoundLibrary     _soundLibrary;
     private readonly SettingsStore    _settings;
-    private readonly List<TradeRowVm> _allTrades = [];
+    private readonly List<TradeRowVm> _allTrades  = [];
+    private readonly List<TradeRowVm> _feedBuffer = [];
+    private bool _feedPaused;
+    private bool _scrollPaused;
+    private bool _selectionPaused;
     private bool   _loaded;
     private string _loadedServer = string.Empty;
     private CancellationTokenSource? _priceCts;
@@ -78,6 +82,10 @@ public sealed partial class TunnelViewModel : ObservableObject
     [ObservableProperty] private bool _hasSearchText;
     [ObservableProperty] private string _selectedTypeFilter = "All";
     [ObservableProperty] private int _totalCount;
+    [ObservableProperty] private int  _bufferedTradeCount;
+    [ObservableProperty] private bool _hasBufferedTrades;
+
+    partial void OnBufferedTradeCountChanged(int value) => HasBufferedTrades = value > 0;
     public ObservableCollection<TradeRowVm> FilteredTrades { get; } = [];
     public string[] TypeFilters { get; } = ["All", "WTS", "WTB"];
 
@@ -263,18 +271,60 @@ public sealed partial class TunnelViewModel : ObservableObject
 
     // ── Trades ─────────────────────────────────────────────────────────────────
 
+    // Called from TunnelView.xaml.cs — two independent pause reasons that are OR'd together.
+    internal void SetScrollPaused(bool paused)
+    {
+        _scrollPaused = paused;
+        SyncPauseState();
+    }
+
+    internal void SetSelectionPaused(bool paused)
+    {
+        _selectionPaused = paused;
+        SyncPauseState();
+    }
+
+    private void SyncPauseState()
+    {
+        var shouldPause = _scrollPaused || _selectionPaused;
+        if (_feedPaused == shouldPause) return;
+        _feedPaused = shouldPause;
+        if (!shouldPause) FlushBuffer();
+    }
+
+    internal void FlushBuffer()
+    {
+        if (_feedBuffer.Count == 0) return;
+        // Buffer is oldest-first (same reverse-insert order as live path); flush newest-first.
+        for (int i = _feedBuffer.Count - 1; i >= 0; i--)
+            FilteredTrades.Insert(0, _feedBuffer[i]);
+        _feedBuffer.Clear();
+        BufferedTradeCount = 0;
+        TotalCount = FilteredTrades.Count;
+    }
+
     public void AddLiveTrade(TradeRecord record)
     {
         var rows = ToRows(record).ToList();
-        // Insert in reverse so the first item ends up at index 0 (newest first)
+        // Always track in _allTrades so filter rebuilds are correct.
         for (int i = rows.Count - 1; i >= 0; i--)
             _allTrades.Insert(0, rows[i]);
-        for (int i = rows.Count - 1; i >= 0; i--)
+
+        if (_feedPaused)
         {
-            if (MatchesFilter(rows[i]))
-                FilteredTrades.Insert(0, rows[i]);
+            // Buffer filtered rows; flush into FilteredTrades when user returns to top.
+            for (int i = rows.Count - 1; i >= 0; i--)
+                if (MatchesFilter(rows[i]))
+                    _feedBuffer.Add(rows[i]);
+            BufferedTradeCount = _feedBuffer.Count;
         }
-        TotalCount = FilteredTrades.Count;
+        else
+        {
+            for (int i = rows.Count - 1; i >= 0; i--)
+                if (MatchesFilter(rows[i]))
+                    FilteredTrades.Insert(0, rows[i]);
+            TotalCount = FilteredTrades.Count;
+        }
 
         if (record.Type == TradeType.WTS)
         {
@@ -305,6 +355,9 @@ public sealed partial class TunnelViewModel : ObservableObject
 
     private void ApplyFilter()
     {
+        // Buffer is discarded — _allTrades already contains those rows, so they'll appear here.
+        _feedBuffer.Clear();
+        BufferedTradeCount = 0;
         FilteredTrades.Clear();
         foreach (var row in _allTrades)
         {

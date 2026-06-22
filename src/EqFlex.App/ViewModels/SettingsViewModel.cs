@@ -16,6 +16,10 @@ public sealed partial class SettingsViewModel : ObservableObject
     private readonly SoundLibrary  _soundLibrary;
     private AppSettings _settings;
 
+    public string AppVersion { get; } =
+        System.Reflection.Assembly.GetExecutingAssembly()
+            .GetName().Version?.ToString(3) ?? "—";
+
     public SettingsViewModel(SettingsStore store, SoundLibrary soundLibrary)
     {
         _store        = store;

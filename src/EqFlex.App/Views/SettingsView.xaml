@@ -2,25 +2,52 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="{StaticResource BgDarkBrush}">
-    <StackPanel Margin="24">
-        <TextBlock Text="Settings" FontSize="15" FontWeight="SemiBold"
-                   Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,20"/>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24">
+            <TextBlock Text="Settings" FontSize="15" FontWeight="SemiBold"
+                       Foreground="{StaticResource TextSecondaryBrush}" Margin="0,0,0,20"/>
 
-        <TextBlock Text="Audio" FontWeight="SemiBold" Margin="0,0,0,8"/>
-        <TextBlock Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,8" TextWrapping="Wrap"
-                   Text="Built-in sounds are available in all audio pickers. Import your own WAV, MP3, OGG, or FLAC files to add them to the list."/>
-        <Button Content="Import Audio File…" Command="{Binding ImportAudioCommand}"
-                HorizontalAlignment="Left" Padding="10,5"/>
+            <TextBlock Text="Audio" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <TextBlock Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,8" TextWrapping="Wrap"
+                       Text="Built-in sounds are available in all audio pickers. Import your own WAV, MP3, OGG, or FLAC files to add them to the list."/>
+            <Button Content="Import Audio File…" Command="{Binding ImportAudioCommand}"
+                    HorizontalAlignment="Left" Padding="10,5"/>
 
-        <Separator Background="{StaticResource BorderBrush}" Margin="0,20,0,16"/>
+            <Separator Background="{StaticResource BorderBrush}" Margin="0,20,0,16"/>
 
-        <TextBlock Text="Diagnostics" FontWeight="SemiBold" Margin="0,0,0,8"/>
-        <Button Content="Open Log Folder" Command="{Binding OpenLogsCommand}"
-                HorizontalAlignment="Left"
-                ToolTip="%APPDATA%\EqFlex\logs"
-                Margin="0,0,0,8"/>
-        <Button Content="Clear All User Data…" Command="{Binding ClearUserDataCommand}"
-                HorizontalAlignment="Left"
-                ToolTip="Deletes all profiles, triggers, overlays, and settings, then restarts the app"/>
-    </StackPanel>
+            <TextBlock Text="Diagnostics" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <Button Content="Open Log Folder" Command="{Binding OpenLogsCommand}"
+                    HorizontalAlignment="Left"
+                    ToolTip="%APPDATA%\EqFlex\logs"
+                    Margin="0,0,0,8"/>
+            <Button Content="Clear All User Data…" Command="{Binding ClearUserDataCommand}"
+                    HorizontalAlignment="Left"
+                    ToolTip="Deletes all profiles, triggers, overlays, and settings, then restarts the app"/>
+
+            <Separator Background="{StaticResource BorderBrush}" Margin="0,20,0,16"/>
+
+            <!-- About -->
+            <DockPanel Margin="0,0,0,12">
+                <TextBlock Text="About" FontWeight="SemiBold" DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center"
+                           Foreground="{StaticResource TextDimBrush}" FontSize="11">
+                    <Run Text="v"/>
+                    <Run Text="{Binding AppVersion, Mode=OneTime}"/>
+                </TextBlock>
+            </DockPanel>
+
+            <Border Background="{StaticResource BgMidBrush}"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1"
+                    CornerRadius="4" Padding="12" MaxHeight="360">
+                <RichTextBox x:Name="ChangelogBox"
+                             IsReadOnly="True"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             Foreground="{StaticResource TextSecondaryBrush}"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Disabled"
+                             IsDocumentEnabled="True"/>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
