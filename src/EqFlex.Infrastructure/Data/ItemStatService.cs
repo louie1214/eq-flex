@@ -46,9 +46,9 @@ internal sealed class CachedItemStat
     public ItemStatDto ToDto() => new()
     {
         ItemId    = Id,
-        Name      = Name,
-        Slot      = Slot,
-        Skill     = Skill,
+        Name      = Name      ?? string.Empty,
+        Slot      = Slot      ?? string.Empty,
+        Skill     = Skill     ?? string.Empty,
         AC        = AC,
         HP        = HP,
         Mana      = Mana,
@@ -69,10 +69,10 @@ internal sealed class CachedItemStat
         DmgBonus  = DmgBonus,
         Delay     = Delay,
         Weight    = Weight,
-        Classes   = Classes,
-        Races     = Races,
-        LucyUrl   = LucyUrl,
-        RawText   = RawText,
+        Classes   = Classes   ?? string.Empty,
+        Races     = Races     ?? string.Empty,
+        LucyUrl   = LucyUrl   ?? string.Empty,
+        RawText   = RawText   ?? string.Empty,
     };
 }
 
@@ -98,6 +98,19 @@ public sealed class ItemStatService
         _ctx       = ctx;
         _nameIndex = nameIndex;
         _http      = http;
+    }
+
+    /// <summary>
+    /// Synchronous LiteDB-only lookup for the primary Lucy ID of <paramref name="itemName"/>.
+    /// Never hits the network. Returns null if not in cache or cache is stale.
+    /// </summary>
+    public ItemStatDto? TryGetCachedStats(string itemName)
+    {
+        if (!_nameIndex.TryGetId(itemName, out var id)) return null;
+        var col    = _ctx.Db.GetCollection<CachedItemStat>(Col);
+        var cached = col.FindById(id);
+        if (cached is null || cached.NotFound || cached.CacheVersion != CurrentCacheVersion) return null;
+        return cached.ToDto();
     }
 
     /// <summary>

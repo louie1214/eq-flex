@@ -82,7 +82,7 @@
                             BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
                             Padding="12,8">
                         <WrapPanel>
-                            <Grid Width="240" Margin="0,0,12,0">
+                            <Grid Width="200" Margin="0,0,8,0">
                                 <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
                                          Padding="6,4,28,4" ToolTip="Search by item name or seller"/>
                                 <Button Content="✕" HorizontalAlignment="Right" VerticalAlignment="Center"
@@ -93,11 +93,87 @@
                                         Visibility="{Binding HasSearchText, Converter={StaticResource BoolToVisConverter}}"/>
                             </Grid>
                             <ComboBox ItemsSource="{Binding TypeFilters}" SelectedItem="{Binding SelectedTypeFilter}"
-                                      Width="80" VerticalAlignment="Center" Margin="0,0,16,0">
+                                      Width="72" VerticalAlignment="Center" Margin="0,0,12,0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate><TextBlock Text="{Binding}"/></DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+                            <TextBlock Text="Slot" VerticalAlignment="Center" FontSize="11"
+                                       Foreground="{StaticResource TextDimBrush}" Margin="0,0,4,0"/>
+                            <ComboBox ItemsSource="{Binding SlotOptions}"
+                                      SelectedItem="{Binding FilterSlot}"
+                                      Width="118" VerticalContentAlignment="Center" Margin="0,0,8,0"
+                                      ToolTip="Filter by equipment slot">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="{Binding}"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding}" Value="">
+                                                            <Setter Property="Text" Value="(any)"/>
+                                                            <Setter Property="Foreground" Value="{StaticResource TextDimBrush}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBlock Text="Class" VerticalAlignment="Center" FontSize="11"
+                                       Foreground="{StaticResource TextDimBrush}" Margin="0,0,4,0"/>
+                            <ComboBox ItemsSource="{Binding ClassOptions}"
+                                      SelectedItem="{Binding FilterClass}"
+                                      Width="72" VerticalContentAlignment="Center" Margin="0,0,8,0"
+                                      ToolTip="Filter by class">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="{Binding}"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding}" Value="">
+                                                            <Setter Property="Text" Value="(any)"/>
+                                                            <Setter Property="Foreground" Value="{StaticResource TextDimBrush}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <TextBlock Text="Race" VerticalAlignment="Center" FontSize="11"
+                                       Foreground="{StaticResource TextDimBrush}" Margin="0,0,4,0"/>
+                            <ComboBox ItemsSource="{Binding RaceOptions}"
+                                      SelectedItem="{Binding FilterRace}"
+                                      Width="72" VerticalContentAlignment="Center" Margin="0,0,8,0"
+                                      ToolTip="Filter by race">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Text" Value="{Binding}"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding}" Value="">
+                                                            <Setter Property="Text" Value="(any)"/>
+                                                            <Setter Property="Foreground" Value="{StaticResource TextDimBrush}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <Button Content="✕ filters" Padding="6,3" FontSize="10"
+                                    Command="{Binding ClearItemFilterCommand}"
+                                    Visibility="{Binding HasItemFilter, Converter={StaticResource BoolToVisConverter}}"
+                                    ToolTip="Clear slot/class/race filters" Margin="0,0,12,0"/>
                             <TextBlock Foreground="{StaticResource TextDimBrush}" FontSize="11"
                                        VerticalAlignment="Center">
                                 <Run Text="{Binding TotalCount, Mode=OneWay}"/>
@@ -258,6 +334,67 @@
                                                    TextWrapping="Wrap"
                                                    Visibility="{Binding IsLoadingDetailStats, Converter={StaticResource InverseBoolToVisConverter}}"
                                                    Margin="0,0,0,14"/>
+
+                                        <!-- Price history -->
+                                        <Separator Background="{StaticResource BorderBrush}" Margin="0,4,0,12"/>
+                                        <!-- Prompt shown before user clicks -->
+                                        <Button Command="{Binding ShowDetailPriceHistoryCommand}"
+                                                Cursor="Hand" Margin="0,0,0,14"
+                                                HorizontalAlignment="Left"
+                                                Visibility="{Binding DetailPriceLoaded, Converter={StaticResource InverseBoolToVisConverter}}"
+                                                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                                            <TextBlock Text="View price history" FontSize="11"
+                                                       Foreground="{StaticResource AccentBrush}"
+                                                       TextDecorations="Underline"/>
+                                        </Button>
+                                        <!-- Results section shown after click -->
+                                        <StackPanel Visibility="{Binding DetailPriceLoaded, Converter={StaticResource BoolToVisConverter}}">
+                                            <DockPanel Margin="0,0,0,6">
+                                                <TextBlock Text="PRICE HISTORY" FontSize="10" FontWeight="SemiBold"
+                                                           Foreground="{StaticResource TextDimBrush}" DockPanel.Dock="Left"
+                                                           VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding DetailPriceSummary}" FontSize="10"
+                                                           Foreground="{StaticResource AccentBrush}"
+                                                           DockPanel.Dock="Right" HorizontalAlignment="Right"
+                                                           VerticalAlignment="Center"
+                                                           Visibility="{Binding HasDetailPriceSummary, Converter={StaticResource BoolToVisConverter}}"/>
+                                            </DockPanel>
+                                            <TextBlock Text="Loading…" FontSize="11"
+                                                       Foreground="{StaticResource TextDimBrush}"
+                                                       Visibility="{Binding IsLoadingDetailPrices, Converter={StaticResource BoolToVisConverter}}"
+                                                       Margin="0,0,0,4"/>
+                                            <TextBlock Text="{Binding DetailPriceStatus}" FontSize="11"
+                                                       Foreground="{StaticResource TextDimBrush}"
+                                                       Margin="0,0,0,6"/>
+                                            <ItemsControl ItemsSource="{Binding DetailPriceHistory}" Margin="0,0,0,14">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0,2">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="86"/>
+                                                                <ColumnDefinition Width="36"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="Auto"/>
+                                                                <ColumnDefinition Width="36"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Grid.Column="0" Text="{Binding TimeDisplay}"
+                                                                       FontSize="11" Foreground="{StaticResource TextDimBrush}"/>
+                                                            <TextBlock Grid.Column="1" Text="{Binding TypeDisplay}"
+                                                                       FontSize="11" Foreground="{StaticResource TextDimBrush}"/>
+                                                            <TextBlock Grid.Column="2" Text="{Binding Seller}"
+                                                                       FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"
+                                                                       TextTrimming="CharacterEllipsis"/>
+                                                            <TextBlock Grid.Column="3" Text="{Binding Price}"
+                                                                       FontSize="11" Foreground="{StaticResource TextPrimaryBrush}"
+                                                                       Margin="8,0,0,0"/>
+                                                            <TextBlock Grid.Column="4" Text="{Binding Source}"
+                                                                       FontSize="10" Foreground="{StaticResource TextDimBrush}"
+                                                                       HorizontalAlignment="Right"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </StackPanel>
 
                                         <!-- Raw auction line -->
                                         <TextBlock Text="RAW LINE" FontSize="10" FontWeight="SemiBold"
@@ -623,98 +760,6 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     </Grid><!-- end hits section -->
-                </Grid>
-            </TabItem>
-
-            <!-- ═══════════════════════════════════════════════════════════ Prices -->
-            <TabItem Header="Prices">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Search bar -->
-                    <Border Grid.Row="0" Background="{StaticResource BgMidBrush}"
-                            BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
-                            Padding="12,8">
-                        <DockPanel>
-                            <Button DockPanel.Dock="Right" Content="Search" Padding="14,4"
-                                    Command="{Binding SearchPricesCommand}"
-                                    IsEnabled="{Binding IsSearchingPrices, Converter={StaticResource InverseBoolConverter}}"/>
-                            <CheckBox DockPanel.Dock="Right"
-                                      Content="Include API" VerticalAlignment="Center"
-                                      IsChecked="{Binding IncludeApiResults}"
-                                      Foreground="{StaticResource TextPrimaryBrush}"
-                                      Margin="0,0,12,0"
-                                      ToolTip="Always fetch from tlp-auctions.com, even when local data exists"/>
-                            <TextBox Text="{Binding PriceSearchText, UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="0,0,8,0" Padding="6,4"
-                                     ToolTip="Search by item name — uses local data first, falls back to tlp-auctions.com">
-                                <TextBox.InputBindings>
-                                    <KeyBinding Key="Return" Command="{Binding SearchPricesCommand}"/>
-                                </TextBox.InputBindings>
-                            </TextBox>
-                        </DockPanel>
-                    </Border>
-
-                    <!-- Status / API summary -->
-                    <Border Grid.Row="1" Background="{StaticResource BgMidBrush}"
-                            BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1"
-                            Padding="16,6">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding PriceStatusText}" FontSize="11"
-                                       Foreground="{StaticResource TextDimBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Text="  ·  " FontSize="11"
-                                       Foreground="{StaticResource TextDimBrush}" VerticalAlignment="Center"
-                                       Visibility="{Binding HasApiPriceSummary, Converter={StaticResource BoolToVisConverter}}"/>
-                            <TextBlock Text="{Binding ApiPriceSummary}" FontSize="11" FontWeight="SemiBold"
-                                       Foreground="{StaticResource AccentBrush}" VerticalAlignment="Center"
-                                       Visibility="{Binding HasApiPriceSummary, Converter={StaticResource BoolToVisConverter}}"/>
-                        </StackPanel>
-                    </Border>
-
-                    <DataGrid x:Name="PricesGrid"
-                              Grid.Row="2"
-                              ItemsSource="{Binding PriceResults}"
-                              AutoGenerateColumns="False" IsReadOnly="True"
-                              CanUserSortColumns="True" CanUserReorderColumns="True"
-                              GridLinesVisibility="Horizontal" HeadersVisibility="Column"
-                              SelectionMode="Single"
-                              Background="{StaticResource BgDarkBrush}"
-                              RowBackground="{StaticResource BgDarkBrush}"
-                              AlternatingRowBackground="{StaticResource BgMidBrush}"
-                              BorderThickness="0" ColumnHeaderHeight="28" RowHeight="24"
-                              ColumnHeaderStyle="{StaticResource ColHeader}"
-                              CellStyle="{StaticResource Cell}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Time"   Binding="{Binding TimeDisplay}" Width="110"/>
-                            <DataGridTextColumn Header="Type"   Binding="{Binding TypeDisplay}" Width="50"/>
-                            <DataGridTemplateColumn Header="Item" Width="*" SortMemberPath="ItemName">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding ItemName}" TextTrimming="CharacterEllipsis"
-                                                   Foreground="{StaticResource TextPrimaryBrush}"
-                                                   ToolTipService.ShowDuration="30000"
-                                                   ToolTipService.InitialShowDelay="600"
-                                                   ToolTipService.ToolTipOpening="OnPriceItemTooltipOpening">
-                                            <TextBlock.ToolTip>
-                                                <ToolTip Background="#1E1E1E" BorderBrush="#555" BorderThickness="1" Padding="8,6">
-                                                    <TextBlock Text="Loading…" FontFamily="Consolas" FontSize="11"
-                                                               Foreground="#E8E8E8"
-                                                               MaxWidth="340" TextWrapping="Wrap"/>
-                                                </ToolTip>
-                                            </TextBlock.ToolTip>
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Seller" Binding="{Binding Seller}"      Width="110"/>
-                            <DataGridTextColumn Header="Price"  Binding="{Binding Price}"       Width="110"/>
-                            <DataGridTextColumn Header="Src"    Binding="{Binding Source}"      Width="45"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
                 </Grid>
             </TabItem>
 

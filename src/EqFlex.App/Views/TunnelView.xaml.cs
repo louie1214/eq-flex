@@ -100,7 +100,6 @@ public partial class TunnelView : UserControl
         RestoreColumns(settings, "tunnel.krono",      KronoGrid);
         RestoreColumns(settings, "tunnel.alerts",     AlertsGrid);
         RestoreColumns(settings, "tunnel.alert.hits", AlertHitsGrid);
-        RestoreColumns(settings, "tunnel.prices",     PricesGrid);
     }
 
     private void SaveLayout()
@@ -112,7 +111,6 @@ public partial class TunnelView : UserControl
         SaveColumns(settings, "tunnel.krono",      KronoGrid);
         SaveColumns(settings, "tunnel.alerts",     AlertsGrid);
         SaveColumns(settings, "tunnel.alert.hits", AlertHitsGrid);
-        SaveColumns(settings, "tunnel.prices",     PricesGrid);
 
         store.Save(settings);
     }
@@ -154,16 +152,6 @@ public partial class TunnelView : UserControl
         var row = tb.DataContext as TradeRowVm;
         if (row is null || string.IsNullOrWhiteSpace(row.ItemName)) return;
         LoadTooltip(tb, row.ItemName, null, vm);
-    }
-
-    // ── Item tooltip — Prices tab ──────────────────────────────────────────────
-
-    private void OnPriceItemTooltipOpening(object sender, ToolTipEventArgs e)
-    {
-        if (sender is not TextBlock tb || DataContext is not TunnelViewModel vm) return;
-        var row = tb.DataContext as SaleRowVm;
-        if (row is null || string.IsNullOrWhiteSpace(row.ItemName)) return;
-        LoadTooltip(tb, row.ItemName, row.ItemId, vm);
     }
 
     // ── Shared async tooltip loader ────────────────────────────────────────────

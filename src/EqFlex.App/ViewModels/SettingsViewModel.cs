@@ -20,11 +20,22 @@ public sealed partial class SettingsViewModel : ObservableObject
         System.Reflection.Assembly.GetExecutingAssembly()
             .GetName().Version?.ToString(3) ?? "—";
 
+    public static int[] TradeRetentionOptions { get; } = [1, 3, 7, 14, 30];
+
+    [ObservableProperty] private int _tradeRetentionDays;
+
     public SettingsViewModel(SettingsStore store, SoundLibrary soundLibrary)
     {
         _store        = store;
         _soundLibrary = soundLibrary;
         _settings     = store.Load();
+        _tradeRetentionDays = _settings.TradeRetentionDays > 0 ? _settings.TradeRetentionDays : 14;
+    }
+
+    partial void OnTradeRetentionDaysChanged(int value)
+    {
+        _settings.TradeRetentionDays = value;
+        _store.Save(_settings);
     }
 
     [RelayCommand]

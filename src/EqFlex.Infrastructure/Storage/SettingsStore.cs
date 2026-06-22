@@ -69,6 +69,9 @@ public sealed class AppSettings
     // Tunnel — Krono PP exchange rate used for alert total-equivalent price comparisons (0 = unknown)
     public double KronoPpRate { get; set; }
 
+    // Tunnel — how many days of trade history to retain in the database (0 = use default of 14)
+    public int TradeRetentionDays { get; set; }
+
     // Copy parse — shared mode selector
     public string CopyMode { get; set; } = "Damage";
 
