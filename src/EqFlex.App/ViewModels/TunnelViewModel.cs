@@ -70,12 +70,13 @@ public sealed partial class TunnelViewModel : ObservableObject
     private readonly SettingsStore    _settings;
     private readonly List<TradeRowVm> _allTrades  = [];
     private readonly List<TradeRowVm> _feedBuffer = [];
+    private readonly Dictionary<string, ItemStatDto?> _statCache = new(StringComparer.OrdinalIgnoreCase);
     private bool _feedPaused;
     private bool _scrollPaused;
     private bool _selectionPaused;
     private bool   _loaded;
     private string _loadedServer = string.Empty;
-    private CancellationTokenSource? _priceCts;
+    private CancellationTokenSource? _enrichCts;
 
     // ── Trades tab ──────────────────────────────────────────────────────────────
     [ObservableProperty] private string _searchText = string.Empty;
@@ -85,9 +86,106 @@ public sealed partial class TunnelViewModel : ObservableObject
     [ObservableProperty] private int  _bufferedTradeCount;
     [ObservableProperty] private bool _hasBufferedTrades;
 
+    // ── Item stat filters ────────────────────────────────────────────────────
+    [ObservableProperty] private string _filterSlot  = string.Empty;
+    [ObservableProperty] private string _filterClass = string.Empty;
+    [ObservableProperty] private string _filterRace  = string.Empty;
+    [ObservableProperty] private bool   _hasItemFilter;
+
+    partial void OnFilterSlotChanged(string value)  { SyncHasItemFilter(); ApplyFilter(); StartEnrichment(); }
+    partial void OnFilterClassChanged(string value) { SyncHasItemFilter(); ApplyFilter(); StartEnrichment(); }
+    partial void OnFilterRaceChanged(string value)  { SyncHasItemFilter(); ApplyFilter(); StartEnrichment(); }
+
+    private void SyncHasItemFilter() =>
+        HasItemFilter = FilterSlot.Length > 0 || FilterClass.Length > 0 || FilterRace.Length > 0;
+
+    [RelayCommand]
+    private void ClearItemFilter()
+    {
+        FilterSlot = FilterClass = FilterRace = string.Empty;
+    }
+
+    private void StartEnrichment()
+    {
+        _enrichCts?.Cancel();
+        if (!HasItemFilter) return;
+        _enrichCts = new CancellationTokenSource();
+        var names = _allTrades
+            .Select(r => r.ItemName)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Where(n => !_statCache.ContainsKey(n))
+            .ToList();
+        if (names.Count > 0)
+            _ = EnrichAsync(names, _enrichCts.Token);
+    }
+
+    private async Task EnrichAsync(List<string> names, CancellationToken ct)
+    {
+        try
+        {
+            int i = 0;
+            foreach (var name in names)
+            {
+                if (ct.IsCancellationRequested) return;
+
+                var stat = _itemStats.TryGetCachedStats(name)
+                           ?? await _itemStats.GetStatsAsync(name, ct: ct);
+
+                if (ct.IsCancellationRequested) return;
+
+                i++;
+                int captured = i;
+                int total    = names.Count;
+                // Don't pass ct to InvokeAsync — it throws OperationCanceledException
+                // when the token fires mid-queue, causing unobserved task exceptions.
+                // Instead check ct inside the callback so cancelled runs are no-ops.
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    if (ct.IsCancellationRequested) return;
+                    _statCache[name] = stat;
+                    if (captured % 20 == 0 || captured == total) PruneByStatFilter();
+                }, System.Windows.Threading.DispatcherPriority.Background);
+            }
+        }
+        catch (OperationCanceledException) { }
+    }
+
+    // Removes items that no longer match from FilteredTrades and _feedBuffer without
+    // clearing and rebuilding the entire list (preserves scroll position / selection).
+    private void PruneByStatFilter()
+    {
+        for (int i = FilteredTrades.Count - 1; i >= 0; i--)
+            if (!MatchesFilter(FilteredTrades[i])) FilteredTrades.RemoveAt(i);
+
+        bool bufferChanged = false;
+        for (int i = _feedBuffer.Count - 1; i >= 0; i--)
+        {
+            if (!MatchesFilter(_feedBuffer[i]))
+            {
+                _feedBuffer.RemoveAt(i);
+                bufferChanged = true;
+            }
+        }
+        if (bufferChanged) BufferedTradeCount = _feedBuffer.Count;
+        TotalCount = FilteredTrades.Count;
+    }
+
     partial void OnBufferedTradeCountChanged(int value) => HasBufferedTrades = value > 0;
     public ObservableCollection<TradeRowVm> FilteredTrades { get; } = [];
     public string[] TypeFilters { get; } = ["All", "WTS", "WTB"];
+    public string[] SlotOptions  { get; } = [
+        "", "AMMO", "ARMS", "BACK", "CHARM", "CHEST", "EAR", "FACE",
+        "FEET", "FINGER", "HANDS", "HEAD", "LEGS", "NECK",
+        "POWER SOURCE", "PRIMARY", "RANGE", "SECONDARY", "SHOULDER", "WAIST", "WRIST",
+    ];
+    public string[] ClassOptions { get; } = [
+        "", "BER", "BRD", "BST", "CLR", "DRU", "ENC",
+        "MAG", "MNK", "NEC", "PAL", "RNG", "ROG", "SHD", "SHM", "WAR", "WIZ",
+    ];
+    public string[] RaceOptions  { get; } = [
+        "", "BAR", "DEF", "DRK", "DWF", "ELF", "ERU", "FRG", "GNM",
+        "HEF", "HFL", "HIE", "HUM", "IKS", "OGR", "TRL", "VAH",
+    ];
 
     // ── Trade detail pane ─────────────────────────────────────────────────────
     [ObservableProperty] private TradeRowVm? _selectedTradeRow;
@@ -95,14 +193,43 @@ public sealed partial class TunnelViewModel : ObservableObject
     [ObservableProperty] private string      _detailStatsText     = string.Empty;
     [ObservableProperty] private bool        _isLoadingDetailStats;
     private int _detailLoadVersion;
+    private int _detailPriceVersion;
+    private CancellationTokenSource? _detailCts;
+
+    // ── Detail pane price history ─────────────────────────────────────────────
+    public ObservableCollection<SaleRowVm> DetailPriceHistory { get; } = [];
+    [ObservableProperty] private bool   _detailPriceLoaded;
+    [ObservableProperty] private bool   _isLoadingDetailPrices;
+    [ObservableProperty] private string _detailPriceStatus    = string.Empty;
+    [ObservableProperty] private string _detailPriceSummary   = string.Empty;
+    [ObservableProperty] private bool   _hasDetailPriceSummary;
 
     partial void OnSelectedTradeRowChanged(TradeRowVm? value)
     {
-        HasSelectedTrade     = value is not null;
-        DetailStatsText      = string.Empty;
-        IsLoadingDetailStats = false;
+        HasSelectedTrade      = value is not null;
+        DetailStatsText       = string.Empty;
+        IsLoadingDetailStats  = false;
+        DetailPriceHistory.Clear();
+        DetailPriceLoaded     = false;
+        IsLoadingDetailPrices = false;
+        DetailPriceStatus     = string.Empty;
+        DetailPriceSummary    = string.Empty;
+        HasDetailPriceSummary = false;
+
+        _detailCts?.Cancel();
         if (value is null) return;
+
+        _detailCts = new CancellationTokenSource();
         _ = LoadDetailStatsAsync(value, ++_detailLoadVersion);
+    }
+
+    [RelayCommand]
+    private void ShowDetailPriceHistory()
+    {
+        if (SelectedTradeRow is null || DetailPriceLoaded) return;
+        DetailPriceLoaded = true;
+        _detailCts ??= new CancellationTokenSource();
+        _ = LoadDetailPriceHistoryAsync(SelectedTradeRow.ItemName, ++_detailPriceVersion, _detailCts.Token);
     }
 
     [RelayCommand]
@@ -136,6 +263,91 @@ public sealed partial class TunnelViewModel : ObservableObject
         }
     }
 
+    private async Task LoadDetailPriceHistoryAsync(string itemName, int version, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(itemName) || _loadedServer.Length == 0) return;
+
+        IsLoadingDetailPrices = true;
+
+        try
+        {
+            // Phase 1: local store (fast — show immediately)
+            var local = await Task.Run(() => _store.Search(_loadedServer, itemName, null, 30), ct);
+            if (version != _detailPriceVersion || ct.IsCancellationRequested) return;
+
+            foreach (var r in local)
+            {
+                var dt = UnixEpoch.AddSeconds(r.Timestamp);
+                if (r.Items.Count > 0)
+                {
+                    var matches = r.Items
+                        .Where(i => i.Name.Contains(itemName, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                    foreach (var item in (matches.Count > 0 ? matches : r.Items))
+                    {
+                        if (!item.Price.HasValue) continue;
+                        DetailPriceHistory.Add(new SaleRowVm
+                        {
+                            TimeDisplay = dt.ToString("MM/dd HH:mm"),
+                            TypeDisplay = r.Type == TradeType.Unknown ? "—" : r.Type.ToString(),
+                            Seller      = r.Seller,
+                            Price       = item.PriceDisplay,
+                            Source      = "Local",
+                        });
+                    }
+                }
+            }
+
+            DetailPriceStatus     = DetailPriceHistory.Count > 0
+                ? $"{DetailPriceHistory.Count} local · fetching API…"
+                : "Fetching from API…";
+            IsLoadingDetailPrices = false;
+
+            // Phase 2: API (slower — append when ready)
+            var summaryTask = _api.GetItemPriceAsync(itemName, _loadedServer, ct);
+            var salesTask   = _api.GetRecentSalesAsync(itemName, _loadedServer, null, 30, ct);
+            await Task.WhenAll(summaryTask, salesTask);
+            if (version != _detailPriceVersion || ct.IsCancellationRequested) return;
+
+            var summary  = summaryTask.Result;
+            var (sales, _) = salesTask.Result;
+
+            if (summary is not null)
+            {
+                var parts = new List<string>();
+                if (summary.AveragePlatPrice.HasValue)  parts.Add($"Avg {summary.AveragePlatPrice.Value:N0} pp");
+                if (summary.AverageKronoPrice.HasValue) parts.Add($"Avg {summary.AverageKronoPrice.Value:N1} kr");
+                if (parts.Count > 0)
+                {
+                    DetailPriceSummary    = string.Join("  ·  ", parts) + $"  ({summary.SampleSize:N0} sales)";
+                    HasDetailPriceSummary = true;
+                }
+            }
+
+            int apiAdded = 0;
+            foreach (var s in sales)
+            {
+                if (!s.PlatPrice.HasValue && !s.KronoPrice.HasValue) continue;
+                DetailPriceHistory.Add(new SaleRowVm
+                {
+                    TimeDisplay = s.Datetime.ToString("MM/dd HH:mm"),
+                    TypeDisplay = s.TransactionType ? "WTB" : "WTS",
+                    Seller      = s.Auctioneer,
+                    Price       = FormatApiPrice(s),
+                    Source      = "API",
+                    ItemId      = s.ItemId,
+                });
+                apiAdded++;
+            }
+
+            DetailPriceStatus = DetailPriceHistory.Count > 0
+                ? $"{DetailPriceHistory.Count} result(s)" +
+                  (local.Count > 0 && apiAdded > 0 ? " (local + API)" : local.Count > 0 ? " local" : " from API")
+                : "No results found.";
+        }
+        catch (OperationCanceledException) { IsLoadingDetailPrices = false; }
+    }
+
     // ── Krono tab ──────────────────────────────────────────────────────────────
     [ObservableProperty] private double _kronoRatePp;
     [ObservableProperty] private string _kronoApiPrice = "—";
@@ -147,13 +359,6 @@ public sealed partial class TunnelViewModel : ObservableObject
     public ObservableCollection<KronoRowVm> LocalKronoHistory { get; } = [];
 
     // ── Prices tab ─────────────────────────────────────────────────────────────
-    [ObservableProperty] private string _priceSearchText = string.Empty;
-    [ObservableProperty] private bool _isSearchingPrices;
-    [ObservableProperty] private bool _includeApiResults;
-    [ObservableProperty] private string _priceStatusText = string.Empty;
-    [ObservableProperty] private string _apiPriceSummary = string.Empty;
-    [ObservableProperty] private bool _hasApiPriceSummary;
-    public ObservableCollection<SaleRowVm> PriceResults { get; } = [];
 
     // ── Alerts tab ─────────────────────────────────────────────────────────────
     public ObservableCollection<ItemAlert>    Alerts    { get; } = [];
@@ -224,6 +429,12 @@ public sealed partial class TunnelViewModel : ObservableObject
         _settings.Save(s);
     }
 
+    private int RetentionDays()
+    {
+        var days = _settings.Load().TradeRetentionDays;
+        return days > 0 ? days : 14;
+    }
+
     public TunnelViewModel(TradeStore store, AraduneApiClient api, ItemStatService itemStats,
         OverlayManager overlayManager, SoundLibrary soundLibrary, SettingsStore settings)
     {
@@ -256,11 +467,12 @@ public sealed partial class TunnelViewModel : ObservableObject
         _loadedServer = server;
         _loaded = true;
 
-        _store.PurgeOld(14);
-        _store.PurgeOldHits(14);
+        var days = RetentionDays();
+        _store.PurgeOld(days);
+        _store.PurgeOldHits(days);
 
         _allTrades.Clear();
-        foreach (var r in _store.GetRecent(server, 14))
+        foreach (var r in _store.GetRecent(server, days))
             _allTrades.AddRange(ToRows(r));
         ApplyFilter();
 
@@ -344,6 +556,17 @@ public sealed partial class TunnelViewModel : ObservableObject
             }
         }
 
+        // Enrich any new item names when a stat filter is active.
+        if (HasItemFilter)
+        {
+            var uncached = rows.Select(r => r.ItemName)
+                               .Distinct(StringComparer.OrdinalIgnoreCase)
+                               .Where(n => !_statCache.ContainsKey(n))
+                               .ToList();
+            if (uncached.Count > 0)
+                _ = EnrichAsync(uncached, CancellationToken.None);
+        }
+
         CheckAlerts(record);
     }
 
@@ -371,9 +594,23 @@ public sealed partial class TunnelViewModel : ObservableObject
     {
         if (SelectedTypeFilter != "All" && row.TypeDisplay != SelectedTypeFilter) return false;
         var q = SearchText.Trim();
-        if (q.Length == 0) return true;
-        return row.Seller.Contains(q, StringComparison.OrdinalIgnoreCase) ||
-               row.ItemName.Contains(q, StringComparison.OrdinalIgnoreCase);
+        if (q.Length > 0 && !row.Seller.Contains(q, StringComparison.OrdinalIgnoreCase) &&
+                             !row.ItemName.Contains(q, StringComparison.OrdinalIgnoreCase))
+            return false;
+
+        if (HasItemFilter)
+        {
+            if (!_statCache.TryGetValue(row.ItemName, out var stat))
+                return true; // not yet enriched — include optimistically until stats arrive
+            if (stat is null)
+                return false; // confirmed not on Lucy (unparsed line or unknown item) — exclude
+            if (FilterSlot.Length  > 0 && !stat.Slot.Contains(FilterSlot, StringComparison.OrdinalIgnoreCase)) return false;
+            if (FilterClass.Length > 0 && !stat.Classes.Equals("ALL", StringComparison.OrdinalIgnoreCase) &&
+                                          !stat.Classes.Contains(FilterClass, StringComparison.OrdinalIgnoreCase)) return false;
+            if (FilterRace.Length  > 0 && !stat.Races.Equals("ALL", StringComparison.OrdinalIgnoreCase) &&
+                                          !stat.Races.Contains(FilterRace, StringComparison.OrdinalIgnoreCase)) return false;
+        }
+        return true;
     }
 
     private static IEnumerable<TradeRowVm> ToRows(TradeRecord r)
@@ -473,7 +710,7 @@ public sealed partial class TunnelViewModel : ObservableObject
 
         AlertHits.Clear();
         var dt0 = UnixEpoch;
-        foreach (var h in _store.GetRecentHits(14))
+        foreach (var h in _store.GetRecentHits(RetentionDays()))
         {
             AlertHits.Add(new AlertHitRowVm
             {
@@ -626,122 +863,6 @@ public sealed partial class TunnelViewModel : ObservableObject
     {
         DeleteAlertCommand.NotifyCanExecuteChanged();
         SaveAlertCommand.NotifyCanExecuteChanged();
-    }
-
-    // ── Prices ─────────────────────────────────────────────────────────────────
-
-    [RelayCommand]
-    private async Task SearchPricesAsync()
-    {
-        var term = PriceSearchText.Trim();
-        if (term.Length == 0) return;
-
-        _priceCts?.Cancel();
-        _priceCts = new CancellationTokenSource();
-        var ct = _priceCts.Token;
-
-        IsSearchingPrices  = true;
-        HasApiPriceSummary = false;
-        ApiPriceSummary    = string.Empty;
-        PriceResults.Clear();
-        PriceStatusText    = "Searching local data...";
-
-        var local = _store.Search(_loadedServer, term, null, 14);
-
-        if (ct.IsCancellationRequested) { IsSearchingPrices = false; return; }
-
-        if (local.Count > 0)
-        {
-            foreach (var r in local)
-            {
-                var dt = UnixEpoch.AddSeconds(r.Timestamp);
-                if (r.Items.Count > 0)
-                {
-                    var matches = r.Items
-                        .Where(i => i.Name.Contains(term, StringComparison.OrdinalIgnoreCase))
-                        .ToList();
-                    var items = matches.Count > 0 ? matches : r.Items;
-                    foreach (var item in items)
-                    {
-                        PriceResults.Add(new SaleRowVm
-                        {
-                            TimeDisplay = dt.ToString("MM/dd HH:mm:ss"),
-                            TypeDisplay = r.Type == TradeType.Unknown ? "—" : r.Type.ToString(),
-                            ItemName    = item.Name,
-                            Seller      = r.Seller,
-                            Price       = item.Price.HasValue ? item.PriceDisplay : "—",
-                            Source      = "Local"
-                        });
-                    }
-                }
-                else
-                {
-                    PriceResults.Add(new SaleRowVm
-                    {
-                        TimeDisplay = dt.ToString("MM/dd HH:mm:ss"),
-                        TypeDisplay = r.Type == TradeType.Unknown ? "—" : r.Type.ToString(),
-                        ItemName    = string.Empty,
-                        Seller      = r.Seller,
-                        Price       = "—",
-                        Source      = "Local"
-                    });
-                }
-            }
-
-            if (!IncludeApiResults)
-            {
-                PriceStatusText   = $"{PriceResults.Count} local result(s)";
-                IsSearchingPrices = false;
-                return;
-            }
-        }
-
-        // Fetch API (always when no local data, or when IncludeApiResults is checked)
-        PriceStatusText = local.Count > 0
-            ? $"{PriceResults.Count} local result(s) — fetching from API..."
-            : "No local data — fetching from API...";
-
-        var summaryTask = _api.GetItemPriceAsync(term, _loadedServer, ct);
-        var salesTask   = _api.GetRecentSalesAsync(term, _loadedServer, null, 50, ct);
-        await Task.WhenAll(summaryTask, salesTask);
-
-        if (ct.IsCancellationRequested) { IsSearchingPrices = false; return; }
-
-        var summary = summaryTask.Result;
-        var (sales, _) = salesTask.Result;
-
-        if (summary is not null)
-        {
-            var parts = new List<string>();
-            if (summary.AveragePlatPrice.HasValue)
-                parts.Add($"Avg {summary.AveragePlatPrice.Value:N0} pp");
-            if (summary.AverageKronoPrice.HasValue)
-                parts.Add($"Avg {summary.AverageKronoPrice.Value:N1} kr");
-            if (parts.Count > 0)
-            {
-                ApiPriceSummary    = string.Join("  ·  ", parts) + $"  ({summary.SampleSize:N0} sales)";
-                HasApiPriceSummary = true;
-            }
-        }
-
-        foreach (var s in sales)
-        {
-            PriceResults.Add(new SaleRowVm
-            {
-                TimeDisplay = s.Datetime.ToString("MM/dd HH:mm:ss"),
-                TypeDisplay = s.TransactionType ? "WTB" : "WTS",
-                ItemName    = s.Item,
-                Seller      = s.Auctioneer,
-                Price       = FormatApiPrice(s),
-                Source      = "API",
-                ItemId      = s.ItemId
-            });
-        }
-
-        PriceStatusText   = PriceResults.Count > 0
-            ? $"{PriceResults.Count} result(s){(local.Count > 0 ? " (local + API)" : " from API")}"
-            : "No results found.";
-        IsSearchingPrices = false;
     }
 
     private static string FormatApiPrice(SalesLogDto s)
