@@ -1,3 +1,12 @@
+## What's New in 1.2.4
+
+### TLP Tunnel improvements
+- Trades tab now supports filtering by item Slot, Class, and Race using Lucy item data
+- Price history is available in the trade detail pane — click "View price history" to load it on demand
+- Prices tab removed; all price lookup functionality lives in the detail pane
+- Price history entries without a price are no longer shown
+- Trade data retention is now configurable in Settings (1, 3, 7, 14, or 30 days); lower values reduce database size and improve load time
+
 ## What's New in 1.2.3
 
 ### TLP Tunnel improvements
